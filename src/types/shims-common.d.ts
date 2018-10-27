@@ -12,7 +12,4 @@ declare interface IBaseRepository<T> {
 declare type Identifier = string;
 declare type Url = string;
 declare type EmailAddress = string;
-declare enum Gender {
-  MAN = 'MAN',
-  WOMAN = 'WOMAN',
-}
+declare type Gender = '男' | '女';

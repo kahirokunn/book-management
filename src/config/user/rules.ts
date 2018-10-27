@@ -34,6 +34,21 @@ export const birthDayRules = [
   (v: string) => /^([1-9]|[1-2][0-9]|3[0-1])$/.test(v) || 'Birth day is invalid',
 ];
 
+export const hireYearRules = [
+  (v: string) => !!v || 'Hire year is required',
+  (v: string) => /^(19|20)\d{2}$/.test(v) || 'Hire year is invalid',
+];
+
+export const hireMonthRules = [
+  (v: string) => !!v || 'Hire month is required',
+  (v: string) => /^(1[0-2]|[1-9])$/.test(v) || 'Hire month is invalid',
+];
+
+export const hireDayRules = [
+  (v: string) => !!v || 'Hire day is required',
+  (v: string) => /^([1-9]|[1-2][0-9]|3[0-1])$/.test(v) || 'Hire day is invalid',
+];
+
 export const firstNameKanaRules = [
   (v: string) => !!v || 'First name kana is required',
   (v: string) => /^([ア-ン]|ー)+$/.test(v) || 'Included not kana characters',

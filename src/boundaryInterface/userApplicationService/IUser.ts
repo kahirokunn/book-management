@@ -12,6 +12,16 @@ export interface IUser {
   gender: Gender;
 }
 
-export interface IUserRegistration extends IUser {
+export interface IUserRegistration {
   password: string;
+  displayName: string;
+  iconFilepath: string;
+  emailAddress: string;
+  firstName: string;
+  familyName: string;
+  firstNameKana: string;
+  familyNameKana: string;
+  birthday: Date;
+  hireDate: Date;
+  gender: Gender;
 }

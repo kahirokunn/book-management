@@ -10,7 +10,10 @@ export default class UserRepository implements IUserRepository {
     if (!response.user) {
       throw Error('userがなぜか取れませんでした');
     }
-    return this.save(params);
+    return this.save({
+      ...params,
+      id: (new User()).id,
+    });
   }
 
   public async save(params: ISaveParams): Promise<User> {
