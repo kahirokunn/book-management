@@ -14,7 +14,8 @@
     "types": [
       "webpack-env",
       "node",
-      "jest"
+      "jest",
+      "reflect-metadata"
     ],
     "paths": {
       "@/*": [

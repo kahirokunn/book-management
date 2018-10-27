@@ -14,6 +14,10 @@
     "interface-name": false,
     "ordered-imports": false,
     "object-literal-sort-keys": false,
-    "no-consecutive-blank-lines": false
+    "no-consecutive-blank-lines": false,
+    "max-classes-per-file": false,
+    "no-empty-interface": false,
+    "interface-over-type-literal": false,
+    "no-console": false
   }
 }
