@@ -1,4 +1,6 @@
 import firebase from 'firebase';
+import * as Pring from 'pring';
+
 
 const config = {
   apiKey: process.env.apiKey,
@@ -18,6 +20,8 @@ firestore.settings({ timestampsInSnapshots: true });
 const auth = firebase.auth;
 const storage = firebase.storage;
 const firestoreHelper = firebase.firestore;
+
+Pring.initialize(app.firestore(), firebase.firestore.FieldValue.serverTimestamp());
 
 export {
   auth,
