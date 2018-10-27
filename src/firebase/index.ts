@@ -21,7 +21,7 @@ const auth = firebase.auth;
 const storage = firebase.storage;
 const firestoreHelper = firebase.firestore;
 
-Pring.initialize(app.firestore(), firebase.firestore.FieldValue.serverTimestamp());
+Pring.initialize(app.firestore(), firestoreHelper.FieldValue.serverTimestamp());
 
 export {
   auth,
