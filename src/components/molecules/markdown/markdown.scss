@@ -1,0 +1,17 @@
+.markdown-body /deep/ {
+  ul li {
+    list-style-type: initial;
+
+    ul li {
+      list-style-type: circle;
+
+      ul li {
+        list-style-type: square;
+      }
+    }
+  }
+
+  h2 {
+    border-bottom: none;
+  }
+}
