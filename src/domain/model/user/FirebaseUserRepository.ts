@@ -4,7 +4,7 @@ import User from './User';
 import IUserRepository, {ISaveParams, ICreateParams} from '@/domain/model/user/IUserRepository';
 
 @injectable()
-export default class UserRepository implements IUserRepository {
+export default class FirebaseUserRepository implements IUserRepository {
   public async create(params: ICreateParams): Promise<User> {
     const response = await auth().createUserWithEmailAndPassword(params.emailAddress, params.password);
     if (!response.user) {
