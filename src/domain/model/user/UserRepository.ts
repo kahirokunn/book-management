@@ -12,13 +12,12 @@ export default class UserRepository implements IUserRepository {
     }
     return this.save({
       ...params,
-      id: (new User()).id,
+      id: response.user.uid,
     });
   }
 
   public async save(params: ISaveParams): Promise<User> {
-    const user = new User();
-    Object.assign(user, params);
+    const user = new User(params.id, params);
     await user.save();
     return user;
   }

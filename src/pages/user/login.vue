@@ -1,21 +1,21 @@
 <template>
   <v-container fluid fill-height>
     <v-layout justify-center align-center>
-      <UserRegistrationForm/>
+      <LoginForm/>
     </v-layout>
   </v-container>
 </template>
 
 <script lang="ts">
 import {Vue, Component, Prop} from 'vue-property-decorator';
-import UserRegistrationForm from '@/components/containers/userRegistrationForm.vue';
+import LoginForm from '@/components/containers/loginForm.vue';
 
 @Component({
   layout: 'startUp',
   components: {
-    UserRegistrationForm,
+    LoginForm,
   },
 })
-export default class RegistrationPage extends Vue {
+export default class LoginPage extends Vue {
 }
 </script>

@@ -6,8 +6,7 @@
     <v-dialog
       v-model="isSending"
       persistent
-      width="300"
-    >
+      width="300">
       <v-card color="primary" dark>
         <v-card-text>
           登録中です...

@@ -86,23 +86,6 @@
         ></v-text-field>
         <v-spacer/>
 
-        <template v-if="$store.state.auth.isInitialized">
-          <v-btn
-            v-if="!isRootPage && '/user/login'.includes($route.path)"
-            color="success"
-            @click="$router.push('/user/registration')">
-            アカウントを作成
-          </v-btn>
-
-          <v-btn
-            v-else
-            color="success"
-            @click="$router.push('/user/login')">
-            ログイン
-          </v-btn>
-
-        </template>
-
       </v-toolbar>
       <v-content>
         <router-view/>
