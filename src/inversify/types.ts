@@ -1,7 +1,8 @@
 const TYPES = {
+  IAuthApplicationService: Symbol.for('IAuthApplicationService'),
   IUserApplicationService: Symbol.for('IUserApplicationService'),
   IUserRepository: Symbol.for('IUserRepository'),
-  UserDomainService: Symbol.for('UserDomainService'),
+  IAuthDomainService: Symbol.for('IAuthDomainService'),
 };
 
 export default TYPES;

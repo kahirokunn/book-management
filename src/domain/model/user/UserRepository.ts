@@ -1,7 +1,7 @@
 import {injectable} from 'inversify';
 import {auth} from '@/firebase/index';
 import User from './User';
-import IUserRepository, {ISaveParams, ICreateParams} from '@/domain/application/userApplicationService/IUserRepository';
+import IUserRepository, {ISaveParams, ICreateParams} from '@/domain/model/user/IUserRepository';
 
 @injectable()
 export default class UserRepository implements IUserRepository {

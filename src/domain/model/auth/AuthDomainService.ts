@@ -1,13 +1,9 @@
-import {injectable, inject} from 'inversify';
-import TYPES from '@/inversify/types';
+import IAuthDomainService from './IAuthDomainService';
+import {injectable} from 'inversify';
 import {auth} from '@/firebase/index';
-import User from './User';
-import IUserRepository from '@/domain/application/userApplicationService/IUserRepository';
 
 @injectable()
-export default class UserDomainService {
-  constructor(@inject(TYPES.IUserRepository) private userRepository: IUserRepository) {}
-
+export default class UserDomainService implements IAuthDomainService {
   public async loginWithEmailAndPassword(email: string, password: string): Promise<Identifier> {
     const userCredential = await auth().signInWithEmailAndPassword(email, password);
     if (userCredential.user === null) {
@@ -16,11 +12,11 @@ export default class UserDomainService {
     return userCredential.user.uid;
   }
 
-  public login(): Promise<User> {
+  public login(): Promise<Identifier> {
     return new Promise((resolve, reject) => {
       auth().onAuthStateChanged((authUser) => {
         if (authUser) {
-          resolve(this.userRepository.findById(authUser.uid));
+          resolve(authUser.uid);
         } else {
           reject('認証に失敗');
         }
