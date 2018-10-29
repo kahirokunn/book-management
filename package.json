@@ -52,12 +52,28 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.ts": [
+    "src/*.ts": [
       "vue-cli-service lint",
       "git add"
     ],
-    "*.vue": [
+    "src/**/*.ts": [
       "vue-cli-service lint",
+      "git add"
+    ],
+    "src/*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "src/**/*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "functions/src/*.ts": [
+      "tslint --project ./functions/tsconfig.json",
+      "git add"
+    ],
+    "functions/src/**/*.ts": [
+      "tslint --project ./functions/tsconfig.json",
       "git add"
     ]
   }

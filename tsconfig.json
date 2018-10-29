@@ -37,6 +37,9 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    ".env*",
+    "functions/*.json",
+    "functions/yarn.lock"
   ]
 }
