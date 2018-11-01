@@ -38,8 +38,6 @@
   ],
   "exclude": [
     "node_modules",
-    ".env*",
-    "functions/*.json",
-    "functions/yarn.lock"
+    ".env*"
   ]
 }

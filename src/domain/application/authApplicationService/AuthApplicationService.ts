@@ -1,15 +1,12 @@
-import {injectable, inject} from 'inversify';
-import TYPES from '@/inversify/types';
 import {IUser} from '@/boundaryInterface/userApplicationService/IUser';
 import IAuthApplicationService from '@/boundaryInterface/authApplicationService/IAuthApplicationService';
 import IUserRepository from '@/domain/model/user/IUserRepository';
 import IAuthDomainService from '@/domain/model/auth/IAuthDomainService';
 
-@injectable()
 export default class AuthApplicationService extends IAuthApplicationService {
   constructor(
-    @inject(TYPES.IUserRepository) protected readonly userRepository: IUserRepository,
-    @inject(TYPES.IAuthDomainService) protected readonly authDomainService: IAuthDomainService,
+    protected readonly userRepository: IUserRepository,
+    protected readonly authDomainService: IAuthDomainService,
   ) {
     super(userRepository, authDomainService);
   }
