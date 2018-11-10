@@ -11,6 +11,7 @@
     "screenshot": "zisui --serverCmd \"yarn serve:storybook\" http://localhost:6006",
     "zisui": "zisui http://localhost:6006",
     "regression": "reg-suit run",
+    "imagetest": "reg-suit run",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
   },
