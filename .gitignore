@@ -28,3 +28,4 @@ firestore-debug.log
 *.njsproj
 *.sln
 *.sw*
+.reg
