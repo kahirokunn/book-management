@@ -1,4 +1,4 @@
-import {IUser} from '@/boundaryInterface/userApplicationService/IUser';
+import {IUser} from '@/boundary/userApplicationService/IUser';
 
 export interface User extends IUser {}
 

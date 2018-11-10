@@ -1,4 +1,4 @@
-import {IUser, IUserRegistration} from '@/boundaryInterface/userApplicationService/IUser';
+import {IUser, IUserRegistration} from '@/boundary/userApplicationService/IUser';
 
 export interface ISaveParams extends IUser {}
 

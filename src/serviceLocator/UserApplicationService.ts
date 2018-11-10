@@ -1,4 +1,4 @@
-import IUserApplicationService from '@/boundaryInterface/userApplicationService/IUserApplicationService';
+import IUserApplicationService from '@/boundary/userApplicationService/IUserApplicationService';
 import TYPES from '@/inversify/types';
 import {diContainer} from '@/inversify/config';
 

@@ -2,7 +2,7 @@ import * as Pring from 'pring';
 import {injectable} from 'inversify';
 import {auth} from '@/firebase/index';
 import IUserRepository, {ISaveParams, ICreateParams} from '@/domain/model/user/IUserRepository';
-import {IUser} from '@/boundaryInterface/userApplicationService/IUser';
+import {IUser} from '@/boundary/userApplicationService/IUser';
 
 class User extends Pring.Base implements IUser {
   @Pring.property public displayName!: string;

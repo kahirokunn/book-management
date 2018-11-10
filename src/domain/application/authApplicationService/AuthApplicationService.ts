@@ -1,5 +1,5 @@
-import {IUser} from '@/boundaryInterface/userApplicationService/IUser';
-import IAuthApplicationService from '@/boundaryInterface/authApplicationService/IAuthApplicationService';
+import {IUser} from '@/boundary/userApplicationService/IUser';
+import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService';
 import IUserRepository from '@/domain/model/user/IUserRepository';
 import IAuthDomainService from '@/domain/model/auth/IAuthDomainService';
 

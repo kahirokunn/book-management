@@ -1,4 +1,4 @@
-import IAuthApplicationService from '@/boundaryInterface/authApplicationService/IAuthApplicationService';
+import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService';
 import TYPES from '@/inversify/types';
 import {diContainer} from '@/inversify/config';
 
