@@ -1,5 +1,7 @@
 .DS_Store
 node_modules
+__screenshots__
+storybook-static
 /dist
 
 /tests/e2e/videos/
