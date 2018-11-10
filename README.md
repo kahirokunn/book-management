@@ -34,3 +34,9 @@ yarn run test:e2e
 ```
 yarn run test:unit
 ```
+
+# storybookで画像回帰テスト
+
+```
+yarn image:storybook
+```

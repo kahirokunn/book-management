@@ -6,6 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "build:storybook": "vue-cli-service build:storybook -c config/storybook",
+    "serve:storybook": "vue-cli-service serve:storybook -p 6006 -c config/storybook",
+    "image:storybook": "zisui --serverCmd \"yarn serve:storybook\" http://localhost:6006",
+    "zisui": "zisui http://localhost:6006",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
   },
@@ -30,6 +34,8 @@
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^3.0.0",
+    "@storybook/addon-actions": "4.0.0-alpha.20",
+    "@storybook/addon-links": "4.0.0-alpha.20",
     "@types/jest": "^23.1.4",
     "@types/node": "^10.9.2",
     "@vue/cli-plugin-e2e-cypress": "^3.0.5",
@@ -38,15 +44,22 @@
     "@vue/cli-service": "^3.0.5",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
+    "babel-loader": "^8.0.4",
     "dotenv-webpack": "^1.5.7",
     "lint-staged": "^7.2.2",
     "node-sass": "^4.9.0",
+    "reg-keygen-git-hash-plugin": "^0.7.6",
+    "reg-notify-github-plugin": "^0.7.6",
+    "reg-publish-gcs-plugin": "^0.7.6",
+    "reg-suit": "^0.7.15",
     "sass-loader": "^7.0.1",
     "ts-jest": "^23.0.0",
     "typescript": "^3.0.3",
     "vue-auto-routing": "^0.3.0",
     "vue-cli-plugin-auto-routing": "^0.2.1",
-    "vue-template-compiler": "^2.5.17"
+    "vue-cli-plugin-storybook": "^0.4.8",
+    "vue-template-compiler": "^2.5.17",
+    "zisui": "^1.2.2"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
