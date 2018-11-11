@@ -1,12 +1,12 @@
 import Vuex from 'vuex';
-import auth from './auth/index';
+import middleware, {MiddlewareState} from './middleware';
 
 interface RootState {
-  auth: ReturnType<typeof auth.state>;
+  middleware: MiddlewareState;
 }
 
 export default new Vuex.Store<RootState>({
   modules: {
-    auth,
+    middleware,
   },
 });

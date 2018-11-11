@@ -61,13 +61,7 @@
 import {Vue, Component, Prop} from 'vue-property-decorator';
 import UserRegistrationForm, {IUserRegistrationParams} from '@/components/organisms/userRegistrationForm.vue';
 import UserApplicationService from '@/serviceLocator/UserApplicationService';
-
-enum State {
-  STANDBY,
-  SENDING,
-  SEND_FAILED,
-  EMAIL_ALREADY_IN_USE,
-}
+import store from '@/store/root';
 
 @Component({
   components: {
@@ -75,37 +69,6 @@ enum State {
   },
 })
 export default class UserRegistrationFormContainer extends Vue {
-  private state: State = State.STANDBY;
-
-  get isSending() {
-    return this.state === State.SENDING;
-  }
-
-  get isSendFailed() {
-    return this.state === State.SEND_FAILED;
-  }
-
-  get isEmailAlreadyInUse() {
-    return this.state === State.EMAIL_ALREADY_IN_USE;
-  }
-
-  private async userRegistration(params: IUserRegistrationParams) {
-    this.state = State.SENDING;
-    try {
-      await UserApplicationService.getInstance().register(params);
-      this.$router.push('/');
-    } catch (e) {
-      console.log(e);
-      if (e.code === 'auth/email-already-in-use') {
-        this.state = State.EMAIL_ALREADY_IN_USE;
-      } else {
-        this.state = State.SEND_FAILED;
-      }
-    }
-  }
-
-  private toStandby() {
-    this.state = State.STANDBY;
-  }
+  // TODO: 実装
 }
 </script>

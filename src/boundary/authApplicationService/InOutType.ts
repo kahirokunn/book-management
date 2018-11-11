@@ -1,15 +1,7 @@
-export interface IUser {
-  id: Identifier;
-  displayName: string;
-  iconFilepath: string;
-  emailAddress: string;
-  firstName: string;
-  familyName: string;
-  firstNameKana: string;
-  familyNameKana: string;
-  birthday: Date;
-  hireDate: Date;
-  gender: Gender;
+import {IUser} from '../userApplicationService/InOutType';
+
+export interface IAuthInfo extends IUser {
+  isEmailVerified: boolean;
 }
 
 export interface IUserRegistration {

@@ -88,7 +88,9 @@
 
       </v-toolbar>
       <v-content>
-        <router-view/>
+        <slot>
+          <router-view/>
+        </slot>
       </v-content>
     </v-app>
   </div>

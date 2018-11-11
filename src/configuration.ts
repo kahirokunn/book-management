@@ -4,10 +4,13 @@ import Router from 'vue-router';
 
 import {auth} from '@/firebase/index';
 
-import './firebase/index';
-import './plugins/vuetify';
+import '@/firebase/index';
+import '@/plugins/vuetify';
+import {diContainer} from '@/inversify/config';
+import {firebaseProviders} from '@/inversify/firebaseProviders';
 
 Vue.use(Router);
 Vue.use(Vuex);
 
 auth().setPersistence(auth.Auth.Persistence.LOCAL);
+firebaseProviders(diContainer);
