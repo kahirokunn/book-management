@@ -3,6 +3,8 @@ import { storiesOf } from '@storybook/vue'
 import { action } from '@storybook/addon-actions'
 
 import MyButton from '../components/MyButton.vue'
+import ThrottleDemo from '../components/ThrottleDemo.vue'
+import DebounceDemo from '../components/DebounceDemo.vue'
 
 storiesOf('Button', module)
   .add('with text', () => ({
@@ -19,4 +21,12 @@ storiesOf('Button', module)
     components: { MyButton },
     template: '<my-button @click="action">😀 😎 👍 💯</my-button>',
     methods: { action: action('clicked') }
+  }))
+  .add('ThrottleDemo', () => ({
+    components: { ThrottleDemo },
+    template: '<ThrottleDemo/>',
+  }))
+  .add('DebounceDemo', () => ({
+    components: { DebounceDemo },
+    template: '<DebounceDemo/>',
   }))
