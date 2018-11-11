@@ -12,10 +12,9 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env",
       "node",
-      "jest",
-      "reflect-metadata"
+      "reflect-metadata",
+      "jest"
     ],
     "paths": {
       "@/*": [
@@ -37,7 +36,6 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "node_modules",
-    ".env*"
+    "node_modules"
   ]
 }

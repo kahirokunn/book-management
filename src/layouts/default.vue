@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import GoogleContacts from './googleContacts.vue';
-import Auth from '@/components/middleware/auth.vue';
+import Vue from 'vue'
+import GoogleContacts from './googleContacts.vue'
+import Auth from '@/components/middleware/auth.vue'
 
 export default Vue.extend({
   name: 'default',
@@ -15,5 +15,5 @@ export default Vue.extend({
     GoogleContacts,
     Auth,
   },
-});
+})
 </script>

@@ -1,8 +1,8 @@
-import Vue from 'vue';
-import marked, { Renderer } from 'marked';
-import highlight from 'highlight.js';
-import 'highlight.js/styles/github.css';
-import 'github-markdown-css/github-markdown.css';
+import Vue from 'vue'
+import marked, { Renderer } from 'marked'
+import highlight from 'highlight.js'
+import 'highlight.js/styles/github.css'
+import 'github-markdown-css/github-markdown.css'
 
 function toMarkdown(source: string) {
   const markedOptions = {
@@ -16,9 +16,9 @@ function toMarkdown(source: string) {
     smartLists: true,
     smartypants: false,
     highlight: (code: string) => highlight.highlightAuto(code).value,
-  };
+  }
 
-  return marked(source, markedOptions);
+  return marked(source, markedOptions)
 }
 
 export default Vue.extend({
@@ -41,7 +41,7 @@ export default Vue.extend({
       domProps: {
         innerHTML: toMarkdown(this.source),
       },
-    };
-    return h(this.tag, options);
+    }
+    return h(this.tag, options)
   },
-});
+})

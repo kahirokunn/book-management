@@ -1,34 +1,37 @@
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator';
-import AuthApplicationService from '@/serviceLocator/AuthApplicationService';
+import {Vue, Component} from 'vue-property-decorator'
+import {
+  UserLoginAction,
+} from '@/store/middleware/auth/boundaryAction'
+import getters from '@/store/middleware/auth/getters'
+import store from '@/store/root'
 
 @Component
 export default class Auth extends Vue {
-  private isReady = false;
-
-  private async mounted() {
-    try {
-      await AuthApplicationService.getInstance().login();
-      // login成功
-    } catch (e) {
-      console.warn(e);
-      // login失敗
-    }
-    this.isReady = true;
+  get isReady() {
+    return getters.isInitialized()
   }
 
-  private render(h: any) {
-    if (this.isReady && this.$slots.default.length > 0) {
-      // slotは1つだけ
-      return h('transition', [this.$slots.default[0]]);
+  public mounted() {
+    store.commit(new UserLoginAction())
+  }
+
+  public render(h: any) {
+    if (this.isReady) {
+      if (this.$slots.default && this.$slots.default.length > 0) {
+        // slotは1つだけ
+        return h('transition', [this.$slots.default[0]])
+      }
+      return h('')
     }
+
     return h('transition', [
       h('div', {
         class: {
           boxLoading: true,
         },
       }),
-    ]);
+    ])
   }
 }
 </script>

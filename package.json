@@ -47,6 +47,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.0.4",
     "dotenv-webpack": "^1.5.7",
+    "flush-promises": "^1.0.2",
     "lint-staged": "^7.2.2",
     "node-sass": "^4.9.0",
     "reg-keygen-git-hash-plugin": "^0.7.6",
@@ -80,14 +81,6 @@
     ],
     "src/**/*.vue": [
       "vue-cli-service lint",
-      "git add"
-    ],
-    "functions/src/*.ts": [
-      "tslint --project ./functions/tsconfig.json",
-      "git add"
-    ],
-    "functions/src/**/*.ts": [
-      "tslint --project ./functions/tsconfig.json",
       "git add"
     ]
   }

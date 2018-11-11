@@ -1,18 +1,23 @@
-import Router from 'vue-router';
-import routes from 'vue-auto-routing';
-import { createRouterLayout } from 'vue-router-layout';
+import Router from 'vue-router'
+import { createRouterLayout } from 'vue-router-layout'
+import requiredVerifyEmail from './middlewares/requiredVerifyEmail'
+import {isTest} from '@/submodules/env'
 
 const RouterLayout = createRouterLayout((layout) => {
-  return import('@/layouts/' + layout + '.vue');
-});
+  return import('@/layouts/' + layout + '.vue')
+})
 
-export default new Router({
+const router =  new Router({
   mode: 'history',
-  routes: [
+  routes: isTest() ? [] : [
     {
       path: '/',
       component: RouterLayout,
-      children: routes,
+      children: require('vue-auto-routing').default,
     },
   ],
-});
+})
+
+requiredVerifyEmail(router)
+
+export default router
