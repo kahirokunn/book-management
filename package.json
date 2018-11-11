@@ -82,14 +82,6 @@
     "src/**/*.vue": [
       "vue-cli-service lint",
       "git add"
-    ],
-    "functions/src/*.ts": [
-      "tslint --project ./functions/tsconfig.json",
-      "git add"
-    ],
-    "functions/src/**/*.ts": [
-      "tslint --project ./functions/tsconfig.json",
-      "git add"
     ]
   }
 }
