@@ -4,23 +4,25 @@
   </button>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
   name: 'my-button',
 
   methods: {
     onClick() {
-      this.$emit('click')
-    }
-  }
-}
+      this.$emit('click');
+    },
+  },
+});
 </script>
 
 <style>
 button {
   border: 1px solid #eee;
   border-radius: 5px;
-  background-color: #000;
+  background-color: #ffffff;
   cursor: pointer;
   font-size: 15pt;
   padding: 3px 10px;

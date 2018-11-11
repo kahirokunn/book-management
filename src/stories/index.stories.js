@@ -12,6 +12,11 @@ storiesOf('Button', module)
   }))
   .add('with text2', () => ({
     components: { MyButton },
+    template: '<my-button @click="action">Fixed Hello Button 2</my-button>',
+    methods: { action: action('clicked') }
+  }))
+  .add('with text3', () => ({
+    components: { MyButton },
     template: '<my-button @click="action">Hello Button 2</my-button>',
     methods: { action: action('clicked') }
   }))
