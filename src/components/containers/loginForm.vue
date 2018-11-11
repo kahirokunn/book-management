@@ -39,47 +39,27 @@
 
 <script lang="ts">
 import {Vue, Component, Prop} from 'vue-property-decorator'
-import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
+import store from '@/store/root'
+import {
+  LoginByEmailAndPasswordAction,
+  ToStandbyAction,
+} from '@/store/containers/loginForm/boundaryAction'
+import getters from '@/store/containers/loginForm/getters'
 import LoginForm from '@/components/organisms/loginForm.vue'
-
-enum State {
-  STANDBY,
-  SENDING,
-  LOGIN_FAILED,
-  SEND_SUCCESS,
-}
 
 @Component({
   components: {
     LoginForm,
   },
+  computed: getters,
 })
 export default class LoginPage extends Vue {
-  private valid = true
-  private state: State = State.STANDBY
-
-  get isSending() {
-    return this.state === State.SENDING
+  public async login(email: string, password: string) {
+    store.commit(new LoginByEmailAndPasswordAction({ email, password }))
   }
 
-  get isFailed() {
-    return this.state === State.LOGIN_FAILED
-  }
-
-  private async login(email: string, password: string) {
-    this.state = State.SENDING
-    try {
-      await AuthApplicationService.getInstance().loginWithEmailAndPassword(email, password)
-      this.state = State.SEND_SUCCESS
-      this.$router.push('/')
-    } catch (e) {
-      console.log(e)
-      this.state = State.LOGIN_FAILED
-    }
-  }
-
-  private toStandby() {
-    this.state = State.STANDBY
+  public toStandby() {
+    store.commit(new ToStandbyAction())
   }
 }
 </script>
