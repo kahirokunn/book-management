@@ -4,7 +4,7 @@ export interface IAuthInfo extends IUser {
   isEmailVerified: boolean
 }
 
-export interface IUserRegistration {
+export interface IRegistrationParams {
   password: string
   displayName: string
   iconFilepath: string

@@ -4,7 +4,7 @@ import {
 } from 'inversify'
 import {
   IAuthInfo,
-  IUserRegistration,
+  IRegistrationParams,
 } from '@/boundary/authApplicationService/InOutType'
 import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService'
 import IUserRepository from '@/domain/model/user/IUserRepository'
@@ -19,7 +19,7 @@ export default class AuthApplicationService extends IAuthApplicationService {
     protected readonly authDomainService: IAuthDomainService,
   ) { super() }
 
-  public async registration(params: IUserRegistration): Promise<IAuthInfo> {
+  public async registration(params: IRegistrationParams): Promise<IAuthInfo> {
     const userId = await this.authDomainService.createUserWithEmailAndPassword(params.emailAddress, params.password)
     const userParams = {
       id: userId,

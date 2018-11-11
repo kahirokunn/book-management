@@ -4,7 +4,7 @@
 
     <!-- 登録中 -->
     <v-dialog
-      v-model="isSending"
+      :value="isSending"
       persistent
       width="300">
       <v-card color="primary" dark>
@@ -19,30 +19,11 @@
       </v-card>
     </v-dialog>
 
-    <!-- 登録失敗 -->
-    <v-dialog v-model="isSendFailed" width="500">
+    <!-- エラー -->
+    <v-dialog :value="isSendFailed" width="500">
       <v-card color="error" dark>
         <v-card-text>
-          エラーが発生しました<br>
-          恐れ入りますが時間を置いてから再度やり直してください
-        </v-card-text>
-
-        <v-card-actions>
-          <v-spacer/>
-          <v-btn
-            @click="toStandby()"
-            color="red lighten-2"
-          >OK</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-
-    <!-- メールアドレスが既に使われています -->
-    <v-dialog v-model="isEmailAlreadyInUse" width="500">
-      <v-card color="error" dark>
-        <v-card-text>
-          登録しようとしたメールアドレスは既に使われています<br>
-          別のメールアドレスでご登録ください
+          {{ errorMessage }}
         </v-card-text>
 
         <v-card-actions>
@@ -58,17 +39,29 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator'
-import UserRegistrationForm, {IUserRegistrationParams} from '@/components/organisms/userRegistrationForm.vue'
-import UserApplicationService from '@/serviceLocator/UserApplicationService'
+import {Vue, Component} from 'vue-property-decorator'
+import {IRegistrationParams} from '@/boundary/authApplicationService/InOutType'
+import UserRegistrationForm from '@/components/organisms/userRegistrationForm.vue'
+import {
+  UserRegistrationAction,
+  ToStandbyAction,
+} from '@/store/containers/userRegistrationForm/boundaryAction'
+import getters from '@/store/containers/userRegistrationForm/getters'
 import store from '@/store/root'
 
 @Component({
   components: {
     UserRegistrationForm,
   },
+  computed: getters,
 })
 export default class UserRegistrationFormContainer extends Vue {
-  // TODO: 実装
+  public userRegistration(params: IRegistrationParams) {
+    store.commit(new UserRegistrationAction(params))
+  }
+
+  public toStandby() {
+    store.commit(new ToStandbyAction())
+  }
 }
 </script>

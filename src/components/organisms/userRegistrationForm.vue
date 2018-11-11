@@ -198,7 +198,7 @@ import {genderList} from '@/config/user/gender'
 import {years, months, days} from '@/config/user/birthday'
 import {defaultUserIconUrl} from '@/config/user/defaultUserParams'
 
-export interface IUserRegistrationParams {
+export interface IRegistrationParamsParams {
   displayName: string
   iconFilepath: string
   emailAddress: string
@@ -214,7 +214,7 @@ export interface IUserRegistrationParams {
 
 @Component
 export default class UserRegistrationForm extends Vue {
-  @Prop({required: true}) private registration!: (params: IUserRegistrationParams) => Promise<void>
+  @Prop({required: true}) private registration!: (params: IRegistrationParamsParams) => Promise<void>
 
   private valid = true
   private isSending = false
