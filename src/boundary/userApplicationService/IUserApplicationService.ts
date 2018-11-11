@@ -1,5 +1,5 @@
-import {IUser} from './InOutType';
+import {IUser} from './InOutType'
 
 export default abstract class IUserApplicationService {
-  public abstract update(params: IUser): Promise<IUser>;
+  public abstract update(params: IUser): Promise<IUser>
 }

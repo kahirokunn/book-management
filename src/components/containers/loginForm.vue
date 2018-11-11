@@ -38,9 +38,9 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator';
-import AuthApplicationService from '@/serviceLocator/AuthApplicationService';
-import LoginForm from '@/components/organisms/loginForm.vue';
+import {Vue, Component, Prop} from 'vue-property-decorator'
+import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
+import LoginForm from '@/components/organisms/loginForm.vue'
 
 enum State {
   STANDBY,
@@ -55,31 +55,31 @@ enum State {
   },
 })
 export default class LoginPage extends Vue {
-  private valid = true;
-  private state: State = State.STANDBY;
+  private valid = true
+  private state: State = State.STANDBY
 
   get isSending() {
-    return this.state === State.SENDING;
+    return this.state === State.SENDING
   }
 
   get isFailed() {
-    return this.state === State.LOGIN_FAILED;
+    return this.state === State.LOGIN_FAILED
   }
 
   private async login(email: string, password: string) {
-    this.state = State.SENDING;
+    this.state = State.SENDING
     try {
-      await AuthApplicationService.getInstance().loginWithEmailAndPassword(email, password);
-      this.state = State.SEND_SUCCESS;
-      this.$router.push('/');
+      await AuthApplicationService.getInstance().loginWithEmailAndPassword(email, password)
+      this.state = State.SEND_SUCCESS
+      this.$router.push('/')
     } catch (e) {
-      console.log(e);
-      this.state = State.LOGIN_FAILED;
+      console.log(e)
+      this.state = State.LOGIN_FAILED
     }
   }
 
   private toStandby() {
-    this.state = State.STANDBY;
+    this.state = State.STANDBY
   }
 }
 </script>

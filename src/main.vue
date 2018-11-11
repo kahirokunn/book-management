@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator';
-import Auth from '@/components/middleware/auth.vue';
+import {Vue, Component} from 'vue-property-decorator'
+import Auth from '@/components/middleware/auth.vue'
 
 @Component({
   components: {

@@ -58,10 +58,10 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator';
-import UserRegistrationForm, {IUserRegistrationParams} from '@/components/organisms/userRegistrationForm.vue';
-import UserApplicationService from '@/serviceLocator/UserApplicationService';
-import store from '@/store/root';
+import {Vue, Component, Prop} from 'vue-property-decorator'
+import UserRegistrationForm, {IUserRegistrationParams} from '@/components/organisms/userRegistrationForm.vue'
+import UserApplicationService from '@/serviceLocator/UserApplicationService'
+import store from '@/store/root'
 
 @Component({
   components: {

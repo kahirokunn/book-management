@@ -1,12 +1,12 @@
-import Vuex from 'vuex';
-import middleware, {MiddlewareState} from './middleware';
+import Vuex from 'vuex'
+import middleware, {MiddlewareState} from './middleware'
 
 interface RootState {
-  middleware: MiddlewareState;
+  middleware: MiddlewareState
 }
 
 export default new Vuex.Store<RootState>({
   modules: {
     middleware,
   },
-});
+})

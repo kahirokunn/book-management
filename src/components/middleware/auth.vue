@@ -1,28 +1,28 @@
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator';
+import {Vue, Component} from 'vue-property-decorator'
 import {
   UserLoginAction,
-} from '@/store/middleware/auth/boundaryAction';
-import getters from '@/store/middleware/auth/getters';
-import store from '@/store/root';
+} from '@/store/middleware/auth/boundaryAction'
+import getters from '@/store/middleware/auth/getters'
+import store from '@/store/root'
 
 @Component
 export default class Auth extends Vue {
   get isReady() {
-    return getters.isInitialized();
+    return getters.isInitialized()
   }
 
   public mounted() {
-    store.commit(new UserLoginAction());
+    store.commit(new UserLoginAction())
   }
 
   public render(h: any) {
     if (this.isReady) {
       if (this.$slots.default && this.$slots.default.length > 0) {
         // slotは1つだけ
-        return h('transition', [this.$slots.default[0]]);
+        return h('transition', [this.$slots.default[0]])
       }
-      return h('');
+      return h('')
     }
 
     return h('transition', [
@@ -31,7 +31,7 @@ export default class Auth extends Vue {
           boxLoading: true,
         },
       }),
-    ]);
+    ])
   }
 }
 </script>

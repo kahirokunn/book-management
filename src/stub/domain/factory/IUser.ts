@@ -1,18 +1,18 @@
-import uuid from 'uuid';
-import {IUser} from '@/boundary/userApplicationService/InOutType';
+import uuid from 'uuid'
+import {IUser} from '@/boundary/userApplicationService/InOutType'
 
 interface IUserFactoryInputPort {
-  id?: Identifier;
-  displayName?: string;
-  iconFilepath?: string;
-  emailAddress?: string;
-  firstName?: string;
-  familyName?: string;
-  firstNameKana?: string;
-  familyNameKana?: string;
-  birthday?: Date;
-  hireDate?: Date;
-  gender?: Gender;
+  id?: Identifier
+  displayName?: string
+  iconFilepath?: string
+  emailAddress?: string
+  firstName?: string
+  familyName?: string
+  firstNameKana?: string
+  familyNameKana?: string
+  birthday?: Date
+  hireDate?: Date
+  gender?: Gender
 }
 
 export function userFactory(params?: IUserFactoryInputPort): IUser {
@@ -29,5 +29,5 @@ export function userFactory(params?: IUserFactoryInputPort): IUser {
     hireDate: new Date(),
     gender: '男',
     ...params,
-  };
+  }
 }

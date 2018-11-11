@@ -189,112 +189,112 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator';
-import {VForm} from 'vuetify/src/components/VForm/index';
-import {membershipAgreementText} from '@/constants/membershipAgreement';
-import {prefectures} from '@/config/prefecture';
-import * as rules from '@/config/user/rules';
-import {genderList} from '@/config/user/gender';
-import {years, months, days} from '@/config/user/birthday';
-import {defaultUserIconUrl} from '@/config/user/defaultUserParams';
+import {Vue, Component, Prop} from 'vue-property-decorator'
+import {VForm} from 'vuetify/src/components/VForm/index'
+import {membershipAgreementText} from '@/constants/membershipAgreement'
+import {prefectures} from '@/config/prefecture'
+import * as rules from '@/config/user/rules'
+import {genderList} from '@/config/user/gender'
+import {years, months, days} from '@/config/user/birthday'
+import {defaultUserIconUrl} from '@/config/user/defaultUserParams'
 
 export interface IUserRegistrationParams {
-  displayName: string;
-  iconFilepath: string;
-  emailAddress: string;
-  password: string;
-  firstName: string;
-  familyName: string;
-  firstNameKana: string;
-  familyNameKana: string;
-  birthday: Date;
-  hireDate: Date;
-  gender: Gender;
+  displayName: string
+  iconFilepath: string
+  emailAddress: string
+  password: string
+  firstName: string
+  familyName: string
+  firstNameKana: string
+  familyNameKana: string
+  birthday: Date
+  hireDate: Date
+  gender: Gender
 }
 
 @Component
 export default class UserRegistrationForm extends Vue {
-  @Prop({required: true}) private registration!: (params: IUserRegistrationParams) => Promise<void>;
+  @Prop({required: true}) private registration!: (params: IUserRegistrationParams) => Promise<void>
 
-  private valid = true;
-  private isSending = false;
-  private schoolDialog = false;
-  private medicalSubjectDialog = false;
-  private firstClinicalTrainingDialog = false;
-  private membershipAgreementDialog = false;
-  private privacyProtectionDialog = false;
-  private mailMagazineDialog = false;
+  private valid = true
+  private isSending = false
+  private schoolDialog = false
+  private medicalSubjectDialog = false
+  private firstClinicalTrainingDialog = false
+  private membershipAgreementDialog = false
+  private privacyProtectionDialog = false
+  private mailMagazineDialog = false
 
-  private email = '';
-  private password = '';
-  private displayName = '';
-  private firstName = '';
-  private familyName = '';
-  private firstNameKana = '';
-  private familyNameKana = '';
-  private birthYear = '';
-  private birthMonth = '';
-  private birthDay = '';
-  private hireYear = '';
-  private hireMonth = '';
-  private hireDay = '';
-  private gender: Gender = '男';
-  private school = '';
-  private medicalSubject = '';
-  private firstClinicalTraining = '';
+  private email = ''
+  private password = ''
+  private displayName = ''
+  private firstName = ''
+  private familyName = ''
+  private firstNameKana = ''
+  private familyNameKana = ''
+  private birthYear = ''
+  private birthMonth = ''
+  private birthDay = ''
+  private hireYear = ''
+  private hireMonth = ''
+  private hireDay = ''
+  private gender: Gender = '男'
+  private school = ''
+  private medicalSubject = ''
+  private firstClinicalTraining = ''
 
-  private isAgreeMembershipAgreement = false;
-  private isAggreePrivacyProtection = false;
-  private isSubscribeMailMagazine = false;
+  private isAgreeMembershipAgreement = false
+  private isAggreePrivacyProtection = false
+  private isSubscribeMailMagazine = false
 
-  get years() { return years; }
-  get months() { return months; }
-  get days() { return days; }
-  get genderList() { return ['男', '女']; }
-  get prefectures() { return prefectures; }
-  get membershipAgreementText() { return membershipAgreementText; }
+  get years() { return years }
+  get months() { return months }
+  get days() { return days }
+  get genderList() { return ['男', '女'] }
+  get prefectures() { return prefectures }
+  get membershipAgreementText() { return membershipAgreementText }
 
-  get emailRules() { return rules.emailRules; }
-  get passwordRules() { return rules.passwordRules; }
-  get firstNameRules() { return rules.firstNameRules; }
-  get familyNameRules() { return rules.familyNameRules; }
-  get firstNameKanaRules() { return rules.firstNameKanaRules; }
-  get familyNameKanaRules() { return rules.familyNameKanaRules; }
-  get birthYearRules() { return rules.birthYearRules; }
-  get birthMonthRules() { return rules.birthMonthRules; }
-  get birthDayRules() { return rules.birthDayRules; }
-  get hireYearRules() { return rules.hireYearRules; }
-  get hireMonthRules() { return rules.hireMonthRules; }
-  get hireDayRules() { return rules.hireDayRules; }
-  get genderRules() { return rules.genderRules; }
-  get prefectureRules() { return rules.prefectureRules; }
-  get displayNameRules() { return rules.displayNameRules; }
-  get birthday() { return new Date(`${this.birthYear}/${this.birthMonth}/${this.birthDay}`); }
-  get hireDate() { return new Date(`${this.hireYear}/${this.hireMonth}/${this.hireDay}`); }
+  get emailRules() { return rules.emailRules }
+  get passwordRules() { return rules.passwordRules }
+  get firstNameRules() { return rules.firstNameRules }
+  get familyNameRules() { return rules.familyNameRules }
+  get firstNameKanaRules() { return rules.firstNameKanaRules }
+  get familyNameKanaRules() { return rules.familyNameKanaRules }
+  get birthYearRules() { return rules.birthYearRules }
+  get birthMonthRules() { return rules.birthMonthRules }
+  get birthDayRules() { return rules.birthDayRules }
+  get hireYearRules() { return rules.hireYearRules }
+  get hireMonthRules() { return rules.hireMonthRules }
+  get hireDayRules() { return rules.hireDayRules }
+  get genderRules() { return rules.genderRules }
+  get prefectureRules() { return rules.prefectureRules }
+  get displayNameRules() { return rules.displayNameRules }
+  get birthday() { return new Date(`${this.birthYear}/${this.birthMonth}/${this.birthDay}`) }
+  get hireDate() { return new Date(`${this.hireYear}/${this.hireMonth}/${this.hireDay}`) }
 
-  private closeSchoolDialog() { this.schoolDialog = false; }
-  private closefirstClinicalTrainingDialog() { this.firstClinicalTrainingDialog = false; }
-  private closeMedicalSubjectDialog() { this.medicalSubjectDialog = false; }
+  private closeSchoolDialog() { this.schoolDialog = false }
+  private closefirstClinicalTrainingDialog() { this.firstClinicalTrainingDialog = false }
+  private closeMedicalSubjectDialog() { this.medicalSubjectDialog = false }
 
   private aggreeMembershipAgreement() {
-    this.isAgreeMembershipAgreement = true;
-    this.membershipAgreementDialog = false;
+    this.isAgreeMembershipAgreement = true
+    this.membershipAgreementDialog = false
   }
 
   private aggreePrivacyProtection() {
-    this.isAggreePrivacyProtection = true;
-    this.privacyProtectionDialog = false;
+    this.isAggreePrivacyProtection = true
+    this.privacyProtectionDialog = false
   }
 
   private subscribeMailMagazine() {
-    this.isSubscribeMailMagazine = true;
-    this.mailMagazineDialog = false;
+    this.isSubscribeMailMagazine = true
+    this.mailMagazineDialog = false
   }
 
   private submit() {
-    const vform = this.$refs.form as VForm;
+    const vform = this.$refs.form as VForm
     if (vform.validate()) {
-      this.isSending = true;
+      this.isSending = true
       this.registration({
         displayName: this.displayName,
         iconFilepath: defaultUserIconUrl,
@@ -307,8 +307,8 @@ export default class UserRegistrationForm extends Vue {
         birthday: this.birthday,
         hireDate: this.hireDate,
         gender: this.gender,
-      });
-      this.isSending = false;
+      })
+      this.isSending = false
     }
   }
 }

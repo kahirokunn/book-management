@@ -1,5 +1,5 @@
-import firebase from 'firebase';
-import * as Pring from 'pring';
+import firebase from 'firebase'
+import * as Pring from 'pring'
 
 
 const config = {
@@ -10,22 +10,22 @@ const config = {
   storageBucket: process.env.storageBucket,
   messagingSenderId: process.env.messagingSenderId,
   timestampsInSnapshots: true,
-};
+}
 
-const app = firebase.initializeApp(config);
-const firestore = firebase.firestore(app);
+const app = firebase.initializeApp(config)
+const firestore = firebase.firestore(app)
 
-firestore.settings({ timestampsInSnapshots: true });
+firestore.settings({ timestampsInSnapshots: true })
 
-const auth = firebase.auth;
-const storage = firebase.storage;
-const firestoreHelper = firebase.firestore;
+const auth = firebase.auth
+const storage = firebase.storage
+const firestoreHelper = firebase.firestore
 
-Pring.initialize(app.firestore(), firestoreHelper.FieldValue.serverTimestamp());
+Pring.initialize(app.firestore(), firestoreHelper.FieldValue.serverTimestamp())
 
 export {
   auth,
   firestore,
   firestoreHelper,
   storage,
-};
+}

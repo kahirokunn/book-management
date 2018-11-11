@@ -1,5 +1,5 @@
-import {Container} from 'inversify';
+import {Container} from 'inversify'
 
-const diContainer = new Container();
+const diContainer = new Container()
 
-export {diContainer};
+export {diContainer}

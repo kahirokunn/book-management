@@ -7,8 +7,8 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator';
-import LoginForm from '@/components/containers/loginForm.vue';
+import {Vue, Component, Prop} from 'vue-property-decorator'
+import LoginForm from '@/components/containers/loginForm.vue'
 
 @Component({
   layout: 'startUp',

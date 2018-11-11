@@ -1,12 +1,12 @@
-import 'reflect-metadata';
-import '@/inversify/config';
-import Vue from 'vue';
-import Vuex from 'vuex';
-import Router from 'vue-router';
-import {diContainer} from '@/inversify/config';
-import {stubProviders} from '@/inversify/resolveStubProviders';
+import 'reflect-metadata'
+import '@/inversify/config'
+import Vue from 'vue'
+import Vuex from 'vuex'
+import Router from 'vue-router'
+import {diContainer} from '@/inversify/config'
+import {stubProviders} from '@/inversify/resolveStubProviders'
 
-stubProviders(diContainer);
+stubProviders(diContainer)
 
-Vue.use(Router);
-Vue.use(Vuex);
+Vue.use(Router)
+Vue.use(Vuex)

@@ -39,30 +39,30 @@
 </template>
 
 <script lang="ts">
-import {VForm} from 'vuetify/src/components/VForm/index';
-import {Vue, Component, Prop} from 'vue-property-decorator';
-import * as rules from '@/config/user/rules';
+import {VForm} from 'vuetify/src/components/VForm/index'
+import {Vue, Component, Prop} from 'vue-property-decorator'
+import * as rules from '@/config/user/rules'
 
 @Component
 export default class LoginPage extends Vue {
-  @Prop({required: true}) private login!: (email: string, password: string) => Promise<void>;
+  @Prop({required: true}) private login!: (email: string, password: string) => Promise<void>
 
-  private valid = true;
-  private email = '';
-  private password = '';
+  private valid = true
+  private email = ''
+  private password = ''
 
   get emailRules() {
-    return rules.emailRules;
+    return rules.emailRules
   }
 
   get passwordRules() {
-    return rules.passwordRules;
+    return rules.passwordRules
   }
 
   private async submit() {
-    const vform = this.$refs.form as VForm;
+    const vform = this.$refs.form as VForm
     if (vform.validate()) {
-      await this.login(this.email, this.password);
+      await this.login(this.email, this.password)
     }
   }
 }

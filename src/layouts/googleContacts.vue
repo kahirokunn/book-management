@@ -97,12 +97,12 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator';
-import router from '@/router/index';
+import {Vue, Component, Prop} from 'vue-property-decorator'
+import router from '@/router/index'
 
 @Component
 export default class GoogleContacts extends Vue {
-  private drawer = false;
+  private drawer = false
 
   get items() {
     return [
@@ -111,16 +111,16 @@ export default class GoogleContacts extends Vue {
         text: '購入済み書籍一覧',
         action: () => router.push('/books'),
       },
-    ];
+    ]
   }
 
   get isRootPage() {
-    return this.$route.path === '/';
+    return this.$route.path === '/'
   }
 
   private fire(action: () => void) {
-    this.drawer = false;
-    action();
+    this.drawer = false
+    action()
   }
 }
 </script>

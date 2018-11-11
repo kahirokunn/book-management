@@ -1,14 +1,14 @@
 import {
   injectable,
   inject,
-} from 'inversify';
+} from 'inversify'
 import {
   IAuthInfo,
   IUserRegistration,
-} from '@/boundary/authApplicationService/InOutType';
-import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService';
-import IUserRepository from '@/domain/model/user/IUserRepository';
-import IAuthDomainService from '@/domain/model/auth/IAuthDomainService';
+} from '@/boundary/authApplicationService/InOutType'
+import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService'
+import IUserRepository from '@/domain/model/user/IUserRepository'
+import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
 
 @injectable()
 export default class AuthApplicationService extends IAuthApplicationService {
@@ -17,10 +17,10 @@ export default class AuthApplicationService extends IAuthApplicationService {
     protected readonly userRepository: IUserRepository,
     @inject(IAuthDomainService)
     protected readonly authDomainService: IAuthDomainService,
-  ) { super(); }
+  ) { super() }
 
   public async registration(params: IUserRegistration): Promise<IAuthInfo> {
-    const userId = await this.authDomainService.createUserWithEmailAndPassword(params.emailAddress, params.password);
+    const userId = await this.authDomainService.createUserWithEmailAndPassword(params.emailAddress, params.password)
     const userParams = {
       id: userId,
       displayName: params.displayName,
@@ -33,38 +33,38 @@ export default class AuthApplicationService extends IAuthApplicationService {
       birthday: params.birthday,
       hireDate: params.hireDate,
       gender: params.gender,
-    };
+    }
     const result = await Promise.all([
       this.userRepository.save(userParams),
       this.authDomainService.sendEmailVerification(),
-    ]);
+    ])
 
-    const user = result[0];
+    const user = result[0]
     return {
       ...user,
       isEmailVerified: this.authDomainService.isEmailVerified(),
-    };
+    }
   }
 
   public async login(): Promise<IAuthInfo> {
-    const userId = await this.authDomainService.login();
-    const user = await this.userRepository.findById(userId);
-    const isEmailVerified = this.authDomainService.isEmailVerified();
+    const userId = await this.authDomainService.login()
+    const user = await this.userRepository.findById(userId)
+    const isEmailVerified = this.authDomainService.isEmailVerified()
 
     return {
       ...user,
       isEmailVerified,
-    };
+    }
   }
 
   public async loginWithEmailAndPassword(email: string, password: string): Promise<IAuthInfo> {
-    const id = await this.authDomainService.loginWithEmailAndPassword(email, password);
-    const user =  await this.userRepository.findById(id);
-    const isEmailVerified = this.authDomainService.isEmailVerified();
+    const id = await this.authDomainService.loginWithEmailAndPassword(email, password)
+    const user =  await this.userRepository.findById(id)
+    const isEmailVerified = this.authDomainService.isEmailVerified()
 
     return {
       ...user,
       isEmailVerified,
-    };
+    }
   }
 }

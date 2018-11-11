@@ -1,14 +1,14 @@
 import {
   injectable,
-} from 'inversify';
+} from 'inversify'
 import {
   IAuthInfo,
   IUserRegistration,
-} from './InOutType';
+} from './InOutType'
 
 @injectable()
 export default abstract class IAuthApplicationService {
-  public abstract login(): Promise<IAuthInfo>;
-  public abstract loginWithEmailAndPassword(email: string, password: string): Promise<IAuthInfo>;
-  public abstract registration(params: IUserRegistration): Promise<IAuthInfo>;
+  public abstract login(): Promise<IAuthInfo>
+  public abstract loginWithEmailAndPassword(email: string, password: string): Promise<IAuthInfo>
+  public abstract registration(params: IUserRegistration): Promise<IAuthInfo>
 }

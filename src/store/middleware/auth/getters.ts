@@ -1,23 +1,23 @@
-import store from '@/store/root';
+import store from '@/store/root'
 
 function _state() {
-  return store.state.middleware.auth;
+  return store.state.middleware.auth
 }
 
 function isInitialized() {
-  return _state().isInitialized;
+  return _state().isInitialized
 }
 
 function isLoggedIn() {
-  return _state().isLoggedIn;
+  return _state().isLoggedIn
 }
 
 function user() {
-  return _state().user;
+  return _state().user
 }
 
 function isEmailVerified() {
-  return _state().isEmailVerified;
+  return _state().isEmailVerified
 }
 
 export default {
@@ -25,4 +25,4 @@ export default {
   isLoggedIn,
   user,
   isEmailVerified,
-};
+}

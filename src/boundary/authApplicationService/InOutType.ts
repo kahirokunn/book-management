@@ -1,19 +1,19 @@
-import {IUser} from '../userApplicationService/InOutType';
+import {IUser} from '../userApplicationService/InOutType'
 
 export interface IAuthInfo extends IUser {
-  isEmailVerified: boolean;
+  isEmailVerified: boolean
 }
 
 export interface IUserRegistration {
-  password: string;
-  displayName: string;
-  iconFilepath: string;
-  emailAddress: string;
-  firstName: string;
-  familyName: string;
-  firstNameKana: string;
-  familyNameKana: string;
-  birthday: Date;
-  hireDate: Date;
-  gender: Gender;
+  password: string
+  displayName: string
+  iconFilepath: string
+  emailAddress: string
+  firstName: string
+  familyName: string
+  firstNameKana: string
+  familyNameKana: string
+  birthday: Date
+  hireDate: Date
+  gender: Gender
 }
