@@ -2,7 +2,11 @@
 import { storiesOf } from '@storybook/vue'
 import { action } from '@storybook/addon-actions'
 
+import '@/store/resolveTestConfiguration'
 import MyButton from '../components/MyButton.vue'
+import LoginForm from '@/components/containers/loginForm.vue'
+import UserRegistrationForm from '@/components/containers/userRegistrationForm.vue'
+
 
 storiesOf('Button', module)
   .add('with text', () => ({
@@ -19,4 +23,14 @@ storiesOf('Button', module)
     components: { MyButton },
     template: '<my-button @click="action">😀 😎 👍 💯</my-button>',
     methods: { action: action('clicked') }
+  }))
+
+storiesOf('Containers', module)
+  .add('LoginForm', () => ({
+    components: { LoginForm },
+    template: '<LoginForm/>',
+  }))
+  .add('UserRegistrationForm', () => ({
+    components: { UserRegistrationForm },
+    template: '<UserRegistrationForm/>',
   }))
