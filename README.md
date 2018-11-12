@@ -38,5 +38,6 @@ yarn run test:unit
 # storybookで画像回帰テスト
 
 ```
-yarn image:storybook
+yarn run screenshot
+yarn run regression
 ```
