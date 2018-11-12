@@ -45,11 +45,11 @@ import * as rules from '@/config/user/rules'
 
 @Component
 export default class LoginPage extends Vue {
-  @Prop({required: true}) private login!: (email: string, password: string) => Promise<void>
+  @Prop({required: true}) public login!: (email: string, password: string) => Promise<void>
 
-  private valid = true
-  private email = ''
-  private password = ''
+  public valid = true
+  public email = ''
+  public password = ''
 
   get emailRules() {
     return rules.emailRules
@@ -59,7 +59,7 @@ export default class LoginPage extends Vue {
     return rules.passwordRules
   }
 
-  private async submit() {
+  public async submit() {
     const vform = this.$refs.form as VForm
     if (vform.validate()) {
       await this.login(this.email, this.password)

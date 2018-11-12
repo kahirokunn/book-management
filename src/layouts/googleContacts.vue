@@ -97,12 +97,12 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator'
+import {Vue, Component} from 'vue-property-decorator'
 import router from '@/router/index'
 
 @Component
 export default class GoogleContacts extends Vue {
-  private drawer = false
+  public drawer = false
 
   get items() {
     return [
@@ -118,7 +118,7 @@ export default class GoogleContacts extends Vue {
     return this.$route.path === '/'
   }
 
-  private fire(action: () => void) {
+  public fire(action: () => void) {
     this.drawer = false
     action()
   }

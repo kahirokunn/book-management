@@ -22,7 +22,7 @@ export default class RequiredVerifyEmail extends Vue {
   public render(h: any) {
     if (this.isReady) {
       return h('transition', [
-        h(First, this.$slots.default)
+        h(First, this.$slots.default),
       ])
     }
 

@@ -214,43 +214,43 @@ export interface IRegistrationParamsParams {
 
 @Component
 export default class UserRegistrationForm extends Vue {
-  @Prop({required: true}) private registration!: (params: IRegistrationParamsParams) => Promise<void>
+  @Prop({required: true}) public registration!: (params: IRegistrationParamsParams) => Promise<void>
 
-  private valid = true
-  private isSending = false
-  private schoolDialog = false
-  private medicalSubjectDialog = false
-  private firstClinicalTrainingDialog = false
-  private membershipAgreementDialog = false
-  private privacyProtectionDialog = false
-  private mailMagazineDialog = false
+  public valid = true
+  public isSending = false
+  public schoolDialog = false
+  public medicalSubjectDialog = false
+  public firstClinicalTrainingDialog = false
+  public membershipAgreementDialog = false
+  public privacyProtectionDialog = false
+  public mailMagazineDialog = false
 
-  private email = ''
-  private password = ''
-  private displayName = ''
-  private firstName = ''
-  private familyName = ''
-  private firstNameKana = ''
-  private familyNameKana = ''
-  private birthYear = ''
-  private birthMonth = ''
-  private birthDay = ''
-  private hireYear = ''
-  private hireMonth = ''
-  private hireDay = ''
-  private gender: Gender = '男'
-  private school = ''
-  private medicalSubject = ''
-  private firstClinicalTraining = ''
+  public email = ''
+  public password = ''
+  public displayName = ''
+  public firstName = ''
+  public familyName = ''
+  public firstNameKana = ''
+  public familyNameKana = ''
+  public birthYear = ''
+  public birthMonth = ''
+  public birthDay = ''
+  public hireYear = ''
+  public hireMonth = ''
+  public hireDay = ''
+  public gender: Gender = '男'
+  public school = ''
+  public medicalSubject = ''
+  public firstClinicalTraining = ''
 
-  private isAgreeMembershipAgreement = false
-  private isAggreePrivacyProtection = false
-  private isSubscribeMailMagazine = false
+  public isAgreeMembershipAgreement = false
+  public isAggreePrivacyProtection = false
+  public isSubscribeMailMagazine = false
 
   get years() { return years }
   get months() { return months }
   get days() { return days }
-  get genderList() { return ['男', '女'] }
+  get genderList() { return genderList }
   get prefectures() { return prefectures }
   get membershipAgreementText() { return membershipAgreementText }
 
@@ -272,26 +272,26 @@ export default class UserRegistrationForm extends Vue {
   get birthday() { return new Date(`${this.birthYear}/${this.birthMonth}/${this.birthDay}`) }
   get hireDate() { return new Date(`${this.hireYear}/${this.hireMonth}/${this.hireDay}`) }
 
-  private closeSchoolDialog() { this.schoolDialog = false }
-  private closefirstClinicalTrainingDialog() { this.firstClinicalTrainingDialog = false }
-  private closeMedicalSubjectDialog() { this.medicalSubjectDialog = false }
+  public closeSchoolDialog() { this.schoolDialog = false }
+  public closefirstClinicalTrainingDialog() { this.firstClinicalTrainingDialog = false }
+  public closeMedicalSubjectDialog() { this.medicalSubjectDialog = false }
 
-  private aggreeMembershipAgreement() {
+  public aggreeMembershipAgreement() {
     this.isAgreeMembershipAgreement = true
     this.membershipAgreementDialog = false
   }
 
-  private aggreePrivacyProtection() {
+  public aggreePrivacyProtection() {
     this.isAggreePrivacyProtection = true
     this.privacyProtectionDialog = false
   }
 
-  private subscribeMailMagazine() {
+  public subscribeMailMagazine() {
     this.isSubscribeMailMagazine = true
     this.mailMagazineDialog = false
   }
 
-  private submit() {
+  public submit() {
     const vform = this.$refs.form as VForm
     if (vform.validate()) {
       this.isSending = true

@@ -35,8 +35,7 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator'
-import router from '@/router/index'
+import {Vue, Component} from 'vue-property-decorator'
 
 @Component
 export default class StartUp extends Vue {
