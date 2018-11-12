@@ -1,5 +1,9 @@
 # book-management
 
+## 設計図
+![img](https://s3.amazonaws.com/media-p.slid.es/uploads/891964/images/5473210/State_Machine_Diagram.png)
+![img](https://s3.amazonaws.com/media-p.slid.es/uploads/891964/images/5473230/_.png)
+
 ## Project setup
 ```
 yarn install
