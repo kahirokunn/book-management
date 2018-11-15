@@ -11,6 +11,8 @@
 ### 矢印はデータフローを表している
 ![img](https://qiita-image-store.s3.amazonaws.com/0/141711/067e8cee-e397-6fe8-49f1-432713748330.png)
 
+### Data flowのOKパターンとNGパターン
+![img](https://qiita-image-store.s3.amazonaws.com/0/141711/019f8db1-b1ac-f53e-d21e-e00034847273.png)
 
 ## Project setup
 ```
