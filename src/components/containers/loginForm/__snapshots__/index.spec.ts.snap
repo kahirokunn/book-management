@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`login form container 1`] = `
+<vflex-stub tag="div" xs12="" sm8="" md6="">
+  <loginform-stub login="function () { [native code] }"></loginform-stub>
+  <vdialog-stub persistent="true" maxwidth="none" origin="center center" width="300" transition="dialog-transition">
+    <vcard-stub tag="div" color="primary" dark="">
+      <vcardtext-stub>
+        ログイン中です...
+        <vprogresslinear-stub active="true" buffervalue="100" color="white" height="7" indeterminate="true" value="0" class="mb-0"></vprogresslinear-stub>
+      </vcardtext-stub>
+    </vcard-stub>
+  </vdialog-stub>
+  <vdialog-stub maxwidth="none" origin="center center" width="500" transition="dialog-transition">
+    <vcard-stub tag="div" color="error" dark="">
+      <vcardtext-stub>ログイン情報が間違っています</vcardtext-stub>
+      <vcardactions-stub>
+        <vspacer-stub></vspacer-stub>
+        <vbtn-stub activeclass="v-btn--active" tag="button" type="button" color="red lighten-2">OK</vbtn-stub>
+      </vcardactions-stub>
+    </vcard-stub>
+  </vdialog-stub>
+</vflex-stub>
+`;

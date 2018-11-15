@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import {Vue, Component} from 'vue-property-decorator'
-import LoginForm from '@/components/containers/loginForm.vue'
+import LoginForm from '@/components/containers/loginForm/index.vue'
 
 @Component({
   layout: 'startUp',
