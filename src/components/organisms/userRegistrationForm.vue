@@ -190,7 +190,6 @@
 
 <script lang="ts">
 import {Vue, Component, Prop} from 'vue-property-decorator'
-import {VForm} from 'vuetify/src/components/VForm/index'
 import {membershipAgreementText} from '@/constants/membershipAgreement'
 import {prefectures} from '@/config/prefecture'
 import * as rules from '@/config/user/rules'
@@ -214,6 +213,10 @@ export interface IRegistrationParamsParams {
 
 @Component
 export default class UserRegistrationForm extends Vue {
+  public $refs!: {
+    form: VForm,
+  }
+
   @Prop({required: true}) public registration!: (params: IRegistrationParamsParams) => Promise<void>
 
   public valid = true
@@ -292,8 +295,7 @@ export default class UserRegistrationForm extends Vue {
   }
 
   public submit() {
-    const vform = this.$refs.form as VForm
-    if (vform.validate()) {
+    if (this.$refs.form.validate()) {
       this.isSending = true
       this.registration({
         displayName: this.displayName,

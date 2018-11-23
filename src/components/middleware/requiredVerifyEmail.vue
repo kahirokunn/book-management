@@ -1,4 +1,5 @@
 <script lang="ts">
+import {CreateElement, VNode} from 'vue'
 import {Vue, Component, Watch} from 'vue-property-decorator'
 import getters from '@/store/middleware/auth/getters'
 import {notVerifyEmailRedirectPath} from '@/config/auth'
@@ -19,7 +20,7 @@ export default class RequiredVerifyEmail extends Vue {
     }
   }
 
-  public render(h: any) {
+  public render(h: CreateElement): VNode {
     if (this.isReady) {
       return h('transition', [
         h(First, this.$slots.default),

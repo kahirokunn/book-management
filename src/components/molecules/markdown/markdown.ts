@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue, {CreateElement, VNode} from 'vue'
 import marked, { Renderer } from 'marked'
 import highlight from 'highlight.js'
 import 'highlight.js/styles/github.css'
@@ -33,7 +33,7 @@ export default Vue.extend({
       default: '',
     },
   },
-  render(h) {
+  render(h: CreateElement): VNode {
     const options = {
       class: {
         'markdown-body': true,

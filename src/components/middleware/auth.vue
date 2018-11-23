@@ -1,4 +1,5 @@
 <script lang="ts">
+import {CreateElement, VNode} from 'vue'
 import {Vue, Component} from 'vue-property-decorator'
 import {
   UserLoginAction,
@@ -16,7 +17,7 @@ export default class Auth extends Vue {
     store.commit(new UserLoginAction())
   }
 
-  public render(h: any) {
+  public render(h: CreateElement): VNode {
     if (this.isReady) {
       if (this.$slots.default && this.$slots.default.length > 0) {
         // slotは1つだけ

@@ -39,12 +39,15 @@
 </template>
 
 <script lang="ts">
-import {VForm} from 'vuetify/src/components/VForm/index'
 import {Vue, Component, Prop} from 'vue-property-decorator'
 import * as rules from '@/config/user/rules'
 
 @Component
 export default class LoginPage extends Vue {
+  public $refs!: {
+    form: VForm,
+  }
+
   @Prop({required: true}) public login!: (email: string, password: string) => Promise<void>
 
   public valid = true
@@ -60,8 +63,7 @@ export default class LoginPage extends Vue {
   }
 
   public async submit() {
-    const vform = this.$refs.form as VForm
-    if (vform.validate()) {
+    if (this.$refs.form.validate()) {
       await this.login(this.email, this.password)
     }
   }
