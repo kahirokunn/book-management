@@ -6,7 +6,8 @@ import '@/store/resolveTestConfiguration'
 import MyButton from '../components/MyButton.vue'
 import LoginForm from '@/components/containers/loginForm.vue'
 import UserRegistrationForm from '@/components/containers/userRegistrationForm.vue'
-
+import UserLoginPage from '@/pages/user/login.vue'
+import UserRegistrationPage from '@/pages/user/registration.vue'
 
 storiesOf('Button', module)
   .add('with text', () => ({
@@ -33,4 +34,14 @@ storiesOf('Containers', module)
   .add('UserRegistrationForm', () => ({
     components: { UserRegistrationForm },
     template: '<UserRegistrationForm/>',
+  }))
+
+storiesOf('Page', module)
+  .add('UserLoginPage', () => ({
+    components: { UserLoginPage },
+    template: '<UserLoginPage/>',
+  }))
+  .add('UserRegistrationPage', () => ({
+    components: { UserRegistrationPage },
+    template: '<UserRegistrationPage/>',
   }))
