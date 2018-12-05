@@ -20,6 +20,7 @@
     "@types/marked": "^0.4.2",
     "element-ui": "^2.4.8",
     "firebase": "^5.6.0",
+    "firebase-admin": "^6.3.0",
     "highlight.js": "^9.13.1",
     "inversify": "^5.0.1",
     "marked": "^0.5.1",
