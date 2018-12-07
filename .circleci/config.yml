@@ -8,7 +8,70 @@ defaults: &defaults
 
 version: 2
 jobs:
-  build:
+  build_storybook:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: yarn --pure-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      # storybookをビルドする
+      - run:
+          name: Generate Storybook
+          command: |
+            yarn build:storybook
+      # Artifactsにアップロードする
+      - store_artifacts:
+          path: ./storybook-static
+          destination: ~/storybook
+
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: yarn --pure-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run:
+          name: Lint
+          command: yarn run lint
+
+  unit_test:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: yarn --pure-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run:
+          name: Test
+          command: yarn run test:unit
+
+  visual_regression_test:
     <<: *defaults
     steps:
       - checkout
@@ -26,12 +89,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
-      - run:
-          name: Lint
-          command: yarn run lint
-      - run:
-          name: Test
-          command: yarn run test:unit
       - run:
           name: Screenshot
           command: yarn run screenshot
