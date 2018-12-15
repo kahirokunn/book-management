@@ -9,39 +9,22 @@ import UserRegistrationForm from '@/components/containers/userRegistrationForm.v
 import UserLoginPage from '@/pages/user/login.vue'
 import UserRegistrationPage from '@/pages/user/registration.vue'
 
-storiesOf('Button', module)
-  .add('with text', () => ({
-    components: { MyButton },
-    template: '<my-button @click="action">Hello Button</my-button>',
-    methods: { action: action('clicked') }
-  }))
-  .add('with text2', () => ({
-    components: { MyButton },
-    template: '<my-button @click="action">Hello Button 2</my-button>',
-    methods: { action: action('clicked') }
-  }))
-  .add('with some emoji', () => ({
-    components: { MyButton },
-    template: '<my-button @click="action">😀 😎 👍 💯</my-button>',
-    methods: { action: action('clicked') }
-  }))
-
 storiesOf('Containers', module)
   .add('LoginForm', () => ({
     components: { LoginForm },
-    template: '<LoginForm/>',
+    template: '<v-app><LoginForm/></v-app>',
   }))
   .add('UserRegistrationForm', () => ({
     components: { UserRegistrationForm },
-    template: '<UserRegistrationForm/>',
+    template: '<v-app><UserRegistrationForm/></v-app>',
   }))
 
 storiesOf('Page', module)
   .add('UserLoginPage', () => ({
     components: { UserLoginPage },
-    template: '<UserLoginPage/>',
+    template: '<v-app><UserLoginPage/></v-app>',
   }))
   .add('UserRegistrationPage', () => ({
     components: { UserRegistrationPage },
-    template: '<UserRegistrationPage/>',
+    template: '<v-app><UserRegistrationPage/></v-app>',
   }))
