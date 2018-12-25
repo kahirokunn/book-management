@@ -4,10 +4,10 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Router from 'vue-router'
 import Vuetify from 'vuetify'
-import {diContainer} from '@/inversify/config'
+import {serviceContainer} from '@/inversify/config'
 import {stubProviders} from '@/inversify/resolveStubProviders'
 
-stubProviders(diContainer)
+stubProviders(serviceContainer)
 
 Vue.use(Router)
 Vue.use(Vuex)

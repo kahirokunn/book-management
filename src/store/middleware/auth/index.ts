@@ -9,6 +9,7 @@ import {
   FailureLoginAction,
 } from './insideAction'
 import store from '@/store/root'
+import Logger from '@/serviceLocator/Logger'
 
 
 type State = {
@@ -28,8 +29,14 @@ const initialState = (): State => ({
 const mutations = {
   [UserLoginAction.type](state: State, action: UserLoginAction) {
     AuthApplicationService.getInstance().login()
-      .then((authInfo) => store.commit(new SuccessUserLoginAction(authInfo)))
-      .catch(() => store.commit(new FailureLoginAction()))
+      .then((authInfo) => {
+        Logger.getInstance().info('ログイン成功', authInfo)
+        store.commit(new SuccessUserLoginAction(authInfo))
+      })
+      .catch(() => {
+        Logger.getInstance().info('ログイン失敗')
+        store.commit(new FailureLoginAction())
+      })
   },
   [SuccessUserLoginAction.type](state: State, action: SuccessUserLoginAction) {
     state.isInitialized = true

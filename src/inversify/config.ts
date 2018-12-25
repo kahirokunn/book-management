@@ -1,5 +1,5 @@
 import {Container} from 'inversify'
 
-const diContainer = new Container()
+const serviceContainer = new Container()
 
-export {diContainer}
+export {serviceContainer}

@@ -6,11 +6,11 @@ import {auth} from '@/firebase/index'
 
 import '@/firebase/index'
 import '@/plugins/vuetify'
-import {diContainer} from '@/inversify/config'
+import {serviceContainer} from '@/inversify/config'
 import {firebaseProviders} from '@/inversify/firebaseProviders'
 
 Vue.use(Router)
 Vue.use(Vuex)
 
 auth().setPersistence(auth.Auth.Persistence.LOCAL)
-firebaseProviders(diContainer)
+firebaseProviders(serviceContainer)
