@@ -1,10 +1,12 @@
 service firebase.storage {
-  function isMySelfDoc(userId) {
-    return request.auth.uid == userId;
-  }
+  match /b/{bucket}/o {
+    function isMySelfDoc(userId) {
+      return request.auth.uid == userId;
+    }
 
-  match /users/{userId}/images/{filename} {
-    allow read;
-    allow write: if isMySelfDoc(userId);
+    match /users/{userId}/images/{filename} {
+      allow read;
+      allow create, update: if isMySelfDoc(userId);
+    }
   }
 }

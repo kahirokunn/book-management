@@ -13,6 +13,7 @@ storybook-static
 .env.*.local
 .env
 .firebaserc
+.firebase
 
 # Log files
 npm-debug.log*
