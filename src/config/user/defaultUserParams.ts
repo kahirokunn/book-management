@@ -1,1 +1,1 @@
-export const defaultUserIconUrl = ''
+export const defaultUserIconUrl: string = process.env.defaultUserIconUrl || ''

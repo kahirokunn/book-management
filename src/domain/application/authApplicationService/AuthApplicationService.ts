@@ -35,7 +35,7 @@ export default class AuthApplicationService extends IAuthApplicationService {
       gender: params.gender,
     }
     const result = await Promise.all([
-      this.userRepository.save(userParams),
+      this.userRepository.create(userParams),
       this.authDomainService.sendEmailVerification(),
     ])
 

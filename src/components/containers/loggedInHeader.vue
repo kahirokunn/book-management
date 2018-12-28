@@ -11,6 +11,7 @@
         @click.stop="toggleDrawer()"/>
       <span>Book Management</span>
     </v-toolbar-title>
+
     <v-text-field
       flat
       solo-inverted
@@ -20,19 +21,13 @@
     ></v-text-field>
     <v-spacer/>
 
-    <template v-if="!isLoggedIn">
-      <v-btn
-        color="success"
-        @click="$router.push('/user/registration')">
-        アカウントを作成
-      </v-btn>
-
-      <v-btn
-        color="success"
-        @click="$router.push('/user/login')">
-        ログイン
-      </v-btn>
-    </template>
+    <v-avatar size="36px" @click="openDialog()" class="clickable">
+      <img
+        width="36"
+        height="36"
+        :src="user.iconFilepath"
+        class="user-icon-img">
+    </v-avatar>
 
   </v-toolbar>
 </template>
@@ -43,14 +38,18 @@ import authGetters from '@/store/middleware/auth/getters'
 import store from '@/store/root'
 import {ToggleDrawer} from '@/store/containers/navigation/boundaryAction'
 import {defaultUserIconUrl} from '@/config/user/defaultUserParams'
-
+import {OpenDialog} from '@/store/containers/changeUserProfileForm/boundaryAction'
 
 @Component({
   computed: authGetters,
 })
-export default class TheHeader extends Vue {
+export default class LoggedInHeader extends Vue {
   get defaultUserIconUrl() {
     return defaultUserIconUrl
+  }
+
+  public openDialog() {
+    store.commit(new OpenDialog())
   }
 
   public toggleDrawer() {
@@ -58,3 +57,9 @@ export default class TheHeader extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.clickable {
+  cursor: pointer;
+}
+</style>

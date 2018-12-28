@@ -21,7 +21,7 @@
     </v-dialog>
 
     <!-- ログイン失敗 -->
-    <v-dialog v-model="isFailed" width="500">
+    <v-dialog :value="isFailed" @input="toStandby()" width="500">
       <v-card color="error" dark>
         <v-card-text>ログイン情報が間違っています</v-card-text>
 

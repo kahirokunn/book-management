@@ -1,15 +1,47 @@
+import firebase from 'firebase'
 import {injectable} from 'inversify'
 import IUserRepository from '@/domain/model/user/IUserRepository'
 import {IUser} from '@/boundary/userApplicationService/InOutType'
 import User from '@/models/user'
 
+function userSetter(params: IUser, user: User) {
+  user.displayName = params.displayName
+  user.iconFilepath = params.iconFilepath
+  user.emailAddress = params.emailAddress
+  user.firstName = params.firstName
+  user.familyName = params.familyName
+  user.firstNameKana = params.firstNameKana
+  user.familyNameKana = params.familyNameKana
+  user.birthday = firebase.firestore.Timestamp.fromDate(params.birthday)
+  user.hireDate = firebase.firestore.Timestamp.fromDate(params.hireDate)
+  user.gender = params.gender
+}
+
+function userMapper(user: User): IUser {
+  return {
+    ...user,
+    birthday: user.birthday.toDate(),
+    hireDate: user.hireDate.toDate(),
+  }
+}
 
 @injectable()
 export default class FirebaseUserRepository implements IUserRepository {
-  public async save(params: IUser): Promise<IUser> {
-    const user = new User(params.id, params)
+  public async create(params: IUser): Promise<IUser> {
+    const user = new User(params.id)
+    userSetter(params, user)
     await user.save()
-    return user
+    return params
+  }
+
+  public async update(params: IUser): Promise<IUser> {
+    const user = await User.get(params.id)
+    if (user === undefined) {
+      throw Error('userが取れませんでした')
+    }
+    userSetter(params, user)
+    await user.update()
+    return params
   }
 
   public async findById(id: Identifier): Promise<IUser> {
@@ -17,6 +49,6 @@ export default class FirebaseUserRepository implements IUserRepository {
     if (user === undefined) {
       throw Error('userが取れませんでした')
     }
-    return user
+    return userMapper(user)
   }
 }

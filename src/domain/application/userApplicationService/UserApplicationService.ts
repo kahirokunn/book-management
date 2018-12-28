@@ -13,7 +13,7 @@ export default class UserApplicationService extends IUserApplicationService {
   }
 
   public async update(params: IUser): Promise<IUser> {
-    const user = this.userRepository.save(params)
+    const user = this.userRepository.update(params)
     return user
   }
 }

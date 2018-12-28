@@ -2,9 +2,7 @@
   <div id="app">
     <v-app id="inspire">
       <v-content>
-        <slot>
-          <router-view/>
-        </slot>
+        <slot />
       </v-content>
     </v-app>
   </div>

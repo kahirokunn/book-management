@@ -1,5 +1,6 @@
 import firebase from 'firebase'
 import * as Pring from 'pring'
+import './debug'
 
 
 const config = {

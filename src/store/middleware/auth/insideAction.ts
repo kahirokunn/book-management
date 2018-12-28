@@ -1,7 +1,7 @@
 import {IAuthInfo} from '@/boundary/authApplicationService/InOutType'
 import {
   SUCCESS_USER_LOGIN_ACTION,
-  AUTHENTICATION_FAILED,
+  FAILURE_LOGIN_ACTION,
 } from './types'
 
 export class SuccessUserLoginAction {
@@ -12,6 +12,6 @@ export class SuccessUserLoginAction {
 }
 
 export class FailureLoginAction {
-  public static readonly type = AUTHENTICATION_FAILED
-  public readonly type = AUTHENTICATION_FAILED
+  public static readonly type = FAILURE_LOGIN_ACTION
+  public readonly type = FAILURE_LOGIN_ACTION
 }

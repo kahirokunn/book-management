@@ -1,19 +1,16 @@
 <template>
-  <Auth>
-    <GoogleContacts/>
-  </Auth>
+  <AuthLayout />
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import GoogleContacts from './googleContacts.vue'
-import Auth from '@/components/middleware/auth.vue'
+import {Vue, Component} from 'vue-property-decorator'
+import AuthLayout from './authLayout.vue'
 
-export default Vue.extend({
-  name: 'default',
+@Component({
   components: {
-    GoogleContacts,
-    Auth,
+    AuthLayout,
   },
 })
+export default class Default extends Vue {
+}
 </script>
