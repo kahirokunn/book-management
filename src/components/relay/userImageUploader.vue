@@ -40,6 +40,33 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <template v-if="!hideStatus">
+      <v-snackbar
+        :value="isSending"
+        :timeout="3000"
+        top>
+        画像をアップロード中
+      </v-snackbar>
+
+      <v-snackbar
+        @input="toStandby()"
+        :value="isSuccess"
+        :timeout="3000"
+        color="success"
+        top>
+        画像のアップロードに成功しました
+      </v-snackbar>
+
+      <v-snackbar
+        @input="toStandby()"
+        :value="isError"
+        :timeout="3000"
+        color="error"
+        top>
+        画像のアップロードに失敗しました
+      </v-snackbar>
+    </template>
   </el-upload>
 </template>
 
@@ -52,6 +79,13 @@ import Logger from '@/serviceLocator/Logger'
 
 type RequestType = { file: File }
 
+enum UploadState {
+  STANDBY,
+  SENDING,
+  SUCCESS,
+  ERROR,
+}
+
 @Component({
   model: {
     event: 'change',
@@ -60,10 +94,29 @@ type RequestType = { file: File }
 })
 export default class UserImageUploader extends Vue {
   @Prop() public url!: string
+  @Prop({default: false}) public hideStatus!: boolean
 
   public imageUrl = ''
   public isNotAllowFileType = false
   public isOverFileSize = false
+
+  public uploadState: UploadState = UploadState.STANDBY
+
+  get isSending() {
+    return this.uploadState === UploadState.SENDING
+  }
+
+  get isSuccess() {
+    return this.uploadState === UploadState.SUCCESS
+  }
+
+  get isError() {
+    return this.uploadState === UploadState.ERROR
+  }
+
+  public toStandby() {
+    this.uploadState = UploadState.STANDBY
+  }
 
   @Watch('url', { immediate: true })
   public setUrl() {
@@ -77,13 +130,16 @@ export default class UserImageUploader extends Vue {
     }
 
     try {
+      this.uploadState = UploadState.SENDING
       const filename = uuid()
       const imageRef = storage().ref().child(`/users/${user.id}/images/${filename}`)
       await imageRef.put(request.file)
       this.imageUrl = await imageRef.getDownloadURL()
       this.$emit('change', this.imageUrl)
+      this.uploadState = UploadState.SUCCESS
     } catch (e) {
       Logger.getInstance().error(e)
+      this.uploadState = UploadState.ERROR
     }
   }
 
