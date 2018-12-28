@@ -1,21 +1,25 @@
 import {IUser} from '@/boundary/userApplicationService/InOutType'
 import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
 import {
-  UserLoginAction,
+  UserLoginAction, UnsubscribeUserDataAction,
 } from './boundaryAction'
 import {
   SuccessUserLoginAction,
   FailureLoginAction,
+  SubscribeUserDataAction,
+  SetUserStreamAction,
 } from './insideAction'
 import store from '@/store/root'
 import Logger from '@/serviceLocator/Logger'
 import {UpdatedUserProfileEvent} from '@/store/eventHub/eventCreators'
+import UserStream from '@/query/user/UserStream'
 
 type State = {
   isInitialized: boolean,
   isLoggedIn: boolean,
   isEmailVerified: boolean,
   user?: IUser,
+  unsubscribe?: unsubscribe,
 }
 
 const initialState = (): State => ({
@@ -47,11 +51,24 @@ const mutations = {
     state.isEmailVerified = user.isEmailVerified
     delete user.isEmailVerified
     state.user = user
+    store.commit(new SubscribeUserDataAction(user))
   },
-  [FailureLoginAction.type](state: State) {
+  [FailureLoginAction.type](state: State, action: FailureLoginAction) {
     state.isInitialized = true
     state.isLoggedIn = false
     state.user = initialState().user
+  },
+  [SubscribeUserDataAction.type](state: State, action: SubscribeUserDataAction) {
+    const userStream = new UserStream(action.authInfo.id)
+    userStream.subscribe((user) => store.commit(new SetUserStreamAction(user)))
+  },
+  [UnsubscribeUserDataAction.type](state: State, action: UnsubscribeUserDataAction) {
+    if (state.unsubscribe) {
+      state.unsubscribe()
+    }
+  },
+  [SetUserStreamAction.type](state: State, action: SetUserStreamAction) {
+    state.user = action.user
   },
 }
 

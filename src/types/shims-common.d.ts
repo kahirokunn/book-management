@@ -13,3 +13,4 @@ declare type Identifier = string
 declare type Url = string
 declare type EmailAddress = string
 declare type Gender = '男' | '女'
+declare type unsubscribe = () => void

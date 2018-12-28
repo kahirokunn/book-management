@@ -38,7 +38,10 @@ const mutations = {
         store.commit(new SuccessUpdateAction())
         store.commit(new UpdatedUserProfileEvent(user))
       })
-      .catch(() => store.commit(new FailureSendAction()))
+      .catch((e) => {
+        Logger.getInstance().error(e)
+        store.commit(new FailureSendAction())
+      })
     state.screenState = ScreenState.SENDING
   },
   [SuccessUpdateAction.type](state: State, action: SuccessUpdateAction) {
