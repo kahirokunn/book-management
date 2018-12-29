@@ -1,7 +1,6 @@
 import {genderList} from './gender'
 import {prefectures} from '../prefecture'
 
-
 export const emailRules = [
   (v: string) => !!v || 'E-mail is required',
   (v: string) => /^\S+@\S+\.\S+$/.test(v) || 'E-mail must be valid',
@@ -73,7 +72,7 @@ export const familyNameRules = [
 
 export const displayNameRules = [
   (v: string) => !!v || 'Display name is required',
-  (v: string) => /^[a-zA-Z0-9_-]+$/.test(v) || 'Display name is invalid',
+  (v: string) => /^[^!"#$%&'()\*\+\.,\/:;<=>?@\[\\\]^`{|}~]+$/.test(v) || 'Display name is invalid',
 ]
 
 export const urlRules = [
