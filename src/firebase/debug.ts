@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 
 // 開発時はwindowにfirebaseを追加してデバッグしやすくする
 interface Window {

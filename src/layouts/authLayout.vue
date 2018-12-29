@@ -1,14 +1,12 @@
 <template>
-  <div id="app" key="authLayout">
-    <v-app id="inspire">
+  <v-app key="authLayout">
 
-      <UnloggedInHeader />
+    <UnloggedInHeader />
 
-      <v-content>
-        <slot />
-      </v-content>
-    </v-app>
-  </div>
+    <v-content>
+      <slot />
+    </v-content>
+  </v-app>
 </template>
 
 <script lang="ts">

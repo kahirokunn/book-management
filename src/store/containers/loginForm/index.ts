@@ -9,6 +9,7 @@ import {
 } from './boundaryAction'
 import router from '@/router'
 import store from '@/store/root'
+import Logger from '@/serviceLocator/Logger'
 
 export enum ScreenState {
   STANDBY,
@@ -33,7 +34,10 @@ const mutations = {
       store.commit(new SuccessUserLoginAction(user))
       router.push('/')
     })
-    .catch(() => store.commit(new FailureLoginAction()))
+    .catch((e) => {
+      Logger.getInstance().error(e)
+      store.commit(new FailureLoginAction())
+    })
     state.screenState = ScreenState.SENDING
   },
   [FailureLoginAction.type](state: State) {

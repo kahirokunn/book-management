@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "deploy": "vue-cli-service build && firebase deploy",
     "lint": "vue-cli-service lint",
     "build:storybook": "vue-cli-service build:storybook -c config/storybook",
     "serve:storybook": "vue-cli-service serve:storybook -p 6006 -c config/storybook",

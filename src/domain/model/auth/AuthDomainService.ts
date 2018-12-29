@@ -39,8 +39,10 @@ export default class UserDomainService implements IAuthDomainService {
         if (authUser) {
           resolve(authUser.uid)
         } else {
-          reject('認証に失敗')
+          reject('認証されていません')
         }
+      }, (error) => {
+        reject(error)
       })
     })
   }

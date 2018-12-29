@@ -1,11 +1,9 @@
 <template>
-  <div id="app">
-    <v-app id="inspire">
-      <v-content>
-        <slot />
-      </v-content>
-    </v-app>
-  </div>
+  <v-app key="blank">
+    <v-content>
+      <slot />
+    </v-content>
+  </v-app>
 </template>
 
 <script lang="ts">

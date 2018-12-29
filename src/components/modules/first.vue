@@ -7,7 +7,7 @@ export default class First extends Vue {
   public render(h: CreateElement): VNode {
     if (this.$slots.default && this.$slots.default.length > 0) {
       // slotは1つだけ
-      return h('slot', [this.$slots.default[0]])
+      return this.$slots.default[0]
     }
     return h('')
   }

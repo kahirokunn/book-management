@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import {injectable} from 'inversify'
 import IUserRepository from '@/domain/model/user/IUserRepository'
 import {IUser} from '@/boundary/userApplicationService/InOutType'

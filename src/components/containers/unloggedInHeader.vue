@@ -11,7 +11,7 @@
     <v-spacer/>
 
     <v-btn
-      v-if="'/user/login'.includes($route.path)"
+      v-if="$route.path.includes('/user/login')"
       color="primary lighten-1"
       @click="$router.push('/user/registration')">
       アカウントを作成

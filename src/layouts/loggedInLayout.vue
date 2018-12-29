@@ -1,19 +1,17 @@
 <template>
-  <div id="app" key="loggedInLayout">
-    <v-app id="inspire">
+  <v-app key="loggedInLayout">
 
-      <template v-if="isLoggedIn">
-        <Navigation />
-        <LoggedInHeader />
-        <ChangeUserProfileForm />
+    <template v-if="isLoggedIn">
+      <Navigation />
+      <LoggedInHeader />
+      <ChangeUserProfileForm />
 
-        <v-content>
-          <slot />
-        </v-content>
-      </template>
+      <v-content>
+        <slot />
+      </v-content>
+    </template>
 
-    </v-app>
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">

@@ -1,10 +1,11 @@
 import authGetters from '@/store/middleware/auth/getters'
 import Router from 'vue-router'
+import {pathFormatter} from '@/submodules/url'
 
 const blackList = [
   '/user/login',
   '/user/registration',
-]
+].map((path) => pathFormatter(path))
 
 export const redirectPath = '/'
 
@@ -13,7 +14,7 @@ export function isNeedRedirect(path: string) {
     return false
   }
 
-  return blackList.includes(path)
+  return blackList.includes(pathFormatter(path))
 }
 
 export default function requiredVerifyEmail(router: Router) {
