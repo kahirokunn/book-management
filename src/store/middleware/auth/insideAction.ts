@@ -1,3 +1,4 @@
+import {actionCreator} from 'vuex-typescript-fsa'
 import {IAuthInfo} from '@/boundary/authApplicationService/InOutType'
 import {
   SUCCESS_USER_LOGIN_ACTION,
@@ -7,28 +8,7 @@ import {
 } from './types'
 import {IUser} from '@/boundary/userApplicationService/InOutType'
 
-export class SuccessUserLoginAction {
-  public static readonly type = SUCCESS_USER_LOGIN_ACTION
-  public readonly type = SUCCESS_USER_LOGIN_ACTION
-
-  constructor(public readonly authInfo: IAuthInfo) {}
-}
-
-export class FailureLoginAction {
-  public static readonly type = FAILURE_LOGIN_ACTION
-  public readonly type = FAILURE_LOGIN_ACTION
-}
-
-export class SubscribeUserDataAction {
-  public static readonly type = SUBSCRIBE_USER_ACTION
-  public readonly type = SUBSCRIBE_USER_ACTION
-
-  constructor(public readonly authInfo: IAuthInfo) {}
-}
-
-export class SetUserStreamAction {
-  public static readonly type = SET_USER_STREAM_ACTION
-  public readonly type = SET_USER_STREAM_ACTION
-
-  constructor(public readonly user: IUser) {}
-}
+export const successUserLogin = actionCreator<{readonly authInfo: IAuthInfo}>(SUCCESS_USER_LOGIN_ACTION)
+export const failureLogin = actionCreator<void>(FAILURE_LOGIN_ACTION)
+export const subscribeUserData = actionCreator<{readonly authInfo: IAuthInfo}>(SUBSCRIBE_USER_ACTION)
+export const setUserStream = actionCreator<{readonly user: IUser}>(SET_USER_STREAM_ACTION)

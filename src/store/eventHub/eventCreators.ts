@@ -1,11 +1,7 @@
+import {actionCreator} from 'vuex-typescript-fsa'
 import {IUser} from '@/boundary/userApplicationService/InOutType'
 import {
   UPDATED_USER_PROFILE,
 } from './types'
 
-export class UpdatedUserProfileEvent {
-  public static readonly type = UPDATED_USER_PROFILE
-  public readonly type = UPDATED_USER_PROFILE
-
-  constructor(public readonly user: IUser) {}
-}
+export const updatedUserProfileEvent = actionCreator<{readonly user: IUser}>(UPDATED_USER_PROFILE)

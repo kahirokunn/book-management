@@ -1,17 +1,19 @@
+import {combineMutation, mutation} from 'vuex-typescript-fsa'
 import {IUser} from '@/boundary/userApplicationService/InOutType'
 import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
 import {
-  UserLoginAction, UnsubscribeUserDataAction,
+  userLogin,
+  unsubscribeUserData,
 } from './boundaryAction'
 import {
-  SuccessUserLoginAction,
-  FailureLoginAction,
-  SubscribeUserDataAction,
-  SetUserStreamAction,
+  successUserLogin,
+  failureLogin,
+  subscribeUserData,
+  setUserStream,
 } from './insideAction'
 import store from '@/store/root'
 import Logger from '@/serviceLocator/Logger'
-import {UpdatedUserProfileEvent} from '@/store/eventHub/eventCreators'
+import {updatedUserProfileEvent} from '@/store/eventHub/eventCreators'
 import UserStream from '@/query/user/UserStream'
 
 type State = {
@@ -19,7 +21,7 @@ type State = {
   isLoggedIn: boolean,
   isEmailVerified: boolean,
   user?: IUser,
-  unsubscribe?: unsubscribe,
+  unsubscribe: unsubscribe[],
 }
 
 const initialState = (): State => ({
@@ -27,50 +29,49 @@ const initialState = (): State => ({
   isLoggedIn: false,
   isEmailVerified: false,
   user: undefined,
+  unsubscribe: [],
 })
 
-const mutations = {
-  [UpdatedUserProfileEvent.type](state: State, action: UpdatedUserProfileEvent) {
-    state.user = action.user
-  },
-  [UserLoginAction.type](state: State, action: UserLoginAction) {
+const mutations = combineMutation<State>(
+  mutation(updatedUserProfileEvent, (state, action) => {
+    state.user = action.payload.user
+  }),
+  mutation(userLogin, () => {
     AuthApplicationService.getInstance().login()
       .then((authInfo) => {
         Logger.getInstance().info('ログイン成功', authInfo)
-        store.commit(new SuccessUserLoginAction(authInfo))
+        store.commit(successUserLogin({authInfo}))
       })
       .catch((e) => {
         Logger.getInstance().info('ログイン失敗', e)
-        store.commit(new FailureLoginAction())
+        store.commit(failureLogin())
       })
-  },
-  [SuccessUserLoginAction.type](state: State, action: SuccessUserLoginAction) {
+  }),
+  mutation(successUserLogin, (state, action) => {
     state.isInitialized = true
     state.isLoggedIn = true
-    const user = action.authInfo
-    state.isEmailVerified = user.isEmailVerified
-    delete user.isEmailVerified
-    state.user = user
-    store.commit(new SubscribeUserDataAction(user))
-  },
-  [FailureLoginAction.type](state: State, action: FailureLoginAction) {
+    const {authInfo} = action.payload
+    state.isEmailVerified = authInfo.isEmailVerified
+    delete authInfo.isEmailVerified
+    state.user = authInfo
+    store.commit(subscribeUserData({authInfo}))
+  }),
+  mutation(failureLogin, (state) => {
     state.isInitialized = true
     state.isLoggedIn = false
     state.user = initialState().user
-  },
-  [SubscribeUserDataAction.type](state: State, action: SubscribeUserDataAction) {
-    const userStream = new UserStream(action.authInfo.id)
-    userStream.subscribe((user) => store.commit(new SetUserStreamAction(user)))
-  },
-  [UnsubscribeUserDataAction.type](state: State, action: UnsubscribeUserDataAction) {
-    if (state.unsubscribe) {
-      state.unsubscribe()
-    }
-  },
-  [SetUserStreamAction.type](state: State, action: SetUserStreamAction) {
-    state.user = action.user
-  },
-}
+  }),
+  mutation(subscribeUserData, (_, action) => {
+    new UserStream(action.payload.authInfo.id)
+      .subscribe((user) => store.commit(setUserStream({user})))
+  }),
+  mutation(unsubscribeUserData, (state) => {
+    state.unsubscribe.map((unsubscribe) => unsubscribe())
+  }),
+  mutation(setUserStream, (state, action) => {
+    state.user = action.payload.user
+  }),
+)
 
 export default {
   state: initialState,

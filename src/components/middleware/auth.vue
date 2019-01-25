@@ -2,7 +2,7 @@
 import {CreateElement, VNode} from 'vue'
 import {Vue, Component} from 'vue-property-decorator'
 import {
-  UserLoginAction,
+  userLogin,
 } from '@/store/middleware/auth/boundaryAction'
 import getters from '@/store/middleware/auth/getters'
 import store from '@/store/root'
@@ -14,7 +14,7 @@ export default class Auth extends Vue {
   }
 
   public mounted() {
-    store.commit(new UserLoginAction())
+    store.commit(userLogin())
   }
 
   public render(h: CreateElement): VNode {

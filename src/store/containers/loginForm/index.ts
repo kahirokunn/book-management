@@ -1,6 +1,6 @@
 import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
 import {
-  SuccessUserLoginAction,
+  successUserLogin,
 } from '@/store/middleware/auth/insideAction'
 import {FailureLoginAction} from './insideAction'
 import {
@@ -31,7 +31,7 @@ const mutations = {
       action.info.email,
       action.info.password,
     ).then((user) => {
-      store.commit(new SuccessUserLoginAction(user))
+      store.commit(successUserLogin({authInfo: user}))
       router.push('/')
     })
     .catch((e) => {

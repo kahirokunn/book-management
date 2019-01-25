@@ -1,5 +1,5 @@
 import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
-import {SuccessUserLoginAction} from '@/store/middleware/auth/insideAction'
+import {successUserLogin} from '@/store/middleware/auth/insideAction'
 import {FailureRegistrationAction} from './insideAction'
 import {
   UserRegistrationAction,
@@ -28,7 +28,7 @@ const mutations = {
   [UserRegistrationAction.type](state: State, action: UserRegistrationAction) {
     AuthApplicationService.getInstance().registration(action.registrationParams)
       .then((authInfo) => {
-        store.commit(new SuccessUserLoginAction(authInfo))
+        store.commit(successUserLogin({authInfo}))
         router.push('/')
       })
       .catch((e) => store.commit(new FailureRegistrationAction(e)))

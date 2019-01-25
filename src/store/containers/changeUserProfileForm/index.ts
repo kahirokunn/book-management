@@ -8,7 +8,7 @@ import {
   OpenDialog,
   CloseDialog,
 } from './boundaryAction'
-import {UpdatedUserProfileEvent} from '@/store/eventHub/eventCreators'
+import {updatedUserProfileEvent} from '@/store/eventHub/eventCreators'
 import store from '@/store/root'
 import UserApp from '@/serviceLocator/UserApplicationService'
 import Logger from '@/serviceLocator/Logger'
@@ -36,7 +36,7 @@ const mutations = {
       .then((user) => {
         Logger.getInstance().info('ユーザー情報の更新に成功', user)
         store.commit(new SuccessUpdateAction())
-        store.commit(new UpdatedUserProfileEvent(user))
+        store.commit(updatedUserProfileEvent({user}))
       })
       .catch((e) => {
         Logger.getInstance().error(e)
