@@ -4,5 +4,5 @@ import {
   UNSUBSCRIBE_USER_ACTION,
 } from './types'
 
-export const userLogin = actionCreator<void>(USER_LOGIN)
-export const unsubscribeUserData = actionCreator<void>(UNSUBSCRIBE_USER_ACTION)
+export const userLogin = actionCreator(USER_LOGIN)
+export const unsubscribeUserData = actionCreator(UNSUBSCRIBE_USER_ACTION)

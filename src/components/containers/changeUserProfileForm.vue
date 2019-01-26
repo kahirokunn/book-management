@@ -73,9 +73,9 @@ import {Vue, Component} from 'vue-property-decorator'
 import UserProfileForm from '@/components/organisms/userProfileForm.vue'
 import store from '@/store/root'
 import {
-  UpdateProfileAction,
-  ToStandbyAction,
-  CloseDialog,
+  updateProfile,
+  toStandby,
+  closeDialog,
 } from '@/store/containers/changeUserProfileForm/boundaryAction'
 import getters from '@/store/containers/changeUserProfileForm/getters'
 import authGetters from '@/store/middleware/auth/getters'
@@ -92,15 +92,15 @@ import {IUser} from '@/boundary/userApplicationService/InOutType'
 })
 export default class ChangeUserProfileFormContainer extends Vue {
   public updateProfile(params: IUser) {
-    store.commit(new UpdateProfileAction(params))
+    store.commit(updateProfile({ user: params }))
   }
 
   public toStandby() {
-    store.commit(new ToStandbyAction())
+    store.commit(toStandby())
   }
 
   public closeDialog() {
-    store.commit(new CloseDialog())
+    store.commit(closeDialog())
   }
 }
 </script>

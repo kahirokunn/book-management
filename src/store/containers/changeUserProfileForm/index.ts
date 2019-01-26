@@ -1,12 +1,13 @@
+import {combineMutation, mutation} from 'vuex-typescript-fsa'
 import {
-  SuccessUpdateAction,
-  FailureSendAction,
+  successUpdate,
+  failureSend,
 } from './insideAction'
 import {
-  UpdateProfileAction,
-  ToStandbyAction,
-  OpenDialog,
-  CloseDialog,
+  updateProfile,
+  toStandby,
+  openDialog,
+  closeDialog,
 } from './boundaryAction'
 import {updatedUserProfileEvent} from '@/store/eventHub/eventCreators'
 import store from '@/store/root'
@@ -30,36 +31,36 @@ const initialState = (): State => ({
   screenState: ScreenState.STANDBY,
 })
 
-const mutations = {
-  [UpdateProfileAction.type](state: State, action: UpdateProfileAction) {
-    UserApp.getInstance().update(action.user)
+const mutations = combineMutation<State>(
+  mutation(updateProfile, (state, action) => {
+    UserApp.getInstance().update(action.payload.user)
       .then((user) => {
         Logger.getInstance().info('ユーザー情報の更新に成功', user)
-        store.commit(new SuccessUpdateAction())
+        store.commit(successUpdate())
         store.commit(updatedUserProfileEvent({user}))
       })
       .catch((e) => {
         Logger.getInstance().error(e)
-        store.commit(new FailureSendAction())
+        store.commit(failureSend())
       })
     state.screenState = ScreenState.SENDING
-  },
-  [SuccessUpdateAction.type](state: State, action: SuccessUpdateAction) {
+  }),
+  mutation(successUpdate, (state) => {
     state.screenState = ScreenState.SEND_SUCCESS
-  },
-  [FailureSendAction.type](state: State, action: FailureSendAction) {
+  }),
+  mutation(failureSend, (state) => {
     state.screenState = ScreenState.SEND_FAILED
-  },
-  [ToStandbyAction.type](state: State, action: ToStandbyAction) {
-    state.screenState = ScreenState.STANDBY
-  },
-  [OpenDialog.type](state: State, action: OpenDialog) {
+  }),
+  mutation(openDialog, (state) => {
     state.isOpen = true
-  },
-  [CloseDialog.type](state: State, action: CloseDialog) {
+  }),
+  mutation(closeDialog, (state) => {
     state.isOpen = false
-  },
-}
+  }),
+  mutation(toStandby, (state) => {
+    state.screenState = ScreenState.STANDBY
+  }),
+)
 
 export default {
   state: initialState,
