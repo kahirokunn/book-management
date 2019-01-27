@@ -37,13 +37,13 @@ const mutations = combineMutation<State>(
         store.commit(successUserLogin({authInfo}))
         router.push('/')
       })
-      .catch((e) => store.commit(failureRegistration(e)))
+      .catch((e: { code: ErrorCode }) => store.commit(failureRegistration(e)))
   }),
   mutation(toStandby, (state) => {
     state.screenState = ScreenState.STANDBY
   }),
   mutation(failureRegistration, (state, action) => {
-    state.errorCode = action.payload.error.code
+    state.errorCode = action.payload.code
     state.screenState = ScreenState.SEND_FAILED
   }),
 )

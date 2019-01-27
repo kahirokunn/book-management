@@ -6,4 +6,4 @@ export type ErrorCode =
   'auth/email-already-in-use' | 'auth/invalid-email' |
   'auth/operation-not-allowed' | 'auth/weak-password'
 
-export const failureRegistration = actionCreator<{readonly error: { code: ErrorCode }}>(FAILURE_REGISTRATION)
+export const failureRegistration = actionCreator<{readonly code: ErrorCode}>(FAILURE_REGISTRATION)
