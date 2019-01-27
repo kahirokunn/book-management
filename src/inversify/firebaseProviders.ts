@@ -4,9 +4,9 @@ import IAuthApplicationService from '@/boundary/authApplicationService/IAuthAppl
 import IUserRepository from '@/domain/model/user/IUserRepository'
 import UserApplicationService from '@/domain/application/userApplicationService/UserApplicationService'
 import AuthApplicationService from '@/domain/application/authApplicationService/AuthApplicationService'
-import FirebaseUserRepository from '@/domain/model/user/FirebaseUserRepository'
+import FirebaseUserRepository from '@/firebaseDomainImpl/user/FirebaseUserRepository'
 import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
-import AuthDomainService from '@/domain/model/auth/AuthDomainService'
+import AuthDomainService from '@/firebaseDomainImpl/auth/AuthDomainService'
 import ILogger from '@/drivers/ILogger'
 import ConsoleLogger from '@/drivers/logger/ConsoleLogger'
 

@@ -14,9 +14,9 @@ import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
 export default class AuthApplicationService extends IAuthApplicationService {
   constructor(
     @inject(IUserRepository)
-    protected readonly userRepository: IUserRepository,
+    private readonly userRepository: IUserRepository,
     @inject(IAuthDomainService)
-    protected readonly authDomainService: IAuthDomainService,
+    private readonly authDomainService: IAuthDomainService,
   ) { super() }
 
   public async registration(params: IRegistrationParams): Promise<IAuthInfo> {
