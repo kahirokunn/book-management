@@ -1,4 +1,4 @@
-import IAuthDomainService from '../../domain/model/auth/IAuthDomainService'
+import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
 import {injectable} from 'inversify'
 import {auth} from '@/firebase/index'
 import * as rules from '@/config/user/rules'

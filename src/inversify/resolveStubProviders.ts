@@ -7,8 +7,8 @@ import ILogger from '@/drivers/ILogger'
 import BlankLogger from '@/drivers/logger/BlankLogger'
 
 export function stubProviders(container: Container): void {
-  container.bind<ILogger>(ILogger).to(BlankLogger).inSingletonScope()
+  container.bind(ILogger).to(BlankLogger).inSingletonScope()
 
-  container.bind<IUserApplicationService>(IUserApplicationService).to(UserApplicationResolveService).inSingletonScope()
-  container.bind<IAuthApplicationService>(IAuthApplicationService).to(AuthApplicationResolveService).inSingletonScope()
+  container.bind(IUserApplicationService).to(UserApplicationResolveService).inSingletonScope()
+  container.bind(IAuthApplicationService).to(AuthApplicationResolveService).inSingletonScope()
 }
