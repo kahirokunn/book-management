@@ -95,3 +95,12 @@ jobs:
       - run:
           name: Regression
           command: yarn run regression
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - lint
+      - unit_test
+      - build_storybook
+      - visual_regression_test
