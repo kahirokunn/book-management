@@ -33,6 +33,8 @@ const initialState = (): State => ({
 
 const mutations = combineMutation<State>(
   mutation(updateProfile, (state, action) => {
+    state.screenState = ScreenState.SENDING
+
     UserApp.getInstance().update(action.payload.user)
       .then((user) => {
         Logger.getInstance().info('ユーザー情報の更新に成功', user)
@@ -43,7 +45,6 @@ const mutations = combineMutation<State>(
         Logger.getInstance().error(e)
         store.commit(failureSend())
       })
-    state.screenState = ScreenState.SENDING
   }),
   mutation(successUpdate, (state) => {
     state.screenState = ScreenState.SEND_SUCCESS

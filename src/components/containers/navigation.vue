@@ -70,7 +70,7 @@
 import {Vue, Component} from 'vue-property-decorator'
 import router from '@/router/index'
 import getters from '@/store/containers/navigation/getters'
-import {CloseDrawer} from '@/store/containers/navigation/boundaryAction'
+import {closeDrawer} from '@/store/containers/navigation/boundaryAction'
 import store from '@/store/root'
 
 @Component({
@@ -88,7 +88,7 @@ export default class Navigation extends Vue {
   }
 
   public fire(action: () => void) {
-    store.commit(new CloseDrawer())
+    store.commit(closeDrawer())
     action()
   }
 }

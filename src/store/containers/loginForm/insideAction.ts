@@ -1,6 +1,4 @@
-import {FAILURE_LOGIN_ACTION} from './types'
+import {actionCreator} from 'vuex-typescript-fsa'
+import {FAILURE_LOGIN} from './types'
 
-export class FailureLoginAction {
-  public static readonly type = FAILURE_LOGIN_ACTION
-  public readonly type = FAILURE_LOGIN_ACTION
-}
+export const failureLogin = actionCreator(FAILURE_LOGIN)

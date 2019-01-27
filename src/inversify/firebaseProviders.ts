@@ -11,10 +11,10 @@ import ILogger from '@/drivers/ILogger'
 import ConsoleLogger from '@/drivers/logger/ConsoleLogger'
 
 export function firebaseProviders(container: Container): void {
-  container.bind<IUserApplicationService>(IUserApplicationService).to(UserApplicationService)
-  container.bind<IUserRepository>(IUserRepository).to(FirebaseUserRepository)
-  container.bind<IAuthDomainService>(IAuthDomainService).to(AuthDomainService)
-  container.bind<IAuthApplicationService>(IAuthApplicationService).to(AuthApplicationService)
+  container.bind<ILogger>(ILogger).to(ConsoleLogger).inSingletonScope()
 
-  container.bind<ILogger>(ILogger).to(ConsoleLogger)
+  container.bind<IUserApplicationService>(IUserApplicationService).to(UserApplicationService).inSingletonScope()
+  container.bind<IUserRepository>(IUserRepository).to(FirebaseUserRepository).inSingletonScope()
+  container.bind<IAuthDomainService>(IAuthDomainService).to(AuthDomainService).inSingletonScope()
+  container.bind<IAuthApplicationService>(IAuthApplicationService).to(AuthApplicationService).inSingletonScope()
 }

@@ -1,16 +1,9 @@
+import {actionCreator} from 'vuex-typescript-fsa'
 import {
   LOGIN_BY_EMAIL_AND_PASSWORD,
-  TO_STANDBY_ACTION,
+  TO_STANDBY,
 } from './types'
 
-export class LoginByEmailAndPasswordAction {
-  public static readonly type = LOGIN_BY_EMAIL_AND_PASSWORD
-  public readonly type = LOGIN_BY_EMAIL_AND_PASSWORD
-
-  constructor(public readonly info: {email: string, password: string}) {}
-}
-
-export class ToStandbyAction {
-  public static readonly type = TO_STANDBY_ACTION
-  public readonly type = TO_STANDBY_ACTION
-}
+export const loginByEmailAndPassword =
+  actionCreator<{readonly email: string, readonly password: string}>(LOGIN_BY_EMAIL_AND_PASSWORD)
+export const toStandby = actionCreator(TO_STANDBY)

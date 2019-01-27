@@ -1,9 +1,13 @@
+import {combineMutation, mutation} from 'vuex-typescript-fsa'
 import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
 import {successUserLogin} from '@/store/middleware/auth/insideAction'
-import {FailureRegistrationAction} from './insideAction'
 import {
-  UserRegistrationAction,
-  ToStandbyAction,
+  failureRegistration,
+  ErrorCode,
+} from './insideAction'
+import {
+  userRegistration,
+  toStandby,
 } from './boundaryAction'
 import store from '@/store/root'
 import router from '@/router'
@@ -16,7 +20,7 @@ export enum ScreenState {
 
 type State = {
   screenState: ScreenState,
-  errorCode: string,
+  errorCode: ErrorCode|'',
 }
 
 const initialState = (): State => ({
@@ -24,24 +28,25 @@ const initialState = (): State => ({
   errorCode: '',
 })
 
-const mutations = {
-  [UserRegistrationAction.type](state: State, action: UserRegistrationAction) {
-    AuthApplicationService.getInstance().registration(action.registrationParams)
+const mutations = combineMutation<State>(
+  mutation(userRegistration, (state, action) => {
+    state.screenState = ScreenState.SENDING
+
+    AuthApplicationService.getInstance().registration(action.payload)
       .then((authInfo) => {
         store.commit(successUserLogin({authInfo}))
         router.push('/')
       })
-      .catch((e) => store.commit(new FailureRegistrationAction(e)))
-    state.screenState = ScreenState.SENDING
-  },
-  [ToStandbyAction.type](state: State, action: ToStandbyAction) {
+      .catch((e) => store.commit(failureRegistration(e)))
+  }),
+  mutation(toStandby, (state) => {
     state.screenState = ScreenState.STANDBY
-  },
-  [FailureRegistrationAction.type](state: State, action: FailureRegistrationAction) {
-    state.errorCode = action.error.code
+  }),
+  mutation(failureRegistration, (state, action) => {
+    state.errorCode = action.payload.error.code
     state.screenState = ScreenState.SEND_FAILED
-  },
-}
+  }),
+)
 
 export default {
   state: initialState,

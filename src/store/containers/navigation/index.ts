@@ -1,6 +1,7 @@
+import {combineMutation, mutation} from 'vuex-typescript-fsa'
 import {
-  ToggleDrawer,
-  CloseDrawer,
+  toggleDrawer,
+  closeDrawer,
 } from './boundaryAction'
 
 type State = {
@@ -11,14 +12,14 @@ const initialState = (): State => ({
   isOpen: false,
 })
 
-const mutations = {
-  [ToggleDrawer.type](state: State, action: ToggleDrawer) {
+const mutations = combineMutation<State>(
+  mutation(toggleDrawer, (state) => {
     state.isOpen = !state.isOpen
-  },
-  [CloseDrawer.type](state: State, action: CloseDrawer) {
+  }),
+  mutation(closeDrawer, (state: State) => {
     state.isOpen = false
-  },
-}
+  }),
+)
 
 export default {
   state: initialState,

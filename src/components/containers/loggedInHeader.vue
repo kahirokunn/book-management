@@ -36,7 +36,7 @@
 import {Vue, Component} from 'vue-property-decorator'
 import authGetters from '@/store/middleware/auth/getters'
 import store from '@/store/root'
-import {ToggleDrawer} from '@/store/containers/navigation/boundaryAction'
+import {toggleDrawer} from '@/store/containers/navigation/boundaryAction'
 import {defaultUserIconUrl} from '@/config/user/defaultUserParams'
 import {openDialog} from '@/store/containers/changeUserProfileForm/boundaryAction'
 
@@ -53,7 +53,7 @@ export default class LoggedInHeader extends Vue {
   }
 
   public toggleDrawer() {
-    store.commit(new ToggleDrawer())
+    store.commit(toggleDrawer())
   }
 }
 </script>

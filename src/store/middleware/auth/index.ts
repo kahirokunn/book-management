@@ -9,7 +9,7 @@ import {
   successUserLogin,
   failureLogin,
   subscribeUserData,
-  setUserStream,
+  receiveUser,
 } from './insideAction'
 import store from '@/store/root'
 import Logger from '@/serviceLocator/Logger'
@@ -63,12 +63,12 @@ const mutations = combineMutation<State>(
   }),
   mutation(subscribeUserData, (_, action) => {
     new UserStream(action.payload.authInfo.id)
-      .subscribe((user) => store.commit(setUserStream({user})))
+      .subscribe((user) => store.commit(receiveUser({user})))
   }),
   mutation(unsubscribeUserData, (state) => {
     state.unsubscribe.map((unsubscribe) => unsubscribe())
   }),
-  mutation(setUserStream, (state, action) => {
+  mutation(receiveUser, (state, action) => {
     state.user = action.payload.user
   }),
 )

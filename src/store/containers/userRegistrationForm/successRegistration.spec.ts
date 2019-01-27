@@ -1,13 +1,13 @@
 import '@/store/resolveTestConfiguration'
 import flushPromises from 'flush-promises'
 import authGetters from '@/store/middleware/auth/getters'
-import {UserRegistrationAction} from './boundaryAction'
+import {userRegistration} from './boundaryAction'
 import getters from './getters'
 import store from '@/store/root'
 
 test('ユーザー登録できる', async () => {
   expect(getters.isSending()).toBe(false)
-  store.commit(new UserRegistrationAction({
+  store.commit(userRegistration({
     password: 'hello',
     iconFilepath: '',
     displayName: 't-tanaka',

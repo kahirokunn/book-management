@@ -1,17 +1,9 @@
+import {actionCreator} from 'vuex-typescript-fsa'
 import {IRegistrationParams} from '@/boundary/authApplicationService/InOutType'
 import {
-  USER_REGISTRATION_ACTION,
-  TO_STANDBY_ACTION,
+  USER_REGISTRATION,
+  TO_STANDBY,
 } from './types'
 
-export class UserRegistrationAction {
-  public static readonly type = USER_REGISTRATION_ACTION
-  public readonly type = USER_REGISTRATION_ACTION
-
-  constructor(public readonly registrationParams: IRegistrationParams) {}
-}
-
-export class ToStandbyAction {
-  public static readonly type = TO_STANDBY_ACTION
-  public readonly type = TO_STANDBY_ACTION
-}
+export const userRegistration = actionCreator<IRegistrationParams>(USER_REGISTRATION)
+export const toStandby = actionCreator(TO_STANDBY)

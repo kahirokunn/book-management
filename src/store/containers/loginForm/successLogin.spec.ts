@@ -2,14 +2,14 @@ import '@/store/resolveTestConfiguration'
 import flushPromises from 'flush-promises'
 import authGetters from '@/store/middleware/auth/getters'
 
-import {LoginByEmailAndPasswordAction} from './boundaryAction'
+import {loginByEmailAndPassword} from './boundaryAction'
 import getters from './getters'
 import store from '@/store/root'
 
 test('ログインできる', async () => {
   expect(getters.isFailed()).toBe(false)
   expect(getters.isSending()).toBe(false)
-  store.commit(new LoginByEmailAndPasswordAction({
+  store.commit(loginByEmailAndPassword({
     email: 'tanaka@gmail.com',
     password: 'tanakatarou',
   }))
