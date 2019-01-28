@@ -1,4 +1,4 @@
-import {actionCreator} from 'vuex-typescript-fsa'
+import {actionCreator} from 'typescript-fsa-vuex'
 import {FAILURE_REGISTRATION} from './types'
 
 // https://firebase.google.com/docs/reference/js/firebase.auth.Auth#createUserWithEmailAndPassword

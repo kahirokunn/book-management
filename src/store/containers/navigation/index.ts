@@ -1,4 +1,4 @@
-import {combineMutation, mutation} from 'vuex-typescript-fsa'
+import {combineMutation, mutation} from 'typescript-fsa-vuex'
 import {
   toggleDrawer,
   closeDrawer,

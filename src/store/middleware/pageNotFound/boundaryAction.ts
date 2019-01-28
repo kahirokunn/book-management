@@ -1,4 +1,4 @@
-import {actionCreator} from 'vuex-typescript-fsa'
+import {actionCreator} from 'typescript-fsa-vuex'
 import {
   PAGE_NOT_FOUND,
 } from './types'

@@ -1,4 +1,4 @@
-import {actionCreator} from 'vuex-typescript-fsa'
+import {actionCreator} from 'typescript-fsa-vuex'
 import {IAuthInfo} from '@/boundary/authApplicationService/InOutType'
 import {
   SUCCESS_USER_LOGIN,

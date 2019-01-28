@@ -1,4 +1,4 @@
-import {actionCreator} from 'vuex-typescript-fsa'
+import {actionCreator} from 'typescript-fsa-vuex'
 import {IRegistrationParams} from '@/boundary/authApplicationService/InOutType'
 import {
   USER_REGISTRATION,

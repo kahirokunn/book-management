@@ -1,4 +1,4 @@
-import {actionCreator} from 'vuex-typescript-fsa'
+import {actionCreator} from 'typescript-fsa-vuex'
 import {
   LOGIN_BY_EMAIL_AND_PASSWORD,
   TO_STANDBY,
