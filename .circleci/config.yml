@@ -1,15 +1,19 @@
-defaults: &defaults
-  working_directory: ~/reg-suit
-  docker:
-    - image: kahiro/node-nightmare
-      environment:
-        DISPLAY: ":99"
-        GOOGLE_APPLICATION_CREDENTIALS: "/root/gcloud-service-key.json"
+version: 2.1
 
-version: 2
+executors:
+  default:
+    docker:
+      - image: kahiro/node-nightmare
+        environment:
+          DISPLAY: ":99"
+          GOOGLE_APPLICATION_CREDENTIALS: "/root/gcloud-service-key.json"
+    environment:
+      # CODECOV_TOKEN: xxx // setup via circleci
+    working_directory: ~/reg-suit
+
 jobs:
-  build_storybook:
-    <<: *defaults
+  build:
+    executor: default
     steps:
       - checkout
       - restore_cache:
@@ -20,9 +24,20 @@ jobs:
           name: Install dependencies
           command: yarn --pure-lockfile
       - save_cache:
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: ~/reg-suit
+          paths:
+            - .
+
+  build_storybook:
+    executor: default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/reg-suit
       # storybookをビルドする
       - run:
           name: Generate Storybook
@@ -34,61 +49,34 @@ jobs:
           destination: ~/storybook
 
   lint:
-    <<: *defaults
+    executor: default
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
-      - run:
-          name: Install dependencies
-          command: yarn --pure-lockfile
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - attach_workspace:
+          at: ~/reg-suit
       - run:
           name: Lint
           command: yarn run lint
 
   unit_test:
-    <<: *defaults
+    executor: default
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
-      - run:
-          name: Install dependencies
-          command: yarn --pure-lockfile
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - attach_workspace:
+          at: ~/reg-suit
       - run:
           name: Test
           command: yarn run test:unit
 
   visual_regression_test:
-    <<: *defaults
+    executor: default
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/reg-suit
       - run:
           name: setup GCP
           command: echo $GCLOUD_SERVICE_KEY | base64 -d > /root/gcloud-service-key.json
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
-      - run:
-          name: Install dependencies
-          command: yarn --pure-lockfile
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Screenshot
           command: yarn run screenshot
@@ -98,9 +86,38 @@ jobs:
 
 workflows:
   version: 2
-  test:
+  per_commit:
     jobs:
-      - lint
-      - unit_test
-      - build_storybook
-      - visual_regression_test
+      - build:
+          name: build
+          filters:
+            branches:
+              only: /.*/
+      - lint:
+          name: lint
+          requires:
+            - build
+          filters:
+            branches:
+              only: /.*/
+      - unit_test:
+          name: unit_test
+          requires:
+            - build
+          filters:
+            branches:
+              only: /.*/
+      - build_storybook:
+          name: build_storybook
+          requires:
+            - build
+          filters:
+            branches:
+              only: /.*/
+      - visual_regression_test:
+          name: visual_regression_test
+          requires:
+            - build
+          filters:
+            branches:
+              only: /.*/
