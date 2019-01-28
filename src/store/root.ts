@@ -7,9 +7,13 @@ interface RootState {
   containers: ContainersState
 }
 
-export default new Vuex.Store<RootState>({
-  modules: {
-    middleware,
-    containers,
-  },
-})
+export function createStore() {
+  return new Vuex.Store<RootState>({
+    modules: {
+      middleware,
+      containers,
+    },
+  })
+}
+
+export default createStore()

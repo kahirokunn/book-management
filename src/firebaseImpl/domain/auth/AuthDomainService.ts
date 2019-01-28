@@ -1,8 +1,9 @@
-import IAuthDomainService from './IAuthDomainService'
+import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
 import {injectable} from 'inversify'
 import {auth} from '@/firebase/index'
 import * as rules from '@/config/user/rules'
 import {isValid} from '@/submodules/validate'
+import Logger from '@/serviceLocator/Logger'
 
 @injectable()
 export default class UserDomainService implements IAuthDomainService {
@@ -26,10 +27,10 @@ export default class UserDomainService implements IAuthDomainService {
   public async sendEmailVerification(): Promise<void> {
     const currentUser = auth().currentUser
     if (currentUser !== null) {
-      console.log('確認メールを送信しました')
+      Logger.getInstance().info('確認メールを送信しました')
       await currentUser.sendEmailVerification()
     } else {
-      console.log('ユーザー登録したけど自動ログインされませんでした')
+      Logger.getInstance().error('ユーザー登録したけど自動ログインされませんでした')
     }
   }
 

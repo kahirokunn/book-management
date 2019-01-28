@@ -19,7 +19,6 @@
     "no-shadowed-variable": false,
     "max-classes-per-file": false,
     "semicolon": [true, "never"],
-    "no-unused-variable": [true, "never"],
-    "no-console": false
+    "no-unused-variable": [true, "never"]
   }
 }

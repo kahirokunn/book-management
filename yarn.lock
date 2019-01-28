@@ -10851,9 +10851,13 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@^3.0.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.1.3.tgz#01b70247a6d3c2467f70c45795ef5ea18ce191d5"
+typescript-fsa-vuex@^0.9.4:
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/typescript-fsa-vuex/-/typescript-fsa-vuex-0.9.4.tgz#6bb80978a9f4641801e25c8792ffb8d2d657f551"
+
+typescript@^3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.2.4.tgz#c585cb952912263d915b462726ce244ba510ef3d"
 
 ua-parser-js@^0.7.18:
   version "0.7.19"

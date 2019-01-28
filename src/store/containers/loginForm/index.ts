@@ -1,12 +1,13 @@
+import {combineMutation, mutation} from 'typescript-fsa-vuex'
 import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
 import {
-  SuccessUserLoginAction,
-} from '@/store/middleware/auth/insideAction'
-import {FailureLoginAction} from './insideAction'
+  successUserLogin,
+} from '@/store/middleware/auth/action'
 import {
-  LoginByEmailAndPasswordAction,
-  ToStandbyAction,
-} from './boundaryAction'
+  loginByEmailAndPassword,
+  toStandby,
+  failureLogin,
+} from './action'
 import router from '@/router'
 import store from '@/store/root'
 import Logger from '@/serviceLocator/Logger'
@@ -25,28 +26,29 @@ const initialState = (): State => ({
   screenState: ScreenState.STANDBY,
 })
 
-const mutations = {
-  [LoginByEmailAndPasswordAction.type](state: State, action: LoginByEmailAndPasswordAction) {
+const mutations = combineMutation<State>(
+  mutation(loginByEmailAndPassword, (state, action) => {
+    state.screenState = ScreenState.SENDING
+
     AuthApplicationService.getInstance().loginWithEmailAndPassword(
-      action.info.email,
-      action.info.password,
+      action.payload.email,
+      action.payload.password,
     ).then((user) => {
-      store.commit(new SuccessUserLoginAction(user))
+      store.commit(successUserLogin({authInfo: user}))
       router.push('/')
     })
     .catch((e) => {
       Logger.getInstance().error(e)
-      store.commit(new FailureLoginAction())
+      store.commit(failureLogin())
     })
-    state.screenState = ScreenState.SENDING
-  },
-  [FailureLoginAction.type](state: State) {
+  }),
+  mutation(failureLogin, (state) => {
     state.screenState = ScreenState.LOGIN_FAILED
-  },
-  [ToStandbyAction.type](state: State, action: ToStandbyAction) {
+  }),
+  mutation(toStandby, (state) => {
     state.screenState = ScreenState.STANDBY
-  },
-}
+  }),
+)
 
 export default {
   state: initialState,

@@ -43,9 +43,9 @@ import {Vue, Component} from 'vue-property-decorator'
 import {IRegistrationParams} from '@/boundary/authApplicationService/InOutType'
 import UserRegistrationForm from '@/components/organisms/userRegistrationForm.vue'
 import {
-  UserRegistrationAction,
-  ToStandbyAction,
-} from '@/store/containers/userRegistrationForm/boundaryAction'
+  userRegistration,
+  toStandby,
+} from '@/store/containers/userRegistrationForm/action'
 import getters from '@/store/containers/userRegistrationForm/getters'
 import store from '@/store/root'
 
@@ -57,11 +57,11 @@ import store from '@/store/root'
 })
 export default class UserRegistrationFormContainer extends Vue {
   public userRegistration(params: IRegistrationParams) {
-    store.commit(new UserRegistrationAction(params))
+    store.commit(userRegistration(params))
   }
 
   public toStandby() {
-    store.commit(new ToStandbyAction())
+    store.commit(toStandby())
   }
 }
 </script>

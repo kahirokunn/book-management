@@ -1,6 +1,7 @@
+import {combineMutation, mutation} from 'typescript-fsa-vuex'
 import {
-  PageNotFound,
-} from './boundaryAction'
+  pageNotFound,
+} from './action'
 
 type State = {
   isPageNotFound: boolean,
@@ -10,11 +11,11 @@ const initialState = (): State => ({
   isPageNotFound: false,
 })
 
-const mutations = {
-  [PageNotFound.type](state: State, action: PageNotFound) {
+const mutations = combineMutation<State>(
+  mutation(pageNotFound, (state) => {
     state.isPageNotFound = true
-  },
-}
+  }),
+)
 
 export default {
   state: initialState,

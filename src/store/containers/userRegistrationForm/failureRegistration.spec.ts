@@ -2,15 +2,15 @@ import '@/store/rejectTestConfiguration'
 import flushPromises from 'flush-promises'
 import authGetters from '@/store/middleware/auth/getters'
 import {
-  UserRegistrationAction,
-  ToStandbyAction,
-} from './boundaryAction'
+  userRegistration,
+  toStandby,
+} from './action'
 import getters from './getters'
 import store from '@/store/root'
 
 test('そのメールアドレスは既に登録されています', async () => {
   expect(getters.isSending()).toBe(false)
-  store.commit(new UserRegistrationAction({
+  store.commit(userRegistration({
     password: 'hello',
     iconFilepath: '',
     displayName: 't-tanaka',
@@ -29,6 +29,6 @@ test('そのメールアドレスは既に登録されています', async () =>
   expect(authGetters.user()).toBeUndefined()
   expect(getters.isSendFailed()).toBe(true)
   expect(getters.errorMessage()).toBe('そのメールアドレスは既に登録されています')
-  store.commit(new ToStandbyAction())
+  store.commit(toStandby())
   expect(getters.isSendFailed()).toBe(false)
 })

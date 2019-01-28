@@ -1,7 +1,7 @@
 import {injectable, inject} from 'inversify'
 import {IUser} from '@/boundary/userApplicationService/InOutType'
 import IUserApplicationService from '@/boundary/userApplicationService/IUserApplicationService'
-import IUserRepository from '../../model/user/IUserRepository'
+import IUserRepository from '@/domain/model/user/IUserRepository'
 
 @injectable()
 export default class UserApplicationService extends IUserApplicationService {

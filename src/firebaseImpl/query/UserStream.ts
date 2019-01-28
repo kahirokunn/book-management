@@ -1,4 +1,6 @@
+import {injectable} from 'inversify'
 import firebase from 'firebase'
+import IUserStream, {InputSubscribe} from '@/query/user/IUserStream'
 import {IUser} from '@/boundary/userApplicationService/InOutType'
 import User from '@/models/user'
 
@@ -13,22 +15,18 @@ function userMapper(userId: Identifier, user: any): IUser {
   }
 }
 
-type subscriber = (user: IUser) => void
-type onError = (error: Error) => void
-
-export default class UserStream {
-  constructor(private readonly userId: Identifier) {}
-
-  public subscribe(subscriber: subscriber, onError?: onError): unsubscribe {
+@injectable()
+export default class UserStream implements IUserStream {
+  public subscribe({ subscriber, payload, onError }: InputSubscribe): unsubscribe {
     return User
       .getReference()
-      .doc(this.userId)
+      .doc(payload.userId)
       .onSnapshot((snapshot: firebase.firestore.DocumentSnapshot) => {
         const data = snapshot.data()
         if (!data) {
           return
         }
-        subscriber(userMapper(this.userId, data as any))
+        subscriber(userMapper(payload.userId, data as any))
       }, onError)
   }
 }

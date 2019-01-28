@@ -1,11 +1,11 @@
 import '@/store/resolveTestConfiguration'
 
-import {PageNotFound} from './boundaryAction'
+import {pageNotFound} from './action'
 import getters from './getters'
 import store from '@/store/root'
 
-test('ユーザーログインできる', async () => {
+test('pageNotFound状態がtrueになる', () => {
   expect(getters.isPageNotFound()).toBe(false)
-  store.commit(new PageNotFound())
+  store.commit(pageNotFound())
   expect(getters.isPageNotFound()).toBe(true)
 })

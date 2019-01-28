@@ -41,9 +41,9 @@
 import {Vue, Component} from 'vue-property-decorator'
 import store from '@/store/root'
 import {
-  LoginByEmailAndPasswordAction,
-  ToStandbyAction,
-} from '@/store/containers/loginForm/boundaryAction'
+  loginByEmailAndPassword,
+  toStandby,
+} from '@/store/containers/loginForm/action'
 import getters from '@/store/containers/loginForm/getters'
 import LoginForm from '@/components/organisms/loginForm.vue'
 
@@ -55,11 +55,11 @@ import LoginForm from '@/components/organisms/loginForm.vue'
 })
 export default class LoginPage extends Vue {
   public async login(email: string, password: string) {
-    store.commit(new LoginByEmailAndPasswordAction({ email, password }))
+    store.commit(loginByEmailAndPassword({ email, password }))
   }
 
   public toStandby() {
-    store.commit(new ToStandbyAction())
+    store.commit(toStandby())
   }
 }
 </script>
