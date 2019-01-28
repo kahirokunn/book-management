@@ -67,6 +67,7 @@
     "vue-cli-plugin-storybook": "^0.4.8",
     "vue-template-compiler": "^2.5.17",
     "vuepress": "^1.0.0-alpha.33",
+    "vuepress-plugin-component-catalog": "^0.6.3",
     "zisui": "^1.2.2"
   },
   "gitHooks": {
