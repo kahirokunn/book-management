@@ -10851,11 +10851,9 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript-fsa-vuex@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/typescript-fsa-vuex/-/typescript-fsa-vuex-0.9.1.tgz#49efa56bf2ddbcd1bf15ffeb439a082d6b1a01ad"
-  dependencies:
-    vuex "^3.1.0"
+typescript-fsa-vuex@^0.9.4:
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/typescript-fsa-vuex/-/typescript-fsa-vuex-0.9.4.tgz#6bb80978a9f4641801e25c8792ffb8d2d657f551"
 
 typescript@^3.2.4:
   version "3.2.4"
@@ -11203,10 +11201,6 @@ vuetify@^1.3.3:
 vuex@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.0.1.tgz#e761352ebe0af537d4bb755a9b9dc4be3df7efd2"
-
-vuex@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.0.tgz#634b81515cf0cfe976bd1ffe9601755e51f843b9"
 
 w3c-hr-time@^1.0.1:
   version "1.0.1"
