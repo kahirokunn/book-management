@@ -2,7 +2,7 @@ import '@/store/resolveTestConfiguration'
 import {
   toggleDrawer,
   closeDrawer,
-} from './boundaryAction'
+} from './action'
 import getters from './getters'
 import store from '@/store/root'
 

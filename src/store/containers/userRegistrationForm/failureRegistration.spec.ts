@@ -4,7 +4,7 @@ import authGetters from '@/store/middleware/auth/getters'
 import {
   userRegistration,
   toStandby,
-} from './boundaryAction'
+} from './action'
 import getters from './getters'
 import store from '@/store/root'
 

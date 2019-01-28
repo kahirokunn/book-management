@@ -1,7 +1,7 @@
 import '@/store/resolveTestConfiguration'
 import flushPromises from 'flush-promises'
 import authGetters from '@/store/middleware/auth/getters'
-import {userRegistration} from './boundaryAction'
+import {userRegistration} from './action'
 import getters from './getters'
 import store from '@/store/root'
 

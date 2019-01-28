@@ -36,9 +36,9 @@
 import {Vue, Component} from 'vue-property-decorator'
 import authGetters from '@/store/middleware/auth/getters'
 import store from '@/store/root'
-import {toggleDrawer} from '@/store/containers/navigation/boundaryAction'
+import {toggleDrawer} from '@/store/containers/navigation/action'
 import {defaultUserIconUrl} from '@/config/user/defaultUserParams'
-import {openDialog} from '@/store/containers/changeUserProfileForm/boundaryAction'
+import {openDialog} from '@/store/containers/changeUserProfileForm/action'
 
 @Component({
   computed: authGetters,

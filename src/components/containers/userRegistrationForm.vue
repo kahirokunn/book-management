@@ -45,7 +45,7 @@ import UserRegistrationForm from '@/components/organisms/userRegistrationForm.vu
 import {
   userRegistration,
   toStandby,
-} from '@/store/containers/userRegistrationForm/boundaryAction'
+} from '@/store/containers/userRegistrationForm/action'
 import getters from '@/store/containers/userRegistrationForm/getters'
 import store from '@/store/root'
 

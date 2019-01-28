@@ -1,7 +1,6 @@
-import {actionCreator} from 'typescript-fsa-vuex'
+import {actionCreatorFactory} from 'typescript-fsa-vuex'
 import {IUser} from '@/boundary/userApplicationService/InOutType'
-import {
-  UPDATED_USER_PROFILE,
-} from './types'
 
-export const updatedUserProfileEvent = actionCreator<{readonly user: IUser}>(UPDATED_USER_PROFILE)
+const actionCreator = actionCreatorFactory('containers/eventHub')
+
+export const updatedUserProfileEvent = actionCreator<{readonly user: IUser}>('UPDATED_USER_PROFILE')

@@ -3,7 +3,7 @@ import {CreateElement, VNode} from 'vue'
 import {Vue, Component} from 'vue-property-decorator'
 import {
   userLogin,
-} from '@/store/middleware/auth/boundaryAction'
+} from '@/store/middleware/auth/action'
 import getters from '@/store/middleware/auth/getters'
 import store from '@/store/root'
 

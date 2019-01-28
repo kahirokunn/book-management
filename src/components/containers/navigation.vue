@@ -70,7 +70,7 @@
 import {Vue, Component} from 'vue-property-decorator'
 import router from '@/router/index'
 import getters from '@/store/containers/navigation/getters'
-import {closeDrawer} from '@/store/containers/navigation/boundaryAction'
+import {closeDrawer} from '@/store/containers/navigation/action'
 import store from '@/store/root'
 
 @Component({

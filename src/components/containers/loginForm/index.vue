@@ -43,7 +43,7 @@ import store from '@/store/root'
 import {
   loginByEmailAndPassword,
   toStandby,
-} from '@/store/containers/loginForm/boundaryAction'
+} from '@/store/containers/loginForm/action'
 import getters from '@/store/containers/loginForm/getters'
 import LoginForm from '@/components/organisms/loginForm.vue'
 

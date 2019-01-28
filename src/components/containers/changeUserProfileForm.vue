@@ -76,7 +76,7 @@ import {
   updateProfile,
   toStandby,
   closeDialog,
-} from '@/store/containers/changeUserProfileForm/boundaryAction'
+} from '@/store/containers/changeUserProfileForm/action'
 import getters from '@/store/containers/changeUserProfileForm/getters'
 import authGetters from '@/store/middleware/auth/getters'
 import {IUser} from '@/boundary/userApplicationService/InOutType'

@@ -1,7 +1,7 @@
 import {combineMutation, mutation} from 'typescript-fsa-vuex'
 import {
   pageNotFound,
-} from './boundaryAction'
+} from './action'
 
 type State = {
   isPageNotFound: boolean,

@@ -2,7 +2,7 @@ import {combineMutation, mutation} from 'typescript-fsa-vuex'
 import {
   toggleDrawer,
   closeDrawer,
-} from './boundaryAction'
+} from './action'
 
 type State = {
   isOpen: boolean,

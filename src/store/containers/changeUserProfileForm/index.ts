@@ -1,14 +1,12 @@
 import {combineMutation, mutation} from 'typescript-fsa-vuex'
 import {
-  successUpdate,
-  failureSend,
-} from './insideAction'
-import {
   updateProfile,
   toStandby,
   openDialog,
   closeDialog,
-} from './boundaryAction'
+  successUpdate,
+  failureSend,
+} from './action'
 import {updatedUserProfileEvent} from '@/store/eventHub/eventCreators'
 import store from '@/store/root'
 import UserApp from '@/serviceLocator/UserApplicationService'

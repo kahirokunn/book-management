@@ -1,6 +1,6 @@
 import '@/store/resolveTestConfiguration'
 
-import {pageNotFound} from './boundaryAction'
+import {pageNotFound} from './action'
 import getters from './getters'
 import store from '@/store/root'
 

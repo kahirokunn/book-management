@@ -1,14 +1,12 @@
 import {combineMutation, mutation} from 'typescript-fsa-vuex'
 import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
-import {successUserLogin} from '@/store/middleware/auth/insideAction'
-import {
-  failureRegistration,
-  ErrorCode,
-} from './insideAction'
+import {successUserLogin} from '@/store/middleware/auth/action'
 import {
   userRegistration,
   toStandby,
-} from './boundaryAction'
+  failureRegistration,
+  ErrorCode,
+} from './action'
 import store from '@/store/root'
 import router from '@/router'
 

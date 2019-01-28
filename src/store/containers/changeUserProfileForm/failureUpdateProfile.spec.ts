@@ -1,7 +1,7 @@
 import '@/store/rejectTestConfiguration'
 import flushPromises from 'flush-promises'
 
-import {updateProfile} from './boundaryAction'
+import {updateProfile} from './action'
 import {userFactory} from '@/stub/domain/factory/IUser'
 import getters from './getters'
 import store from '@/store/root'

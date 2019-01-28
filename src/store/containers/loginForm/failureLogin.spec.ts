@@ -2,7 +2,7 @@ import '@/store/rejectTestConfiguration'
 import flushPromises from 'flush-promises'
 import authGetters from '@/store/middleware/auth/getters'
 
-import {loginByEmailAndPassword} from './boundaryAction'
+import {loginByEmailAndPassword} from './action'
 import getters from './getters'
 import store from '@/store/root'
 

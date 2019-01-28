@@ -4,13 +4,11 @@ import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
 import {
   userLogin,
   unsubscribeUserData,
-} from './boundaryAction'
-import {
   successUserLogin,
   failureLogin,
   subscribeUserData,
   receiveUserFromStream,
-} from './insideAction'
+} from './action'
 import store from '@/store/root'
 import Logger from '@/serviceLocator/Logger'
 import {updatedUserProfileEvent} from '@/store/eventHub/eventCreators'
