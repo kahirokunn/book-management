@@ -1,4 +1,4 @@
-import {combineMutation, mutation} from 'typescript-fsa-vuex'
+import {combineMutation, mutation, actionsToMutations} from 'typescript-fsa-vuex'
 import {
   pageNotFound,
 } from './action'
@@ -17,7 +17,10 @@ const mutations = combineMutation<State>(
   }),
 )
 
+const actions = actionsToMutations(pageNotFound)
+
 export default {
   state: initialState,
   mutations,
+  actions,
 }

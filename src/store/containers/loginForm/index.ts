@@ -1,16 +1,24 @@
-import {combineMutation, mutation} from 'typescript-fsa-vuex'
+import {
+  combineMutation,
+  mutation,
+  combineAction,
+  actionsToMutations,
+  action,
+  actionCreatorFactory,
+} from 'typescript-fsa-vuex'
 import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
 import {
   successUserLogin,
 } from '@/store/middleware/auth/action'
-import {
-  loginByEmailAndPassword,
-  toStandby,
-  failureLogin,
-} from './action'
 import router from '@/router'
-import store from '@/store/root'
 import Logger from '@/serviceLocator/Logger'
+import {loginByEmailAndPassword, toStandby} from './action'
+import namespace from './namespace'
+
+const actionCreator = actionCreatorFactory(namespace)
+const startLogin = actionCreator('START_LOGIN')
+const failureLogin = actionCreator('FAILURE_LOGIN')
+
 
 export enum ScreenState {
   STANDBY,
@@ -27,20 +35,8 @@ const initialState = (): State => ({
 })
 
 const mutations = combineMutation<State>(
-  mutation(loginByEmailAndPassword, (state, action) => {
+  mutation(startLogin, (state) => {
     state.screenState = ScreenState.SENDING
-
-    AuthApplicationService.getInstance().loginWithEmailAndPassword(
-      action.payload.email,
-      action.payload.password,
-    ).then((user) => {
-      store.commit(successUserLogin({authInfo: user}))
-      router.push('/')
-    })
-    .catch((e) => {
-      Logger.getInstance().error(e)
-      store.commit(failureLogin())
-    })
   }),
   mutation(failureLogin, (state) => {
     state.screenState = ScreenState.LOGIN_FAILED
@@ -50,7 +46,26 @@ const mutations = combineMutation<State>(
   }),
 )
 
+const actions = combineAction<State, never>(
+  action(loginByEmailAndPassword, async ({commit}, action) => {
+    commit(startLogin())
+    try {
+      const authInfo = await AuthApplicationService.getInstance().loginWithEmailAndPassword(
+        action.payload.email,
+        action.payload.password,
+      )
+      commit(successUserLogin({authInfo}))
+      router.push('/')
+    } catch (e) {
+      Logger.getInstance().error(e)
+      commit(failureLogin())
+    }
+  }),
+  actionsToMutations(toStandby),
+)
+
 export default {
   state: initialState,
   mutations,
+  actions,
 }

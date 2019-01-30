@@ -1,16 +1,27 @@
-import {combineMutation, mutation} from 'typescript-fsa-vuex'
+import {
+  combineMutation,
+  mutation,
+  actionsToMutations,
+  combineAction,
+  action,
+  actionCreatorFactory,
+} from 'typescript-fsa-vuex'
 import {
   updateProfile,
   toStandby,
   openDialog,
   closeDialog,
-  successUpdate,
-  failureSend,
 } from './action'
 import {updatedUserProfileEvent} from '@/store/eventHub/eventCreators'
 import store from '@/store/root'
 import UserApp from '@/serviceLocator/UserApplicationService'
 import Logger from '@/serviceLocator/Logger'
+import namespace from './namespace'
+
+const actionCreator = actionCreatorFactory(namespace)
+const startUpdate = actionCreator('START_UPDATE')
+const successUpdate = actionCreator('SUCCESS_UPDATE')
+const failureSend = actionCreator('FAILURE_SEND')
 
 export enum ScreenState {
   STANDBY,
@@ -30,19 +41,8 @@ const initialState = (): State => ({
 })
 
 const mutations = combineMutation<State>(
-  mutation(updateProfile, (state, action) => {
+  mutation(startUpdate, (state) => {
     state.screenState = ScreenState.SENDING
-
-    UserApp.getInstance().update(action.payload.user)
-      .then((user) => {
-        Logger.getInstance().info('ユーザー情報の更新に成功', user)
-        store.commit(successUpdate())
-        store.commit(updatedUserProfileEvent({user}))
-      })
-      .catch((e) => {
-        Logger.getInstance().error(e)
-        store.commit(failureSend())
-      })
   }),
   mutation(successUpdate, (state) => {
     state.screenState = ScreenState.SEND_SUCCESS
@@ -61,7 +61,29 @@ const mutations = combineMutation<State>(
   }),
 )
 
+const actions = combineAction<State, never>(
+  action(updateProfile, async ({commit}, action) => {
+    commit(startUpdate())
+
+    try {
+      const user = await UserApp.getInstance().update(action.payload.user)
+      Logger.getInstance().info('ユーザー情報の更新に成功', user)
+      commit(successUpdate())
+      commit(updatedUserProfileEvent({user}))
+    } catch (e) {
+      Logger.getInstance().error(e)
+      commit(failureSend())
+    }
+  }),
+  actionsToMutations(
+    openDialog,
+    closeDialog,
+    toStandby,
+  ),
+)
+
 export default {
   state: initialState,
   mutations,
+  actions,
 }
