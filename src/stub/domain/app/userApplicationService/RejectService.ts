@@ -5,7 +5,7 @@ import IUserApplicationService from '@/boundary/userApplicationService/IUserAppl
 @injectable()
 export default class RejectService implements IUserApplicationService {
 
-  public async update(params: IUser): Promise<IUser> {
+  public async update(): Promise<IUser> {
     throw Error()
   }
 }

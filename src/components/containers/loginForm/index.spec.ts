@@ -3,10 +3,11 @@ import flushPromises from 'flush-promises'
 import authGetters from '@/store/middleware/auth/getters'
 import { shallowMount } from '@vue/test-utils'
 import getters from '@/store/containers/loginForm/getters'
+import store from '@/store/root'
 import index from './index.vue'
 
 test('login form container', async () => {
-  const wrapper = shallowMount(index)
+  const wrapper = shallowMount(index, { store })
   expect(wrapper.html()).toMatchSnapshot()
   expect(getters.isFailed()).toBe(false)
   expect(getters.isSending()).toBe(false)

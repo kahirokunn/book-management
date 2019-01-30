@@ -7,7 +7,7 @@ import store from '@/store/root'
 
 test('ユーザー登録できる', async () => {
   expect(getters.isSending()).toBe(false)
-  store.commit(userRegistration({
+  store.dispatch(userRegistration({
     password: 'hello',
     iconFilepath: '',
     displayName: 't-tanaka',

@@ -14,6 +14,7 @@ import {
 } from './action'
 import router from '@/router'
 import namespace from './namespace'
+import Logger from '@/serviceLocator/Logger'
 
 const actionCreator = actionCreatorFactory(namespace)
 const startRegistration = actionCreator('START_REGISTRATION')
@@ -53,16 +54,18 @@ const mutations = combineMutation<State>(
   }),
 )
 
-const actions = combineAction<State, never>(
+const actions = combineAction<State, any>(
   actionsToMutations(toStandby),
-  action(userRegistration, async ({commit}, action) => {
+  action(userRegistration, async ({commit, dispatch}, action) => {
     commit(startRegistration())
     try {
       const authInfo = await AuthApplicationService.getInstance().registration(action.payload)
-      commit(successUserLogin({authInfo}))
+      Logger.getInstance().info('ユーザー登録成功', authInfo)
+      dispatch(successUserLogin({authInfo}))
       router.push('/')
     } catch (e) {
       commit(failureRegistration(e))
+      Logger.getInstance().info('ユーザー登録失敗')
     }
   }),
 )

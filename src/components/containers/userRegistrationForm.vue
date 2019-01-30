@@ -47,7 +47,6 @@ import {
   toStandby,
 } from '@/store/containers/userRegistrationForm/action'
 import getters from '@/store/containers/userRegistrationForm/getters'
-import store from '@/store/root'
 
 @Component({
   components: {
@@ -57,11 +56,11 @@ import store from '@/store/root'
 })
 export default class UserRegistrationFormContainer extends Vue {
   public userRegistration(params: IRegistrationParams) {
-    store.commit(userRegistration(params))
+    return this.$store.dispatch(userRegistration(params))
   }
 
   public toStandby() {
-    store.commit(toStandby())
+    return this.$store.dispatch(toStandby())
   }
 }
 </script>

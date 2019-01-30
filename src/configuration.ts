@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Router from 'vue-router'
-import {debugSetting} from 'typescript-fsa-vuex'
+import {setting} from 'typescript-fsa-vuex'
 
 import {auth} from '@/firebase/index'
 
@@ -18,8 +18,8 @@ auth().setPersistence(auth.Auth.Persistence.LOCAL)
 firebaseProviders(serviceContainer)
 
 if (!isProd()) {
-  debugSetting({
-    doNotUseSamePrefix: true,
+  setting({
     doNotCreateSameFluxType: true,
+    addIdToSuffix: true,
   })
 }

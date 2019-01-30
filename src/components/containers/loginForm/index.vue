@@ -39,7 +39,6 @@
 
 <script lang="ts">
 import {Vue, Component} from 'vue-property-decorator'
-import store from '@/store/root'
 import {
   loginByEmailAndPassword,
   toStandby,
@@ -54,12 +53,12 @@ import LoginForm from '@/components/organisms/loginForm.vue'
   computed: getters,
 })
 export default class LoginPage extends Vue {
-  public async login(email: string, password: string) {
-    store.commit(loginByEmailAndPassword({ email, password }))
+  public login(email: string, password: string) {
+    return this.$store.dispatch(loginByEmailAndPassword({ email, password }))
   }
 
   public toStandby() {
-    store.commit(toStandby())
+    return this.$store.dispatch(toStandby())
   }
 }
 </script>

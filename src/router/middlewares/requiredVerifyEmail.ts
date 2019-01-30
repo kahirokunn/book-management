@@ -7,7 +7,7 @@ export function isNeedRedirect(path: string) {
 }
 
 export default function requiredVerifyEmail(router: Router) {
-  router.beforeEach((to, from, next) => {
+  router.beforeEach((to, _, next) => {
     // メールアドレス認証されていない場合はメールアドレス認証をさせる
     if ((isNeedRedirect(to.path))) {
       return next(notVerifyEmailRedirectPath)

@@ -5,7 +5,6 @@ import {
   userLogin,
 } from '@/store/middleware/auth/action'
 import getters from '@/store/middleware/auth/getters'
-import store from '@/store/root'
 
 @Component
 export default class Auth extends Vue {
@@ -14,7 +13,7 @@ export default class Auth extends Vue {
   }
 
   public mounted() {
-    store.commit(userLogin())
+    this.$store.dispatch(userLogin())
   }
 
   public render(h: CreateElement): VNode {

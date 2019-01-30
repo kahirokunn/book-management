@@ -11,15 +11,15 @@ import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
 import {
   userLogin,
   unsubscribeUserData,
+  successUserLogin,
 } from './action'
 import Logger from '@/serviceLocator/Logger'
 import {updatedUserProfileEvent} from '@/store/eventHub/eventCreators'
 import UserStream from '@/serviceLocator/UserStream'
-import {IAuthInfo} from '@/boundary/authApplicationService/InOutType'
 import namespace from './namespace'
 
 const actionCreator = actionCreatorFactory(namespace)
-const successUserLogin = actionCreator<{authInfo: IAuthInfo, unsubscribe: unsubscribe}>('SUCCESS_USER_LOGIN')
+const startSubscribe = actionCreator<{unsubscribe: unsubscribe}>('START_SUBSCRIBE')
 const failureLogin = actionCreator('FAILURE_LOGIN')
 const receiveUserFromStream = actionCreator<{user: IUser}>('RECEIVE_USER_FROM_STREAM')
 
@@ -50,6 +50,8 @@ const mutations = combineMutation<State>(
     state.isEmailVerified = authInfo.isEmailVerified
     delete authInfo.isEmailVerified
     state.user = authInfo
+  }),
+  mutation(startSubscribe, (state, action) => {
     state.unsubscribe.push(action.payload.unsubscribe)
   }),
   mutation(failureLogin, (state) => {
@@ -65,17 +67,21 @@ const mutations = combineMutation<State>(
   }),
 )
 
-const actions = combineAction<State, never>(
-  actionsToMutations(updatedUserProfileEvent),
+const actions = combineAction<State, any>(
+  actionsToMutations(
+    updatedUserProfileEvent,
+    successUserLogin,
+  ),
   action(userLogin, async ({commit}) => {
     try {
       const authInfo = await AuthApplicationService.getInstance().login()
+      commit(successUserLogin({authInfo}))
+      Logger.getInstance().info('ログイン成功', authInfo)
       const unsubscribe = UserStream.getInstance().subscribe({
         payload: { userId: authInfo.id },
         subscriber: (user) => commit(receiveUserFromStream({user})),
       })
-      commit(successUserLogin({authInfo, unsubscribe}))
-      Logger.getInstance().info('ログイン成功', authInfo)
+      commit(startSubscribe({unsubscribe}))
     } catch (e) {
       Logger.getInstance().info('ログイン失敗', e)
       commit(failureLogin())

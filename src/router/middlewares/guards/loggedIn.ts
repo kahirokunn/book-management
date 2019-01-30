@@ -18,7 +18,7 @@ export function isNeedRedirect(path: string) {
 }
 
 export default function requiredVerifyEmail(router: Router) {
-  router.beforeEach((to, from, next) => {
+  router.beforeEach((to, _, next) => {
     // 認証されてる場合ブラックリストに行かせないように制限
     if (isNeedRedirect(to.path)) {
       return next(redirectPath)

@@ -10,7 +10,7 @@ import store from '@/store/root'
 
 test('そのメールアドレスは既に登録されています', async () => {
   expect(getters.isSending()).toBe(false)
-  store.commit(userRegistration({
+  store.dispatch(userRegistration({
     password: 'hello',
     iconFilepath: '',
     displayName: 't-tanaka',
@@ -29,6 +29,6 @@ test('そのメールアドレスは既に登録されています', async () =>
   expect(authGetters.user()).toBeUndefined()
   expect(getters.isSendFailed()).toBe(true)
   expect(getters.errorMessage()).toBe('そのメールアドレスは既に登録されています')
-  store.commit(toStandby())
+  store.dispatch(toStandby())
   expect(getters.isSendFailed()).toBe(false)
 })

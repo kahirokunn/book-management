@@ -22,7 +22,7 @@ export default class ResolveService implements IAuthApplicationService {
     }
   }
 
-  public async loginWithEmailAndPassword(email: string, password: string): Promise<IAuthInfo> {
+  public async loginWithEmailAndPassword(email: string): Promise<IAuthInfo> {
     return {
       isEmailVerified: true,
       ...userFactory({

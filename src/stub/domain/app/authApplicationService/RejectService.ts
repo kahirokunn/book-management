@@ -1,13 +1,12 @@
 import {injectable} from 'inversify'
 import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService'
 import {
-  IRegistrationParams,
   IAuthInfo,
 } from '@/boundary/authApplicationService/InOutType'
 
 @injectable()
 export default class RejectService implements IAuthApplicationService {
-  public async registration(params: IRegistrationParams): Promise<IAuthInfo> {
+  public async registration(): Promise<IAuthInfo> {
     const code = 'auth/email-already-in-use'
     throw { code }
   }
@@ -16,7 +15,7 @@ export default class RejectService implements IAuthApplicationService {
     throw Error()
   }
 
-  public async loginWithEmailAndPassword(email: string, password: string): Promise<IAuthInfo> {
+  public async loginWithEmailAndPassword(): Promise<IAuthInfo> {
     throw Error()
   }
 }

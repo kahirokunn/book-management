@@ -71,7 +71,6 @@
 <script lang="ts">
 import {Vue, Component} from 'vue-property-decorator'
 import UserProfileForm from '@/components/organisms/userProfileForm.vue'
-import store from '@/store/root'
 import {
   updateProfile,
   toStandby,
@@ -92,15 +91,15 @@ import {IUser} from '@/boundary/userApplicationService/InOutType'
 })
 export default class ChangeUserProfileFormContainer extends Vue {
   public updateProfile(params: IUser) {
-    store.commit(updateProfile({ user: params }))
+    return this.$store.dispatch(updateProfile({ user: params }))
   }
 
   public toStandby() {
-    store.commit(toStandby())
+    return this.$store.dispatch(toStandby())
   }
 
   public closeDialog() {
-    store.commit(closeDialog())
+    return this.$store.dispatch(closeDialog())
   }
 }
 </script>

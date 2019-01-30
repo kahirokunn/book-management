@@ -35,7 +35,6 @@
 <script lang="ts">
 import {Vue, Component} from 'vue-property-decorator'
 import authGetters from '@/store/middleware/auth/getters'
-import store from '@/store/root'
 import {toggleDrawer} from '@/store/containers/navigation/action'
 import {defaultUserIconUrl} from '@/config/user/defaultUserParams'
 import {openDialog} from '@/store/containers/changeUserProfileForm/action'
@@ -49,11 +48,11 @@ export default class LoggedInHeader extends Vue {
   }
 
   public openDialog() {
-    store.commit(openDialog())
+    return this.$store.dispatch(openDialog())
   }
 
   public toggleDrawer() {
-    store.commit(toggleDrawer())
+    return this.$store.dispatch(toggleDrawer())
   }
 }
 </script>

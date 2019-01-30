@@ -46,7 +46,7 @@ const mutations = combineMutation<State>(
   }),
 )
 
-const actions = combineAction<State, never>(
+const actions = combineAction<State, any>(
   action(loginByEmailAndPassword, async ({commit}, action) => {
     commit(startLogin())
     try {

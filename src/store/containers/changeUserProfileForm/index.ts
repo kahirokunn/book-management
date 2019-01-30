@@ -61,7 +61,7 @@ const mutations = combineMutation<State>(
   }),
 )
 
-const actions = combineAction<State, never>(
+const actions = combineAction<State, any>(
   action(updateProfile, async ({commit}, action) => {
     commit(startUpdate())
 

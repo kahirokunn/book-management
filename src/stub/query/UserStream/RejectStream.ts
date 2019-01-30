@@ -3,7 +3,7 @@ import IUserStream, {InputSubscribe} from '@/query/user/IUserStream'
 
 @injectable()
 export default class UserStream implements IUserStream {
-  public subscribe({ subscriber, payload, onError }: InputSubscribe): unsubscribe {
+  public subscribe({ onError }: InputSubscribe): unsubscribe {
     if (onError) {
       onError(new Error())
     }

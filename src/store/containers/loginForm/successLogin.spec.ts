@@ -9,7 +9,7 @@ import store from '@/store/root'
 test('ログインできる', async () => {
   expect(getters.isFailed()).toBe(false)
   expect(getters.isSending()).toBe(false)
-  store.commit(loginByEmailAndPassword({
+  store.dispatch(loginByEmailAndPassword({
     email: 'tanaka@gmail.com',
     password: 'tanakatarou',
   }))

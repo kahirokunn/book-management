@@ -11,7 +11,7 @@ test('ユーザープロフィールの更新に失敗する', async () => {
   expect(getters.isSending()).toBe(false)
   expect(getters.isSendSuccess()).toBe(false)
 
-  store.commit(updateProfile({user: userFactory()}))
+  store.dispatch(updateProfile({user: userFactory()}))
   expect(getters.isSending()).toBe(true)
   await flushPromises()
 
