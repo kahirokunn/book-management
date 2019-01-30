@@ -10,14 +10,14 @@ import {
 @Component
 export default class UnLoggedIn extends Vue {
   public beforeCreate() {
-    if (isNeedRedirect(router.currentRoute.path)) {
+    if (isNeedRedirect(router.currentRoute.path, this.$store.state)) {
       router.push(redirectPath)
     }
   }
 
   public render(h: CreateElement): VNode {
     if (
-      !isNeedRedirect(router.currentRoute.path) &&
+      !isNeedRedirect(router.currentRoute.path, this.$store.state) &&
       this.$slots.default &&
       this.$slots.default.length > 0
     ) {

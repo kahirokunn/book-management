@@ -1,15 +1,16 @@
 import '@/store/rejectTestConfiguration'
 import flushPromises from 'flush-promises'
-import authGetters from '@/store/middleware/auth/getters'
+import authSelector from '@/store/middleware/auth/selector'
 import {
   userRegistration,
   toStandby,
 } from './action'
-import getters from './getters'
-import store from '@/store/root'
+import selector from './selector'
+import {createStore} from '@/store/root'
 
 test('そのメールアドレスは既に登録されています', async () => {
-  expect(getters.isSending()).toBe(false)
+  const store = createStore()
+  expect(selector.isSending(store.state)).toBe(false)
   store.dispatch(userRegistration({
     password: 'hello',
     iconFilepath: '',
@@ -23,12 +24,12 @@ test('そのメールアドレスは既に登録されています', async () =>
     hireDate: new Date(),
     gender: '男',
   }))
-  expect(getters.isSending()).toBe(true)
-  expect(authGetters.user()).toBeUndefined()
+  expect(selector.isSending(store.state)).toBe(true)
+  expect(authSelector.user(store.state)).toBeUndefined()
   await flushPromises()
-  expect(authGetters.user()).toBeUndefined()
-  expect(getters.isSendFailed()).toBe(true)
-  expect(getters.errorMessage()).toBe('そのメールアドレスは既に登録されています')
+  expect(authSelector.user(store.state)).toBeUndefined()
+  expect(selector.isSendFailed(store.state)).toBe(true)
+  expect(selector.errorMessage(store.state)).toBe('そのメールアドレスは既に登録されています')
   store.dispatch(toStandby())
-  expect(getters.isSendFailed()).toBe(false)
+  expect(selector.isSendFailed(store.state)).toBe(false)
 })

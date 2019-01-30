@@ -3,17 +3,18 @@ import flushPromises from 'flush-promises'
 
 import {updateProfile} from './action'
 import {userFactory} from '@/stub/domain/factory/IUser'
-import getters from './getters'
-import store from '@/store/root'
+import selector from './selector'
+import {createStore} from '@/store/root'
 
 test('ユーザープロフィールの更新に成功する', async () => {
-  expect(getters.isSendFailed()).toBe(false)
-  expect(getters.isSending()).toBe(false)
-  expect(getters.isSendSuccess()).toBe(false)
+  const store = createStore()
+  expect(selector.isSendFailed(store.state)).toBe(false)
+  expect(selector.isSending(store.state)).toBe(false)
+  expect(selector.isSendSuccess(store.state)).toBe(false)
   store.dispatch(updateProfile({user: userFactory()}))
-  expect(getters.isSending()).toBe(true)
+  expect(selector.isSending(store.state)).toBe(true)
   await flushPromises()
-  expect(getters.isSending()).toBe(false)
-  expect(getters.isSendFailed()).toBe(false)
-  expect(getters.isSendSuccess()).toBe(true)
+  expect(selector.isSending(store.state)).toBe(false)
+  expect(selector.isSendFailed(store.state)).toBe(false)
+  expect(selector.isSendSuccess(store.state)).toBe(true)
 })

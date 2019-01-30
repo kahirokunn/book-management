@@ -4,12 +4,12 @@ import {Vue, Component} from 'vue-property-decorator'
 import {
   userLogin,
 } from '@/store/middleware/auth/action'
-import getters from '@/store/middleware/auth/getters'
+import selector from '@/store/middleware/auth/selector'
 
 @Component
 export default class Auth extends Vue {
   get isReady() {
-    return getters.isInitialized()
+    return selector.isInitialized(this.$store.state)
   }
 
   public mounted() {

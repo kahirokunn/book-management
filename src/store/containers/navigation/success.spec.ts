@@ -3,19 +3,20 @@ import {
   toggleDrawer,
   closeDrawer,
 } from './action'
-import getters from './getters'
-import store from '@/store/root'
+import selector from './selector'
+import {createStore} from '@/store/root'
 
 test('ナビゲーションバーの開閉操作に成功', async () => {
-  expect(getters.isOpen()).toBe(false)
+  const store = createStore()
+  expect(selector.isOpen(store.state)).toBe(false)
   store.dispatch(closeDrawer())
-  expect(getters.isOpen()).toBe(false)
+  expect(selector.isOpen(store.state)).toBe(false)
   store.dispatch(toggleDrawer())
-  expect(getters.isOpen()).toBe(true)
+  expect(selector.isOpen(store.state)).toBe(true)
   store.dispatch(toggleDrawer())
-  expect(getters.isOpen()).toBe(false)
+  expect(selector.isOpen(store.state)).toBe(false)
   store.dispatch(toggleDrawer())
-  expect(getters.isOpen()).toBe(true)
+  expect(selector.isOpen(store.state)).toBe(true)
   store.dispatch(closeDrawer())
-  expect(getters.isOpen()).toBe(false)
+  expect(selector.isOpen(store.state)).toBe(false)
 })

@@ -76,18 +76,16 @@ import {
   toStandby,
   closeDialog,
 } from '@/store/containers/changeUserProfileForm/action'
-import getters from '@/store/containers/changeUserProfileForm/getters'
-import authGetters from '@/store/middleware/auth/getters'
+import selector from '@/store/containers/changeUserProfileForm/selector'
+import authSelector from '@/store/middleware/auth/selector'
 import {IUser} from '@/boundary/userApplicationService/InOutType'
+import { mapComputed } from '@/submodules/store'
 
 @Component({
   components: {
     UserProfileForm,
   },
-  computed: {
-    ...getters,
-    ...authGetters,
-  },
+  computed: mapComputed(selector, authSelector),
 })
 export default class ChangeUserProfileFormContainer extends Vue {
   public updateProfile(params: IUser) {

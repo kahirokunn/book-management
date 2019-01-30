@@ -1,7 +1,7 @@
 <script lang="ts">
 import {CreateElement, VNode} from 'vue'
 import {Vue, Component, Watch} from 'vue-property-decorator'
-import getters from '@/store/middleware/auth/getters'
+import selector from '@/store/middleware/auth/selector'
 import {notVerifyEmailRedirectPath} from '@/config/auth'
 import {isNeedRedirect} from '@/router/middlewares/requiredVerifyEmail'
 import First from '@/components/modules/first.vue'
@@ -10,12 +10,12 @@ import router from '@/router'
 @Component
 export default class RequiredVerifyEmail extends Vue {
   get isReady() {
-    return getters.isInitialized()
+    return selector.isInitialized(this.$store.state)
   }
 
   @Watch('isReady', { immediate: true })
   public redirect() {
-    if (isNeedRedirect(router.currentRoute.path)) {
+    if (isNeedRedirect(router.currentRoute.path, this.$store.state)) {
       this.$router.push(notVerifyEmailRedirectPath)
     }
   }

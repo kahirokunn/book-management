@@ -1,20 +1,20 @@
-import store from '@/store/root'
+import {Store} from '@/store/root'
 import {ScreenState} from './index'
 
-function _state() {
-  return store.state.containers.userRegistrationForm
+function _stateScope(state: Store['state']) {
+  return state.containers.userRegistrationForm
 }
 
-function isSending() {
-  return _state().screenState === ScreenState.SENDING
+function isSending(state: Store['state']) {
+  return _stateScope(state).screenState === ScreenState.SENDING
 }
 
-function isSendFailed() {
-  return _state().screenState === ScreenState.SEND_FAILED
+function isSendFailed(state: Store['state']) {
+  return _stateScope(state).screenState === ScreenState.SEND_FAILED
 }
 
-function errorMessage() {
-  switch (_state().errorCode) {
+function errorMessage(state: Store['state']) {
+  switch (_stateScope(state).errorCode) {
     case 'auth/email-already-in-use':
       return 'そのメールアドレスは既に登録されています'
     case 'auth/invalid-email':

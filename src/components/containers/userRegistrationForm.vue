@@ -46,13 +46,14 @@ import {
   userRegistration,
   toStandby,
 } from '@/store/containers/userRegistrationForm/action'
-import getters from '@/store/containers/userRegistrationForm/getters'
+import selector from '@/store/containers/userRegistrationForm/selector'
+import { mapComputed } from '@/submodules/store'
 
 @Component({
   components: {
     UserRegistrationForm,
   },
-  computed: getters,
+  computed: mapComputed(selector),
 })
 export default class UserRegistrationFormContainer extends Vue {
   public userRegistration(params: IRegistrationParams) {

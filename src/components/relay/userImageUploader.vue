@@ -74,7 +74,7 @@
 import {Vue, Component, Prop, Watch} from 'vue-property-decorator'
 import uuid from 'uuid/v4'
 import {storage} from '@/firebase/index'
-import authGetters from '@/store/middleware/auth/getters'
+import authSelector from '@/store/middleware/auth/selector'
 import Logger from '@/serviceLocator/Logger'
 
 type RequestType = { file: File }
@@ -124,7 +124,7 @@ export default class UserImageUploader extends Vue {
   }
 
   public async uploadToFilesbaseStorage(request: RequestType) {
-    const user = authGetters.user()
+    const user = authSelector.user(this.$store.state)
     if (user === undefined) {
       return
     }

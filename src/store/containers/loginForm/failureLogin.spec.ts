@@ -1,22 +1,23 @@
 import '@/store/rejectTestConfiguration'
 import flushPromises from 'flush-promises'
-import authGetters from '@/store/middleware/auth/getters'
+import authSelector from '@/store/middleware/auth/selector'
 
 import {loginByEmailAndPassword} from './action'
-import getters from './getters'
-import store from '@/store/root'
+import selector from './selector'
+import {createStore} from '@/store/root'
 
 test('ログイン失敗', async () => {
-  expect(getters.isFailed()).toBe(false)
-  expect(getters.isSending()).toBe(false)
+  const store = createStore()
+  expect(selector.isFailed(store.state)).toBe(false)
+  expect(selector.isSending(store.state)).toBe(false)
   store.dispatch(loginByEmailAndPassword({
     email: 'tanaka@gmail.com',
     password: 'tanakatarou',
   }))
-  expect(getters.isSending()).toBe(true)
-  expect(authGetters.user()).toBeUndefined()
+  expect(selector.isSending(store.state)).toBe(true)
+  expect(authSelector.user(store.state)).toBeUndefined()
   await flushPromises()
-  expect(authGetters.user()).toBeUndefined()
-  expect(getters.isSending()).toBe(false)
-  expect(getters.isFailed()).toBe(true)
+  expect(authSelector.user(store.state)).toBeUndefined()
+  expect(selector.isSending(store.state)).toBe(false)
+  expect(selector.isFailed(store.state)).toBe(true)
 })

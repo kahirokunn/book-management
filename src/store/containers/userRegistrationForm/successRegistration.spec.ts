@@ -1,12 +1,13 @@
 import '@/store/resolveTestConfiguration'
 import flushPromises from 'flush-promises'
-import authGetters from '@/store/middleware/auth/getters'
+import authSelector from '@/store/middleware/auth/selector'
 import {userRegistration} from './action'
-import getters from './getters'
-import store from '@/store/root'
+import selector from './selector'
+import {createStore} from '@/store/root'
 
 test('ユーザー登録できる', async () => {
-  expect(getters.isSending()).toBe(false)
+  const store = createStore()
+  expect(selector.isSending(store.state)).toBe(false)
   store.dispatch(userRegistration({
     password: 'hello',
     iconFilepath: '',
@@ -20,9 +21,9 @@ test('ユーザー登録できる', async () => {
     hireDate: new Date(),
     gender: '男',
   }))
-  expect(getters.isSending()).toBe(true)
-  expect(authGetters.user()).toBeUndefined()
+  expect(selector.isSending(store.state)).toBe(true)
+  expect(authSelector.user(store.state)).toBeUndefined()
   await flushPromises()
-  expect(authGetters.user()).not.toBeUndefined()
-  expect(getters.isSendFailed()).toBe(false)
+  expect(authSelector.user(store.state)).not.toBeUndefined()
+  expect(selector.isSendFailed(store.state)).toBe(false)
 })

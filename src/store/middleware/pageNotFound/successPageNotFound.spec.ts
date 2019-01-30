@@ -1,13 +1,13 @@
 import '@/store/resolveTestConfiguration'
-
-import {pageNotFound} from './action'
-import getters from './getters'
-import store from '@/store/root'
 import flushPromises from 'flush-promises'
+import {pageNotFound} from './action'
+import selector from './selector'
+import {createStore} from '@/store/root'
 
 test('pageNotFound状態がtrueになる', async () => {
-  expect(getters.isPageNotFound()).toBe(false)
+  const store = createStore()
+  expect(selector.isPageNotFound(store.state)).toBe(false)
   store.dispatch(pageNotFound())
   await flushPromises()
-  expect(getters.isPageNotFound()).toBe(true)
+  expect(selector.isPageNotFound(store.state)).toBe(true)
 })

@@ -10,7 +10,7 @@
 <script lang="ts">
 import {Vue, Component} from 'vue-property-decorator'
 import Blank from '@/layouts/blank.vue'
-import getters from '@/store/middleware/auth/getters'
+import selector from '@/store/middleware/auth/selector'
 import router from '@/router'
 
 @Component({
@@ -21,9 +21,9 @@ import router from '@/router'
 export default class RequiredVerifyEmailPage extends Vue {
   public created() {
     // メールアドレス認証が完了しているユーザーには見せない
-    if (getters.isEmailVerified()) {
+    if (selector.isEmailVerified(this.$store.state)) {
       router.push('/')
-    } else if (!getters.isLoggedIn()) {
+    } else if (!selector.isLoggedIn(this.$store.state)) {
       router.push(('/'))
     }
   }

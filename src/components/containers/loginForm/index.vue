@@ -43,14 +43,15 @@ import {
   loginByEmailAndPassword,
   toStandby,
 } from '@/store/containers/loginForm/action'
-import getters from '@/store/containers/loginForm/getters'
 import LoginForm from '@/components/organisms/loginForm.vue'
+import selector from '@/store/containers/loginForm/selector'
+import {mapComputed} from '@/submodules/store'
 
 @Component({
   components: {
     LoginForm,
   },
-  computed: getters,
+  computed: mapComputed(selector),
 })
 export default class LoginPage extends Vue {
   public login(email: string, password: string) {

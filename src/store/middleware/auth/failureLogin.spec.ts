@@ -2,16 +2,17 @@ import '@/store/rejectTestConfiguration'
 import flushPromises from 'flush-promises'
 
 import {userLogin} from './action'
-import getters from './getters'
-import store from '@/store/root'
+import selector from './selector'
+import {createStore} from '@/store/root'
 
 test('ユーザーログインできない', async () => {
-  expect(getters.user()).toBeUndefined()
-  expect(getters.isInitialized()).toBe(false)
-  expect(getters.isLoggedIn()).toBe(false)
+  const store = createStore()
+  expect(selector.user(store.state)).toBeUndefined()
+  expect(selector.isInitialized(store.state)).toBe(false)
+  expect(selector.isLoggedIn(store.state)).toBe(false)
   store.dispatch(userLogin())
   await flushPromises()
-  expect(getters.user()).toBeUndefined()
-  expect(getters.isInitialized()).toBe(true)
-  expect(getters.isLoggedIn()).toBe(false)
+  expect(selector.user(store.state)).toBeUndefined()
+  expect(selector.isInitialized(store.state)).toBe(true)
+  expect(selector.isLoggedIn(store.state)).toBe(false)
 })

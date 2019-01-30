@@ -1,24 +1,27 @@
 import '@/store/resolveTestConfiguration'
 import flushPromises from 'flush-promises'
-import authGetters from '@/store/middleware/auth/getters'
+import authSelector from '@/store/middleware/auth/selector'
 import { shallowMount } from '@vue/test-utils'
-import getters from '@/store/containers/loginForm/getters'
-import store from '@/store/root'
+import selector from '@/store/containers/loginForm/selector'
+import {createStore} from '@/store/root'
 import index from './index.vue'
 
 test('login form container', async () => {
+  const store = createStore()
+  selector.isFailed(store.state)
+  selector.isSending(store.state)
   const wrapper = shallowMount(index, { store })
   expect(wrapper.html()).toMatchSnapshot()
-  expect(getters.isFailed()).toBe(false)
-  expect(getters.isSending()).toBe(false)
+  expect(selector.isFailed(store.state)).toBe(false)
+  expect(selector.isSending(store.state)).toBe(false)
   const vm = wrapper.vm as any
   vm.login({
     email: 'tanaka@gmail.com',
     password: 'tanakatarou',
   })
-  expect(getters.isSending()).toBe(true)
-  expect(authGetters.user()).toBeUndefined()
+  expect(selector.isSending(store.state)).toBe(true)
+  expect(authSelector.user(store.state)).toBeUndefined()
   await flushPromises()
-  expect(authGetters.user()).not.toBeUndefined()
-  expect(getters.isFailed()).toBe(false)
+  expect(authSelector.user(store.state)).not.toBeUndefined()
+  expect(selector.isFailed(store.state)).toBe(false)
 })

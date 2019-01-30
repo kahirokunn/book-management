@@ -34,13 +34,14 @@
 
 <script lang="ts">
 import {Vue, Component} from 'vue-property-decorator'
-import authGetters from '@/store/middleware/auth/getters'
+import authSelector from '@/store/middleware/auth/selector'
 import {toggleDrawer} from '@/store/containers/navigation/action'
 import {defaultUserIconUrl} from '@/config/user/defaultUserParams'
 import {openDialog} from '@/store/containers/changeUserProfileForm/action'
+import { mapComputed } from '@/submodules/store'
 
 @Component({
-  computed: authGetters,
+  computed: mapComputed(authSelector),
 })
 export default class LoggedInHeader extends Vue {
   get defaultUserIconUrl() {

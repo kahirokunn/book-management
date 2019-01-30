@@ -16,4 +16,4 @@ export function createStore() {
   })
 }
 
-export default createStore()
+export type Store = ReturnType<typeof createStore>

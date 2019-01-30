@@ -1,11 +1,20 @@
-import './configuration'
-import './plugins/element'
-import './stylesheets/main.scss'
+import '@/configuration'
+import '@/plugins/element'
+import '@/stylesheets/main.scss'
 import Vue from 'vue'
-import store from './store/root'
-import router from './router/index'
+import router from '@/router/index'
+import requiredVerifyEmail from '@/router/middlewares/requiredVerifyEmail'
+import unLoggedIn from '@/router/middlewares/guards/unLoggedIn'
+import loggedIn from '@/router/middlewares/guards/loggedIn'
+import {createStore} from './store/root'
 
-Vue.config.productionTip = false
+const store = createStore()
+
+requiredVerifyEmail(router, store.state)
+unLoggedIn(router, store.state)
+loggedIn(router, store.state)
+
+Vue.config.productionTip = true
 
 new Vue({
   router,

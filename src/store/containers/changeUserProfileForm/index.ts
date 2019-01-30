@@ -13,7 +13,6 @@ import {
   closeDialog,
 } from './action'
 import {updatedUserProfileEvent} from '@/store/eventHub/eventCreators'
-import store from '@/store/root'
 import UserApp from '@/serviceLocator/UserApplicationService'
 import Logger from '@/serviceLocator/Logger'
 import namespace from './namespace'
