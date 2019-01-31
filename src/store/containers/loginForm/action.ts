@@ -1,7 +1,6 @@
 import { actionCreatorFactory } from 'typescript-fsa-vuex'
-import namespace from './namespace'
 
-const actionCreator = actionCreatorFactory(namespace)
+export const actionCreator = actionCreatorFactory('containers/loginForm')
 
 export const loginByEmailAndPassword =
   actionCreator<{readonly email: string, readonly password: string}>('LOGIN_BY_EMAIL_AND_PASSWORD')

@@ -5,20 +5,18 @@ import UserStream from '@/serviceLocator/UserStream'
 import { updatedUserProfileEvent } from '@/store/eventHub/eventCreators'
 import {
   action,
-  actionCreatorFactory,
   actionsToMutations,
   combineAction,
   combineMutation,
   mutation,
 } from 'typescript-fsa-vuex'
 import {
+  actionCreator,
   successUserLogin,
   unsubscribeUserData,
   userLogin,
 } from './action'
-import namespace from './namespace'
 
-const actionCreator = actionCreatorFactory(namespace)
 const startSubscribe = actionCreator<{unsubscribe: unsubscribe}>('START_SUBSCRIBE')
 const failureLogin = actionCreator('FAILURE_LOGIN')
 const receiveUserFromStream = actionCreator<{user: IUser}>('RECEIVE_USER_FROM_STREAM')

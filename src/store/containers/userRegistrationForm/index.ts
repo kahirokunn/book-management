@@ -4,19 +4,17 @@ import Logger from '@/serviceLocator/Logger'
 import { successUserLogin } from '@/store/middleware/auth/action'
 import {
   action,
-  actionCreatorFactory,
   actionsToMutations,
   combineAction,
   combineMutation,
   mutation,
 } from 'typescript-fsa-vuex'
 import {
+  actionCreator,
   toStandby,
   userRegistration,
 } from './action'
-import namespace from './namespace'
 
-const actionCreator = actionCreatorFactory(namespace)
 const startRegistration = actionCreator('START_REGISTRATION')
 // https://firebase.google.com/docs/reference/js/firebase.auth.Auth#createUserWithEmailAndPassword
 type ErrorCode =

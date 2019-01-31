@@ -8907,9 +8907,9 @@ pretty@2.0.0:
     extend-shallow "^2.0.1"
     js-beautify "^1.6.12"
 
-pring@^0.26.0:
-  version "0.26.0"
-  resolved "https://registry.yarnpkg.com/pring/-/pring-0.26.0.tgz#d3b4ed2ae29ad530538d4bcd1ec2a95cfd9afc0f"
+pring@^0.26.2:
+  version "0.26.2"
+  resolved "https://registry.yarnpkg.com/pring/-/pring-0.26.2.tgz#686e9df61a24493d24ff446484954f598125b3d4"
   dependencies:
     "@types/uuid" "^3.4.4"
     reflect-metadata "^0.1.12"

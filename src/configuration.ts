@@ -41,6 +41,7 @@ if (isProd()) {
   })
 } else {
   setting({
+    doNotUseSamePrefix: true,
     doNotCreateSameFluxType: true,
     addIdToSuffix: true,
   })

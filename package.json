@@ -24,7 +24,7 @@
     "highlight.js": "^9.13.1",
     "inversify": "^5.0.1",
     "marked": "^0.5.1",
-    "pring": "^0.26.0",
+    "pring": "^0.26.2",
     "reflect-metadata": "^0.1.12",
     "typescript-fsa-vuex": "^3.0.2",
     "vue": "^2.5.17",

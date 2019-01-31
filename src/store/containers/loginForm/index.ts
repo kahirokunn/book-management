@@ -6,16 +6,17 @@ import {
 } from '@/store/middleware/auth/action'
 import {
   action,
-  actionCreatorFactory,
   actionsToMutations,
   combineAction,
   combineMutation,
   mutation,
 } from 'typescript-fsa-vuex'
-import { loginByEmailAndPassword, toStandby } from './action'
-import namespace from './namespace'
+import {
+  actionCreator,
+  loginByEmailAndPassword,
+  toStandby,
+} from './action'
 
-const actionCreator = actionCreatorFactory(namespace)
 const startLogin = actionCreator('START_LOGIN')
 const failureLogin = actionCreator('FAILURE_LOGIN')
 

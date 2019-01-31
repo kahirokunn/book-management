@@ -1,8 +1,7 @@
 import { IUser } from '@/boundary/userApplicationService/InOutType'
 import { actionCreatorFactory } from 'typescript-fsa-vuex'
-import namespace from './namespace'
 
-const actionCreator = actionCreatorFactory(namespace)
+export const actionCreator = actionCreatorFactory('containers/changeUserProfileForm')
 
 export const updateProfile = actionCreator<{readonly user: IUser}>('UPDATE_PROFILE')
 export const toStandby = actionCreator('TO_STANDBY')

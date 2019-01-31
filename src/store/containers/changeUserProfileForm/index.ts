@@ -3,21 +3,19 @@ import UserApp from '@/serviceLocator/UserApplicationService'
 import { updatedUserProfileEvent } from '@/store/eventHub/eventCreators'
 import {
   action,
-  actionCreatorFactory,
   actionsToMutations,
   combineAction,
   combineMutation,
   mutation,
 } from 'typescript-fsa-vuex'
 import {
+  actionCreator,
   closeDialog,
   openDialog,
   toStandby,
   updateProfile,
 } from './action'
-import namespace from './namespace'
 
-const actionCreator = actionCreatorFactory(namespace)
 const startUpdate = actionCreator('START_UPDATE')
 const successUpdate = actionCreator('SUCCESS_UPDATE')
 const failureSend = actionCreator('FAILURE_SEND')
