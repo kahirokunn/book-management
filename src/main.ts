@@ -1,5 +1,4 @@
 import '@/configuration'
-import '@/plugins/element'
 import router from '@/router/index'
 import loggedIn from '@/router/middlewares/guards/loggedIn'
 import unLoggedIn from '@/router/middlewares/guards/unLoggedIn'
