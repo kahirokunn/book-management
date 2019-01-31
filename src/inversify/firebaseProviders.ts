@@ -3,10 +3,12 @@ import IUserApplicationService from '@/boundary/userApplicationService/IUserAppl
 import AuthApplicationService from '@/domain/application/authApplicationService/AuthApplicationService'
 import UserApplicationService from '@/domain/application/userApplicationService/UserApplicationService'
 import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
+import IAuthRepository from '@/domain/model/auth/IAuthRepository'
 import IUserRepository from '@/domain/model/user/IUserRepository'
 import ILogger from '@/drivers/ILogger'
 import ConsoleLogger from '@/drivers/logger/ConsoleLogger'
 import AuthDomainService from '@/firebaseImpl/domain/auth/AuthDomainService'
+import AuthRepository from '@/firebaseImpl/domain/auth/AuthRepository'
 import FirebaseUserRepository from '@/firebaseImpl/domain/user/FirebaseUserRepository'
 import UserStream from '@/firebaseImpl/query/UserStream'
 import IUserStream from '@/query/user/IUserStream'
@@ -26,4 +28,5 @@ export function firebaseProviders(container: Container): void {
   // domain
   container.bind(IUserRepository).to(FirebaseUserRepository).inSingletonScope()
   container.bind(IAuthDomainService).to(AuthDomainService).inSingletonScope()
+  container.bind(IAuthRepository).to(AuthRepository).inSingletonScope()
 }

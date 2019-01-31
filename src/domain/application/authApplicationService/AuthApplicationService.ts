@@ -4,6 +4,7 @@ import {
   IRegistrationParams,
 } from '@/boundary/authApplicationService/InOutType'
 import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
+import IAuthRepository from '@/domain/model/auth/IAuthRepository'
 import IUserRepository from '@/domain/model/user/IUserRepository'
 import {
   inject,
@@ -17,10 +18,12 @@ export default class AuthApplicationService extends IAuthApplicationService {
     private readonly userRepository: IUserRepository,
     @inject(IAuthDomainService)
     private readonly authDomainService: IAuthDomainService,
+    @inject(IAuthRepository)
+    private readonly authRepository: IAuthRepository,
   ) { super() }
 
   public async registration(params: IRegistrationParams): Promise<IAuthInfo> {
-    const userId = await this.authDomainService.createUserWithEmailAndPassword(params.emailAddress, params.password)
+    const userId = await this.authRepository.createAuthInfoWithEmailAndPassword(params.emailAddress, params.password)
     const userParams = {
       id: userId,
       displayName: params.displayName,
@@ -47,7 +50,7 @@ export default class AuthApplicationService extends IAuthApplicationService {
   }
 
   public async login(): Promise<IAuthInfo> {
-    const userId = await this.authDomainService.login()
+    const userId = await this.authRepository.login()
     const user = await this.userRepository.findById(userId)
     const isEmailVerified = this.authDomainService.isEmailVerified()
 
@@ -58,7 +61,7 @@ export default class AuthApplicationService extends IAuthApplicationService {
   }
 
   public async loginWithEmailAndPassword(email: string, password: string): Promise<IAuthInfo> {
-    const id = await this.authDomainService.loginWithEmailAndPassword(email, password)
+    const id = await this.authRepository.loginWithEmailAndPassword(email, password)
     const user =  await this.userRepository.findById(id)
     const isEmailVerified = this.authDomainService.isEmailVerified()
 
