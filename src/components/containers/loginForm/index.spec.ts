@@ -20,8 +20,8 @@ test('login form container', async () => {
     password: 'tanakatarou',
   })
   expect(selector.isSending(store.state)).toBe(true)
-  expect(authSelector.user(store.state)).toBeUndefined()
+  expect(authSelector.user(store.state)).toBeNull()
   await flushPromises()
-  expect(authSelector.user(store.state)).not.toBeUndefined()
+  expect(authSelector.user(store.state)).not.toBeNull()
   expect(selector.isFailed(store.state)).toBe(false)
 })

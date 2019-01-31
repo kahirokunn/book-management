@@ -36,7 +36,7 @@ export default class FirebaseUserRepository implements IUserRepository {
 
   public async update(params: IUser): Promise<IUser> {
     const user = await User.get(params.id)
-    if (user === undefined) {
+    if (!user) {
       throw Error('userが取れませんでした')
     }
     userSetter(params, user)
@@ -46,7 +46,7 @@ export default class FirebaseUserRepository implements IUserRepository {
 
   public async findById(id: Identifier): Promise<IUser> {
     const user = await User.get(id)
-    if (user === undefined) {
+    if (!user) {
       throw Error('userが取れませんでした')
     }
     return userMapper(user)

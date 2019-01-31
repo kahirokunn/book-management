@@ -25,9 +25,9 @@ test('そのメールアドレスは既に登録されています', async () =>
     gender: '男',
   }))
   expect(selector.isSending(store.state)).toBe(true)
-  expect(authSelector.user(store.state)).toBeUndefined()
+  expect(authSelector.user(store.state)).toBeNull()
   await flushPromises()
-  expect(authSelector.user(store.state)).toBeUndefined()
+  expect(authSelector.user(store.state)).toBeNull()
   expect(selector.isSendFailed(store.state)).toBe(true)
   expect(selector.errorMessage(store.state)).toBe('そのメールアドレスは既に登録されています')
   store.dispatch(toStandby())

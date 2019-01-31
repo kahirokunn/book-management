@@ -27,7 +27,7 @@ type State = {
   isInitialized: boolean,
   isLoggedIn: boolean,
   isEmailVerified: boolean,
-  user?: IUser,
+  user: IUser | null,
   unsubscribe: unsubscribe[],
 }
 
@@ -35,7 +35,7 @@ const initialState = (): State => ({
   isInitialized: false,
   isLoggedIn: false,
   isEmailVerified: false,
-  user: undefined,
+  user: null,
   unsubscribe: [],
 })
 

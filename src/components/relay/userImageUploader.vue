@@ -125,7 +125,7 @@ export default class UserImageUploader extends Vue {
 
   public async uploadToFilesbaseStorage(request: RequestType) {
     const user = authSelector.user(this.$store.state)
-    if (user === undefined) {
+    if (!user) {
       return
     }
 
