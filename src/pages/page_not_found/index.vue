@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
-import BlankLayout from '@/layouts/blank.vue'
 import PageNotFoundComponent from '@/components/organisms/pageNotFound.vue'
+import BlankLayout from '@/layouts/blank.vue'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {

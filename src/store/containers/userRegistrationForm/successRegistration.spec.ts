@@ -1,9 +1,9 @@
-import '@/store/resolveTestConfiguration'
-import flushPromises from 'flush-promises'
+import '@/resolveTestConfiguration'
 import authSelector from '@/store/middleware/auth/selector'
-import {userRegistration} from './action'
+import { createStore } from '@/store/root'
+import flushPromises from 'flush-promises'
+import { userRegistration } from './action'
 import selector from './selector'
-import {createStore} from '@/store/root'
 
 test('ユーザー登録できる', async () => {
   const store = createStore()

@@ -1,8 +1,8 @@
-import {injectable} from 'inversify'
 import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService'
 import {
   IAuthInfo,
 } from '@/boundary/authApplicationService/InOutType'
+import { injectable } from 'inversify'
 
 @injectable()
 export default class RejectService implements IAuthApplicationService {

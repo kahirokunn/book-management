@@ -1,13 +1,13 @@
+import changeUserProfileForm from './changeUserProfileForm'
 import loginForm from './loginForm'
 import navigation from './navigation'
 import userRegistrationForm from './userRegistrationForm'
-import changeUserProfileForm from './changeUserProfileForm'
 
 export type ContainersState = {
+  changeUserProfileForm: ReturnType<typeof changeUserProfileForm.state>,
   loginForm: ReturnType<typeof loginForm.state>,
   navigation: ReturnType<typeof navigation.state>,
   userRegistrationForm: ReturnType<typeof userRegistrationForm.state>,
-  changeUserProfileForm: ReturnType<typeof changeUserProfileForm.state>,
 }
 
 export default {

@@ -1,21 +1,21 @@
+import { IUser } from '@/boundary/userApplicationService/InOutType'
+import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
+import Logger from '@/serviceLocator/Logger'
+import UserStream from '@/serviceLocator/UserStream'
+import { updatedUserProfileEvent } from '@/store/eventHub/eventCreators'
 import {
-  combineMutation,
-  mutation,
-  combineAction,
-  actionsToMutations,
   action,
   actionCreatorFactory,
+  actionsToMutations,
+  combineAction,
+  combineMutation,
+  mutation,
 } from 'typescript-fsa-vuex'
-import {IUser} from '@/boundary/userApplicationService/InOutType'
-import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
 import {
-  userLogin,
-  unsubscribeUserData,
   successUserLogin,
+  unsubscribeUserData,
+  userLogin,
 } from './action'
-import Logger from '@/serviceLocator/Logger'
-import {updatedUserProfileEvent} from '@/store/eventHub/eventCreators'
-import UserStream from '@/serviceLocator/UserStream'
 import namespace from './namespace'
 
 const actionCreator = actionCreatorFactory(namespace)

@@ -1,20 +1,20 @@
+import Logger from '@/serviceLocator/Logger'
+import UserApp from '@/serviceLocator/UserApplicationService'
+import { updatedUserProfileEvent } from '@/store/eventHub/eventCreators'
 import {
-  combineMutation,
-  mutation,
-  actionsToMutations,
-  combineAction,
   action,
   actionCreatorFactory,
+  actionsToMutations,
+  combineAction,
+  combineMutation,
+  mutation,
 } from 'typescript-fsa-vuex'
 import {
-  updateProfile,
-  toStandby,
-  openDialog,
   closeDialog,
+  openDialog,
+  toStandby,
+  updateProfile,
 } from './action'
-import {updatedUserProfileEvent} from '@/store/eventHub/eventCreators'
-import UserApp from '@/serviceLocator/UserApplicationService'
-import Logger from '@/serviceLocator/Logger'
 import namespace from './namespace'
 
 const actionCreator = actionCreatorFactory(namespace)

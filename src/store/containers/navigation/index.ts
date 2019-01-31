@@ -1,7 +1,11 @@
-import {combineMutation, mutation, actionsToMutations} from 'typescript-fsa-vuex'
 import {
-  toggleDrawer,
+  actionsToMutations,
+  combineMutation,
+  mutation,
+} from 'typescript-fsa-vuex'
+import {
   closeDrawer,
+  toggleDrawer,
 } from './action'
 
 type State = {

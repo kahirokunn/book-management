@@ -1,9 +1,8 @@
-import '@/store/rejectTestConfiguration'
+import '@/rejectTestConfiguration'
+import { createStore } from '@/store/root'
 import flushPromises from 'flush-promises'
-
-import {userLogin} from './action'
+import { userLogin } from './action'
 import selector from './selector'
-import {createStore} from '@/store/root'
 
 test('ユーザーログインできない', async () => {
   const store = createStore()

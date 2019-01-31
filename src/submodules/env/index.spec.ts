@@ -1,4 +1,4 @@
-import {isTest, isProd} from './index'
+import { isProd, isTest } from './index'
 
 test('test modeの検知がちゃんとできている', () => {
   expect(isTest()).toBe(true)

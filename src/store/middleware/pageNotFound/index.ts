@@ -1,4 +1,8 @@
-import {combineMutation, mutation, actionsToMutations} from 'typescript-fsa-vuex'
+import {
+  actionsToMutations,
+  combineMutation,
+  mutation,
+} from 'typescript-fsa-vuex'
 import {
   pageNotFound,
 } from './action'

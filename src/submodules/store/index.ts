@@ -1,4 +1,4 @@
-import {createStore} from '@/store/root'
+import { createStore } from '@/store/root'
 import Vue from 'vue'
 
 type Store = ReturnType<typeof createStore>

@@ -1,4 +1,4 @@
-import {Container} from 'inversify'
+import { Container } from 'inversify'
 
 const serviceContainer = new Container()
 

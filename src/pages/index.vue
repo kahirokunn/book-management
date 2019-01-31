@@ -11,8 +11,8 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
 import LoggedInLayout from '@/layouts/loggedInLayout.vue'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {

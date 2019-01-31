@@ -1,7 +1,7 @@
-import '@/store/resolveTestConfiguration'
+import '@/resolveTestConfiguration'
+import { createStore, Store } from '@/store/root'
 import { shallowMount } from '@vue/test-utils'
-import {createStore, Store} from '@/store/root'
-import {mapComputed} from './index'
+import { mapComputed } from './index'
 
 test('success', async () => {
   const store = createStore()

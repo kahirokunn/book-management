@@ -1,4 +1,4 @@
-import {Store} from '@/store/root'
+import { Store } from '@/store/root'
 
 function _stateScope(state: Store['state']) {
   return state.middleware.pageNotFound

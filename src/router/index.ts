@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import {isTest} from '@/submodules/env'
 import Main from '@/main.vue'
 import PageNotFound from '@/pages/page_not_found/index.vue'
+import { isTest } from '@/submodules/env'
+import Vue from 'vue'
+import Router from 'vue-router'
 
 const router =  new Router({
   mode: 'history',

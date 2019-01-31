@@ -1,12 +1,12 @@
-import {Container} from 'inversify'
-import IUserApplicationService from '@/boundary/userApplicationService/IUserApplicationService'
 import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService'
-import UserApplicationRejectService from '@/stub/domain/app/userApplicationService/RejectService'
-import AuthApplicationRejectService from '@/stub/domain/app/authApplicationService/RejectService'
-import IUserStream from '@/query/user/IUserStream'
-import UserStream from '@/stub/query/UserStream/RejectStream'
+import IUserApplicationService from '@/boundary/userApplicationService/IUserApplicationService'
 import ILogger from '@/drivers/ILogger'
 import BlankLogger from '@/drivers/logger/BlankLogger'
+import IUserStream from '@/query/user/IUserStream'
+import AuthApplicationRejectService from '@/stub/domain/app/authApplicationService/RejectService'
+import UserApplicationRejectService from '@/stub/domain/app/userApplicationService/RejectService'
+import UserStream from '@/stub/query/UserStream/RejectStream'
+import { Container } from 'inversify'
 
 export function stubProviders(container: Container): void {
   // core

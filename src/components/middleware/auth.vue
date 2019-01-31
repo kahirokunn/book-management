@@ -1,10 +1,10 @@
 <script lang="ts">
-import {CreateElement, VNode} from 'vue'
-import {Vue, Component} from 'vue-property-decorator'
 import {
   userLogin,
 } from '@/store/middleware/auth/action'
 import selector from '@/store/middleware/auth/selector'
+import { CreateElement, VNode } from 'vue'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class Auth extends Vue {

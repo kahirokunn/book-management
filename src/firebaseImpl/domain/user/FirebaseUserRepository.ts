@@ -1,8 +1,8 @@
-import firebase from 'firebase/app'
-import {injectable} from 'inversify'
+import { IUser } from '@/boundary/userApplicationService/InOutType'
 import IUserRepository from '@/domain/model/user/IUserRepository'
-import {IUser} from '@/boundary/userApplicationService/InOutType'
 import User from '@/models/user'
+import firebase from 'firebase/app'
+import { injectable } from 'inversify'
 
 function userSetter(params: IUser, user: User) {
   user.displayName = params.displayName

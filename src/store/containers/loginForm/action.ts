@@ -1,4 +1,4 @@
-import {actionCreatorFactory} from 'typescript-fsa-vuex'
+import { actionCreatorFactory } from 'typescript-fsa-vuex'
 import namespace from './namespace'
 
 const actionCreator = actionCreatorFactory(namespace)

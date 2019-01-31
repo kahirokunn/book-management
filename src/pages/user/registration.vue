@@ -9,9 +9,9 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
-import AuthLayout from '@/layouts/authLayout.vue'
 import UserRegistrationForm from '@/components/containers/userRegistrationForm.vue'
+import AuthLayout from '@/layouts/authLayout.vue'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {

@@ -1,8 +1,8 @@
-import Vue, {CreateElement, VNode} from 'vue'
-import marked, { Renderer } from 'marked'
+import 'github-markdown-css/github-markdown.css'
 import highlight from 'highlight.js'
 import 'highlight.js/styles/github.css'
-import 'github-markdown-css/github-markdown.css'
+import marked, { Renderer } from 'marked'
+import Vue, { CreateElement, VNode } from 'vue'
 
 function toMarkdown(source: string) {
   const markedOptions = {

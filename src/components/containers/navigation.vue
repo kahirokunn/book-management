@@ -67,11 +67,11 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
 import router from '@/router/index'
+import { closeDrawer } from '@/store/containers/navigation/action'
 import selector from '@/store/containers/navigation/selector'
-import {closeDrawer} from '@/store/containers/navigation/action'
 import { mapComputed } from '@/submodules/store'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   computed: mapComputed(selector),

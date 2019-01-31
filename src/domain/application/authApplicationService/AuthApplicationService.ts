@@ -1,14 +1,14 @@
-import {
-  injectable,
-  inject,
-} from 'inversify'
+import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService'
 import {
   IAuthInfo,
   IRegistrationParams,
 } from '@/boundary/authApplicationService/InOutType'
-import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService'
-import IUserRepository from '@/domain/model/user/IUserRepository'
 import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
+import IUserRepository from '@/domain/model/user/IUserRepository'
+import {
+  inject,
+  injectable,
+} from 'inversify'
 
 @injectable()
 export default class AuthApplicationService extends IAuthApplicationService {

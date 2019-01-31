@@ -1,9 +1,9 @@
-import '@/store/resolveTestConfiguration'
-import flushPromises from 'flush-promises'
-import authSelector from '@/store/middleware/auth/selector'
-import { shallowMount } from '@vue/test-utils'
+import '@/resolveTestConfiguration'
 import selector from '@/store/containers/loginForm/selector'
-import {createStore} from '@/store/root'
+import authSelector from '@/store/middleware/auth/selector'
+import { createStore } from '@/store/root'
+import { shallowMount } from '@vue/test-utils'
+import flushPromises from 'flush-promises'
 import index from './index.vue'
 
 test('login form container', async () => {

@@ -1,12 +1,12 @@
 import '@/configuration'
 import '@/plugins/element'
+import router from '@/router/index'
+import loggedIn from '@/router/middlewares/guards/loggedIn'
+import unLoggedIn from '@/router/middlewares/guards/unLoggedIn'
+import requiredVerifyEmail from '@/router/middlewares/requiredVerifyEmail'
 import '@/stylesheets/main.scss'
 import Vue from 'vue'
-import router from '@/router/index'
-import requiredVerifyEmail from '@/router/middlewares/requiredVerifyEmail'
-import unLoggedIn from '@/router/middlewares/guards/unLoggedIn'
-import loggedIn from '@/router/middlewares/guards/loggedIn'
-import {createStore} from './store/root'
+import { createStore } from './store/root'
 
 const store = createStore()
 

@@ -1,12 +1,12 @@
-import '@/store/rejectTestConfiguration'
-import flushPromises from 'flush-promises'
+import '@/rejectTestConfiguration'
 import authSelector from '@/store/middleware/auth/selector'
+import { createStore } from '@/store/root'
+import flushPromises from 'flush-promises'
 import {
-  userRegistration,
   toStandby,
+  userRegistration,
 } from './action'
 import selector from './selector'
-import {createStore} from '@/store/root'
 
 test('そのメールアドレスは既に登録されています', async () => {
   const store = createStore()

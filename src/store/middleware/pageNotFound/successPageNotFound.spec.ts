@@ -1,8 +1,8 @@
-import '@/store/resolveTestConfiguration'
+import '@/resolveTestConfiguration'
+import { createStore } from '@/store/root'
 import flushPromises from 'flush-promises'
-import {pageNotFound} from './action'
+import { pageNotFound } from './action'
 import selector from './selector'
-import {createStore} from '@/store/root'
 
 test('pageNotFound状態がtrueになる', async () => {
   const store = createStore()

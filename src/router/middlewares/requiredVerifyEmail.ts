@@ -1,7 +1,7 @@
+import { notVerifyEmailRedirectPath } from '@/config/auth'
 import selector from '@/store/middleware/auth/selector'
+import { Store } from '@/store/root'
 import Router from 'vue-router'
-import {notVerifyEmailRedirectPath} from '@/config/auth'
-import {Store} from '@/store/root'
 
 export function isNeedRedirect(path: string, state: Store['state']) {
   return path !== notVerifyEmailRedirectPath && selector.isLoggedIn(state) && !selector.isEmailVerified(state)

@@ -38,14 +38,14 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
+import LoginForm from '@/components/organisms/loginForm.vue'
 import {
   loginByEmailAndPassword,
   toStandby,
 } from '@/store/containers/loginForm/action'
-import LoginForm from '@/components/organisms/loginForm.vue'
 import selector from '@/store/containers/loginForm/selector'
-import {mapComputed} from '@/submodules/store'
+import { mapComputed } from '@/submodules/store'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {

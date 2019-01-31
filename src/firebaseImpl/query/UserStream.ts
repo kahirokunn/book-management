@@ -1,8 +1,8 @@
-import {injectable} from 'inversify'
-import firebase from 'firebase'
-import IUserStream, {InputSubscribe} from '@/query/user/IUserStream'
-import {IUser} from '@/boundary/userApplicationService/InOutType'
+import { IUser } from '@/boundary/userApplicationService/InOutType'
 import User from '@/models/user'
+import IUserStream, { InputSubscribe } from '@/query/user/IUserStream'
+import firebase from 'firebase'
+import { injectable } from 'inversify'
 
 function userMapper(userId: Identifier, user: any): IUser {
   return {

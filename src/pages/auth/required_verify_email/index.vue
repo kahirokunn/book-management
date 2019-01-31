@@ -8,10 +8,10 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
 import Blank from '@/layouts/blank.vue'
-import selector from '@/store/middleware/auth/selector'
 import router from '@/router'
+import selector from '@/store/middleware/auth/selector'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {

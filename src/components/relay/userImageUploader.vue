@@ -71,11 +71,11 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop, Watch} from 'vue-property-decorator'
-import uuid from 'uuid/v4'
-import {storage} from '@/firebase/index'
-import authSelector from '@/store/middleware/auth/selector'
+import { storage } from '@/firebase/index'
 import Logger from '@/serviceLocator/Logger'
+import authSelector from '@/store/middleware/auth/selector'
+import uuid from 'uuid/v4'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 
 type RequestType = { file: File }
 

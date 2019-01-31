@@ -1,10 +1,9 @@
-import '@/store/rejectTestConfiguration'
-import flushPromises from 'flush-promises'
+import '@/rejectTestConfiguration'
 import authSelector from '@/store/middleware/auth/selector'
-
-import {loginByEmailAndPassword} from './action'
+import { createStore } from '@/store/root'
+import flushPromises from 'flush-promises'
+import { loginByEmailAndPassword } from './action'
 import selector from './selector'
-import {createStore} from '@/store/root'
 
 test('ログイン失敗', async () => {
   const store = createStore()

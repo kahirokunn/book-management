@@ -1,24 +1,23 @@
-import {
-  combineMutation,
-  mutation,
-  combineAction,
-  actionsToMutations,
-  action,
-  actionCreatorFactory,
-} from 'typescript-fsa-vuex'
+import router from '@/router'
 import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
+import Logger from '@/serviceLocator/Logger'
 import {
   successUserLogin,
 } from '@/store/middleware/auth/action'
-import router from '@/router'
-import Logger from '@/serviceLocator/Logger'
-import {loginByEmailAndPassword, toStandby} from './action'
+import {
+  action,
+  actionCreatorFactory,
+  actionsToMutations,
+  combineAction,
+  combineMutation,
+  mutation,
+} from 'typescript-fsa-vuex'
+import { loginByEmailAndPassword, toStandby } from './action'
 import namespace from './namespace'
 
 const actionCreator = actionCreatorFactory(namespace)
 const startLogin = actionCreator('START_LOGIN')
 const failureLogin = actionCreator('FAILURE_LOGIN')
-
 
 export enum ScreenState {
   STANDBY,

@@ -1,11 +1,11 @@
 <script lang="ts">
-import {CreateElement, VNode} from 'vue'
-import {Vue, Component} from 'vue-property-decorator'
 import router from '@/router'
 import {
-  redirectPath,
   isNeedRedirect,
+  redirectPath,
 } from '@/router/middlewares/guards/unLoggedIn'
+import { CreateElement, VNode } from 'vue'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class UnLoggedIn extends Vue {

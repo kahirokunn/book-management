@@ -1,10 +1,9 @@
-import '@/store/resolveTestConfiguration'
-import flushPromises from 'flush-promises'
+import '@/resolveTestConfiguration'
 import authSelector from '@/store/middleware/auth/selector'
-
-import {loginByEmailAndPassword} from './action'
+import { createStore } from '@/store/root'
+import flushPromises from 'flush-promises'
+import { loginByEmailAndPassword } from './action'
 import selector from './selector'
-import {createStore} from '@/store/root'
 
 test('ログインできる', async () => {
   const store = createStore()

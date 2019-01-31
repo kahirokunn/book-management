@@ -1,7 +1,7 @@
+import { IUser } from '@/boundary/userApplicationService/InOutType'
 import {
   injectable,
 } from 'inversify'
-import {IUser} from '@/boundary/userApplicationService/InOutType'
 
 type subscriber = (user: IUser) => void
 type onError = (error: Error) => void

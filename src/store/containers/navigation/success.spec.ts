@@ -1,10 +1,10 @@
-import '@/store/resolveTestConfiguration'
+import '@/resolveTestConfiguration'
+import { createStore } from '@/store/root'
 import {
-  toggleDrawer,
   closeDrawer,
+  toggleDrawer,
 } from './action'
 import selector from './selector'
-import {createStore} from '@/store/root'
 
 test('ナビゲーションバーの開閉操作に成功', async () => {
   const store = createStore()

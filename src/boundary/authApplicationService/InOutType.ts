@@ -1,4 +1,4 @@
-import {IUser} from '../userApplicationService/InOutType'
+import { IUser } from '../userApplicationService/InOutType'
 
 export interface IAuthInfo extends IUser {
   isEmailVerified: boolean

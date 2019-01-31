@@ -1,4 +1,4 @@
-import {serviceContainer} from '@/inversify/config'
+import { serviceContainer } from '@/inversify/config'
 import IUserStream from '@/query/user/IUserStream'
 
 export default class UserStream {

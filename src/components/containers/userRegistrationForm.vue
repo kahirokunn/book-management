@@ -39,15 +39,15 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
-import {IRegistrationParams} from '@/boundary/authApplicationService/InOutType'
+import { IRegistrationParams } from '@/boundary/authApplicationService/InOutType'
 import UserRegistrationForm from '@/components/organisms/userRegistrationForm.vue'
 import {
-  userRegistration,
   toStandby,
+  userRegistration,
 } from '@/store/containers/userRegistrationForm/action'
 import selector from '@/store/containers/userRegistrationForm/selector'
 import { mapComputed } from '@/submodules/store'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {

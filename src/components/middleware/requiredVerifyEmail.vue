@@ -1,11 +1,11 @@
 <script lang="ts">
-import {CreateElement, VNode} from 'vue'
-import {Vue, Component, Watch} from 'vue-property-decorator'
-import selector from '@/store/middleware/auth/selector'
-import {notVerifyEmailRedirectPath} from '@/config/auth'
-import {isNeedRedirect} from '@/router/middlewares/requiredVerifyEmail'
 import First from '@/components/modules/first.vue'
+import { notVerifyEmailRedirectPath } from '@/config/auth'
 import router from '@/router'
+import { isNeedRedirect } from '@/router/middlewares/requiredVerifyEmail'
+import selector from '@/store/middleware/auth/selector'
+import { CreateElement, VNode } from 'vue'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 
 @Component
 export default class RequiredVerifyEmail extends Vue {

@@ -1,7 +1,7 @@
-import {injectable} from 'inversify'
-import {IUser} from '@/boundary/userApplicationService/InOutType'
+import { IUser } from '@/boundary/userApplicationService/InOutType'
 import IUserApplicationService from '@/boundary/userApplicationService/IUserApplicationService'
-import {userFactory} from '@/stub/domain/factory/IUser'
+import { userFactory } from '@/stub/domain/factory/IUser'
+import { injectable } from 'inversify'
 
 @injectable()
 export default class ResolveService implements IUserApplicationService {

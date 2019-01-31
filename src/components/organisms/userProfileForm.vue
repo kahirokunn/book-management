@@ -152,12 +152,12 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator'
-import * as rules from '@/config/user/rules'
-import {genderList} from '@/config/user/gender'
-import {years, months, days} from '@/config/user/birthday'
-import {IUser} from '@/boundary/userApplicationService/InOutType'
+import { IUser } from '@/boundary/userApplicationService/InOutType'
 import UserImageUploader from '@/components/relay/userImageUploader.vue'
+import { days, months, years } from '@/config/user/birthday'
+import { genderList } from '@/config/user/gender'
+import * as rules from '@/config/user/rules'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {

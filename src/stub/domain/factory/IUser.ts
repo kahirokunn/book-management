@@ -1,5 +1,5 @@
+import { IUser } from '@/boundary/userApplicationService/InOutType'
 import uuid from 'uuid'
-import {IUser} from '@/boundary/userApplicationService/InOutType'
 
 interface IUserFactoryInputPort {
   id?: Identifier

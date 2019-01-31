@@ -1,5 +1,5 @@
-import {Store} from '@/store/root'
-import {ScreenState} from './index'
+import { Store } from '@/store/root'
+import { ScreenState } from './index'
 
 function _stateScope(state: Store['state']) {
   return state.containers.loginForm

@@ -1,4 +1,4 @@
-import {actionCreatorFactory} from 'typescript-fsa-vuex'
+import { actionCreatorFactory } from 'typescript-fsa-vuex'
 
 const actionCreator = actionCreatorFactory('containers/navigation')
 

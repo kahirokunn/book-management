@@ -189,13 +189,13 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator'
-import {membershipAgreementText} from '@/constants/membershipAgreement'
-import {prefectures} from '@/config/prefecture'
+import { prefectures } from '@/config/prefecture'
+import { days, months, years } from '@/config/user/birthday'
+import { defaultUserIconUrl } from '@/config/user/defaultUserParams'
+import { genderList } from '@/config/user/gender'
 import * as rules from '@/config/user/rules'
-import {genderList} from '@/config/user/gender'
-import {years, months, days} from '@/config/user/birthday'
-import {defaultUserIconUrl} from '@/config/user/defaultUserParams'
+import { membershipAgreementText } from '@/constants/membershipAgreement'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 export interface IRegistrationParamsParams {
   displayName: string

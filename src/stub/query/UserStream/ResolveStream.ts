@@ -1,6 +1,6 @@
-import {injectable} from 'inversify'
-import IUserStream, {InputSubscribe} from '@/query/user/IUserStream'
-import {userFactory} from '../../domain/factory/IUser'
+import IUserStream, { InputSubscribe } from '@/query/user/IUserStream'
+import { injectable } from 'inversify'
+import { userFactory } from '../../domain/factory/IUser'
 
 @injectable()
 export default class UserStream implements IUserStream {

@@ -1,10 +1,10 @@
-import '@/store/resolveTestConfiguration'
+import '@/resolveTestConfiguration'
+import { createStore } from '@/store/root'
+import { userFactory } from '@/stub/domain/factory/IUser'
 import flushPromises from 'flush-promises'
-
-import {updateProfile} from './action'
-import {userFactory} from '@/stub/domain/factory/IUser'
+import { updateProfile } from './action'
 import selector from './selector'
-import {createStore} from '@/store/root'
+
 
 test('ユーザープロフィールの更新に成功する', async () => {
   const store = createStore()

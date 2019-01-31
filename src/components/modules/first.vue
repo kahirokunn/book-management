@@ -1,6 +1,6 @@
 <script lang="ts">
-import {CreateElement, VNode} from 'vue'
-import {Vue, Component} from 'vue-property-decorator'
+import { CreateElement, VNode } from 'vue'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class First extends Vue {

@@ -1,10 +1,10 @@
-import {injectable} from 'inversify'
 import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService'
 import {
-  IRegistrationParams,
   IAuthInfo,
+  IRegistrationParams,
 } from '@/boundary/authApplicationService/InOutType'
-import {userFactory} from '@/stub/domain/factory/IUser'
+import { userFactory } from '@/stub/domain/factory/IUser'
+import { injectable } from 'inversify'
 
 @injectable()
 export default class ResolveService implements IAuthApplicationService {

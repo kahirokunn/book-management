@@ -69,17 +69,17 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
+import { IUser } from '@/boundary/userApplicationService/InOutType'
 import UserProfileForm from '@/components/organisms/userProfileForm.vue'
 import {
-  updateProfile,
-  toStandby,
   closeDialog,
+  toStandby,
+  updateProfile,
 } from '@/store/containers/changeUserProfileForm/action'
 import selector from '@/store/containers/changeUserProfileForm/selector'
 import authSelector from '@/store/middleware/auth/selector'
-import {IUser} from '@/boundary/userApplicationService/InOutType'
 import { mapComputed } from '@/submodules/store'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {

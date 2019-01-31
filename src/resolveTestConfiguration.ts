@@ -1,10 +1,11 @@
+// tslint:disable ordered-imports
 import 'reflect-metadata'
+import { serviceContainer } from '@/inversify/config'
+import { stubProviders } from '@/inversify/resolveStubProviders'
 import Vue from 'vue'
-import Vuex from 'vuex'
 import Router from 'vue-router'
 import Vuetify from 'vuetify'
-import {serviceContainer} from '@/inversify/config'
-import {stubProviders} from '@/inversify/resolveStubProviders'
+import Vuex from 'vuex'
 
 Vue.use(Router)
 Vue.use(Vuex)

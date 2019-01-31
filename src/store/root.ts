@@ -1,6 +1,6 @@
 import Vuex from 'vuex'
-import middleware, {MiddlewareState} from './middleware'
-import containers, {ContainersState} from './containers'
+import containers, { ContainersState } from './containers'
+import middleware, { MiddlewareState } from './middleware'
 
 interface RootState {
   middleware: MiddlewareState

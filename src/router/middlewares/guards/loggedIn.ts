@@ -1,7 +1,7 @@
 import authSelector from '@/store/middleware/auth/selector'
+import { Store } from '@/store/root'
+import { pathFormatter } from '@/submodules/url'
 import Router from 'vue-router'
-import {pathFormatter} from '@/submodules/url'
-import {Store} from '@/store/root'
 
 const blackList = [
   '/user/login',

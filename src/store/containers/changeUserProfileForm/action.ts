@@ -1,5 +1,5 @@
-import {actionCreatorFactory} from 'typescript-fsa-vuex'
-import {IUser} from '@/boundary/userApplicationService/InOutType'
+import { IUser } from '@/boundary/userApplicationService/InOutType'
+import { actionCreatorFactory } from 'typescript-fsa-vuex'
 import namespace from './namespace'
 
 const actionCreator = actionCreatorFactory(namespace)

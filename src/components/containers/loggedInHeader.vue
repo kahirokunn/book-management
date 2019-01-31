@@ -33,12 +33,12 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
+import { defaultUserIconUrl } from '@/config/user/defaultUserParams'
+import { openDialog } from '@/store/containers/changeUserProfileForm/action'
+import { toggleDrawer } from '@/store/containers/navigation/action'
 import authSelector from '@/store/middleware/auth/selector'
-import {toggleDrawer} from '@/store/containers/navigation/action'
-import {defaultUserIconUrl} from '@/config/user/defaultUserParams'
-import {openDialog} from '@/store/containers/changeUserProfileForm/action'
 import { mapComputed } from '@/submodules/store'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   computed: mapComputed(authSelector),

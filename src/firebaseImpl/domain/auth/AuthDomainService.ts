@@ -1,9 +1,9 @@
-import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
-import {injectable} from 'inversify'
-import {auth} from '@/firebase/index'
 import * as rules from '@/config/user/rules'
-import {isValid} from '@/submodules/validate'
+import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
+import { auth } from '@/firebase/index'
 import Logger from '@/serviceLocator/Logger'
+import { isValid } from '@/submodules/validate'
+import { injectable } from 'inversify'
 
 @injectable()
 export default class UserDomainService implements IAuthDomainService {

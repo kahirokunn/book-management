@@ -13,12 +13,12 @@
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
 import Auth from '@/components/middleware/auth.vue'
-import UnLoggedIn from '@/components/middleware/guards/unLoggedIn.vue'
 import LoggedIn from '@/components/middleware/guards/loggedIn.vue'
-import RequiredVerifyEmail from '@/components/middleware/requiredVerifyEmail.vue'
+import UnLoggedIn from '@/components/middleware/guards/unLoggedIn.vue'
 import PageNotFound from '@/components/middleware/pageNotFound.vue'
+import RequiredVerifyEmail from '@/components/middleware/requiredVerifyEmail.vue'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {

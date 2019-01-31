@@ -1,20 +1,20 @@
+import router from '@/router'
+import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
+import Logger from '@/serviceLocator/Logger'
+import { successUserLogin } from '@/store/middleware/auth/action'
 import {
-  combineMutation,
-  mutation,
-  combineAction,
-  actionsToMutations,
   action,
   actionCreatorFactory,
+  actionsToMutations,
+  combineAction,
+  combineMutation,
+  mutation,
 } from 'typescript-fsa-vuex'
-import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
-import {successUserLogin} from '@/store/middleware/auth/action'
 import {
-  userRegistration,
   toStandby,
+  userRegistration,
 } from './action'
-import router from '@/router'
 import namespace from './namespace'
-import Logger from '@/serviceLocator/Logger'
 
 const actionCreator = actionCreatorFactory(namespace)
 const startRegistration = actionCreator('START_REGISTRATION')
@@ -33,7 +33,7 @@ export enum ScreenState {
 
 type State = {
   screenState: ScreenState,
-  errorCode: ErrorCode|'',
+  errorCode: ErrorCode | '',
 }
 
 const initialState = (): State => ({

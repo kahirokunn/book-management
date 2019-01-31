@@ -1,5 +1,5 @@
-import {genderList} from './gender'
-import {prefectures} from '../prefecture'
+import { prefectures } from '../prefecture'
+import { genderList } from './gender'
 
 export const emailRules = [
   (v: string) => !!v || 'E-mail is required',

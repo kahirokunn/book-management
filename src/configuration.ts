@@ -1,19 +1,16 @@
+import '@/firebase/index'
+import { auth } from '@/firebase/index'
+import { serviceContainer } from '@/inversify/config'
+import { firebaseProviders } from '@/inversify/firebaseProviders'
+import '@/plugins/vuetify'
+import { setting } from 'typescript-fsa-vuex'
 import Vue from 'vue'
-import Vuex from 'vuex'
 import Router from 'vue-router'
+import Vuex from 'vuex'
+import { isProd } from './submodules/env'
 
 Vue.use(Router)
 Vue.use(Vuex)
-
-import {setting} from 'typescript-fsa-vuex'
-
-import {auth} from '@/firebase/index'
-
-import '@/firebase/index'
-import '@/plugins/vuetify'
-import {serviceContainer} from '@/inversify/config'
-import {firebaseProviders} from '@/inversify/firebaseProviders'
-import {isProd} from './submodules/env'
 
 auth().setPersistence(auth.Auth.Persistence.LOCAL)
 firebaseProviders(serviceContainer)

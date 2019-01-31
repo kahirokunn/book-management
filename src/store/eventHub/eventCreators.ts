@@ -1,5 +1,5 @@
-import {actionCreatorFactory} from 'typescript-fsa-vuex'
-import {IUser} from '@/boundary/userApplicationService/InOutType'
+import { IUser } from '@/boundary/userApplicationService/InOutType'
+import { actionCreatorFactory } from 'typescript-fsa-vuex'
 
 const actionCreator = actionCreatorFactory('containers/eventHub')
 
