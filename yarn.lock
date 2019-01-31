@@ -10851,9 +10851,9 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript-fsa-vuex@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/typescript-fsa-vuex/-/typescript-fsa-vuex-2.0.1.tgz#6b521a0965b41e4453d5e09a9a0db537c5048bcd"
+typescript-fsa-vuex@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/typescript-fsa-vuex/-/typescript-fsa-vuex-3.0.2.tgz#0ffe93fc061df23f57e5813163e427328330d7a6"
 
 typescript@^3.2.4:
   version "3.2.4"
