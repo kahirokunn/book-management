@@ -1,7 +1,7 @@
 import { IUser } from '@/boundary/userApplicationService/InOutType'
-import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
-import Logger from '@/serviceLocator/Logger'
-import UserStream from '@/serviceLocator/UserStream'
+import { AuthApplicationService } from '@/serviceLocator/AuthApplicationService'
+import { Logger } from '@/serviceLocator/Logger'
+import { UserStream } from '@/serviceLocator/UserStream'
 import { updatedUserProfileEvent } from '@/store/eventHub/eventCreators'
 import {
   action,

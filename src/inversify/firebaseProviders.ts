@@ -1,17 +1,21 @@
-import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService'
-import IUserApplicationService from '@/boundary/userApplicationService/IUserApplicationService'
-import AuthApplicationService from '@/domain/application/authApplicationService/AuthApplicationService'
-import UserApplicationService from '@/domain/application/userApplicationService/UserApplicationService'
-import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
-import IAuthRepository from '@/domain/model/auth/IAuthRepository'
-import IUserRepository from '@/domain/model/user/IUserRepository'
-import ILogger from '@/drivers/ILogger'
-import ConsoleLogger from '@/drivers/logger/ConsoleLogger'
-import AuthDomainService from '@/firebaseImpl/domain/auth/AuthDomainService'
-import AuthRepository from '@/firebaseImpl/domain/auth/AuthRepository'
-import FirebaseUserRepository from '@/firebaseImpl/domain/user/FirebaseUserRepository'
-import UserStream from '@/firebaseImpl/query/UserStream'
-import IUserStream from '@/query/user/IUserStream'
+import {
+  IAuthApplicationService,
+} from '@/boundary/authApplicationService/IAuthApplicationService'
+import {
+  IUserApplicationService,
+} from '@/boundary/userApplicationService/IUserApplicationService'
+import { AuthApplicationService } from '@/domain/application/authApplicationService/AuthApplicationService'
+import { UserApplicationService } from '@/domain/application/userApplicationService/UserApplicationService'
+import { IAuthDomainService } from '@/domain/model/auth/IAuthDomainService'
+import { IAuthRepository } from '@/domain/model/auth/IAuthRepository'
+import { IUserRepository } from '@/domain/model/user/IUserRepository'
+import { ILogger } from '@/drivers/ILogger'
+import { ConsoleLogger } from '@/drivers/logger/ConsoleLogger'
+import { AuthDomainService } from '@/firebaseImpl/domain/auth/AuthDomainService'
+import { AuthRepository } from '@/firebaseImpl/domain/auth/AuthRepository'
+import { FirebaseUserRepository } from '@/firebaseImpl/domain/user/FirebaseUserRepository'
+import { UserStream } from '@/firebaseImpl/query/UserStream'
+import { IUserStream } from '@/query/user/IUserStream'
 import { Container } from 'inversify'
 
 export function firebaseProviders(container: Container): void {

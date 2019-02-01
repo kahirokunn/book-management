@@ -18,7 +18,7 @@ export function isNeedRedirect(path: string, state: Store['state']) {
   return blackList.includes(pathFormatter(path))
 }
 
-export default function requiredVerifyEmail(router: Router, state: Store['state']) {
+export function loggedInMiddleware(router: Router, state: Store['state']) {
   router.beforeEach((to, _, next) => {
     // 認証されてる場合ブラックリストに行かせないように制限
     if (isNeedRedirect(to.path, state)) {

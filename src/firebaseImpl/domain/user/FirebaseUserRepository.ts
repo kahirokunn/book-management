@@ -1,6 +1,6 @@
 import { IUser } from '@/boundary/userApplicationService/InOutType'
-import IUserRepository from '@/domain/model/user/IUserRepository'
-import User from '@/models/user'
+import { IUserRepository } from '@/domain/model/user/IUserRepository'
+import { User } from '@/models/user'
 import firebase from 'firebase/app'
 import { injectable } from 'inversify'
 
@@ -26,7 +26,7 @@ function userMapper(user: User): IUser {
 }
 
 @injectable()
-export default class FirebaseUserRepository implements IUserRepository {
+export class FirebaseUserRepository implements IUserRepository {
   public async create(params: IUser): Promise<IUser> {
     const user = new User(params.id)
     userSetter(params, user)

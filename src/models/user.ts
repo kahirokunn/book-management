@@ -3,7 +3,7 @@ import * as Pring from 'pring'
 
 const modelName = 'user'
 
-export default class User extends Pring.Base {
+export class User extends Pring.Base {
   public static getModelName() {
     return modelName
   }

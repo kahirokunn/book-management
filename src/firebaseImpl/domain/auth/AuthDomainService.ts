@@ -1,10 +1,10 @@
-import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
+import { IAuthDomainService } from '@/domain/model/auth/IAuthDomainService'
 import { auth } from '@/firebase/index'
-import Logger from '@/serviceLocator/Logger'
+import { Logger } from '@/serviceLocator/Logger'
 import { injectable } from 'inversify'
 
 @injectable()
-export default class UserDomainService implements IAuthDomainService {
+export class AuthDomainService implements IAuthDomainService {
   public async sendEmailVerification(): Promise<void> {
     const currentUser = auth().currentUser
     if (currentUser !== null) {

@@ -1,19 +1,20 @@
 import '@/configuration'
 import router from '@/router/index'
-import loggedIn from '@/router/middlewares/guards/loggedIn'
-import unLoggedIn from '@/router/middlewares/guards/unLoggedIn'
-import requiredVerifyEmail from '@/router/middlewares/requiredVerifyEmail'
+import { loggedInMiddleware } from '@/router/middlewares/guards/loggedIn'
+import { unLoggedInMiddleware } from '@/router/middlewares/guards/unLoggedIn'
+import { requiredVerifyEmailMiddleware } from '@/router/middlewares/requiredVerifyEmail'
 import '@/stylesheets/main.scss'
 import Vue from 'vue'
 import { createStore } from './store/root'
+import { isProd } from './submodules/env'
 
 const store = createStore()
 
-requiredVerifyEmail(router, store.state)
-unLoggedIn(router, store.state)
-loggedIn(router, store.state)
+loggedInMiddleware(router, store.state)
+unLoggedInMiddleware(router, store.state)
+requiredVerifyEmailMiddleware(router, store.state)
 
-Vue.config.productionTip = true
+Vue.config.productionTip = !isProd()
 
 new Vue({
   router,

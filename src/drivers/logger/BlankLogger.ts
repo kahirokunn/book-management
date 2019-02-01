@@ -1,6 +1,8 @@
-import ILogger from '../ILogger'
+import { injectable } from 'inversify'
+import { ILogger } from '../ILogger'
 
-export default class BlankLogger extends ILogger {
+@injectable()
+export class BlankLogger implements ILogger {
   public info(): void {
     // pass
   }

@@ -1,4 +1,6 @@
-import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService'
+import {
+  IAuthApplicationService,
+} from '@/boundary/authApplicationService/IAuthApplicationService'
 import {
   IAuthInfo,
   IRegistrationParams,
@@ -7,7 +9,7 @@ import { userFactory } from '@/stub/domain/factory/IUser'
 import { injectable } from 'inversify'
 
 @injectable()
-export default class ResolveService implements IAuthApplicationService {
+export class AuthApplicationService implements IAuthApplicationService {
   public async registration(params: IRegistrationParams): Promise<IAuthInfo> {
     return {
       isEmailVerified: false,

@@ -24,7 +24,7 @@ export function isNeedRedirect(path: string, state: Store['state']) {
   return true
 }
 
-export default function requiredVerifyEmail(router: Router, state: Store['state']) {
+export function unLoggedInMiddleware(router: Router, state: Store['state']) {
   router.beforeEach((to, _, next) => {
     if (isNeedRedirect(to.path, state)) {
       return next(redirectPath)

@@ -1,18 +1,20 @@
-import IAuthApplicationService from '@/boundary/authApplicationService/IAuthApplicationService'
+import {
+  IAuthApplicationService,
+} from '@/boundary/authApplicationService/IAuthApplicationService'
 import {
   IAuthInfo,
   IRegistrationParams,
 } from '@/boundary/authApplicationService/InOutType'
-import IAuthDomainService from '@/domain/model/auth/IAuthDomainService'
-import IAuthRepository from '@/domain/model/auth/IAuthRepository'
-import IUserRepository from '@/domain/model/user/IUserRepository'
+import { IAuthDomainService } from '@/domain/model/auth/IAuthDomainService'
+import { IAuthRepository } from '@/domain/model/auth/IAuthRepository'
+import { IUserRepository } from '@/domain/model/user/IUserRepository'
 import {
   inject,
   injectable,
 } from 'inversify'
 
 @injectable()
-export default class AuthApplicationService extends IAuthApplicationService {
+export class AuthApplicationService implements IAuthApplicationService {
   constructor(
     @inject(IUserRepository)
     private readonly userRepository: IUserRepository,
@@ -20,7 +22,7 @@ export default class AuthApplicationService extends IAuthApplicationService {
     private readonly authDomainService: IAuthDomainService,
     @inject(IAuthRepository)
     private readonly authRepository: IAuthRepository,
-  ) { super() }
+  ) {}
 
   public async registration(params: IRegistrationParams): Promise<IAuthInfo> {
     const userId = await this.authRepository.createAuthInfoWithEmailAndPassword(params.emailAddress, params.password)
@@ -42,7 +44,7 @@ export default class AuthApplicationService extends IAuthApplicationService {
       this.authDomainService.sendEmailVerification(),
     ])
 
-    const user = result[0]
+    const [user] = result
     return {
       ...user,
       isEmailVerified: this.authDomainService.isEmailVerified(),

@@ -1,6 +1,6 @@
 import router from '@/router'
-import AuthApplicationService from '@/serviceLocator/AuthApplicationService'
-import Logger from '@/serviceLocator/Logger'
+import { AuthApplicationService } from '@/serviceLocator/AuthApplicationService'
+import { Logger } from '@/serviceLocator/Logger'
 import {
   successUserLogin,
 } from '@/store/middleware/auth/action'

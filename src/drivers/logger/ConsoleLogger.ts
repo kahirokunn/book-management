@@ -1,6 +1,8 @@
-import ILogger from '../ILogger'
+import { injectable } from 'inversify'
+import { ILogger } from '../ILogger'
 
-export default class ConsoleLogger extends ILogger {
+@injectable()
+export class ConsoleLogger implements ILogger {
   public info(message?: any, ...optionalParams: any[]): void {
     // tslint:disable-next-line no-console
     console.info(message, ...optionalParams)

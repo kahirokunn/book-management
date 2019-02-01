@@ -1,5 +1,5 @@
-import Logger from '@/serviceLocator/Logger'
-import UserApp from '@/serviceLocator/UserApplicationService'
+import { Logger } from '@/serviceLocator/Logger'
+import { UserApplicationService } from '@/serviceLocator/UserApplicationService'
 import { updatedUserProfileEvent } from '@/store/eventHub/eventCreators'
 import {
   action,
@@ -63,7 +63,7 @@ const actions = combineAction<State, any>(
     commit(startUpdate())
 
     try {
-      const user = await UserApp.getInstance().update(action.payload.user)
+      const user = await UserApplicationService.getInstance().update(action.payload.user)
       Logger.getInstance().info('ユーザー情報の更新に成功', user)
       commit(successUpdate())
       commit(updatedUserProfileEvent({user}))

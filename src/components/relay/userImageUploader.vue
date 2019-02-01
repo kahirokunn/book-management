@@ -72,7 +72,7 @@
 
 <script lang="ts">
 import { storage } from '@/firebase/index'
-import Logger from '@/serviceLocator/Logger'
+import { Logger } from '@/serviceLocator/Logger'
 import authSelector from '@/store/middleware/auth/selector'
 import uuid from 'uuid/v4'
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'

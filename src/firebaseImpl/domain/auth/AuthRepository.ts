@@ -1,11 +1,11 @@
 import * as rules from '@/config/user/rules'
-import IAuthDomainService from '@/domain/model/auth/IAuthRepository'
+import { IAuthRepository } from '@/domain/model/auth/IAuthRepository'
 import { auth } from '@/firebase/index'
 import { isValid } from '@/submodules/validate'
 import { injectable } from 'inversify'
 
 @injectable()
-export default class AuthDomainService implements IAuthDomainService {
+export class AuthRepository implements IAuthRepository {
   public async createAuthInfoWithEmailAndPassword(emailAddress: string, password: string): Promise<Identifier> {
     const response = await auth().createUserWithEmailAndPassword(emailAddress, password)
     if (response.user === null) {

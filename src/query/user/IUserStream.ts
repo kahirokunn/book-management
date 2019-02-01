@@ -1,7 +1,4 @@
 import { IUser } from '@/boundary/userApplicationService/InOutType'
-import {
-  injectable,
-} from 'inversify'
 
 type subscriber = (user: IUser) => void
 type onError = (error: Error) => void
@@ -12,7 +9,6 @@ export type InputSubscribe = {
   onError?: onError,
 }
 
-@injectable()
-export default abstract class UserStream {
+export abstract class IUserStream {
   public abstract subscribe(params: InputSubscribe): unsubscribe
 }

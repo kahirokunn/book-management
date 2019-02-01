@@ -1,6 +1,6 @@
 import { IUser } from '@/boundary/userApplicationService/InOutType'
-import User from '@/models/user'
-import IUserStream, { InputSubscribe } from '@/query/user/IUserStream'
+import { User } from '@/models/user'
+import { InputSubscribe, IUserStream } from '@/query/user/IUserStream'
 import firebase from 'firebase'
 import { injectable } from 'inversify'
 
@@ -16,7 +16,7 @@ function userMapper(userId: Identifier, user: any): IUser {
 }
 
 @injectable()
-export default class UserStream implements IUserStream {
+export class UserStream implements IUserStream {
   public subscribe({ subscriber, payload, onError }: InputSubscribe): unsubscribe {
     return User
       .getReference()
