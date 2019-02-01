@@ -2,8 +2,9 @@ import { IUser } from '@/boundary/userApplicationService/InOutType'
 import router from '@/router'
 import { AuthApplicationService } from '@/serviceLocator/AuthApplicationService'
 import { Logger } from '@/serviceLocator/Logger'
-import { UserStream } from '@/serviceLocator/UserStream'
+import { UserBLoC } from '@/serviceLocator/UserBLoC'
 import { updatedUserProfileEvent } from '@/store/eventHub/eventCreators'
+import { Subscription } from 'rxjs'
 import {
   action,
   actionsToMutations,
@@ -19,7 +20,7 @@ import {
 } from './action'
 
 const beforeSubscribe = actionCreator<ReturnType<typeof successUserLogin>['payload']>('BEFORE_SUBSCRIBE')
-const startedSubscribe = actionCreator<{unsubscribe: unsubscribe}>('STARTED_SUBSCRIBE')
+const startedSubscribe = actionCreator<{subscription: Subscription}>('STARTED_SUBSCRIBE')
 const failureLogin = actionCreator('FAILURE_LOGIN')
 const receiveUserFromStream = actionCreator<{user: IUser}>('RECEIVE_USER_FROM_STREAM')
 
@@ -28,7 +29,7 @@ type State = {
   isLoggedIn: boolean,
   isEmailVerified: boolean,
   user: IUser | null,
-  unsubscribe: unsubscribe[],
+  subscriptions: Subscription[],
 }
 
 const initialState = (): State => ({
@@ -36,7 +37,7 @@ const initialState = (): State => ({
   isLoggedIn: false,
   isEmailVerified: false,
   user: null,
-  unsubscribe: [],
+  subscriptions: [],
 })
 
 // tslint:disable
@@ -49,7 +50,7 @@ const mutations = combineMutation<State>(
     state.isEmailVerified = action.payload.authInfo.isEmailVerified
   }),
   mutation(startedSubscribe, (state, action) => {
-    state.unsubscribe.push(action.payload.unsubscribe)
+    state.subscriptions.push(action.payload.subscription)
   }),
   mutation(failureLogin, (state) => {
     state.isInitialized = true
@@ -57,7 +58,7 @@ const mutations = combineMutation<State>(
     state.user = initialState().user
   }),
   mutation(unsubscribeUserData, (state) => {
-    state.unsubscribe.map((unsubscribe) => unsubscribe())
+    state.subscriptions.map((subscription) => subscription.unsubscribe())
   }),
   mutation(receiveUserFromStream, (state, action) => {
     if (!state.isInitialized) {
@@ -85,11 +86,11 @@ const actions = combineAction<State, any>(
     const { authInfo } = action.payload
     Logger.getInstance().info('ログイン成功', authInfo)
     commit(beforeSubscribe({authInfo}))
-    const unsubscribe = UserStream.getInstance().subscribe({
-      payload: { userId: authInfo.userId },
-      subscriber: (user) => commit(receiveUserFromStream({user})),
-    })
-    commit(startedSubscribe({unsubscribe}))
+    const subscription = UserBLoC
+      .getInstance()
+      .execute(authInfo.userId)
+      .subscribe((user) => commit(receiveUserFromStream({user})))
+    commit(startedSubscribe({subscription}))
   }),
 )
 

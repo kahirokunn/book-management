@@ -14,8 +14,8 @@ import { ConsoleLogger } from '@/drivers/logger/ConsoleLogger'
 import { AuthDomainService } from '@/firebaseImpl/domain/auth/AuthDomainService'
 import { AuthRepository } from '@/firebaseImpl/domain/auth/AuthRepository'
 import { FirebaseUserRepository } from '@/firebaseImpl/domain/user/FirebaseUserRepository'
-import { UserStream } from '@/firebaseImpl/query/UserStream'
-import { IUserStream } from '@/query/user/IUserStream'
+import { UserBLoC } from '@/firebaseImpl/query/UserBLoC'
+import { IUserBLoC } from '@/query/user/IUserBLoC'
 import { Container } from 'inversify'
 
 export function firebaseProviders(container: Container): void {
@@ -23,7 +23,7 @@ export function firebaseProviders(container: Container): void {
   container.bind(ILogger).to(ConsoleLogger).inSingletonScope()
 
   // query
-  container.bind(IUserStream).to(UserStream).inSingletonScope()
+  container.bind(IUserBLoC).to(UserBLoC).inSingletonScope()
 
   // application
   container.bind(IUserApplicationService).to(UserApplicationService).inSingletonScope()
