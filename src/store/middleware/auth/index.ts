@@ -1,4 +1,5 @@
 import { IUser } from '@/boundary/userApplicationService/InOutType'
+import router from '@/router'
 import { AuthApplicationService } from '@/serviceLocator/AuthApplicationService'
 import { Logger } from '@/serviceLocator/Logger'
 import { UserStream } from '@/serviceLocator/UserStream'
@@ -17,7 +18,8 @@ import {
   userLogin,
 } from './action'
 
-const startSubscribe = actionCreator<{unsubscribe: unsubscribe}>('START_SUBSCRIBE')
+const beforeSubscribe = actionCreator<ReturnType<typeof successUserLogin>['payload']>('BEFORE_SUBSCRIBE')
+const startedSubscribe = actionCreator<{unsubscribe: unsubscribe}>('STARTED_SUBSCRIBE')
 const failureLogin = actionCreator('FAILURE_LOGIN')
 const receiveUserFromStream = actionCreator<{user: IUser}>('RECEIVE_USER_FROM_STREAM')
 
@@ -37,19 +39,16 @@ const initialState = (): State => ({
   unsubscribe: [],
 })
 
+// tslint:disable
 const mutations = combineMutation<State>(
   mutation(updatedUserProfileEvent, (state, action) => {
     state.user = action.payload.user
   }),
-  mutation(successUserLogin, (state, action) => {
-    state.isInitialized = true
+  mutation(beforeSubscribe, (state, action) => {
     state.isLoggedIn = true
-    const {authInfo} = action.payload
-    state.isEmailVerified = authInfo.isEmailVerified
-    delete authInfo.isEmailVerified
-    state.user = authInfo
+    state.isEmailVerified = action.payload.authInfo.isEmailVerified
   }),
-  mutation(startSubscribe, (state, action) => {
+  mutation(startedSubscribe, (state, action) => {
     state.unsubscribe.push(action.payload.unsubscribe)
   }),
   mutation(failureLogin, (state) => {
@@ -61,6 +60,10 @@ const mutations = combineMutation<State>(
     state.unsubscribe.map((unsubscribe) => unsubscribe())
   }),
   mutation(receiveUserFromStream, (state, action) => {
+    if (!state.isInitialized) {
+      state.isInitialized = true
+      router.push('/')
+    }
     state.user = action.payload.user
   }),
 )
@@ -68,22 +71,25 @@ const mutations = combineMutation<State>(
 const actions = combineAction<State, any>(
   actionsToMutations(
     updatedUserProfileEvent,
-    successUserLogin,
   ),
-  action(userLogin, async ({commit}) => {
+  action(userLogin, async ({commit, dispatch}) => {
     try {
       const authInfo = await AuthApplicationService.getInstance().login()
-      commit(successUserLogin({authInfo}))
-      Logger.getInstance().info('ログイン成功', authInfo)
-      const unsubscribe = UserStream.getInstance().subscribe({
-        payload: { userId: authInfo.id },
-        subscriber: (user) => commit(receiveUserFromStream({user})),
-      })
-      commit(startSubscribe({unsubscribe}))
+      await dispatch(successUserLogin({authInfo}))
     } catch (e) {
       Logger.getInstance().info('ログイン失敗', e)
       commit(failureLogin())
     }
+  }),
+  action(successUserLogin, async ({commit}, action) => {
+    const { authInfo } = action.payload
+    Logger.getInstance().info('ログイン成功', authInfo)
+    commit(beforeSubscribe({authInfo}))
+    const unsubscribe = UserStream.getInstance().subscribe({
+      payload: { userId: authInfo.userId },
+      subscriber: (user) => commit(receiveUserFromStream({user})),
+    })
+    commit(startedSubscribe({unsubscribe}))
   }),
 )
 

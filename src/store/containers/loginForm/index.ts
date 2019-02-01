@@ -1,4 +1,3 @@
-import router from '@/router'
 import { AuthApplicationService } from '@/serviceLocator/AuthApplicationService'
 import { Logger } from '@/serviceLocator/Logger'
 import {
@@ -47,15 +46,14 @@ const mutations = combineMutation<State>(
 )
 
 const actions = combineAction<State, any>(
-  action(loginByEmailAndPassword, async ({commit}, action) => {
+  action(loginByEmailAndPassword, async ({commit, dispatch}, action) => {
     commit(startLogin())
     try {
       const authInfo = await AuthApplicationService.getInstance().loginWithEmailAndPassword(
         action.payload.email,
         action.payload.password,
       )
-      commit(successUserLogin({authInfo}))
-      router.push('/')
+      dispatch(successUserLogin({authInfo}))
     } catch (e) {
       Logger.getInstance().error(e)
       commit(failureLogin())

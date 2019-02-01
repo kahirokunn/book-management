@@ -39,36 +39,33 @@ export class AuthApplicationService implements IAuthApplicationService {
       hireDate: params.hireDate,
       gender: params.gender,
     }
-    const result = await Promise.all([
+    await Promise.all([
       this.userRepository.create(userParams),
       this.authDomainService.sendEmailVerification(),
     ])
 
-    const [user] = result
     return {
-      ...user,
+      userId,
       isEmailVerified: this.authDomainService.isEmailVerified(),
     }
   }
 
   public async login(): Promise<IAuthInfo> {
     const userId = await this.authRepository.login()
-    const user = await this.userRepository.findById(userId)
     const isEmailVerified = this.authDomainService.isEmailVerified()
 
     return {
-      ...user,
+      userId,
       isEmailVerified,
     }
   }
 
   public async loginWithEmailAndPassword(email: string, password: string): Promise<IAuthInfo> {
-    const id = await this.authRepository.loginWithEmailAndPassword(email, password)
-    const user =  await this.userRepository.findById(id)
+    const userId = await this.authRepository.loginWithEmailAndPassword(email, password)
     const isEmailVerified = this.authDomainService.isEmailVerified()
 
     return {
-      ...user,
+      userId,
       isEmailVerified,
     }
   }

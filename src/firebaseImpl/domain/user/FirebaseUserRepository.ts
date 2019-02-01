@@ -17,14 +17,6 @@ function userSetter(params: IUser, user: User) {
   user.gender = params.gender
 }
 
-function userMapper(user: User): IUser {
-  return {
-    ...user,
-    birthday: user.birthday.toDate(),
-    hireDate: user.hireDate.toDate(),
-  }
-}
-
 @injectable()
 export class FirebaseUserRepository implements IUserRepository {
   public async create(params: IUser): Promise<IUser> {
@@ -42,13 +34,5 @@ export class FirebaseUserRepository implements IUserRepository {
     userSetter(params, user)
     await user.update()
     return params
-  }
-
-  public async findById(id: Identifier): Promise<IUser> {
-    const user = await User.get(id)
-    if (!user) {
-      throw Error('userが取れませんでした')
-    }
-    return userMapper(user)
   }
 }

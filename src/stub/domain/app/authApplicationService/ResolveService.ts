@@ -13,23 +13,23 @@ export class AuthApplicationService implements IAuthApplicationService {
   public async registration(params: IRegistrationParams): Promise<IAuthInfo> {
     return {
       isEmailVerified: false,
-      ...userFactory(params),
+      userId: userFactory(params).id,
     }
   }
 
   public async login(): Promise<IAuthInfo> {
     return {
       isEmailVerified: true,
-      ...userFactory(),
+      userId: userFactory().id,
     }
   }
 
   public async loginWithEmailAndPassword(email: string): Promise<IAuthInfo> {
     return {
       isEmailVerified: true,
-      ...userFactory({
+      userId: userFactory({
         emailAddress: email,
-      }),
+      }).id,
     }
   }
 }
