@@ -4,7 +4,7 @@ exports[`login form container 1`] = `
 <vflex-stub tag="div" xs12="" sm8="" md6="">
   <loginform-stub login="function () { [native code] }"></loginform-stub>
   <vdialog-stub persistent="true" maxwidth="none" origin="center center" width="300" transition="dialog-transition">
-    <vcard-stub tag="div" color="primary" dark="">
+    <vcard-stub color="primary" dark="">
       <vcardtext-stub>
         ログイン中です...
         <vprogresslinear-stub active="true" buffervalue="100" color="white" height="7" indeterminate="true" value="0" class="mb-0"></vprogresslinear-stub>
@@ -12,7 +12,7 @@ exports[`login form container 1`] = `
     </vcard-stub>
   </vdialog-stub>
   <vdialog-stub maxwidth="none" origin="center center" width="500" transition="dialog-transition">
-    <vcard-stub tag="div" color="error" dark="">
+    <vcard-stub color="error" dark="">
       <vcardtext-stub>ログイン情報が間違っています</vcardtext-stub>
       <vcardactions-stub>
         <vspacer-stub></vspacer-stub>
