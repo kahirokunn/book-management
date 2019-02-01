@@ -13,13 +13,10 @@ const config = {
   projectId: process.env.projectId,
   storageBucket: process.env.storageBucket,
   messagingSenderId: process.env.messagingSenderId,
-  timestampsInSnapshots: true,
 }
 
 const app = firebase.initializeApp(config)
 const firestore = firebase.firestore(app)
-
-firestore.settings({ timestampsInSnapshots: true })
 
 const auth = firebase.auth
 const storage = firebase.storage
