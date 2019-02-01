@@ -1,17 +1,17 @@
-enum Owner {
+export enum Owner {
   SELF = 'SELF',
   COMPANY = 'COMPANY',
   OTHER = 'OTHER',
 }
 
-type BookType = 'Ebook' | 'PhysicalBook'
-type Evaluation = 1 | 2 | 3 | 4 | 5
-enum PurchasedLocation {
+export type BookType = 'Ebook' | 'PhysicalBook'
+export type Evaluation = 1 | 2 | 3 | 4 | 5
+export enum PurchasedLocation {
   ONLINE = 'ONLINE',
   OFFLINE = 'OFFLINE',
 }
 
-export type Book = {
+export type IBook = {
   id: Identifier,
   userId: Identifier,
   title: string,
@@ -27,6 +27,8 @@ export type Book = {
   purchasedUrl: string | null,
   evaluation: Evaluation | null,
   receiptImageFilePath: string | null,
+  createdAt: Date,
+  updatedAt: Date,
 }
 
-export type RegistrationBook = Book & {id?: Identifier}
+export type IRegistrationBook = IBook & {id?: Identifier}

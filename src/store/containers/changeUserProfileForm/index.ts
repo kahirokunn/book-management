@@ -1,6 +1,5 @@
 import { Logger } from '@/serviceLocator/Logger'
 import { UserApplicationService } from '@/serviceLocator/UserApplicationService'
-import { updatedUserProfileEvent } from '@/store/eventHub/eventCreators'
 import {
   action,
   actionsToMutations,
@@ -63,10 +62,9 @@ const actions = combineAction<State, any>(
     commit(startUpdate())
 
     try {
-      const user = await UserApplicationService.getInstance().update(action.payload.user)
-      Logger.getInstance().info('ユーザー情報の更新に成功', user)
+      await UserApplicationService.getInstance().update(action.payload.user)
+      Logger.getInstance().info('ユーザー情報の更新に成功')
       commit(successUpdate())
-      commit(updatedUserProfileEvent({user}))
     } catch (e) {
       Logger.getInstance().error(e)
       commit(failureSend())

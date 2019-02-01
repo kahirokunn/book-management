@@ -1,5 +1,8 @@
 import {
-  Book as BookType,
+  BookType,
+  Evaluation,
+  Owner,
+  PurchasedLocation,
 } from '@/boundary/bookApplicationService/InOutType'
 import firebase from 'firebase/app'
 import * as Pring from 'pring'
@@ -11,20 +14,20 @@ export class Book extends Pring.Base {
     return modelName
   }
 
-  @Pring.property public userId!: BookType['userId']
-  @Pring.property public title!: BookType['title']
-  @Pring.property public purchasedLocation!: BookType['purchasedLocation']
+  @Pring.property public userId!: Identifier
+  @Pring.property public title!: string
+  @Pring.property public purchasedLocation!: PurchasedLocation
   @Pring.property public purchasedDatetime!: firebase.firestore.Timestamp
   @Pring.property public description!: string
-  @Pring.property public type!: BookType['type']
-  @Pring.property public price!: BookType['price']
-  @Pring.property public owner!: BookType['owner']
+  @Pring.property public type!: BookType
+  @Pring.property public price!: number
+  @Pring.property public owner!: Owner
 
   // 任意
-  @Pring.property public coverImageFilePath!: BookType['coverImageFilePath']
-  @Pring.property public purchasedUrl!: BookType['purchasedUrl']
-  @Pring.property public evaluation!: BookType['evaluation']
-  @Pring.property public receiptImageFilePath!: BookType['receiptImageFilePath']
+  @Pring.property public coverImageFilePath!: string | null
+  @Pring.property public purchasedUrl!: string | null
+  @Pring.property public evaluation!: Evaluation | null
+  @Pring.property public receiptImageFilePath!: string | null
 
   public getModelName() {
     return modelName

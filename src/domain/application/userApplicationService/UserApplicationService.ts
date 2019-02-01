@@ -12,7 +12,7 @@ export class UserApplicationService implements IUserApplicationService {
     private readonly userRepository: IUserRepository,
   ) {}
 
-  public update(params: IUser): Promise<IUser> {
+  public update(params: IUser): Promise<void> {
     return this.userRepository.update(params)
   }
 }

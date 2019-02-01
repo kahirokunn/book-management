@@ -5,7 +5,7 @@ import { isValid } from '@/submodules/validate'
 import { injectable } from 'inversify'
 
 @injectable()
-export class AuthRepository implements IAuthRepository {
+export class FirebaseAuthRepository implements IAuthRepository {
   public async createAuthInfoWithEmailAndPassword(emailAddress: string, password: string): Promise<Identifier> {
     const response = await auth().createUserWithEmailAndPassword(emailAddress, password)
     if (response.user === null) {

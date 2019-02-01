@@ -19,20 +19,18 @@ function userSetter(params: IUser, user: User) {
 
 @injectable()
 export class FirebaseUserRepository implements IUserRepository {
-  public async create(params: IUser): Promise<IUser> {
+  public async create(params: IUser): Promise<void> {
     const user = new User(params.id)
     userSetter(params, user)
     await user.save()
-    return params
   }
 
-  public async update(params: IUser): Promise<IUser> {
+  public async update(params: IUser): Promise<void> {
     const user = await User.get(params.id)
     if (!user) {
       throw Error('userが取れませんでした')
     }
     userSetter(params, user)
     await user.update()
-    return params
   }
 }

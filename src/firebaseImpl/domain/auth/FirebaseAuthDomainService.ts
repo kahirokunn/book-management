@@ -4,7 +4,7 @@ import { Logger } from '@/serviceLocator/Logger'
 import { injectable } from 'inversify'
 
 @injectable()
-export class AuthDomainService implements IAuthDomainService {
+export class FirebaseAuthDomainService implements IAuthDomainService {
   public async sendEmailVerification(): Promise<void> {
     const currentUser = auth().currentUser
     if (currentUser !== null) {

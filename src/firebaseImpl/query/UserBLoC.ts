@@ -28,11 +28,7 @@ export class UserBLoC implements IUserBLoC {
     const docRef = User.getReference().doc(id)
 
     this.observables[id] = docData(docRef)
-      .pipe(filter((data) => {
-        // たまに空データが届くのでここでフィルタリング。
-        // 適当に5個ぐらいキーがあれば信用しちゃう
-        return Object.keys(data).length > 5
-      }))
+      .pipe(filter((data) => data && Object.keys(data).length > 0))
       .pipe(map((data) => userMapper(id, data)))
     return this.observables[id]
   }

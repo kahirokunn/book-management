@@ -3,11 +3,9 @@ import router from '@/router'
 import { AuthApplicationService } from '@/serviceLocator/AuthApplicationService'
 import { Logger } from '@/serviceLocator/Logger'
 import { UserBLoC } from '@/serviceLocator/UserBLoC'
-import { updatedUserProfileEvent } from '@/store/eventHub/eventCreators'
 import { Subscription } from 'rxjs'
 import {
   action,
-  actionsToMutations,
   combineAction,
   combineMutation,
   mutation,
@@ -42,9 +40,6 @@ const initialState = (): State => ({
 
 // tslint:disable
 const mutations = combineMutation<State>(
-  mutation(updatedUserProfileEvent, (state, action) => {
-    state.user = action.payload.user
-  }),
   mutation(beforeSubscribe, (state, action) => {
     state.isLoggedIn = true
     state.isEmailVerified = action.payload.authInfo.isEmailVerified
@@ -61,6 +56,7 @@ const mutations = combineMutation<State>(
     state.subscriptions.map((subscription) => subscription.unsubscribe())
   }),
   mutation(receiveUserFromStream, (state, action) => {
+    Logger.getInstance().info('receiveUserFromStream', action.payload)
     if (!state.isInitialized) {
       state.isInitialized = true
       router.push('/')
@@ -70,9 +66,6 @@ const mutations = combineMutation<State>(
 )
 
 const actions = combineAction<State, any>(
-  actionsToMutations(
-    updatedUserProfileEvent,
-  ),
   action(userLogin, async ({commit, dispatch}) => {
     try {
       const authInfo = await AuthApplicationService.getInstance().login()
