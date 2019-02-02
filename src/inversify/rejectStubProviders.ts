@@ -1,6 +1,7 @@
 import {
   IAuthApplicationService,
 } from '@/boundary/authApplicationService/IAuthApplicationService'
+import { IBookApplicationService } from '@/boundary/bookApplicationService/IBookApplicationService'
 import {
   IUserApplicationService,
 } from '@/boundary/userApplicationService/IUserApplicationService'
@@ -11,6 +12,7 @@ import { IUserObservableRepository } from '@/query/observableRepository/user/IUs
 import {
   AuthApplicationService,
 } from '@/stub/domain/app/authApplicationService/RejectService'
+import { BookApplicationService } from '@/stub/domain/app/bookApplicationService/RejectService'
 import {
   UserApplicationService,
 } from '@/stub/domain/app/userApplicationService/RejectService'
@@ -28,4 +30,5 @@ export function stubProviders(container: Container): void {
   // application
   container.bind(IUserApplicationService).to(UserApplicationService).inSingletonScope()
   container.bind(IAuthApplicationService).to(AuthApplicationService).inSingletonScope()
+  container.bind(IBookApplicationService).to(BookApplicationService).inSingletonScope()
 }
