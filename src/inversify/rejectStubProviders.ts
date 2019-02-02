@@ -6,16 +6,15 @@ import {
 } from '@/boundary/userApplicationService/IUserApplicationService'
 import { ILogger } from '@/drivers/ILogger'
 import { BlankLogger } from '@/drivers/logger/BlankLogger'
-import { IUserBLoC } from '@/query/user/IUserBLoC'
+import { UserBLoC } from '@/query/bloc/user/UserBLoC'
+import { IUserObservableRepository } from '@/query/observableRepository/user/IUserObservableRepository'
 import {
   AuthApplicationService,
 } from '@/stub/domain/app/authApplicationService/RejectService'
 import {
   UserApplicationService,
 } from '@/stub/domain/app/userApplicationService/RejectService'
-import {
-  UserBLoC,
-} from '@/stub/query/UserBLoC/RejectBLoC'
+import { UserObservableRepository } from '@/stub/query/observableRepository/UserObservableRepository/RejectRepository'
 import { Container } from 'inversify'
 
 export function stubProviders(container: Container): void {
@@ -23,7 +22,8 @@ export function stubProviders(container: Container): void {
   container.bind(ILogger).to(BlankLogger).inSingletonScope()
 
   // query
-  container.bind(IUserBLoC).to(UserBLoC).inSingletonScope()
+  container.bind(UserBLoC).to(UserBLoC).inSingletonScope()
+  container.bind(IUserObservableRepository).to(UserObservableRepository).inSingletonScope()
 
   // application
   container.bind(IUserApplicationService).to(UserApplicationService).inSingletonScope()

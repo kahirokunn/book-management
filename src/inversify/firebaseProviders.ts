@@ -18,8 +18,9 @@ import { FirebaseAuthDomainService } from '@/firebaseImpl/domain/auth/FirebaseAu
 import { FirebaseAuthRepository } from '@/firebaseImpl/domain/auth/FirebaseAuthRepository'
 import { FirebaseBookRepository } from '@/firebaseImpl/domain/book/FirebaseBookRepository'
 import { FirebaseUserRepository } from '@/firebaseImpl/domain/user/FirebaseUserRepository'
-import { UserBLoC } from '@/firebaseImpl/query/UserBLoC'
-import { IUserBLoC } from '@/query/user/IUserBLoC'
+import { UserObservableRepository } from '@/firebaseImpl/query/observableRepository/UserObservableRepository'
+import { UserBLoC } from '@/query/bloc/user/UserBLoC'
+import { IUserObservableRepository } from '@/query/observableRepository/user/IUserObservableRepository'
 import { Container } from 'inversify'
 
 export function firebaseProviders(container: Container): void {
@@ -27,7 +28,8 @@ export function firebaseProviders(container: Container): void {
   container.bind(ILogger).to(ConsoleLogger).inSingletonScope()
 
   // query
-  container.bind(IUserBLoC).to(UserBLoC).inSingletonScope()
+  container.bind(UserBLoC).to(UserBLoC).inSingletonScope()
+  container.bind(IUserObservableRepository).to(UserObservableRepository).inSingletonScope()
 
   // application
   container.bind(IUserApplicationService).to(UserApplicationService).inSingletonScope()

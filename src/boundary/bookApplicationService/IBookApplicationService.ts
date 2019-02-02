@@ -1,10 +1,10 @@
 import {
   IBook,
-  IRegistrationBook,
+  IRegistrationParams,
 } from './InOutType'
 
 export abstract class IBookApplicationService {
-  public abstract create(params: IRegistrationBook): Promise<void>
+  public abstract create(params: IRegistrationParams): Promise<void>
   public abstract update(book: IBook): Promise<void>
   public abstract delete(id: Identifier): Promise<void>
 }

@@ -1,10 +1,8 @@
 import { serviceContainer } from '@/inversify/config'
-import {
-  IUserBLoC,
-} from '@/query/user/IUserBLoC'
+import { UserBLoC as UserBLoCImpl } from '@/query/bloc/user/UserBLoC'
 
 export class UserBLoC {
-  public static getInstance(): IUserBLoC {
-    return serviceContainer.get(IUserBLoC)
+  public static getInstance(): UserBLoCImpl {
+    return serviceContainer.get(UserBLoCImpl)
   }
 }

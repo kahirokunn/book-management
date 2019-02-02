@@ -4,10 +4,13 @@ export enum Owner {
   OTHER = 'OTHER',
 }
 
-export type BookType = 'Ebook' | 'PhysicalBook'
+export enum BookType {
+  PHYSICAL_BOOK = 'PhysicalBook',
+  E_BOOK = 'Ebook',
+}
 export type Evaluation = 1 | 2 | 3 | 4 | 5
 export enum PurchasedLocation {
-  ONLINE = 'ONLINE',
+  ONLINE = 'ONLcINE',
   OFFLINE = 'OFFLINE',
 }
 
@@ -31,4 +34,19 @@ export type IBook = {
   updatedAt: Date,
 }
 
-export type IRegistrationBook = IBook & {id?: Identifier}
+export type IRegistrationParams = {
+  userId: Identifier,
+  title: string,
+  purchasedLocation: PurchasedLocation,
+  purchasedDatetime: Date,
+  description: string,
+  type: BookType,
+  price: number,
+  owner: Owner,
+
+  // 任意
+  coverImageFilePath: string | null,
+  purchasedUrl: string | null,
+  evaluation: Evaluation | null,
+  receiptImageFilePath: string | null,
+}

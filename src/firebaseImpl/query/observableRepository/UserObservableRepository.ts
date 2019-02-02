@@ -1,6 +1,6 @@
 import { IUser } from '@/boundary/userApplicationService/InOutType'
 import { User } from '@/models/user'
-import { IUserBLoC } from '@/query/user/IUserBLoC'
+import { IUserObservableRepository } from '@/query/observableRepository/user/IUserObservableRepository'
 import { injectable } from 'inversify'
 import { docData } from 'rxfire/firestore'
 import { Observable } from 'rxjs'
@@ -18,18 +18,11 @@ function userMapper(userId: Identifier, user: any): IUser {
 }
 
 @injectable()
-export class UserBLoC implements IUserBLoC {
-  private observables: {[id: string]: Observable<IUser>}  = {}
-
-  public execute(id: Identifier) {
-    if (id in this.observables) {
-      return this.observables[id]
-    }
+export class UserObservableRepository implements IUserObservableRepository {
+  public getUser(id: Identifier): Observable<IUser> {
     const docRef = User.getReference().doc(id)
-
-    this.observables[id] = docData(docRef)
+    return docData(docRef)
       .pipe(filter((data) => data && Object.keys(data).length > 0))
       .pipe(map((data) => userMapper(id, data)))
-    return this.observables[id]
   }
 }

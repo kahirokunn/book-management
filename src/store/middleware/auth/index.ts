@@ -12,8 +12,8 @@ import {
 } from 'typescript-fsa-vuex'
 import {
   actionCreator,
+  deposeUser,
   successUserLogin,
-  unsubscribeUserData,
   userLogin,
 } from './action'
 
@@ -52,7 +52,7 @@ const mutations = combineMutation<State>(
     state.isLoggedIn = false
     state.user = initialState().user
   }),
-  mutation(unsubscribeUserData, (state) => {
+  mutation(deposeUser, (state) => {
     state.subscriptions.map((subscription) => subscription.unsubscribe())
   }),
   mutation(receiveUserFromStream, (state, action) => {
@@ -81,7 +81,7 @@ const actions = combineAction<State, any>(
     commit(beforeSubscribe({authInfo}))
     const subscription = UserBLoC
       .getInstance()
-      .execute(authInfo.userId)
+      .userObservable(authInfo.userId)
       .subscribe((user) => commit(receiveUserFromStream({user})))
     commit(startedSubscribe({subscription}))
   }),

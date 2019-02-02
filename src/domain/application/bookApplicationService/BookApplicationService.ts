@@ -1,7 +1,7 @@
 import { IBookApplicationService } from '@/boundary/bookApplicationService/IBookApplicationService'
 import {
   IBook,
-  IRegistrationBook,
+  IRegistrationParams,
 } from '@/boundary/bookApplicationService/InOutType'
 import { IBookRepository } from '@/domain/model/book/IBookRepository'
 import { inject, injectable } from 'inversify'
@@ -14,7 +14,7 @@ export class BookApplicationService implements IBookApplicationService {
   ) {
   }
 
-  public create(params: IRegistrationBook): Promise<void> {
+  public create(params: IRegistrationParams): Promise<void> {
     return this.bookRepository.create(params)
   }
   public update(book: IBook): Promise<void> {
