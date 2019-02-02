@@ -10,7 +10,7 @@
     <v-card-text>
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-layout row wrap>
-          <UserImageUploader v-model="iconFilepath" />
+          <ImageUploader v-model="iconFilepath" />
         </v-layout>
 
         <v-layout row wrap>
@@ -143,7 +143,7 @@
     <v-card-actions>
       <v-spacer/>
       <v-btn
-        :disabled="!valid || isSending"
+        :disabled="!valid"
         @click="submit()"
         color="primary"
       >保存</v-btn>
@@ -153,7 +153,7 @@
 
 <script lang="ts">
 import { IUser } from '@/boundary/userApplicationService/InOutType'
-import UserImageUploader from '@/components/relay/userImageUploader.vue'
+import ImageUploader from '@/components/relay/imageUploader.vue'
 import { days, months, years } from '@/config/user/birthday'
 import { genderList } from '@/config/user/gender'
 import * as rules from '@/config/user/rules'
@@ -161,7 +161,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {
-    UserImageUploader,
+    ImageUploader,
   },
 })
 export default class UserProfileForm extends Vue {
@@ -173,7 +173,6 @@ export default class UserProfileForm extends Vue {
   @Prop({required: true}) public user!: IUser
 
   public valid = true
-  public isSending = false
 
   public iconFilepath!: string
   public displayName!: string
@@ -226,7 +225,6 @@ export default class UserProfileForm extends Vue {
 
   public submit() {
     if (this.$refs.form.validate()) {
-      this.isSending = true
       this.updateProfile({
         id: this.user.id,
         emailAddress: this.user.emailAddress,
@@ -240,7 +238,6 @@ export default class UserProfileForm extends Vue {
         hireDate: this.hireDate,
         gender: this.gender,
       })
-      this.isSending = false
     }
   }
 

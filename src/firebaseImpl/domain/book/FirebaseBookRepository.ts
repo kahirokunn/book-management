@@ -2,7 +2,6 @@ import { IBook } from '@/boundary/bookApplicationService/InOutType'
 import { IBookRepository } from '@/domain/model/book/IBookRepository'
 import { Book } from '@/models/book'
 import firebase from 'firebase/app'
-import { injectable } from 'inversify'
 
 function bookSetter(params: IBook, book: Book) {
   book.userId = params.userId
@@ -19,7 +18,6 @@ function bookSetter(params: IBook, book: Book) {
   book.receiptImageFilePath = params.receiptImageFilePath
 }
 
-@injectable()
 export class FirebaseBookRepository implements IBookRepository {
   public async create(params: IBook): Promise<void> {
     const book = new Book(params.id)

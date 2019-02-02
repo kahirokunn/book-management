@@ -4,7 +4,7 @@
     :action="''"
     :http-request="uploadToFilesbaseStorage"
     :show-file-list="false"
-    :before-upload="beforeAvatarUpload">
+    :before-upload="beforeAvatarUpload" >
 
     <img v-if="imageUrl" :src="imageUrl" class="avatar">
     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -92,9 +92,11 @@ enum UploadState {
     prop: 'url',
   },
 })
-export default class UserImageUploader extends Vue {
+export default class ImageUploader extends Vue {
   @Prop() public url!: string
   @Prop({default: false}) public hideStatus!: boolean
+  @Prop({default: 0}) public minWidth!: number
+  @Prop({default: 0}) public minHeight!: number
 
   public imageUrl = ''
   public isNotAllowFileType = false
@@ -180,6 +182,10 @@ export default class UserImageUploader extends Vue {
 
     &:hover {
       border-color: #409EFF;
+    }
+    &.el-upload--text {
+      min-width: 200px;
+      min-height: 200px;
     }
   }
 }

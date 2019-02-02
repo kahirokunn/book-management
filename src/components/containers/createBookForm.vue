@@ -7,8 +7,8 @@
     transition="dialog-bottom-transition"
     scrollable
   >
-    <UserProfileForm
-      :updateProfile="updateProfile"
+    <BookForm
+      :createBook="createBook"
       :user="user"
       @cancel="closeDialog()"/>
 
@@ -16,7 +16,7 @@
     <v-dialog v-model="isSending" persistent width="300">
       <v-card color="primary" dark>
         <v-card-text>
-          更新中です...
+          登録中です...
           <v-progress-linear
             indeterminate
             color="white"
@@ -51,34 +51,34 @@
       :timeout="3000"
       color="success"
       top>
-      アカウント情報の更新に成功しました
+      本の登録に成功しました
     </v-snackbar>
 
   </v-dialog>
 </template>
 
 <script lang="ts">
-import { IUser } from '@/boundary/userApplicationService/InOutType'
-import UserProfileForm from '@/components/organisms/userProfileForm.vue'
+import { IRegistrationParams } from '@/boundary/bookApplicationService/InOutType'
+import BookForm from '@/components/organisms/createBookForm.vue'
 import {
   closeDialog,
+  createBook,
   toStandby,
-  updateProfile,
-} from '@/store/containers/changeUserProfileForm/action'
-import selector from '@/store/containers/changeUserProfileForm/selector'
+} from '@/store/containers/createBookForm/action'
+import selector from '@/store/containers/createBookForm/selector'
 import authSelector from '@/store/middleware/auth/selector'
 import { mapComputed } from '@/submodules/store'
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {
-    UserProfileForm,
+    BookForm,
   },
   computed: mapComputed(selector, authSelector),
 })
-export default class ChangeUserProfileFormContainer extends Vue {
-  public updateProfile(params: IUser) {
-    return this.$store.dispatch(updateProfile({ user: params }))
+export default class CreateBookFormContainer extends Vue {
+  public createBook(params: IRegistrationParams) {
+    return this.$store.dispatch(createBook({ params }))
   }
 
   public toStandby() {

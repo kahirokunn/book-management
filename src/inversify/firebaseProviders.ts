@@ -10,12 +10,14 @@ import { BookApplicationService } from '@/domain/application/bookApplicationServ
 import { UserApplicationService } from '@/domain/application/userApplicationService/UserApplicationService'
 import { IAuthDomainService } from '@/domain/model/auth/IAuthDomainService'
 import { IAuthRepository } from '@/domain/model/auth/IAuthRepository'
+import IBookFactory from '@/domain/model/book/IBookFactory'
 import { IBookRepository } from '@/domain/model/book/IBookRepository'
 import { IUserRepository } from '@/domain/model/user/IUserRepository'
 import { ILogger } from '@/drivers/ILogger'
 import { ConsoleLogger } from '@/drivers/logger/ConsoleLogger'
 import { FirebaseAuthDomainService } from '@/firebaseImpl/domain/auth/FirebaseAuthDomainService'
 import { FirebaseAuthRepository } from '@/firebaseImpl/domain/auth/FirebaseAuthRepository'
+import BookFactory from '@/firebaseImpl/domain/book/BookFactory'
 import { FirebaseBookRepository } from '@/firebaseImpl/domain/book/FirebaseBookRepository'
 import { FirebaseUserRepository } from '@/firebaseImpl/domain/user/FirebaseUserRepository'
 import { UserObservableRepository } from '@/firebaseImpl/query/observableRepository/UserObservableRepository'
@@ -41,4 +43,5 @@ export function firebaseProviders(container: Container): void {
   container.bind(IAuthDomainService).to(FirebaseAuthDomainService).inSingletonScope()
   container.bind(IAuthRepository).to(FirebaseAuthRepository).inSingletonScope()
   container.bind(IBookRepository).to(FirebaseBookRepository).inSingletonScope()
+  container.bind(IBookFactory).to(BookFactory).inSingletonScope()
 }

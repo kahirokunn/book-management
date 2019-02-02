@@ -68,6 +68,7 @@
 
 <script lang="ts">
 import router from '@/router/index'
+import { openDialog as openCreateBookFormDialog } from '@/store/containers/createBookForm/action'
 import { closeDrawer } from '@/store/containers/navigation/action'
 import selector from '@/store/containers/navigation/selector'
 import { mapComputed } from '@/submodules/store'
@@ -84,11 +85,16 @@ export default class Navigation extends Vue {
         text: '購入済み書籍一覧',
         action: () => router.push('/books'),
       },
+      {
+        icon: 'library_add',
+        text: '本を登録する',
+        action: () => this.$store.dispatch(openCreateBookFormDialog()),
+      },
     ]
   }
 
-  public async fire(action: () => void) {
-    await this.$store.dispatch(closeDrawer())
+  public fire(action: () => void) {
+    this.$store.dispatch(closeDrawer())
     action()
   }
 }

@@ -5,6 +5,7 @@
       <Navigation />
       <LoggedInHeader />
       <ChangeUserProfileForm />
+      <CreateBookForm />
 
       <v-content>
         <slot />
@@ -16,6 +17,7 @@
 
 <script lang="ts">
 import ChangeUserProfileForm from '@/components/containers/changeUserProfileForm.vue'
+import CreateBookForm from '@/components/containers/createBookForm.vue'
 import LoggedInHeader from '@/components/containers/loggedInHeader.vue'
 import Navigation from '@/components/containers/navigation.vue'
 import authSelector from '@/store/middleware/auth/selector'
@@ -27,6 +29,7 @@ import { Component, Vue } from 'vue-property-decorator'
     Navigation,
     LoggedInHeader,
     ChangeUserProfileForm,
+    CreateBookForm,
   },
   computed: mapComputed(authSelector),
 })

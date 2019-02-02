@@ -22,10 +22,11 @@ export class Book extends Pring.Base {
   @Pring.property public type!: BookType
   @Pring.property public price!: number
   @Pring.property public owner!: Owner
+  @Pring.property public purchasedUrl!: string
+  @Pring.property public downloadUrl!: string
 
   // 任意
   @Pring.property public coverImageFilePath!: string | null
-  @Pring.property public purchasedUrl!: string | null
   @Pring.property public evaluation!: Evaluation | null
   @Pring.property public receiptImageFilePath!: string | null
 

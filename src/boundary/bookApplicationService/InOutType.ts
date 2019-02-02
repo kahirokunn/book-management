@@ -10,7 +10,7 @@ export enum BookType {
 }
 export type Evaluation = 1 | 2 | 3 | 4 | 5
 export enum PurchasedLocation {
-  ONLINE = 'ONLcINE',
+  ONLINE = 'ONLINE',
   OFFLINE = 'OFFLINE',
 }
 
@@ -24,10 +24,10 @@ export type IBook = {
   type: BookType,
   price: number,
   owner: Owner,
-
+  purchasedUrl: string,
+  downloadUrl: string,
   // 任意
   coverImageFilePath: string | null,
-  purchasedUrl: string | null,
   evaluation: Evaluation | null,
   receiptImageFilePath: string | null,
   createdAt: Date,
@@ -43,10 +43,11 @@ export type IRegistrationParams = {
   type: BookType,
   price: number,
   owner: Owner,
+  purchasedUrl: string,
+  downloadUrl: string,
 
   // 任意
   coverImageFilePath: string | null,
-  purchasedUrl: string | null,
   evaluation: Evaluation | null,
   receiptImageFilePath: string | null,
 }

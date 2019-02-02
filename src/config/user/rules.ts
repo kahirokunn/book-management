@@ -82,3 +82,12 @@ export const urlRules = [
 export const postalCodeRules = [
   (v: string) => !v || /^\d{3}[-]\d{4}$|^\d{3}[-]\d{2}$|^\d{3}$|^\d{5}$|^\d{7}$/.test(v) || 'Postal code is invalid',
 ]
+
+export const requiredRules = (message: string) => [
+  (v: string) => !!v || message,
+]
+
+export const numberRules = [
+  (v: string) => /^\d/.test(v) || 'Accept number input only',
+  (v: string) => Number(v) > 0 || 'Required over 0',
+]
