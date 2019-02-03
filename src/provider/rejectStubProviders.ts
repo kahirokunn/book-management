@@ -20,15 +20,15 @@ import { Container } from 'inversify'
 
 export function rejectStubProviders(container: Container): void {
   // core
-  container.bind(ILogger).to(BlankLogger).inSingletonScope()
+  container.bind(ILogger).to(BlankLogger)
   Logger.initialize(container.get(ILogger))
 
   // query
-  container.bind(UserBLoC).to(UserBLoC).inSingletonScope()
-  container.bind(IUserObservableRepository).to(UserObservableRepository).inSingletonScope()
+  container.bind(UserBLoC).to(UserBLoC)
+  container.bind(IUserObservableRepository).to(UserObservableRepository)
 
   // application
-  container.bind(IUserApplicationService).to(UserApplicationService).inSingletonScope()
-  container.bind(IAuthApplicationService).to(AuthApplicationService).inSingletonScope()
-  container.bind(IBookApplicationService).to(BookApplicationService).inSingletonScope()
+  container.bind(IUserApplicationService).to(UserApplicationService)
+  container.bind(IAuthApplicationService).to(AuthApplicationService)
+  container.bind(IBookApplicationService).to(BookApplicationService)
 }

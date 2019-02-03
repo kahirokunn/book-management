@@ -26,22 +26,22 @@ import { Container } from 'inversify'
 
 export function firebaseProviders(container: Container): void {
   // core
-  container.bind(ILogger).to(ConsoleLogger).inSingletonScope()
+  container.bind(ILogger).to(ConsoleLogger)
   Logger.initialize(container.get(ILogger))
 
   // query
-  container.bind(UserBLoC).to(UserBLoC).inSingletonScope()
-  container.bind(IUserObservableRepository).to(UserObservableRepository).inSingletonScope()
+  container.bind(UserBLoC).to(UserBLoC)
+  container.bind(IUserObservableRepository).to(UserObservableRepository)
 
   // application
-  container.bind(IUserApplicationService).to(UserApplicationService).inSingletonScope()
-  container.bind(IAuthApplicationService).to(AuthApplicationService).inSingletonScope()
-  container.bind(IBookApplicationService).to(BookApplicationService).inSingletonScope()
+  container.bind(IUserApplicationService).to(UserApplicationService)
+  container.bind(IAuthApplicationService).to(AuthApplicationService)
+  container.bind(IBookApplicationService).to(BookApplicationService)
 
   // domain
-  container.bind(IUserRepository).to(FirebaseUserRepository).inSingletonScope()
-  container.bind(IAuthDomainService).to(FirebaseAuthDomainService).inSingletonScope()
-  container.bind(IAuthRepository).to(FirebaseAuthRepository).inSingletonScope()
-  container.bind(IBookRepository).to(FirebaseBookRepository).inSingletonScope()
-  container.bind(IBookFactory).to(BookFactory).inSingletonScope()
+  container.bind(IUserRepository).to(FirebaseUserRepository)
+  container.bind(IAuthDomainService).to(FirebaseAuthDomainService)
+  container.bind(IAuthRepository).to(FirebaseAuthRepository)
+  container.bind(IBookRepository).to(FirebaseBookRepository)
+  container.bind(IBookFactory).to(BookFactory)
 }
