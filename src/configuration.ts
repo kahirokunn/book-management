@@ -1,7 +1,5 @@
 import '@/firebase/index'
 import { auth } from '@/firebase/index'
-import { serviceContainer } from '@/inversify/config'
-import { firebaseProviders } from '@/inversify/firebaseProviders'
 import { Upload } from 'element-ui'
 import locale from 'element-ui/lib/locale'
 import lang from 'element-ui/lib/locale/lang/ja'
@@ -33,7 +31,6 @@ Vue.use(Vuetify, {
 })
 
 auth().setPersistence(auth.Auth.Persistence.LOCAL)
-firebaseProviders(serviceContainer)
 
 if (isProd()) {
   setting({

@@ -1,9 +1,5 @@
-import {
-  IAuthApplicationService,
-} from '@/boundary/authApplicationService/IAuthApplicationService'
-import {
-  IAuthInfo,
-} from '@/boundary/authApplicationService/InOutType'
+import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuthApplicationService'
+import { IAuthInfo } from '@/boundary/authApplicationService/InOutType'
 import { injectable } from 'inversify'
 
 @injectable()

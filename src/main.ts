@@ -1,4 +1,5 @@
 import '@/configuration'
+import { firebaseProviders } from '@/provider/firebaseProviders'
 import router from '@/router/index'
 import { loggedInMiddleware } from '@/router/middlewares/guards/loggedIn'
 import { unLoggedInMiddleware } from '@/router/middlewares/guards/unLoggedIn'
@@ -8,7 +9,12 @@ import Vue from 'vue'
 import { createStore } from './store/root'
 import { isProd } from './submodules/env'
 
-const store = createStore()
+import { Container } from 'inversify'
+
+const container = new Container()
+firebaseProviders(container)
+
+const store = createStore(container)
 
 loggedInMiddleware(router, store.state)
 unLoggedInMiddleware(router, store.state)

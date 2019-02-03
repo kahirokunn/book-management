@@ -1,13 +1,20 @@
-import '@/resolveTestConfiguration'
+// tslint:disable ordered-imports
+import '@/testConfiguration'
+import { resolveStubProviders } from '@/provider/resolveStubProviders'
 import selector from '@/store/containers/loginForm/selector'
 import authSelector from '@/store/middleware/auth/selector'
 import { createStore } from '@/store/root'
 import { shallowMount } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
+import { Container } from 'inversify'
 import index from './index.vue'
 
 test('login form container', async () => {
-  const store = createStore()
+  const container = new Container()
+
+  resolveStubProviders(container)
+  const store = createStore(container)
+
   selector.isFailed(store.state)
   selector.isSending(store.state)
   const wrapper = shallowMount(index, { store })

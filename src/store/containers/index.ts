@@ -1,23 +1,27 @@
-import changeUserProfileForm from './changeUserProfileForm'
-import createBookForm from './createBookForm'
-import loginForm from './loginForm'
-import navigation from './navigation'
-import userRegistrationForm from './userRegistrationForm'
+import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuthApplicationService'
+import { IBookApplicationService } from '@/boundary/bookApplicationService/IBookApplicationService'
+import { IUserApplicationService } from '@/boundary/userApplicationService/IUserApplicationService'
+import { Container } from 'inversify'
+import { changeUserProfileFormModuleCreator } from './changeUserProfileForm'
+import { createBookFormCreator } from './createBookForm'
+import { loginFormModuleCreator } from './loginForm'
+import { navigationCreator } from './navigation'
+import { userRegistrationFormCreator } from './userRegistrationForm'
 
 export type ContainersState = {
-  changeUserProfileForm: ReturnType<typeof changeUserProfileForm.state>,
-  createBookForm: ReturnType<typeof createBookForm.state>,
-  loginForm: ReturnType<typeof loginForm.state>,
-  navigation: ReturnType<typeof navigation.state>,
-  userRegistrationForm: ReturnType<typeof userRegistrationForm.state>,
+  changeUserProfileForm: ReturnType<ReturnType<typeof changeUserProfileFormModuleCreator>['state']>,
+  createBookForm: ReturnType<ReturnType<typeof createBookFormCreator>['state']>,
+  loginForm: ReturnType<ReturnType<typeof loginFormModuleCreator>['state']>,
+  navigation: ReturnType<ReturnType<typeof navigationCreator>['state']>,
+  userRegistrationForm: ReturnType<ReturnType<typeof userRegistrationFormCreator>['state']>,
 }
 
-export default {
-  modules: {
-    changeUserProfileForm,
-    createBookForm,
-    loginForm,
-    navigation,
-    userRegistrationForm,
-  },
+export function containerModuleCreator(context: Container) {
+  return {
+    changeUserProfileForm: changeUserProfileFormModuleCreator(context.get(IUserApplicationService)),
+    createBookForm: createBookFormCreator(context.get(IBookApplicationService)),
+    loginForm: loginFormModuleCreator(context.get(IAuthApplicationService)),
+    navigation: navigationCreator(),
+    userRegistrationForm: userRegistrationFormCreator(context.get(IAuthApplicationService)),
+  }
 }

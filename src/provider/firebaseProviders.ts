@@ -1,6 +1,4 @@
-import {
-  IAuthApplicationService,
-} from '@/boundary/authApplicationService/IAuthApplicationService'
+import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuthApplicationService'
 import { IBookApplicationService } from '@/boundary/bookApplicationService/IBookApplicationService'
 import {
   IUserApplicationService,
@@ -23,11 +21,13 @@ import { FirebaseUserRepository } from '@/firebaseImpl/domain/user/FirebaseUserR
 import { UserObservableRepository } from '@/firebaseImpl/query/observableRepository/UserObservableRepository'
 import { UserBLoC } from '@/query/bloc/user/UserBLoC'
 import { IUserObservableRepository } from '@/query/observableRepository/user/IUserObservableRepository'
+import { Logger } from '@/serviceLocator/Logger'
 import { Container } from 'inversify'
 
 export function firebaseProviders(container: Container): void {
   // core
   container.bind(ILogger).to(ConsoleLogger).inSingletonScope()
+  Logger.initialize(container.get(ILogger))
 
   // query
   container.bind(UserBLoC).to(UserBLoC).inSingletonScope()

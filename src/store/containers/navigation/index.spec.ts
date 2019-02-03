@@ -1,5 +1,8 @@
-import '@/resolveTestConfiguration'
+// tslint:disable ordered-imports
+import '@/testConfiguration'
+import { resolveStubProviders } from '@/provider/resolveStubProviders'
 import { createStore } from '@/store/root'
+import { Container } from 'inversify'
 import {
   closeDrawer,
   toggleDrawer,
@@ -7,7 +10,10 @@ import {
 import selector from './selector'
 
 test('ナビゲーションバーの開閉操作に成功', async () => {
-  const store = createStore()
+  const container = new Container()
+  resolveStubProviders(container)
+
+  const store = createStore(container)
   expect(selector.isOpen(store.state)).toBe(false)
   store.dispatch(closeDrawer())
   expect(selector.isOpen(store.state)).toBe(false)

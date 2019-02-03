@@ -1,6 +1,4 @@
-import {
-  IAuthApplicationService,
-} from '@/boundary/authApplicationService/IAuthApplicationService'
+import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuthApplicationService'
 import {
   IAuthInfo,
   IRegistrationParams,

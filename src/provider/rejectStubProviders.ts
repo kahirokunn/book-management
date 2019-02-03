@@ -1,6 +1,4 @@
-import {
-  IAuthApplicationService,
-} from '@/boundary/authApplicationService/IAuthApplicationService'
+import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuthApplicationService'
 import { IBookApplicationService } from '@/boundary/bookApplicationService/IBookApplicationService'
 import {
   IUserApplicationService,
@@ -9,15 +7,21 @@ import { ILogger } from '@/drivers/ILogger'
 import { BlankLogger } from '@/drivers/logger/BlankLogger'
 import { UserBLoC } from '@/query/bloc/user/UserBLoC'
 import { IUserObservableRepository } from '@/query/observableRepository/user/IUserObservableRepository'
-import { AuthApplicationService } from '@/stub/domain/app/authApplicationService/ResolveService'
-import { BookApplicationService } from '@/stub/domain/app/bookApplicationService/ResolveService'
-import { UserApplicationService } from '@/stub/domain/app/userApplicationService/ResolveService'
-import { UserObservableRepository } from '@/stub/query/observableRepository/UserObservableRepository/ResolveRepository'
+import { Logger } from '@/serviceLocator/Logger'
+import {
+  AuthApplicationService,
+} from '@/stub/domain/app/authApplicationService/RejectService'
+import { BookApplicationService } from '@/stub/domain/app/bookApplicationService/RejectService'
+import {
+  UserApplicationService,
+} from '@/stub/domain/app/userApplicationService/RejectService'
+import { UserObservableRepository } from '@/stub/query/observableRepository/UserObservableRepository/RejectRepository'
 import { Container } from 'inversify'
 
-export function stubProviders(container: Container): void {
+export function rejectStubProviders(container: Container): void {
   // core
   container.bind(ILogger).to(BlankLogger).inSingletonScope()
+  Logger.initialize(container.get(ILogger))
 
   // query
   container.bind(UserBLoC).to(UserBLoC).inSingletonScope()

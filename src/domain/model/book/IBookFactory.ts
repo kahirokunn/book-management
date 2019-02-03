@@ -4,5 +4,5 @@ import {
 } from '@/boundary/bookApplicationService/InOutType'
 
 export default abstract class IBookFactory {
-  public abstract create(params: IRegistrationParams): IBook
+  public abstract create<T extends IRegistrationParams>(params: T): IBook
 }

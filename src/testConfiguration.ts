@@ -1,7 +1,5 @@
-// tslint:disable ordered-imports
+// tslint:disable-next-line ordered-imports
 import 'reflect-metadata'
-import { serviceContainer } from '@/inversify/config'
-import { stubProviders } from '@/inversify/resolveStubProviders'
 import Vue from 'vue'
 import Router from 'vue-router'
 import Vuetify from 'vuetify'
@@ -9,8 +7,6 @@ import Vuex from 'vuex'
 
 Vue.use(Router)
 Vue.use(Vuex)
-
-stubProviders(serviceContainer)
 
 Vue.use(Vuetify, {
   theme: {

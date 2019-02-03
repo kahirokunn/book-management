@@ -1,4 +1,4 @@
-import { AuthApplicationService } from '@/serviceLocator/AuthApplicationService'
+import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuthApplicationService'
 import { Logger } from '@/serviceLocator/Logger'
 import {
   successUserLogin,
@@ -25,45 +25,47 @@ export enum ScreenState {
   LOGIN_FAILED,
 }
 
-type State = {
-  screenState: ScreenState,
-}
+export function loginFormModuleCreator(authApp: IAuthApplicationService) {
+  type State = {
+    screenState: ScreenState,
+  }
 
-const initialState = (): State => ({
-  screenState: ScreenState.STANDBY,
-})
+  const initialState = (): State => ({
+    screenState: ScreenState.STANDBY,
+  })
 
-const mutations = combineMutation<State>(
-  mutation(startLogin, (state) => {
-    state.screenState = ScreenState.SENDING
-  }),
-  mutation(failureLogin, (state) => {
-    state.screenState = ScreenState.LOGIN_FAILED
-  }),
-  mutation(toStandby, (state) => {
-    state.screenState = ScreenState.STANDBY
-  }),
-)
+  const mutations = combineMutation<State>(
+    mutation(startLogin, (state) => {
+      state.screenState = ScreenState.SENDING
+    }),
+    mutation(failureLogin, (state) => {
+      state.screenState = ScreenState.LOGIN_FAILED
+    }),
+    mutation(toStandby, (state) => {
+      state.screenState = ScreenState.STANDBY
+    }),
+  )
 
-const actions = combineAction<State, any>(
-  action(loginByEmailAndPassword, async ({commit, dispatch}, action) => {
-    commit(startLogin())
-    try {
-      const authInfo = await AuthApplicationService.getInstance().loginWithEmailAndPassword(
-        action.payload.email,
-        action.payload.password,
-      )
-      dispatch(successUserLogin({authInfo}))
-    } catch (e) {
-      Logger.getInstance().error(e)
-      commit(failureLogin())
-    }
-  }),
-  actionsToMutations(toStandby),
-)
+  const actions = combineAction<State, any>(
+    action(loginByEmailAndPassword, async ({commit, dispatch}, action) => {
+      commit(startLogin())
+      try {
+        const authInfo = await authApp.loginWithEmailAndPassword(
+          action.payload.email,
+          action.payload.password,
+        )
+        dispatch(successUserLogin({authInfo}))
+      } catch (e) {
+        Logger.getInstance().error(e)
+        commit(failureLogin())
+      }
+    }),
+    actionsToMutations(toStandby),
+  )
 
-export default {
-  state: initialState,
-  mutations,
-  actions,
+  return {
+    state: initialState,
+    mutations,
+    actions,
+  }
 }

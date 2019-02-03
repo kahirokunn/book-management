@@ -7,24 +7,26 @@ import {
   pageNotFound,
 } from './action'
 
-type State = {
-  isPageNotFound: boolean,
-}
+export function pageNotFoundModuleCreator() {
+  type State = {
+    isPageNotFound: boolean,
+  }
 
-const initialState = (): State => ({
-  isPageNotFound: false,
-})
+  const initialState = (): State => ({
+    isPageNotFound: false,
+  })
 
-const mutations = combineMutation<State>(
-  mutation(pageNotFound, (state) => {
-    state.isPageNotFound = true
-  }),
-)
+  const mutations = combineMutation<State>(
+    mutation(pageNotFound, (state) => {
+      state.isPageNotFound = true
+    }),
+  )
 
-const actions = actionsToMutations(pageNotFound)
+  const actions = actionsToMutations(pageNotFound)
 
-export default {
-  state: initialState,
-  mutations,
-  actions,
+  return {
+    state: initialState,
+    mutations,
+    actions,
+  }
 }

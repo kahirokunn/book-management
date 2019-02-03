@@ -1,8 +1,16 @@
 import { ILogger } from '@/drivers/ILogger'
-import { serviceContainer } from '@/inversify/config'
 
 export class Logger {
-  public static getInstance(): ILogger {
-    return serviceContainer.get(ILogger)
+  public static initialize(logger: ILogger) {
+    this.logger = logger
   }
+
+  public static getInstance(): ILogger {
+    if (this.logger) {
+      return this.logger
+    }
+    throw Error('Not register Logger')
+  }
+
+  private static logger: ILogger | null = null
 }
