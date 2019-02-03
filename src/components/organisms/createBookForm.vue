@@ -12,17 +12,16 @@
         <v-layout row wrap>
           <v-flex xs12 md2>
             <p>本の表紙</p>
-            <ImageUploader
-              v-model="coverImageFilePath"
-              minWidth="200"
-              minHeight="200" />
+            <ImageUploader v-model="coverImageFilePath" />
           </v-flex>
+        </v-layout>
+
+        <SpaceStick />
+
+        <v-layout row wrap>
           <v-flex xs12 md2>
             <p>領収書</p>
-            <ImageUploader
-              v-model="receiptImageFilePath"
-              minWidth="200"
-              minHeight="200" />
+            <ImageUploader v-model="receiptImageFilePath" />
           </v-flex>
         </v-layout>
 

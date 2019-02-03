@@ -95,8 +95,6 @@ enum UploadState {
 export default class ImageUploader extends Vue {
   @Prop() public url!: string
   @Prop({default: false}) public hideStatus!: boolean
-  @Prop({default: 0}) public minWidth!: number
-  @Prop({default: 0}) public minHeight!: number
 
   public imageUrl = ''
   public isNotAllowFileType = false
@@ -184,8 +182,8 @@ export default class ImageUploader extends Vue {
       border-color: #409EFF;
     }
     &.el-upload--text {
-      min-width: 200px;
-      min-height: 200px;
+      min-width: 180px;
+      min-height: 180px;
     }
   }
 }
