@@ -3,16 +3,18 @@ import '@/testConfiguration'
 import { rejectStubProviders } from '@/provider/rejectStubProviders'
 import { resolveStubProviders } from '@/provider/resolveStubProviders'
 import authSelector from '@/store/middleware/auth/selector'
-import { createStore } from '@/store/root'
+import { createStore, ClassBasedStoreOption } from '@/store/root'
 import flushPromises from 'flush-promises'
 import { Container } from 'inversify'
 import { userRegistration, toStandby } from './action'
 import selector from './selector'
+import { storeModuleProvider } from '@/provider/storeModuleProvider'
 
 test('ユーザー登録できる', async () => {
   const container = new Container()
   resolveStubProviders(container)
-  const store = createStore(container)
+  storeModuleProvider(container)
+  const store = createStore(container.get(ClassBasedStoreOption))
 
   expect(selector.isSending(store.state)).toBe(false)
   store.dispatch(userRegistration({
@@ -38,7 +40,8 @@ test('ユーザー登録できる', async () => {
 test('そのメールアドレスは既に登録されています', async () => {
   const container = new Container()
   rejectStubProviders(container)
-  const store = createStore(container)
+  storeModuleProvider(container)
+  const store = createStore(container.get(ClassBasedStoreOption))
   expect(selector.isSending(store.state)).toBe(false)
   store.dispatch(userRegistration({
     password: 'hello',

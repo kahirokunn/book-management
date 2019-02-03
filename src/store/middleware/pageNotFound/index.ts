@@ -1,3 +1,4 @@
+import { injectable } from 'inversify'
 import {
   actionsToMutations,
   combineMutation,
@@ -7,26 +8,29 @@ import {
   pageNotFound,
 } from './action'
 
-export function pageNotFoundModuleCreator() {
-  type State = {
-    isPageNotFound: boolean,
+type State = {
+  isPageNotFound: boolean,
+}
+
+const initialState = (): State => ({
+  isPageNotFound: false,
+})
+
+@injectable()
+export class PageNotFoundModule {
+  public state() {
+    return initialState()
   }
 
-  const initialState = (): State => ({
-    isPageNotFound: false,
-  })
+  get mutations() {
+    return combineMutation<State>(
+      mutation(pageNotFound, (state) => {
+        state.isPageNotFound = true
+      }),
+    )
+  }
 
-  const mutations = combineMutation<State>(
-    mutation(pageNotFound, (state) => {
-      state.isPageNotFound = true
-    }),
-  )
-
-  const actions = actionsToMutations(pageNotFound)
-
-  return {
-    state: initialState,
-    mutations,
-    actions,
+  get actions() {
+    return actionsToMutations(pageNotFound)
   }
 }

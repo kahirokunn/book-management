@@ -2,6 +2,7 @@ import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuth
 import router from '@/router'
 import { Logger } from '@/serviceLocator/Logger'
 import { successUserLogin } from '@/store/middleware/auth/action'
+import { inject, injectable } from 'inversify'
 import {
   action,
   actionsToMutations,
@@ -29,51 +30,57 @@ export enum ScreenState {
   SEND_FAILED,
 }
 
-export function userRegistrationFormCreator(authApp: IAuthApplicationService) {
-  type State = {
-    screenState: ScreenState,
-    errorCode: ErrorCode | '',
+type State = {
+  screenState: ScreenState,
+  errorCode: ErrorCode | '',
+}
+
+const initialState = (): State => ({
+  screenState: ScreenState.STANDBY,
+  errorCode: '',
+})
+
+@injectable()
+export class UserRegistrationFormModule {
+  constructor(
+    @inject(IAuthApplicationService)
+    private readonly authApp: IAuthApplicationService,
+  ) {}
+
+  public state() {
+    return initialState()
   }
 
-
-  const initialState = (): State => ({
-    screenState: ScreenState.STANDBY,
-    errorCode: '',
-  })
-
-  const mutations = combineMutation<State>(
-    mutation(startRegistration, (state) => {
-      state.screenState = ScreenState.SENDING
-    }),
-    mutation(toStandby, (state) => {
-      state.screenState = ScreenState.STANDBY
-    }),
-    mutation(failureRegistration, (state, action) => {
-      state.errorCode = action.payload.code
-      state.screenState = ScreenState.SEND_FAILED
-    }),
-  )
-
-  const actions = combineAction<State, any>(
-    actionsToMutations(toStandby),
-    action(userRegistration, async ({commit, dispatch}, action) => {
-      commit(startRegistration())
-      try {
-        const authInfo = await authApp.registration(action.payload)
-        Logger.getInstance().info('ユーザー登録成功', authInfo)
-        dispatch(successUserLogin({authInfo}))
-        router.push('/')
-      } catch (e) {
-        commit(failureRegistration(e))
-        Logger.getInstance().info('ユーザー登録失敗')
-      }
-    }),
-  )
-
-  return {
-    state: initialState,
-    mutations,
-    actions,
+  get mutations() {
+    return combineMutation<State>(
+      mutation(startRegistration, (state) => {
+        state.screenState = ScreenState.SENDING
+      }),
+      mutation(toStandby, (state) => {
+        state.screenState = ScreenState.STANDBY
+      }),
+      mutation(failureRegistration, (state, action) => {
+        state.errorCode = action.payload.code
+        state.screenState = ScreenState.SEND_FAILED
+      }),
+    )
   }
 
+  get actions() {
+    return combineAction<State, any>(
+      actionsToMutations(toStandby),
+      action(userRegistration, async ({commit, dispatch}, action) => {
+        commit(startRegistration())
+        try {
+          const authInfo = await this.authApp.registration(action.payload)
+          Logger.getInstance().info('ユーザー登録成功', authInfo)
+          dispatch(successUserLogin({authInfo}))
+          router.push('/')
+        } catch (e) {
+          commit(failureRegistration(e))
+          Logger.getInstance().info('ユーザー登録失敗')
+        }
+      }),
+    )
+  }
 }

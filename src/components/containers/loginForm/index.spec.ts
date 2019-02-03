@@ -3,17 +3,19 @@ import '@/testConfiguration'
 import { resolveStubProviders } from '@/provider/resolveStubProviders'
 import selector from '@/store/containers/loginForm/selector'
 import authSelector from '@/store/middleware/auth/selector'
-import { createStore } from '@/store/root'
+import { createStore, ClassBasedStoreOption } from '@/store/root'
 import { shallowMount } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import { Container } from 'inversify'
 import index from './index.vue'
+import { storeModuleProvider } from '@/provider/storeModuleProvider'
 
 test('login form container', async () => {
   const container = new Container()
 
   resolveStubProviders(container)
-  const store = createStore(container)
+  storeModuleProvider(container)
+  const store = createStore(container.get(ClassBasedStoreOption))
 
   selector.isFailed(store.state)
   selector.isSending(store.state)

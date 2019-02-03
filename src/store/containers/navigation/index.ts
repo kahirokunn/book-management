@@ -1,3 +1,4 @@
+import { injectable } from 'inversify'
 import {
   actionsToMutations,
   combineMutation,
@@ -8,32 +9,35 @@ import {
   toggleDrawer,
 } from './action'
 
-export function navigationCreator() {
-  type State = {
-    isOpen: boolean,
+type State = {
+  isOpen: boolean,
+}
+
+const initialState = (): State => ({
+  isOpen: false,
+})
+
+@injectable()
+export class NavigationModule {
+  public state() {
+    return initialState()
   }
 
-  const initialState = (): State => ({
-    isOpen: false,
-  })
+  get mutations() {
+    return combineMutation<State>(
+      mutation(toggleDrawer, (state) => {
+        state.isOpen = !state.isOpen
+      }),
+      mutation(closeDrawer, (state: State) => {
+        state.isOpen = false
+      }),
+    )
+  }
 
-  const mutations = combineMutation<State>(
-    mutation(toggleDrawer, (state) => {
-      state.isOpen = !state.isOpen
-    }),
-    mutation(closeDrawer, (state: State) => {
-      state.isOpen = false
-    }),
-  )
-
-  const actions = actionsToMutations(
-    toggleDrawer,
-    closeDrawer,
-  )
-
-  return {
-    state: initialState,
-    mutations,
-    actions,
+  get actions() {
+    return actionsToMutations(
+      toggleDrawer,
+      closeDrawer,
+    )
   }
 }

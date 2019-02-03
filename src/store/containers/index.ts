@@ -1,27 +1,30 @@
-import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuthApplicationService'
-import { IBookApplicationService } from '@/boundary/bookApplicationService/IBookApplicationService'
-import { IUserApplicationService } from '@/boundary/userApplicationService/IUserApplicationService'
-import { Container } from 'inversify'
-import { changeUserProfileFormModuleCreator } from './changeUserProfileForm'
-import { createBookFormCreator } from './createBookForm'
-import { loginFormModuleCreator } from './loginForm'
-import { navigationCreator } from './navigation'
-import { userRegistrationFormCreator } from './userRegistrationForm'
+import { inject, injectable } from 'inversify'
+import { ChangeUserProfileFormModule } from './changeUserProfileForm'
+import { CreateBookFormModule } from './createBookForm'
+import { LoginFormModule } from './loginForm'
+import { NavigationModule } from './navigation'
+import { UserRegistrationFormModule } from './userRegistrationForm'
 
 export type ContainersState = {
-  changeUserProfileForm: ReturnType<ReturnType<typeof changeUserProfileFormModuleCreator>['state']>,
-  createBookForm: ReturnType<ReturnType<typeof createBookFormCreator>['state']>,
-  loginForm: ReturnType<ReturnType<typeof loginFormModuleCreator>['state']>,
-  navigation: ReturnType<ReturnType<typeof navigationCreator>['state']>,
-  userRegistrationForm: ReturnType<ReturnType<typeof userRegistrationFormCreator>['state']>,
+  changeUserProfileForm: ReturnType<ChangeUserProfileFormModule['state']>,
+  createBookForm: ReturnType<CreateBookFormModule['state']>,
+  loginForm: ReturnType<LoginFormModule['state']>,
+  navigation: ReturnType<NavigationModule['state']>,
+  userRegistrationForm: ReturnType<UserRegistrationFormModule['state']>,
 }
 
-export function containerModuleCreator(context: Container) {
-  return {
-    changeUserProfileForm: changeUserProfileFormModuleCreator(context.get(IUserApplicationService)),
-    createBookForm: createBookFormCreator(context.get(IBookApplicationService)),
-    loginForm: loginFormModuleCreator(context.get(IAuthApplicationService)),
-    navigation: navigationCreator(),
-    userRegistrationForm: userRegistrationFormCreator(context.get(IAuthApplicationService)),
-  }
+@injectable()
+export class ContainerModule {
+  constructor(
+    @inject(ChangeUserProfileFormModule)
+    public readonly changeUserProfileForm: ChangeUserProfileFormModule,
+    @inject(CreateBookFormModule)
+    public readonly createBookForm: CreateBookFormModule,
+    @inject(LoginFormModule)
+    public readonly loginForm: LoginFormModule,
+    @inject(NavigationModule)
+    public readonly navigation: NavigationModule,
+    @inject(UserRegistrationFormModule)
+    public readonly userRegistrationForm: UserRegistrationFormModule,
+  ) {}
 }
