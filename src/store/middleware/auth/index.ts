@@ -73,7 +73,6 @@ export class AuthModule {
         Logger.getInstance().info('receiveUserFromStream', action.payload)
         if (!state.isInitialized) {
           state.isInitialized = true
-          router.push('/')
         }
         state.user = action.payload.user
       }),
@@ -86,6 +85,7 @@ export class AuthModule {
         try {
           const authInfo = await this.authApp.login()
           await dispatch(successUserLogin({authInfo}))
+          router.push('/')
         } catch (e) {
           Logger.getInstance().info('ログイン失敗', e)
           commit(failureLogin())
@@ -96,7 +96,7 @@ export class AuthModule {
         Logger.getInstance().info('ログイン成功', authInfo)
         commit(beforeSubscribe({authInfo}))
         const subscription = this.userBloc
-          .userObservable(authInfo.userId)
+          .user$(authInfo.userId)
           .subscribe((user) => commit(receiveUserFromStream({user})))
         commit(startedSubscribe({subscription}))
       }),

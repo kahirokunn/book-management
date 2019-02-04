@@ -1,24 +1,22 @@
 <template>
   <LoggedInLayout>
     <v-container fluid fill-height grey darken-3>
-      <v-layout align-center column justify-center fill-height>
-        <h1 class="display-2 font-weight-thin mb-3">
-          ダッシュボード
-        </h1>
-      </v-layout>
+      <BookList />
     </v-container>
   </LoggedInLayout>
 </template>
 
 <script lang="ts">
+import BookList from '@/components/containers/bookList.vue'
 import LoggedInLayout from '@/layouts/loggedInLayout.vue'
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {
     LoggedInLayout,
+    BookList,
   },
 })
-export default class Home extends Vue {
+export default class Books extends Vue {
 }
 </script>

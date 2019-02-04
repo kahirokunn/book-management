@@ -55,6 +55,7 @@ export class CreateBookFormModule {
       }),
       mutation(successCreate, (state) => {
         state.screenState = ScreenState.SEND_SUCCESS
+        state.isOpen = false
       }),
       mutation(failureSend, (state) => {
         state.screenState = ScreenState.SEND_FAILED

@@ -1,4 +1,5 @@
 import { inject, injectable } from 'inversify'
+import { BookListModule } from './bookList'
 import { ChangeUserProfileFormModule } from './changeUserProfileForm'
 import { CreateBookFormModule } from './createBookForm'
 import { LoginFormModule } from './loginForm'
@@ -11,6 +12,7 @@ export type ContainersState = {
   loginForm: ReturnType<LoginFormModule['state']>,
   navigation: ReturnType<NavigationModule['state']>,
   userRegistrationForm: ReturnType<UserRegistrationFormModule['state']>,
+  bookList: ReturnType<BookListModule['state']>,
 }
 
 @injectable()
@@ -26,5 +28,7 @@ export class ContainerModule {
     public readonly navigation: NavigationModule,
     @inject(UserRegistrationFormModule)
     public readonly userRegistrationForm: UserRegistrationFormModule,
+    @inject(BookListModule)
+    public readonly bookList: BookListModule,
   ) {}
 }

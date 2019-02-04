@@ -12,7 +12,7 @@ export class UserBLoC {
     private readonly userObservableRepository: IUserObservableRepository,
   ) {}
 
-  public userObservable(id: Identifier) {
+  public user$(id: Identifier) {
     if (id in this.observables) {
       return this.observables[id]
     }

@@ -1,5 +1,7 @@
 <template>
   <v-navigation-drawer
+    class="black"
+    dark
     fixed
     :clipped="$vuetify.breakpoint.mdAndUp"
     app

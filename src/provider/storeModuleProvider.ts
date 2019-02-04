@@ -1,4 +1,5 @@
 import { ContainerModule } from '@/store/containers'
+import { BookListModule } from '@/store/containers/bookList'
 import { ChangeUserProfileFormModule } from '@/store/containers/changeUserProfileForm'
 import { CreateBookFormModule } from '@/store/containers/createBookForm'
 import { LoginFormModule } from '@/store/containers/loginForm'
@@ -18,6 +19,7 @@ export function storeModuleProvider(container: Container): void {
   container.bind(LoginFormModule).to(LoginFormModule)
   container.bind(CreateBookFormModule).to(CreateBookFormModule)
   container.bind(ChangeUserProfileFormModule).to(ChangeUserProfileFormModule)
+  container.bind(BookListModule).to(BookListModule)
 
   // middleware
   container.bind(MiddlewareModule).to(MiddlewareModule)
