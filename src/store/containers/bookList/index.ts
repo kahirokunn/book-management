@@ -1,6 +1,5 @@
 import { IBook } from '@/boundary/bookApplicationService/InOutType'
 import { BookBLoC } from '@/query/bloc/book/BookListBLoC'
-import { Logger } from '@/serviceLocator/Logger'
 import { inject, injectable } from 'inversify'
 import { Subscription } from 'rxjs'
 import {
@@ -75,10 +74,7 @@ export class BookListModule {
         const subscription = this
           .bookBLoC
           .books$
-          .subscribe((books) => {
-            Logger.getInstance().info('receivedBooks', books)
-            commit(receivedBooks({ books }))
-          })
+          .subscribe((books) => commit(receivedBooks({ books })))
         this.bookBLoC.fetchBook()
         commit(setSubscription({ subscription }))
       }),
