@@ -1,6 +1,6 @@
 <template>
-  <v-card class="elevation-12">
-    <v-toolbar card dark color="primary">
+  <v-card class="elevation-12" dark>
+    <v-toolbar card dark>
       <v-btn icon dark @click="cancel()">
         <v-icon>close</v-icon>
       </v-btn>

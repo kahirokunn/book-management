@@ -12,7 +12,7 @@ import {
 import {
   actionCreator,
   depose,
-  initialize,
+  see,
 } from './action'
 
 const receivedBooks = actionCreator<{ books: IBook[] }>('RECEIVED_BOOKS')
@@ -68,10 +68,12 @@ export class BookListModule {
 
   get actions() {
     return combineAction<State, any>(
-      action(initialize, async ({commit}) => {
-        const subscription = this.bookBLoC
-          .latest$()
+      action(see, ({commit}, action) => {
+        const subscription = this
+          .bookBLoC
+          .books$
           .subscribe((books) => commit(receivedBooks({ books })))
+        this.bookBLoC.fetchBook(action.payload.startAfter)
         commit(setSubscription({ subscription }))
       }),
       actionsToMutations(depose),

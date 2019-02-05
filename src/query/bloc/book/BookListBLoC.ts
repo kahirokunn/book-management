@@ -1,25 +1,31 @@
 import { IBook } from '@/boundary/bookApplicationService/InOutType'
-import { Book } from '@/models/book'
-import { injectable } from 'inversify'
-import { collectionData } from 'rxfire/firestore'
-import { Observable } from 'rxjs'
-import { filter, map } from 'rxjs/operators'
-
-function bookMapper(book: any): IBook {
-  return {
-    ...book,
-    purchasedDatetime: book.purchasedDatetime.toDate(),
-    createdAt: book.createdAt.toDate(),
-    updatedAt: book.updatedAt && book.updatedAt.toDate() || null,
-  }
-}
+import { IBookObservableRepository } from '@/query/observableRepository/book/IBookObservableRepository'
+import { inject, injectable } from 'inversify'
+import { Subject, Subscription } from 'rxjs'
 
 @injectable()
 export class BookBLoC {
+  private readonly _books: Subject<IBook[]> = new Subject<IBook[]>()
+  private _subscriptions: Subscription[] = []
 
-  public latest$(): Observable<IBook[]> {
-    return collectionData(Book.getReference())
-      .pipe(filter((dataList) => dataList.length > 0))
-      .pipe(map((dataList) => dataList.map(bookMapper)))
+  get books$() {
+    return this._books
+  }
+
+  constructor(
+    @inject(IBookObservableRepository)
+    private readonly bookRepository: IBookObservableRepository,
+  ) {}
+
+  public fetchBook(startAfter?: Date) {
+    const subscription = this.bookRepository
+      .getBooks(startAfter)
+      .subscribe(this._books)
+    this._subscriptions.push(subscription)
+  }
+
+  public depose() {
+    this._subscriptions
+      .map((subscription) => subscription.unsubscribe())
   }
 }

@@ -18,13 +18,14 @@ import { FirebaseAuthRepository } from '@/firebaseImpl/domain/auth/FirebaseAuthR
 import BookFactory from '@/firebaseImpl/domain/book/BookFactory'
 import { FirebaseBookRepository } from '@/firebaseImpl/domain/book/FirebaseBookRepository'
 import { FirebaseUserRepository } from '@/firebaseImpl/domain/user/FirebaseUserRepository'
+import { BookObservableRepository } from '@/firebaseImpl/query/observableRepository/BookObservableRepository'
 import { UserObservableRepository } from '@/firebaseImpl/query/observableRepository/UserObservableRepository'
 import { BookBLoC } from '@/query/bloc/book/BookListBLoC'
 import { UserBLoC } from '@/query/bloc/user/UserBLoC'
+import { IBookObservableRepository } from '@/query/observableRepository/book/IBookObservableRepository'
 import { IUserObservableRepository } from '@/query/observableRepository/user/IUserObservableRepository'
 import { Logger } from '@/serviceLocator/Logger'
 import { Container } from 'inversify'
-
 
 export function firebaseProviders(container: Container): void {
   // core
@@ -34,6 +35,7 @@ export function firebaseProviders(container: Container): void {
   // query
   container.bind(UserBLoC).to(UserBLoC)
   container.bind(BookBLoC).to(BookBLoC)
+  container.bind(IBookObservableRepository).to(BookObservableRepository)
   container.bind(IUserObservableRepository).to(UserObservableRepository)
 
   // application

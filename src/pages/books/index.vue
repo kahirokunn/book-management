@@ -1,8 +1,6 @@
 <template>
   <LoggedInLayout>
-    <v-container fluid fill-height grey darken-3>
-      <BookList />
-    </v-container>
+    <BookList />
   </LoggedInLayout>
 </template>
 

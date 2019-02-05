@@ -6,6 +6,7 @@
     hide-overlay
     transition="dialog-bottom-transition"
     scrollable
+    dark
   >
     <UserProfileForm
       :updateProfile="updateProfile"

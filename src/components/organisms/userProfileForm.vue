@@ -1,10 +1,12 @@
 <template>
-  <v-card class="elevation-12">
-    <v-toolbar dark color="primary">
+  <v-card class="elevation-12" dark>
+    <v-toolbar dark grey darken-3>
       <v-btn icon dark @click="cancel()">
         <v-icon>close</v-icon>
       </v-btn>
-      <v-toolbar-title>プロフィール</v-toolbar-title>
+      <v-toolbar-title>
+        プロフィール
+      </v-toolbar-title>
     </v-toolbar>
 
     <v-card-text>
@@ -78,6 +80,7 @@
           <v-layout row wrap>
             <v-flex xs4 md1>
               <v-select
+                dark
                 v-model.number="birthYear"
                 :items="years"
                 :rules="birthYearRules"
@@ -85,6 +88,7 @@
             </v-flex>
             <v-flex xs4 md1>
               <v-select
+                dark
                 v-model.number="birthMonth"
                 :items="months"
                 :rules="birthMonthRules"
@@ -92,6 +96,7 @@
             </v-flex>
             <v-flex xs4 md1>
               <v-select
+                dark
                 v-model.number="birthDay"
                 :items="days"
                 :rules="birthDayRules"
@@ -106,6 +111,7 @@
           <v-layout row wrap>
             <v-flex xs4 md1>
               <v-select
+                dark
                 v-model.number="hireYear"
                 :items="years"
                 :rules="hireYearRules"
@@ -113,6 +119,7 @@
             </v-flex>
             <v-flex xs4 md1>
               <v-select
+                dark
                 v-model.number="hireMonth"
                 :items="months"
                 :rules="hireMonthRules"
@@ -120,6 +127,7 @@
             </v-flex>
             <v-flex xs4 md1>
               <v-select
+                dark
                 v-model.number="hireDay"
                 :items="days"
                 :rules="hireDayRules"

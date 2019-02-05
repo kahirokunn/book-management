@@ -20,7 +20,7 @@ Vue.use(Upload)
 
 Vue.use(Vuetify, {
   theme: {
-    primary: '#424242',
+    primary: '#cc0000',
     secondary: '#FF8A80',
     accent: '#BA68C8',
     error: '#f44336',

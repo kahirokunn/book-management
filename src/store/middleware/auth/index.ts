@@ -18,8 +18,10 @@ import {
   userLogin,
 } from './action'
 
-const beforeSubscribe = actionCreator<ReturnType<typeof successUserLogin>['payload']>('BEFORE_SUBSCRIBE')
-const startedSubscribe = actionCreator<{subscription: Subscription}>('STARTED_SUBSCRIBE')
+const startedSubscribe = actionCreator<{
+  subscription: Subscription,
+  authInfo: ReturnType<typeof successUserLogin>['payload']['authInfo'],
+}>('STARTED_SUBSCRIBE')
 const failureLogin = actionCreator('FAILURE_LOGIN')
 const receiveUserFromStream = actionCreator<{user: IUser}>('RECEIVE_USER_FROM_STREAM')
 
@@ -54,11 +56,9 @@ export class AuthModule {
 
   get mutations() {
     return combineMutation<State>(
-      mutation(beforeSubscribe, (state, action) => {
+      mutation(startedSubscribe, (state, action) => {
         state.isLoggedIn = true
         state.isEmailVerified = action.payload.authInfo.isEmailVerified
-      }),
-      mutation(startedSubscribe, (state, action) => {
         state.subscriptions.push(action.payload.subscription)
       }),
       mutation(failureLogin, (state) => {
@@ -94,11 +94,11 @@ export class AuthModule {
       action(successUserLogin, async ({commit}, action) => {
         const { authInfo } = action.payload
         Logger.getInstance().info('ログイン成功', authInfo)
-        commit(beforeSubscribe({authInfo}))
         const subscription = this.userBloc
-          .user$(authInfo.userId)
+          .user$
           .subscribe((user) => commit(receiveUserFromStream({user})))
-        commit(startedSubscribe({subscription}))
+        commit(startedSubscribe({authInfo, subscription}))
+        this.userBloc.fetchUserById(authInfo.userId)
       }),
     )
   }

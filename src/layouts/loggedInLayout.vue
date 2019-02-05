@@ -1,5 +1,5 @@
 <template>
-  <v-app key="loggedInLayout">
+  <v-app key="loggedInLayout" dark>
 
     <template v-if="isLoggedIn">
       <Navigation />
