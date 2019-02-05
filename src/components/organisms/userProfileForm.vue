@@ -153,7 +153,7 @@
       <v-btn
         :disabled="!valid"
         @click="submit()"
-        color="primary"
+        color="secondary"
       >保存</v-btn>
     </v-card-actions>
   </v-card>

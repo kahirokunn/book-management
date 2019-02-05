@@ -1,5 +1,6 @@
 import { IBook } from '@/boundary/bookApplicationService/InOutType'
 import { BookBLoC } from '@/query/bloc/book/BookListBLoC'
+import { Logger } from '@/serviceLocator/Logger'
 import { inject, injectable } from 'inversify'
 import { Subscription } from 'rxjs'
 import {
@@ -12,7 +13,8 @@ import {
 import {
   actionCreator,
   depose,
-  see,
+  initialize,
+  seeMore,
 } from './action'
 
 const receivedBooks = actionCreator<{ books: IBook[] }>('RECEIVED_BOOKS')
@@ -26,13 +28,13 @@ export enum ScreenState {
 type State = {
   screenState: ScreenState,
   subscriptions: Subscription[],
-  books: IBook[],
+  books: {[id: string]: IBook},
 }
 
 const initialState = (): State => ({
   screenState: ScreenState.INITIAL_FETCHING,
   subscriptions: [],
-  books: [],
+  books: {},
 })
 
 @injectable()
@@ -55,10 +57,11 @@ export class BookListModule {
         if (state.screenState === ScreenState.INITIAL_FETCHING) {
           state.screenState = ScreenState.STANDBY
         }
-        state.books = [
-          ...state.books,
-          ...action.payload.books,
-        ]
+        const reveivedBooksDict = action
+          .payload
+          .books
+          .reduce((prev, book) => Object.assign(prev, {[book.id]: book}), {})
+        state.books = Object.assign({}, state.books, reveivedBooksDict)
       }),
       mutation(depose, (state) => {
         state.subscriptions.map((subscription) => subscription.unsubscribe())
@@ -68,13 +71,20 @@ export class BookListModule {
 
   get actions() {
     return combineAction<State, any>(
-      action(see, ({commit}, action) => {
+      action(initialize, ({commit}) => {
         const subscription = this
           .bookBLoC
           .books$
-          .subscribe((books) => commit(receivedBooks({ books })))
-        this.bookBLoC.fetchBook(action.payload.startAfter)
+          .subscribe((books) => {
+            Logger.getInstance().info('receivedBooks', books)
+            commit(receivedBooks({ books }))
+          })
+        this.bookBLoC.fetchBook()
         commit(setSubscription({ subscription }))
+      }),
+      action(seeMore, ({state}) => {
+        const lastBook = Object.values(state.books).reduce((a, b) => a.updatedAt > b.updatedAt ? a : b)
+        this.bookBLoC.fetchBook(lastBook.updatedAt)
       }),
       actionsToMutations(depose),
     )

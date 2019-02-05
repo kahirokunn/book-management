@@ -150,7 +150,7 @@
       <v-btn
         :disabled="!valid"
         @click="submit()"
-        color="primary">
+        color="secondary">
         登録
       </v-btn>
     </v-card-actions>

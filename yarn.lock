@@ -11312,6 +11312,11 @@ vue-property-decorator@^7.3.0:
   dependencies:
     vue-class-component "^6.2.0"
 
+vue-proxy-component@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/vue-proxy-component/-/vue-proxy-component-0.0.8.tgz#b2b78744f3058952723bb0392696cfefcb3c1f39"
+  integrity sha512-JZvUCewgEcV2QlI8cwBDx1sS1giFlLUZOit+x5Fyej1oYlZQkHH6vDmq565y1UAR4L+djoDz1TNcTB2nETbiWQ==
+
 vue-route-generator@^0.3.0:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/vue-route-generator/-/vue-route-generator-0.3.2.tgz#28ef1a274b0522e81086cba30ababffdcdbd4469"

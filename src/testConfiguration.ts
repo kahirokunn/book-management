@@ -10,8 +10,8 @@ Vue.use(Vuex)
 
 Vue.use(Vuetify, {
   theme: {
-    primary: '#424242',
-    secondary: '#FF8A80',
+    primary: '#42b883',
+    secondary: '#secondary',
     accent: '#BA68C8',
     error: '#f44336',
     warning: '#ffeb3b',

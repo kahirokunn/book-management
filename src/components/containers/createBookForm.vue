@@ -46,14 +46,16 @@
       </v-card>
     </v-dialog>
 
-    <v-snackbar
-      :value="isSendSuccess"
-      @input="toStandby()"
-      :timeout="3000"
-      color="success"
-      top>
-      本の登録に成功しました
-    </v-snackbar>
+    <ProxyComponent>
+      <v-snackbar
+        :value="isSendSuccess"
+        @input="toStandby()"
+        :timeout="3000"
+        color="success"
+        top>
+        本の登録に成功しました
+      </v-snackbar>
+    </ProxyComponent>
 
   </v-dialog>
 </template>

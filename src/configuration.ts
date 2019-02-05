@@ -6,6 +6,7 @@ import lang from 'element-ui/lib/locale/lang/ja'
 import 'element-ui/lib/theme-chalk/upload.css'
 import { setting } from 'typescript-fsa-vuex'
 import Vue from 'vue'
+import ProxyComponent from 'vue-proxy-component'
 import Router from 'vue-router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
@@ -17,11 +18,12 @@ locale.use(lang)
 Vue.use(Router)
 Vue.use(Vuex)
 Vue.use(Upload)
+Vue.use(ProxyComponent)
 
 Vue.use(Vuetify, {
   theme: {
-    primary: '#cc0000',
-    secondary: '#FF8A80',
+    primary: '#42b883',
+    secondary: '#cc0000',
     accent: '#BA68C8',
     error: '#f44336',
     warning: '#ffeb3b',

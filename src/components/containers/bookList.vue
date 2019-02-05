@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import BookList from '@/components/organisms/bookList.vue'
-import { depose, see } from '@/store/containers/bookList/action'
+import { depose, initialize, seeMore } from '@/store/containers/bookList/action'
 import selector from '@/store/containers/bookList/selector'
 import { mapComputed } from '@/submodules/store'
 import { Component, Vue } from 'vue-property-decorator'
@@ -19,7 +19,11 @@ import { Component, Vue } from 'vue-property-decorator'
 })
 export default class BookListContainer extends Vue {
   public mounted() {
-    this.$store.dispatch(see({}))
+    this.$store.dispatch(initialize())
+  }
+
+  public seeMore() {
+    this.$store.dispatch(seeMore())
   }
 
   public destroyed() {
