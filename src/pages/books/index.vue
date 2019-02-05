@@ -18,6 +18,6 @@ import { Component, Vue } from 'vue-property-decorator'
     CreateBookButton,
   },
 })
-export default class Books extends Vue {
+export default class BooksPage extends Vue {
 }
 </script>

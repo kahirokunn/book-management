@@ -1,5 +1,5 @@
 <template>
-  <v-layout wrap>
+  <v-layout wrap v-scroll:#scroll-target="onScroll">
     <template v-for="book in books">
       <v-flex xs6 md4 :key="book.id">
           <v-card color="grey darken-2" class="white--text">
@@ -50,6 +50,12 @@ export default class BookList extends Vue {
 
   public toStar(evaluation: Evaluation | null) {
     return [...Array(5)].map((_, i) => i < (evaluation || 0))
+  }
+
+  public onScroll(e: any) {
+    if ((e.target.scrollTop + e.target.offsetHeight) >= e.target.scrollHeight) {
+      this.$emit('seeMore')
+    }
   }
 }
 </script>

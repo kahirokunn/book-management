@@ -1,6 +1,6 @@
 <template>
   <v-container grey darken-3 grid-list-xl>
-    <BookList :books="books" />
+    <BookList :books="books" @seeMore="seeMore()" />
   </v-container>
 </template>
 

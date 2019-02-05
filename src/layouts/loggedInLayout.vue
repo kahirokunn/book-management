@@ -1,5 +1,5 @@
 <template>
-  <v-app key="loggedInLayout" dark>
+  <v-app key="loggedInLayout" id="scroll-target" dark>
 
     <template v-if="isLoggedIn">
       <Navigation />
@@ -36,3 +36,10 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class LoggedInLayout extends Vue {
 }
 </script>
+
+<style lang="scss" scoped>
+#scroll-target {
+  height: 100vh;
+  overflow: auto;
+}
+</style>
