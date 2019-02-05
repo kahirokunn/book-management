@@ -12,7 +12,7 @@ function isInitialized(state: Store['state']) {
 function books(state: Store['state']) {
   return Object
     .values(_stateScope(state).books)
-    .sort((a, b) => a.updatedAt > b.updatedAt ? 1 : -1)
+    .sort((a, b) => a.updatedAt > b.updatedAt ? -1 : 1)
 }
 
 export default {

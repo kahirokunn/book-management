@@ -83,8 +83,8 @@ export class BookListModule {
         commit(setSubscription({ subscription }))
       }),
       action(seeMore, ({state}) => {
-        const lastBook = Object.values(state.books).reduce((a, b) => a.updatedAt > b.updatedAt ? a : b)
-        this.bookBLoC.fetchBook(lastBook.updatedAt)
+        const youngBook = Object.values(state.books).reduce((a, b) => a.updatedAt < b.updatedAt ? a : b)
+        this.bookBLoC.fetchBook(youngBook.updatedAt)
       }),
       actionsToMutations(depose),
     )
