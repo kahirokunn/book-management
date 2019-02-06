@@ -1,8 +1,6 @@
 import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuthApplicationService'
 import { IBookApplicationService } from '@/boundary/bookApplicationService/IBookApplicationService'
-import {
-  IUserApplicationService,
-} from '@/boundary/userApplicationService/IUserApplicationService'
+import { IUserApplicationService } from '@/boundary/userApplicationService/IUserApplicationService'
 import { AuthApplicationService } from '@/domain/application/authApplicationService/AuthApplicationService'
 import { BookApplicationService } from '@/domain/application/bookApplicationService/BookApplicationService'
 import { UserApplicationService } from '@/domain/application/userApplicationService/UserApplicationService'
