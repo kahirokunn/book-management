@@ -19,7 +19,7 @@ function bookMapper(book: any): IBook {
 @injectable()
 export class BookObservableRepository implements IBookObservableRepository {
   public getBooks(startAfter?: Date): Observable<IBook[]> {
-    let query = Book.getReference().orderBy('updatedAt', 'desc').limit(12)
+    let query = Book.getReference().orderBy('updatedAt', 'desc').limit(20)
     if (startAfter) {
       query = query.startAfter(startAfter)
     }
