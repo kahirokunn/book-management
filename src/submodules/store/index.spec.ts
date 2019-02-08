@@ -52,7 +52,7 @@ test('success', async () => {
     },
   })
   const wrapper = shallowMount(testComponent, { store })
-  const {vm}: any = wrapper
-  expect(vm.test).toBe(store.state)
-  expect(vm.books()).toBe(selector1.books(store.state))
+  const {vm} = wrapper
+  expect(vm.test0).toBe(store.state)
+  expect(vm.books).toEqual(selector1.books(store.state))
 })
