@@ -2,7 +2,6 @@
 import '@/testConfiguration'
 import { resolveStubProviders } from '@/provider/resolveStubProviders'
 import { createStore, ClassBasedStoreOption } from '@/store/root'
-import flushPromises from 'flush-promises'
 import { Container } from 'inversify'
 import { pageNotFound } from './action'
 import selector from './selector'
@@ -14,7 +13,6 @@ test('pageNotFound状態がtrueになる', async () => {
   storeModuleProvider(container)
   const store = createStore(container.get(ClassBasedStoreOption))
   expect(selector.isPageNotFound(store.state)).toBe(false)
-  store.dispatch(pageNotFound())
-  await flushPromises()
+  await store.dispatch(pageNotFound())
   expect(selector.isPageNotFound(store.state)).toBe(true)
 })
