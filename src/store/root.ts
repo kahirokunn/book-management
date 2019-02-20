@@ -3,7 +3,7 @@ import Vuex, { Module, StoreOptions } from 'vuex'
 import { ContainerModule, ContainersState } from './containers'
 import { MiddlewareModule, MiddlewareState } from './middleware'
 
-interface RootState {
+export interface RootState {
   middleware: MiddlewareState
   containers: ContainersState
 }

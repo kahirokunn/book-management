@@ -1,5 +1,6 @@
 import { IBook } from '@/boundary/bookApplicationService/InOutType'
 import { BookBLoC } from '@/query/bloc/book/BookListBLoC'
+import { RootState } from '@/store/root'
 import { inject, injectable } from 'inversify'
 import { Subscription } from 'rxjs'
 import {
@@ -69,7 +70,7 @@ export class BookListModule {
   }
 
   get actions() {
-    return combineAction<State, any>(
+    return combineAction<State, RootState>(
       action(initialize, ({commit}) => {
         const subscription = this
           .bookBLoC

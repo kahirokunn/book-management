@@ -2,6 +2,7 @@ import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuth
 import { ILogger } from '@/drivers/ILogger'
 import router from '@/router'
 import { successUserLogin } from '@/store/middleware/auth/action'
+import { RootState } from '@/store/root'
 import { inject, injectable } from 'inversify'
 import {
   action,
@@ -69,7 +70,7 @@ export class UserRegistrationFormModule {
   }
 
   get actions() {
-    return combineAction<State, any>(
+    return combineAction<State, RootState>(
       actionsToMutations(toStandby),
       action(userRegistration, async ({commit, dispatch}, action) => {
         commit(startRegistration())

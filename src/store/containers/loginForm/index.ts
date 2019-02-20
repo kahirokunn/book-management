@@ -3,6 +3,7 @@ import { ILogger } from '@/drivers/ILogger'
 import {
   successUserLogin,
 } from '@/store/middleware/auth/action'
+import { RootState } from '@/store/root'
 import { inject, injectable } from 'inversify'
 import {
   action,
@@ -62,7 +63,7 @@ export class LoginFormModule {
   }
 
   get actions() {
-    return combineAction<State, any>(
+    return combineAction<State, RootState>(
       action(loginByEmailAndPassword, async ({commit, dispatch}, action) => {
         commit(startLogin())
         try {

@@ -1,5 +1,6 @@
 import { IBookApplicationService } from '@/boundary/bookApplicationService/IBookApplicationService'
 import { ILogger } from '@/drivers/ILogger'
+import { RootState } from '@/store/root'
 import { inject, injectable } from 'inversify'
 import {
   action,
@@ -75,7 +76,7 @@ export class CreateBookFormModule {
   }
 
   get actions() {
-    return combineAction<State, any>(
+    return combineAction<State, RootState>(
       action(createBook, async ({commit}, action) => {
         commit(startCreate())
 

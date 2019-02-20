@@ -3,6 +3,7 @@ import { IUser } from '@/boundary/userApplicationService/InOutType'
 import { ILogger } from '@/drivers/ILogger'
 import { UserBLoC } from '@/query/bloc/user/UserBLoC'
 import router from '@/router'
+import { RootState } from '@/store/root'
 import { inject, injectable } from 'inversify'
 import { Subscription } from 'rxjs'
 import {
@@ -82,7 +83,7 @@ export class AuthModule {
   }
 
   get actions() {
-    return combineAction<State, any>(
+    return combineAction<State, RootState>(
       action(userLogin, async ({commit, dispatch}) => {
         try {
           const authInfo = await this.authApp.login()

@@ -1,5 +1,6 @@
 import { IUserApplicationService } from '@/boundary/userApplicationService/IUserApplicationService'
 import { ILogger } from '@/drivers/ILogger'
+import { RootState } from '@/store/root'
 import { inject, injectable } from 'inversify'
 import {
   action,
@@ -74,7 +75,7 @@ export class ChangeUserProfileFormModule {
   }
 
   get actions() {
-    return combineAction<State, any>(
+    return combineAction<State, RootState>(
       action(updateProfile, async ({commit}, action) => {
         commit(startUpdate())
 
