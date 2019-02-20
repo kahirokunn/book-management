@@ -22,13 +22,11 @@ import { BookBLoC } from '@/query/bloc/book/BookListBLoC'
 import { UserBLoC } from '@/query/bloc/user/UserBLoC'
 import { IBookObservableRepository } from '@/query/observableRepository/book/IBookObservableRepository'
 import { IUserObservableRepository } from '@/query/observableRepository/user/IUserObservableRepository'
-import { Logger } from '@/serviceLocator/Logger'
 import { Container } from 'inversify'
 
-export function firebaseProviders(container: Container): void {
+export function prodProviders(container: Container): void {
   // core
   container.bind(ILogger).to(ConsoleLogger)
-  Logger.initialize(container.get(ILogger))
 
   // query
   container.bind(UserBLoC).to(UserBLoC)

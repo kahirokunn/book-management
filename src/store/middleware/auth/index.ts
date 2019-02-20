@@ -1,8 +1,8 @@
 import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuthApplicationService'
 import { IUser } from '@/boundary/userApplicationService/InOutType'
+import { ILogger } from '@/drivers/ILogger'
 import { UserBLoC } from '@/query/bloc/user/UserBLoC'
 import router from '@/router'
-import { Logger } from '@/serviceLocator/Logger'
 import { inject, injectable } from 'inversify'
 import { Subscription } from 'rxjs'
 import {
@@ -44,6 +44,8 @@ const initialState = (): State => ({
 @injectable()
 export class AuthModule {
   constructor(
+    @inject(ILogger)
+    private readonly logger: ILogger,
     @inject(IAuthApplicationService)
     private readonly authApp: IAuthApplicationService,
     @inject(UserBLoC)
@@ -70,7 +72,7 @@ export class AuthModule {
         state.subscriptions.map((subscription) => subscription.unsubscribe())
       }),
       mutation(receiveUserFromStream, (state, action) => {
-        Logger.getInstance().info('receiveUserFromStream', action.payload)
+        this.logger.info('receiveUserFromStream', action.payload)
         if (!state.isInitialized) {
           state.isInitialized = true
         }
@@ -87,13 +89,13 @@ export class AuthModule {
           await dispatch(successUserLogin({authInfo}))
           router.push('/')
         } catch (e) {
-          Logger.getInstance().info('ログイン失敗', e)
+          this.logger.info('ログイン失敗', e)
           commit(failureLogin())
         }
       }),
       action(successUserLogin, async ({commit}, action) => {
         const { authInfo } = action.payload
-        Logger.getInstance().info('ログイン成功', authInfo)
+        this.logger.info('ログイン成功', authInfo)
         const subscription = this.userBloc
           .user$
           .subscribe((user) => commit(receiveUserFromStream({user})))

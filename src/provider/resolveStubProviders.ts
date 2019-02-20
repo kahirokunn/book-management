@@ -7,7 +7,6 @@ import { BookBLoC } from '@/query/bloc/book/BookListBLoC'
 import { UserBLoC } from '@/query/bloc/user/UserBLoC'
 import { IBookObservableRepository } from '@/query/observableRepository/book/IBookObservableRepository'
 import { IUserObservableRepository } from '@/query/observableRepository/user/IUserObservableRepository'
-import { Logger } from '@/serviceLocator/Logger'
 import { AuthApplicationService } from '@/stub/domain/app/authApplicationService/ResolveService'
 import { BookApplicationService } from '@/stub/domain/app/bookApplicationService/ResolveService'
 import { UserApplicationService } from '@/stub/domain/app/userApplicationService/ResolveService'
@@ -18,7 +17,6 @@ import { Container } from 'inversify'
 export function resolveStubProviders(container: Container): void {
   // core
   container.bind(ILogger).to(BlankLogger)
-  Logger.initialize(container.get(ILogger))
 
   // query
   // bloc

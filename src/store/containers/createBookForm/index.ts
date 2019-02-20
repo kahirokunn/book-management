@@ -1,5 +1,5 @@
 import { IBookApplicationService } from '@/boundary/bookApplicationService/IBookApplicationService'
-import { Logger } from '@/serviceLocator/Logger'
+import { ILogger } from '@/drivers/ILogger'
 import { inject, injectable } from 'inversify'
 import {
   action,
@@ -40,6 +40,8 @@ const initialState = (): State => ({
 @injectable()
 export class CreateBookFormModule {
   constructor(
+    @inject(ILogger)
+    private readonly logger: ILogger,
     @inject(IBookApplicationService)
     private readonly bookApp: IBookApplicationService,
   ) {}
@@ -79,10 +81,10 @@ export class CreateBookFormModule {
 
         try {
           await this.bookApp.create(action.payload.params)
-          Logger.getInstance().info('本の作成に成功')
+          this.logger.info('本の作成に成功')
           commit(successCreate())
         } catch (e) {
-          Logger.getInstance().error(e)
+          this.logger.error(e)
           commit(failureSend())
         }
       }),

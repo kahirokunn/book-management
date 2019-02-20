@@ -1,5 +1,5 @@
 import '@/configuration'
-import { firebaseProviders } from '@/provider/firebaseProviders'
+import { prodProviders } from '@/provider/prodProviders'
 import router from '@/router/index'
 import { loggedInMiddleware } from '@/router/middlewares/guards/loggedIn'
 import { unLoggedInMiddleware } from '@/router/middlewares/guards/unLoggedIn'
@@ -9,11 +9,12 @@ import Vue from 'vue'
 import { ClassBasedStoreOption, createStore } from './store/root'
 import { isProd } from './submodules/env'
 
+import { createVueProvider } from '@/provider/createVueProvider'
 import { Container } from 'inversify'
 import { storeModuleProvider } from './provider/storeModuleProvider'
 
 const container = new Container()
-firebaseProviders(container)
+prodProviders(container)
 storeModuleProvider(container)
 
 const store = createStore(container.get(ClassBasedStoreOption))
@@ -25,6 +26,7 @@ requiredVerifyEmailMiddleware(router, store.state)
 Vue.config.productionTip = !isProd()
 
 new Vue({
+  provide: createVueProvider(container),
   router,
   store,
   render: (h) => h('router-view'),

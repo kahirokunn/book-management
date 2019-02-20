@@ -1,5 +1,5 @@
 import { IUserApplicationService } from '@/boundary/userApplicationService/IUserApplicationService'
-import { Logger } from '@/serviceLocator/Logger'
+import { ILogger } from '@/drivers/ILogger'
 import { inject, injectable } from 'inversify'
 import {
   action,
@@ -40,6 +40,8 @@ const initialState = (): State => ({
 @injectable()
 export class ChangeUserProfileFormModule {
   constructor(
+    @inject(ILogger)
+    private readonly logger: ILogger,
     @inject(IUserApplicationService)
     private readonly userApp: IUserApplicationService,
   ) {}
@@ -78,10 +80,10 @@ export class ChangeUserProfileFormModule {
 
         try {
           await this.userApp.update(action.payload.user)
-          Logger.getInstance().info('ユーザー情報の更新に成功')
+          this.logger.info('ユーザー情報の更新に成功')
           commit(successUpdate())
         } catch (e) {
-          Logger.getInstance().error(e)
+          this.logger.error(e)
           commit(failureSend())
         }
       }),

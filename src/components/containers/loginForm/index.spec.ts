@@ -8,6 +8,7 @@ import { shallowMount } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import { Container } from 'inversify'
 import index from './index.vue'
+import { createVueProvider } from '@/provider/createVueProvider'
 import { storeModuleProvider } from '@/provider/storeModuleProvider'
 
 test('login form container', async () => {
@@ -19,7 +20,7 @@ test('login form container', async () => {
 
   selector.isFailed(store.state)
   selector.isSending(store.state)
-  const wrapper = shallowMount(index, { store })
+  const wrapper = shallowMount(index, { store, provide: createVueProvider(container) })
   expect(wrapper.html()).toMatchSnapshot()
   expect(selector.isFailed(store.state)).toBe(false)
   expect(selector.isSending(store.state)).toBe(false)

@@ -1,5 +1,5 @@
 import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuthApplicationService'
-import { Logger } from '@/serviceLocator/Logger'
+import { ILogger } from '@/drivers/ILogger'
 import {
   successUserLogin,
 } from '@/store/middleware/auth/action'
@@ -37,6 +37,8 @@ const initialState = (): State => ({
 @injectable()
 export class LoginFormModule {
   constructor(
+    @inject(ILogger)
+    private readonly logger: ILogger,
     @inject(IAuthApplicationService)
     private readonly authApp: IAuthApplicationService,
   ) {}
@@ -70,7 +72,7 @@ export class LoginFormModule {
           )
           dispatch(successUserLogin({authInfo}))
         } catch (e) {
-          Logger.getInstance().error(e)
+          this.logger.error(e)
           commit(failureLogin())
         }
       }),

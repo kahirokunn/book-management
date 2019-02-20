@@ -71,11 +71,11 @@
 </template>
 
 <script lang="ts">
+import { ILogger } from '@/drivers/ILogger'
 import { storage } from '@/firebase/index'
-import { Logger } from '@/serviceLocator/Logger'
 import authSelector from '@/store/middleware/auth/selector'
 import uuid from 'uuid/v4'
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Inject, Prop, Vue, Watch } from 'vue-property-decorator'
 
 type RequestType = { file: File }
 
@@ -93,14 +93,6 @@ enum UploadState {
   },
 })
 export default class ImageUploader extends Vue {
-  @Prop() public url!: string
-  @Prop({default: false}) public hideStatus!: boolean
-
-  public imageUrl = ''
-  public isNotAllowFileType = false
-  public isOverFileSize = false
-
-  public uploadState: UploadState = UploadState.STANDBY
 
   get isSending() {
     return this.uploadState === UploadState.SENDING
@@ -113,6 +105,18 @@ export default class ImageUploader extends Vue {
   get isError() {
     return this.uploadState === UploadState.ERROR
   }
+
+  @Prop() public url!: string
+  @Prop({default: false}) public hideStatus!: boolean
+
+  public imageUrl = ''
+  public isNotAllowFileType = false
+  public isOverFileSize = false
+
+  public uploadState: UploadState = UploadState.STANDBY
+
+  @Inject(ILogger.toString())
+  private logger!: ILogger
 
   public toStandby() {
     this.uploadState = UploadState.STANDBY
@@ -137,8 +141,9 @@ export default class ImageUploader extends Vue {
       this.imageUrl = await imageRef.getDownloadURL()
       this.$emit('change', this.imageUrl)
       this.uploadState = UploadState.SUCCESS
+      this.logger.info(`new image: ${this.imageUrl}`)
     } catch (e) {
-      Logger.getInstance().error(e)
+      this.logger.error(e)
       this.uploadState = UploadState.ERROR
     }
   }
