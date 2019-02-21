@@ -54,8 +54,9 @@ import { Component, Vue } from 'vue-property-decorator'
   computed: mapComputed(selector),
 })
 export default class LoginPage extends Vue {
-  public login(email: string, password: string) {
-    return this.$store.dispatch(loginByEmailAndPassword({ email, password }))
+  public async login(email: string, password: string) {
+    await this.$store.dispatch(loginByEmailAndPassword({ email, password }))
+    this.$router.push('/')
   }
 
   public toStandby() {

@@ -28,7 +28,7 @@
     "rxfire": "^3.3.2",
     "rxjs": "^6.4.0",
     "typescript-fsa-vuex": "^3.0.2",
-    "vue": "^2.5.22",
+    "vue": "^2.6.6",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.3.0",
     "vue-proxy-component": "^0.0.8",
@@ -69,7 +69,7 @@
     "vue-auto-routing": "^0.3.0",
     "vue-cli-plugin-auto-routing": "^0.2.1",
     "vue-cli-plugin-storybook": "^0.4.8",
-    "vue-template-compiler": "^2.5.22",
+    "vue-template-compiler": "^2.6.6",
     "zisui": "^1.2.2"
   },
   "gitHooks": {
