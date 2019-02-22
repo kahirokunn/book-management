@@ -1,7 +1,7 @@
 <template>
   <v-layout wrap v-scroll:#scroll-target="onScroll">
     <template v-for="book in books">
-      <v-flex xs6 md4 :key="book.id">
+      <v-flex xs12 :key="book.id">
           <v-card color="grey darken-2" class="white--text">
             <v-layout>
               <v-flex xs5>
