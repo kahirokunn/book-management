@@ -8,6 +8,7 @@ import { UserRegistrationFormModule } from '@/store/containers/userRegistrationF
 import { MiddlewareModule } from '@/store/middleware'
 import { AuthModule } from '@/store/middleware/auth'
 import { PageNotFoundModule } from '@/store/middleware/pageNotFound'
+import { RouterModule } from '@/store/middleware/router'
 import { ClassBasedStoreOption } from '@/store/root'
 import { Container } from 'inversify'
 
@@ -25,6 +26,7 @@ export function storeModuleProvider(container: Container): void {
   container.bind(MiddlewareModule).to(MiddlewareModule)
   container.bind(PageNotFoundModule).to(PageNotFoundModule)
   container.bind(AuthModule).to(AuthModule)
+  container.bind(RouterModule).to(RouterModule)
 
   // root
   container.bind(ClassBasedStoreOption).to(ClassBasedStoreOption)

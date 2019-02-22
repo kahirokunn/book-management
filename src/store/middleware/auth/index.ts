@@ -2,7 +2,6 @@ import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuth
 import { IUser } from '@/boundary/userApplicationService/InOutType'
 import { ILogger } from '@/drivers/ILogger'
 import { UserBLoC } from '@/query/bloc/user/UserBLoC'
-import router from '@/router'
 import { RootState } from '@/store/root'
 import { inject, injectable } from 'inversify'
 import { Subscription } from 'rxjs'
@@ -12,6 +11,7 @@ import {
   combineMutation,
   mutation,
 } from 'typescript-fsa-vuex'
+import { changeRoute } from '../router/action'
 import {
   actionCreator,
   deposeUser,
@@ -28,6 +28,7 @@ const receiveUserFromStream = actionCreator<{user: IUser}>('RECEIVE_USER_FROM_ST
 
 type State = {
   isInitialized: boolean,
+  hasReceived: boolean,
   isLoggedIn: boolean,
   isEmailVerified: boolean,
   user: IUser | null,
@@ -36,6 +37,7 @@ type State = {
 
 const initialState = (): State => ({
   isInitialized: false,
+  hasReceived: false,
   isLoggedIn: false,
   isEmailVerified: false,
   user: null,
@@ -74,9 +76,8 @@ export class AuthModule {
       }),
       mutation(receiveUserFromStream, (state, action) => {
         this.logger.info('receiveUserFromStream', action.payload)
-        if (!state.isInitialized) {
-          state.isInitialized = true
-        }
+        state.isInitialized = true
+        state.hasReceived = true
         state.user = action.payload.user
       }),
     )
@@ -87,21 +88,31 @@ export class AuthModule {
       action(userLogin, async ({commit, dispatch}) => {
         try {
           const authInfo = await this.authApp.login()
-          await dispatch(successUserLogin({authInfo}))
-          router.push('/')
+          await Promise.all([
+            dispatch(successUserLogin({authInfo})),
+            dispatch(changeRoute('/')),
+          ])
         } catch (e) {
           this.logger.info('ログイン失敗', e)
           commit(failureLogin())
         }
       }),
-      action(successUserLogin, async ({commit}, action) => {
+      action(successUserLogin, async ({commit, dispatch}, action) => {
         const { authInfo } = action.payload
         this.logger.info('ログイン成功', authInfo)
         const subscription = this.userBloc
           .user$
-          .subscribe((user) => commit(receiveUserFromStream({user})))
+          .subscribe((user) => {
+            dispatch(receiveUserFromStream({user}))
+          })
         commit(startedSubscribe({authInfo, subscription}))
         this.userBloc.fetchUserById(authInfo.userId)
+      }),
+      action(receiveUserFromStream, async ({state, commit, dispatch}, action) => {
+        if (!state.hasReceived) {
+          dispatch(changeRoute('/'))
+        }
+        commit(receiveUserFromStream(action.payload))
       }),
     )
   }

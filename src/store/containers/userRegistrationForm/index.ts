@@ -1,7 +1,7 @@
 import { IAuthApplicationService } from '@/boundary/authApplicationService/IAuthApplicationService'
 import { ILogger } from '@/drivers/ILogger'
-import router from '@/router'
 import { successUserLogin } from '@/store/middleware/auth/action'
+import { changeRoute } from '@/store/middleware/router/action'
 import { RootState } from '@/store/root'
 import { inject, injectable } from 'inversify'
 import {
@@ -77,8 +77,10 @@ export class UserRegistrationFormModule {
         try {
           const authInfo = await this.authApp.registration(action.payload)
           this.logger.info('ユーザー登録成功', authInfo)
-          dispatch(successUserLogin({authInfo}))
-          router.push('/')
+          await Promise.all([
+            dispatch(successUserLogin({authInfo})),
+            dispatch(changeRoute('/')),
+          ])
         } catch (e) {
           commit(failureRegistration(e))
           this.logger.info('ユーザー登録失敗')

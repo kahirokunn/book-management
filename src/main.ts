@@ -1,11 +1,12 @@
 import '@/configuration'
 import { prodProviders } from '@/provider/prodProviders'
-import router from '@/router/index'
+import routerOptions from '@/router/index'
 import { loggedInMiddleware } from '@/router/middlewares/guards/loggedIn'
 import { unLoggedInMiddleware } from '@/router/middlewares/guards/unLoggedIn'
 import { requiredVerifyEmailMiddleware } from '@/router/middlewares/requiredVerifyEmail'
 import '@/stylesheets/main.scss'
 import Vue from 'vue'
+import Router from 'vue-router'
 import { ClassBasedStoreOption, createStore } from './store/root'
 import { isProd } from './submodules/env'
 
@@ -17,6 +18,7 @@ const container = new Container()
 prodProviders(container)
 storeModuleProvider(container)
 
+const router = new Router(routerOptions)
 const store = createStore(container.get(ClassBasedStoreOption))
 
 loggedInMiddleware(router, store.state)

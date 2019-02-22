@@ -69,10 +69,10 @@
 </template>
 
 <script lang="ts">
-import router from '@/router/index'
 import { openDialog as openCreateBookFormDialog } from '@/store/containers/createBookForm/action'
 import { closeDrawer } from '@/store/containers/navigation/action'
 import selector from '@/store/containers/navigation/selector'
+import { changeRoute } from '@/store/middleware/router/action'
 import { mapComputed } from '@/submodules/store'
 import { Component, Vue } from 'vue-property-decorator'
 
@@ -85,7 +85,7 @@ export default class Navigation extends Vue {
       {
         icon: 'list_alt',
         text: '購入済み書籍一覧',
-        action: () => router.push('/books'),
+        action: () => this.$store.dispatch(changeRoute('/books')),
       },
       {
         icon: 'library_add',

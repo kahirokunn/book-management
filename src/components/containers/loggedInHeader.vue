@@ -6,7 +6,7 @@
     :clipped-left="$vuetify.breakpoint.mdAndUp"
     fixed
   >
-    <v-toolbar-title style="width: 300px" class="ml-0 pl-3" @click="$router.push('/')">
+    <v-toolbar-title style="width: 300px" class="ml-0 pl-3" @click="toHome()">
       <v-toolbar-side-icon
         @click.stop="toggleDrawer()"/>
       <span>Book Management</span>
@@ -37,6 +37,7 @@ import { defaultUserIconUrl } from '@/config/user/defaultUserParams'
 import { openDialog } from '@/store/containers/changeUserProfileForm/action'
 import { toggleDrawer } from '@/store/containers/navigation/action'
 import authSelector from '@/store/middleware/auth/selector'
+import { changeRoute } from '@/store/middleware/router/action'
 import { mapComputed } from '@/submodules/store'
 import { Component, Vue } from 'vue-property-decorator'
 
@@ -46,6 +47,10 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class LoggedInHeader extends Vue {
   get defaultUserIconUrl() {
     return defaultUserIconUrl
+  }
+
+  public toHome() {
+    return this.$store.dispatch(changeRoute('/'))
   }
 
   public openDialog() {

@@ -2,9 +2,9 @@ import Main from '@/main.vue'
 import PageNotFound from '@/pages/page_not_found/index.vue'
 import { isTest } from '@/submodules/env'
 import Vue from 'vue'
-import Router from 'vue-router'
+import { RouterOptions } from 'vue-router'
 
-export default new Router({
+export default {
   mode: 'history',
   routes: [
     {
@@ -21,4 +21,4 @@ export default new Router({
       ],
     },
   ],
-})
+} as RouterOptions
