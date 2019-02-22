@@ -1,4 +1,5 @@
 import { inject, injectable } from 'inversify'
+import { Route } from 'vue-router'
 import Vuex, { Module, StoreOptions } from 'vuex'
 import { ContainerModule, ContainersState } from './containers'
 import { MiddlewareModule, MiddlewareState } from './middleware'
@@ -6,6 +7,7 @@ import { MiddlewareModule, MiddlewareState } from './middleware'
 export interface RootState {
   middleware: MiddlewareState
   containers: ContainersState
+  route: Route
 }
 
 @injectable()

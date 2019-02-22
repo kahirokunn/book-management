@@ -12,6 +12,7 @@ import { createVueProvider } from '@/provider/createVueProvider'
 import { storeModuleProvider } from '@/provider/storeModuleProvider'
 import routerOptions from '@/router/index'
 import Router from 'vue-router'
+import { sync } from 'vuex-router-sync'
 
 test('login form container', async () => {
   const container = new Container()
@@ -20,6 +21,7 @@ test('login form container', async () => {
   storeModuleProvider(container)
   const router = new Router(routerOptions)
   const store = createStore(container.get(ClassBasedStoreOption))
+  sync(store, router)
 
   selector.isFailed(store.state)
   selector.isSending(store.state)

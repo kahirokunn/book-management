@@ -7,6 +7,7 @@ import { requiredVerifyEmailMiddleware } from '@/router/middlewares/requiredVeri
 import '@/stylesheets/main.scss'
 import Vue from 'vue'
 import Router from 'vue-router'
+import { sync } from 'vuex-router-sync'
 import { ClassBasedStoreOption, createStore } from './store/root'
 import { isProd } from './submodules/env'
 
@@ -20,6 +21,7 @@ storeModuleProvider(container)
 
 const router = new Router(routerOptions)
 const store = createStore(container.get(ClassBasedStoreOption))
+sync(store, router)
 
 loggedInMiddleware(router, store.state)
 unLoggedInMiddleware(router, store.state)
