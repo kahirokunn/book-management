@@ -15,6 +15,8 @@ import { createVueProvider } from '@/provider/createVueProvider'
 import { Container } from 'inversify'
 import { storeModuleProvider } from './provider/storeModuleProvider'
 
+import Main from '@/main.vue'
+
 const container = new Container()
 prodProviders(container)
 storeModuleProvider(container)
@@ -33,5 +35,5 @@ new Vue({
   provide: createVueProvider(container),
   router,
   store,
-  render: (h) => h('router-view'),
+  render: (h) => h(Main, [h('router-view')]),
 }).$mount('#app')
