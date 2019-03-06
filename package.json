@@ -24,7 +24,7 @@
     "marked": "0.5.1",
     "moment": "2.24.0",
     "pring": "0.26.2",
-    "reflect-metadata": "0.1.12",
+    "reflect-metadata": "0.1.13",
     "rxfire": "3.3.2",
     "rxjs": "6.4.0",
     "typescript-fsa-vuex": "3.0.2",
