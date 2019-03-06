@@ -9605,9 +9605,10 @@ reflect-metadata@0.1.12, reflect-metadata@^0.1.12:
   version "0.1.12"
   resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.12.tgz#311bf0c6b63cd782f228a81abe146a2bfa9c56f2"
 
-reg-cli@^0.12.1:
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/reg-cli/-/reg-cli-0.12.1.tgz#a9fefbc6f3a039db7affe2bdf1c399852fab36e3"
+reg-cli@^0.13.0:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/reg-cli/-/reg-cli-0.13.1.tgz#4bfbf83433b86c584c82804b862acc86a1b18141"
+  integrity sha512-HKnlHeHqoxmINysED3PW+ELyx8ZnmeUjtFihinKmENOgYqAY7N/cMFySV0XbkM0OuEPKZdz5mRrHwf49pn7+ZQ==
   dependencies:
     bluebird "^3.5.1"
     chalk "^2.3.0"
@@ -9651,14 +9652,28 @@ reg-publish-gcs-plugin@0.7.6:
     reg-suit-util "^0.7.6"
     uuid "^3.1.0"
 
-reg-suit-core@^0.7.15:
-  version "0.7.15"
-  resolved "https://registry.yarnpkg.com/reg-suit-core/-/reg-suit-core-0.7.15.tgz#8de2b7cac9c55ef00045c255d30eb81019e0ba69"
+reg-suit-core@^0.7.17:
+  version "0.7.17"
+  resolved "https://registry.yarnpkg.com/reg-suit-core/-/reg-suit-core-0.7.17.tgz#ae9df78e82f1de9c8e0ef8ae974eec1624087ee7"
+  integrity sha512-j/fYqbbb9dQ74YlVkcBj5TXyi3HSbk28WPjFF6+voB4m5MavaFFHnLSXVYB4AvFNmIZxGHbWtFnL+0mzoffdlw==
   dependencies:
     cpx "^1.5.0"
-    reg-cli "^0.12.1"
-    reg-suit-util "^0.7.6"
+    reg-cli "^0.13.0"
+    reg-suit-util "^0.7.16"
     rimraf "^2.6.1"
+
+reg-suit-util@^0.7.16:
+  version "0.7.16"
+  resolved "https://registry.yarnpkg.com/reg-suit-util/-/reg-suit-util-0.7.16.tgz#b16b03970dde074b093c385aaa0d1a2c4ec3157f"
+  integrity sha512-d/w3h5lp6JguGjwCTQCOzHOGSYdJVtv9zOqlfiOTpbj+nR2hPoV9DyFR6VuDfxdpm3oGw2+M27s+Pv12UXfQcA==
+  dependencies:
+    chalk "^2.0.1"
+    cli-progress "^1.4.1"
+    cli-spinner "^0.2.6"
+    glob "^7.1.2"
+    lodash "^4.17.4"
+    mime-types "^2.1.15"
+    mkdirp "^0.5.1"
 
 reg-suit-util@^0.7.6:
   version "0.7.6"
@@ -9672,16 +9687,16 @@ reg-suit-util@^0.7.6:
     mime-types "^2.1.15"
     mkdirp "^0.5.1"
 
-reg-suit@0.7.15:
-  version "0.7.15"
-  resolved "https://registry.yarnpkg.com/reg-suit/-/reg-suit-0.7.15.tgz#f7c51a5705260807ed21c6029a26e7fa7e54b317"
-  integrity sha512-TqBVsS9Bd78eXYK4Uy7p7qXvFJwm0IPAqsaTQh42AzUlSmVJL9trrrGFRpHCTejmYW+d2aQHQUbWF2WWG/LQCA==
+reg-suit@0.7.17:
+  version "0.7.17"
+  resolved "https://registry.yarnpkg.com/reg-suit/-/reg-suit-0.7.17.tgz#7bd6eabafe28f27f450d43fe072ea66cd4909787"
+  integrity sha512-HNCDWojDsCaEymwura5Udx01PKTs8eepOGmHx69NguokwkyKTQf24M68xxjslUL6BVgr7Mxy/rg8uWLl5klcxQ==
   dependencies:
     cp-file "^4.2.0"
     ignore "^3.3.7"
     inquirer "^3.1.1"
-    reg-suit-core "^0.7.15"
-    reg-suit-util "^0.7.6"
+    reg-suit-core "^0.7.17"
+    reg-suit-util "^0.7.16"
     yargs "^8.0.2"
 
 regenerate-unicode-properties@^7.0.0:

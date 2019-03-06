@@ -63,7 +63,7 @@
     "reg-keygen-git-hash-plugin": "0.7.6",
     "reg-notify-github-plugin": "0.7.6",
     "reg-publish-gcs-plugin": "0.7.6",
-    "reg-suit": "0.7.15",
+    "reg-suit": "0.7.17",
     "sass-loader": "7.1.0",
     "ts-jest": "23.10.4",
     "typescript": "3.2.4",
