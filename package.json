@@ -16,7 +16,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "element-ui": "2.4.11",
+    "element-ui": "2.6.1",
     "firebase": "5.8.2",
     "github-markdown-css": "3.0.1",
     "highlight.js": "9.13.1",
