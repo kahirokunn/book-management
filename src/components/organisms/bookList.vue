@@ -48,13 +48,16 @@ export default class BookList extends Vue {
   @Prop({required: true})
   public books!: IBook[]
 
+  @Prop({required: true})
+  public seeMore!: () => void
+
   public toStar(evaluation: Evaluation | null) {
     return [...Array(5)].map((_, i) => i < (evaluation || 0))
   }
 
   public onScroll(e: any) {
     if ((e.target.scrollTop + e.target.offsetHeight) >= e.target.scrollHeight) {
-      this.$emit('seeMore')
+      this.seeMore()
     }
   }
 }
