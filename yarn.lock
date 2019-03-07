@@ -10025,10 +10025,10 @@ rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
-rxfire@3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/rxfire/-/rxfire-3.3.2.tgz#0a65d98eb2cab49bc5aa197ec15bd213a1c3093e"
-  integrity sha512-7yo7oqX3jziYK8KUaWNZpiXO0ZnVofHLgi3GieB6DP+nAO+0aZ3tu8nUdjnKEEoOU1SoGCgpHBREq9FzXmf/mg==
+rxfire@3.3.5:
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/rxfire/-/rxfire-3.3.5.tgz#99bb55b8848b81d0a2ec8f4bfb99b19143648009"
+  integrity sha512-Bn6u1+MZnJbYYlgzwTZKzojEenT66I0NHFjEhuyDZ6iyRjwvXEYsNHGcNPbscnOFKP85GjHWUNQDboVPEAG5aQ==
 
 rxjs@6.4.0:
   version "6.4.0"
