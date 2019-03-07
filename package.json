@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@cypress/webpack-preprocessor": "3.0.1",
-    "@google-cloud/firestore": "0.19.0",
+    "@google-cloud/firestore": "0.21.0",
     "@storybook/addon-actions": "4.1.13",
     "@storybook/addon-links": "4.1.13",
     "@types/firebase": "3.2.1",
