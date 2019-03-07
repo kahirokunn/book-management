@@ -1,14 +1,14 @@
 import { IBook } from '@/boundary/bookApplicationService/InOutType'
 import { IBookObservableRepository } from '@/query/observableRepository/book/IBookObservableRepository'
 import { inject, injectable } from 'inversify'
-import { Subject, Subscription } from 'rxjs'
+import { Observable, Subject, Subscription } from 'rxjs'
 
 @injectable()
 export class BookBLoC {
   private readonly _books: Subject<IBook[]> = new Subject<IBook[]>()
   private _subscriptions: Subscription[] = []
 
-  get books$() {
+  get books$(): Observable<IBook[]> {
     return this._books
   }
 
