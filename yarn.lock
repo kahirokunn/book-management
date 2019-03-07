@@ -9624,12 +9624,12 @@ reg-cli@^0.13.0:
     mustache "^2.3.0"
     x-img-diff-js "0.3.5"
 
-reg-keygen-git-hash-plugin@0.7.6:
-  version "0.7.6"
-  resolved "https://registry.yarnpkg.com/reg-keygen-git-hash-plugin/-/reg-keygen-git-hash-plugin-0.7.6.tgz#adb3a068c19a6563a410c134b7d13d7d128fb139"
-  integrity sha1-rbOgaMGaZWOkEME0t9E9fRKPsTk=
+reg-keygen-git-hash-plugin@0.7.16:
+  version "0.7.16"
+  resolved "https://registry.yarnpkg.com/reg-keygen-git-hash-plugin/-/reg-keygen-git-hash-plugin-0.7.16.tgz#46f82a079c06aca286f29931038a0355df6a3694"
+  integrity sha512-3620yIaogoCHngriSJJSMrjoTimECd9Fvt/XEnC/Ui2yYsl7X3JGLHjkKlYtf7NeRvhXh5gaJ5AVtvmA6VX0Eg==
   dependencies:
-    reg-suit-util "^0.7.6"
+    reg-suit-util "^0.7.16"
 
 reg-notify-github-plugin@0.7.6:
   version "0.7.6"

@@ -60,7 +60,7 @@
     "flush-promises": "1.0.2",
     "lint-staged": "7.3.0",
     "node-sass": "4.9.4",
-    "reg-keygen-git-hash-plugin": "0.7.6",
+    "reg-keygen-git-hash-plugin": "0.7.16",
     "reg-notify-github-plugin": "0.7.6",
     "reg-publish-gcs-plugin": "0.7.6",
     "reg-suit": "0.7.17",
