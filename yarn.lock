@@ -9746,14 +9746,14 @@ reg-notify-github-plugin@0.7.21:
     request-promise "^4.2.1"
     tiny-commit-walker "^1.1.2"
 
-reg-publish-gcs-plugin@0.7.6:
-  version "0.7.6"
-  resolved "https://registry.yarnpkg.com/reg-publish-gcs-plugin/-/reg-publish-gcs-plugin-0.7.6.tgz#6df05edafed8c1e0cf24ae652bc8f9c91f089bfc"
-  integrity sha1-bfBe2v7YweDPJK5lK8j5yR8Im/w=
+reg-publish-gcs-plugin@0.7.16:
+  version "0.7.16"
+  resolved "https://registry.yarnpkg.com/reg-publish-gcs-plugin/-/reg-publish-gcs-plugin-0.7.16.tgz#73a0de1bf293aca71b713d8ba93e6f46e42b5aff"
+  integrity sha512-AsP/nwzrAIY0PUaEyX29I65L4V/gbPcAnMLiytqswopN3RAWxcYGF9ZOBqDx1SU0Ad+dVs8FOS6qxxAgFMbCGA==
   dependencies:
     "@google-cloud/storage" "^1.7.0"
     mkdirp "^0.5.1"
-    reg-suit-util "^0.7.6"
+    reg-suit-util "^0.7.16"
     uuid "^3.1.0"
 
 reg-suit-core@^0.7.17:
