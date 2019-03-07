@@ -8486,10 +8486,6 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-open@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/open/-/open-0.0.5.tgz#42c3e18ec95466b6bf0dc42f3a2945c3f0cad8fc"
-
 opener@^1.4.3:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.5.1.tgz#6d2f0e77f1a0af0032aca716c2c1fbb8e7e8abed"
@@ -8500,7 +8496,7 @@ opn@5.3.0:
   dependencies:
     is-wsl "^1.1.0"
 
-opn@^5.1.0, opn@^5.3.0:
+opn@^5.1.0, opn@^5.3.0, opn@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/opn/-/opn-5.4.0.tgz#cb545e7aab78562beb11aa3bfabc7042e1761035"
   dependencies:
@@ -9734,13 +9730,13 @@ reg-keygen-git-hash-plugin@0.7.16:
   dependencies:
     reg-suit-util "^0.7.16"
 
-reg-notify-github-plugin@0.7.6:
-  version "0.7.6"
-  resolved "https://registry.yarnpkg.com/reg-notify-github-plugin/-/reg-notify-github-plugin-0.7.6.tgz#518dc740d20b8ac03272c6e37939d6937c2721b3"
-  integrity sha1-UY3HQNILisAycsbjeTnWk3wnIbM=
+reg-notify-github-plugin@0.7.21:
+  version "0.7.21"
+  resolved "https://registry.yarnpkg.com/reg-notify-github-plugin/-/reg-notify-github-plugin-0.7.21.tgz#ee398c782299f23a2cc9d908be9724b15fdacd00"
+  integrity sha512-p+e1dXbFc3yzXc006AfG1TQGwGSc3K5h3S46DMCwiaSb/gCHQ5a4y8uHjXK5vqpvh9gxPa+4XT/VbCRWIPbDaA==
   dependencies:
-    open "^0.0.5"
-    reg-suit-util "^0.7.6"
+    opn "^5.4.0"
+    reg-suit-util "^0.7.16"
     request "^2.81.0"
     request-promise "^4.2.1"
     tiny-commit-walker "^1.1.2"
