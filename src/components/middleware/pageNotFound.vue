@@ -4,11 +4,7 @@
   </BlankLayout>
 
   <First v-else>
-    <slot>
-      <BlankLayout>
-        <PageNotFoundComponent/>
-      </BlankLayout>
-    </slot>
+    <slot />
   </First>
 </template>
 
