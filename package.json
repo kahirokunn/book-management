@@ -66,7 +66,7 @@
     "reg-suit": "0.7.17",
     "sass-loader": "7.1.0",
     "ts-jest": "23.10.5",
-    "typescript": "3.2.4",
+    "typescript": "3.3.3333",
     "vue-auto-routing": "0.3.0",
     "vue-cli-plugin-auto-routing": "0.2.1",
     "vue-cli-plugin-storybook": "0.4.8",

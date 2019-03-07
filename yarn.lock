@@ -11223,10 +11223,10 @@ typescript-fsa-vuex@3.0.2:
   resolved "https://registry.yarnpkg.com/typescript-fsa-vuex/-/typescript-fsa-vuex-3.0.2.tgz#0ffe93fc061df23f57e5813163e427328330d7a6"
   integrity sha512-kNta4kJgGxlG1MaPI/r7llTyeAmXnPkVySyKq2fgqEeGXjlcrGOBW30S/9082T6voAEa4GBBq34wH9Jmtly31Q==
 
-typescript@3.2.4:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.2.4.tgz#c585cb952912263d915b462726ce244ba510ef3d"
-  integrity sha512-0RNDbSdEokBeEAkgNbxJ+BLwSManFy9TeXz8uW+48j/xhEXv1ePME60olyzw2XzUqUBNAYFeJadIqAgNqIACwg==
+typescript@3.3.3333:
+  version "3.3.3333"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.3333.tgz#171b2c5af66c59e9431199117a3bcadc66fdcfd6"
+  integrity sha512-JjSKsAfuHBE/fB2oZ8NxtRTk5iGcg6hkYXMnZ3Wc+b2RSqejEqTaem11mHASMnFilHrax3sLK0GDzcJrekZYLw==
 
 ua-parser-js@^0.7.18:
   version "0.7.19"
