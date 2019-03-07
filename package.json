@@ -69,7 +69,7 @@
     "typescript": "3.2.4",
     "vue-auto-routing": "0.3.0",
     "vue-cli-plugin-auto-routing": "0.2.1",
-    "vue-cli-plugin-storybook": "0.4.8",
+    "vue-cli-plugin-storybook": "0.5.2",
     "vue-template-compiler": "2.6.6",
     "zisui": "1.2.2"
   },
