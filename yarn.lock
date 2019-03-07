@@ -1646,12 +1646,6 @@
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/strip-json-comments/-/strip-json-comments-0.0.30.tgz#9aa30c04db212a9a0649d6ae6fd50accc40748a1"
 
-"@types/uuid@^3.4.4":
-  version "3.4.4"
-  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-3.4.4.tgz#7af69360fa65ef0decb41fd150bf4ca5c0cefdf5"
-  dependencies:
-    "@types/node" "*"
-
 "@types/webpack-env@^1.13.6":
   version "1.13.6"
   resolved "http://registry.npmjs.org/@types/webpack-env/-/webpack-env-1.13.6.tgz#128d1685a7c34d31ed17010fc87d6a12c1de6976"
@@ -9211,13 +9205,12 @@ pretty@2.0.0:
     extend-shallow "^2.0.1"
     js-beautify "^1.6.12"
 
-pring@0.26.2:
-  version "0.26.2"
-  resolved "https://registry.yarnpkg.com/pring/-/pring-0.26.2.tgz#686e9df61a24493d24ff446484954f598125b3d4"
-  integrity sha512-CcZZ3Jcp0BXz/ZHb1DvZnHBP28UqukSSPrGC24Fg3tkgsBSebC7SDzA3bJ4oz8a59maDTSjKpPNyZ1bYY3Wz4A==
+pring@0.27.1:
+  version "0.27.1"
+  resolved "https://registry.yarnpkg.com/pring/-/pring-0.27.1.tgz#6ab89bb997edc1bd505672d41f7c5d6037b98d5a"
+  integrity sha512-Zr8x3OSyFzkWlLdpiyW4hZb/QIaoievj6LhHXYzQQYB7Fuvw1a69O8l4+RnHY7f70hYADKIbmY5tRkSEnsPb2g==
   dependencies:
-    "@types/uuid" "^3.4.4"
-    reflect-metadata "^0.1.12"
+    reflect-metadata "^0.1.13"
     uuid "^3.3.2"
 
 private@^0.1.6, private@^0.1.8:
@@ -9699,14 +9692,10 @@ redux@^4.0.0:
     loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
 
-reflect-metadata@0.1.13:
+reflect-metadata@0.1.13, reflect-metadata@^0.1.13:
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
   integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
-
-reflect-metadata@^0.1.12:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.12.tgz#311bf0c6b63cd782f228a81abe146a2bfa9c56f2"
 
 reg-cli@^0.13.0:
   version "0.13.1"
