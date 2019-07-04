@@ -17,12 +17,16 @@ function userMapper(userId: Identifier, user: any): IUser {
   }
 }
 
+function isDoc(data: any) {
+  return data && Object.keys(data).length > 0
+}
+
 @injectable()
 export class UserObservableRepository implements IUserObservableRepository {
   public getUser(id: Identifier): Observable<IUser> {
     const docRef = User.getReference().doc(id)
     return docData(docRef)
-      .pipe(filter((data) => data && Object.keys(data).length > 0))
+      .pipe(filter(isDoc))
       .pipe(map((data) => userMapper(id, data)))
   }
 }
