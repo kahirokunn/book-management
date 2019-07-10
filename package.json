@@ -13,7 +13,9 @@
     "zisui": "zisui http://localhost:6006",
     "regression": "reg-suit run",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "dependencygraph:generate": "depcruise --webpack-config ./node_modules/@vue/cli-service/webpack.config --exclude \"^node_modules\" --output-type dot src | dot -T svg > dependencygraph.svg && open ./dependencygraph.svg",
+    "dependencygraph:show": "yarn dependencygraph:generate && open ./dependencygraph.svg"
   },
   "dependencies": {
     "element-ui": "2.6.1",
@@ -57,6 +59,7 @@
     "@vue/test-utils": "1.0.0-beta.25",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "8.0.5",
+    "dependency-cruiser": "^4.27.0",
     "dotenv-webpack": "1.7.0",
     "flush-promises": "1.0.2",
     "lint-staged": "7.3.0",

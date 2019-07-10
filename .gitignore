@@ -31,3 +31,5 @@ firestore-debug.log
 *.sln
 *.sw*
 .reg
+
+dependencygraph.svg
