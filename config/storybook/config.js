@@ -22,15 +22,23 @@ import {
   createStore,
   ClassBasedStoreOption
 } from '@/store/root'
+import {
+  userLogin,
+} from '@/store/middleware/auth/action'
+import {
+  createVueProvider
+} from '@/provider/createVueProvider'
 
 addDecorator(() => {
   const container = new Container()
   resolveStubProviders(container)
   storeModuleProvider(container)
   const store = createStore(container.get(ClassBasedStoreOption))
+  store.dispatch(userLogin())
 
   return {
     template: "<v-app><story/></v-app>",
+    provide: createVueProvider(container),
     store,
     router: new Router()
   }
