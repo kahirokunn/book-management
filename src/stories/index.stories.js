@@ -1,22 +1,50 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue'
-import { action } from '@storybook/addon-actions'
-
+import {
+  storiesOf
+} from '@storybook/vue'
+import {
+  action
+} from '@storybook/addon-actions'
 import MyButton from '../components/MyButton.vue'
+import LoginPage from '@/pages/user/login.vue'
+
 
 storiesOf('Button', module)
   .add('with text', () => ({
-    components: { MyButton },
+    components: {
+      MyButton
+    },
     template: '<my-button @click="action">Hello Button</my-button>',
-    methods: { action: action('clicked') }
+    methods: {
+      action: action('clicked')
+    }
   }))
   .add('with text2', () => ({
-    components: { MyButton },
+    components: {
+      MyButton
+    },
     template: '<my-button @click="action">Hello Button 2</my-button>',
-    methods: { action: action('clicked') }
+    methods: {
+      action: action('clicked')
+    }
   }))
   .add('with some emoji', () => ({
-    components: { MyButton },
+    components: {
+      MyButton
+    },
     template: '<my-button @click="action">😀 😎 👍 💯</my-button>',
-    methods: { action: action('clicked') }
+    methods: {
+      action: action('clicked')
+    }
+  }))
+
+storiesOf('Page', module)
+  .add('LoginPage', () => ({
+    components: {
+      LoginPage,
+    },
+    template: '<LoginPage/>',
+    methods: {
+      action: action('clicked')
+    },
   }))
