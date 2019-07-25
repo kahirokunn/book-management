@@ -12,6 +12,7 @@ import { ClassBasedStoreOption, createStore } from './store/root'
 import { isProd } from './submodules/env'
 
 import { createVueProvider } from '@/provider/createVueProvider'
+import vuetify from '@/vuetify'
 import { Container } from 'inversify'
 import { storeModuleProvider } from './provider/storeModuleProvider'
 
@@ -30,6 +31,7 @@ requiredVerifyEmailMiddleware(router, store.state)
 Vue.config.productionTip = !isProd()
 
 new Vue({
+  vuetify,
   provide: createVueProvider(container),
   router,
   store,

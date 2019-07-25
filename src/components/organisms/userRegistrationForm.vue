@@ -1,8 +1,8 @@
 <template>
   <v-card class="elevation-12">
-    <v-toolbar dark color="primary">
+    <v-app-bar dark color="primary">
       <v-toolbar-title>会員登録フォーム</v-toolbar-title>
-    </v-toolbar>
+    </v-app-bar>
     <v-card-text>
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-layout row wrap>
@@ -13,7 +13,8 @@
               prepend-icon="email"
               label="Email"
               type="text"
-              autocomplete="username"/>
+              autocomplete="username"
+            />
           </v-flex>
         </v-layout>
 
@@ -25,7 +26,8 @@
               prepend-icon="lock"
               label="Password"
               type="password"
-              autocomplete="current-password"/>
+              autocomplete="current-password"
+            />
           </v-flex>
         </v-layout>
 
@@ -36,7 +38,8 @@
               :rules="displayNameRules"
               label="ハンドルネーム"
               type="text"
-              autocomplete="displayName"/>
+              autocomplete="displayName"
+            />
           </v-flex>
         </v-layout>
         <v-layout row wrap>
@@ -46,7 +49,8 @@
               :rules="familyNameRules"
               label="姓"
               type="text"
-              autocomplete="familyName"/>
+              autocomplete="familyName"
+            />
           </v-flex>
           <v-flex xs1></v-flex>
           <v-flex xs6>
@@ -55,7 +59,8 @@
               :rules="firstNameRules"
               label="名"
               type="text"
-              autocomplete="firstName"/>
+              autocomplete="firstName"
+            />
           </v-flex>
         </v-layout>
         <v-layout row wrap>
@@ -65,7 +70,8 @@
               :rules="familyNameKanaRules"
               label="姓(カナ)"
               type="text"
-              autocomplete="familyNameKana"/>
+              autocomplete="familyNameKana"
+            />
           </v-flex>
           <v-flex xs1></v-flex>
           <v-flex xs6>
@@ -74,32 +80,21 @@
               :rules="firstNameKanaRules"
               label="名(カナ)"
               type="text"
-              autocomplete="firstNameKana"/>
+              autocomplete="firstNameKana"
+            />
           </v-flex>
         </v-layout>
         <v-flex :class="$style.group">
           <p>生年月日</p>
           <v-layout row wrap>
             <v-flex xs4>
-              <v-select
-                v-model="birthYear"
-                :items="years"
-                :rules="birthYearRules"
-                solo/>
+              <v-select v-model="birthYear" :items="years" :rules="birthYearRules" solo />
             </v-flex>
             <v-flex xs4>
-              <v-select
-                v-model="birthMonth"
-                :items="months"
-                :rules="birthMonthRules"
-                solo/>
+              <v-select v-model="birthMonth" :items="months" :rules="birthMonthRules" solo />
             </v-flex>
             <v-flex xs4>
-              <v-select
-                v-model="birthDay"
-                :items="days"
-                :rules="birthDayRules"
-                solo/>
+              <v-select v-model="birthDay" :items="days" :rules="birthDayRules" solo />
             </v-flex>
           </v-layout>
         </v-flex>
@@ -109,25 +104,13 @@
           <p>入社日</p>
           <v-layout row wrap>
             <v-flex xs4>
-              <v-select
-                v-model="hireYear"
-                :items="years"
-                :rules="hireYearRules"
-                solo/>
+              <v-select v-model="hireYear" :items="years" :rules="hireYearRules" solo />
             </v-flex>
             <v-flex xs4>
-              <v-select
-                v-model="hireMonth"
-                :items="months"
-                :rules="hireMonthRules"
-                solo/>
+              <v-select v-model="hireMonth" :items="months" :rules="hireMonthRules" solo />
             </v-flex>
             <v-flex xs4>
-              <v-select
-                v-model="hireDay"
-                :items="days"
-                :rules="hireDayRules"
-                solo/>
+              <v-select v-model="hireDay" :items="days" :rules="hireDayRules" solo />
             </v-flex>
           </v-layout>
         </v-flex>
@@ -136,8 +119,11 @@
         <v-layout row wrap>
           <v-radio-group v-model="gender">
             <v-radio
-              v-for="genderValue in genderList" :key="genderValue"
-              :label="genderValue" :value="genderValue"/>
+              v-for="genderValue in genderList"
+              :key="genderValue"
+              :label="genderValue"
+              :value="genderValue"
+            />
           </v-radio-group>
         </v-layout>
 
@@ -145,45 +131,33 @@
           <v-checkbox
             v-model="isAgreeMembershipAgreement"
             :rules="[v => !!v || 'You must agree to continue!']"
-            color="primary">
-
-            <div slot="label" @click.stop="null">
-              <v-dialog
-                v-model="membershipAgreementDialog"
-                scrollable
-                width="600">
-                <a slot="activator" href="javascript:;">会員規約</a>
+            color="primary"
+          >
+            <div slot="label" @click.stop="() => {}">
+              <v-dialog v-model="membershipAgreementDialog" scrollable width="600">
+                <template v-slot:activator="{ on }">
+                  <v-btn v-on="on">会員規約</v-btn>
+                </template>
 
                 <v-card>
                   <v-card-title class="headline grey lighten-2" primary-title>会員規約</v-card-title>
                   <v-card-text>{{ membershipAgreementText }}</v-card-text>
-                  <v-divider/>
+                  <v-divider />
                   <v-card-actions>
-                    <v-spacer/>
-                    <v-btn
-                      @click="aggreeMembershipAgreement()"
-                      color="primary">
-                      同意する
-                    </v-btn>
+                    <v-spacer />
+                    <v-btn @click="aggreeMembershipAgreement()" color="primary">同意する</v-btn>
                   </v-card-actions>
                 </v-card>
-              </v-dialog>
-              に同意しますか？
+              </v-dialog>に同意しますか？
             </div>
-
           </v-checkbox>
         </v-flex>
-
       </v-form>
     </v-card-text>
 
     <v-card-actions>
-      <v-spacer/>
-      <v-btn
-        :disabled="!valid || isSending"
-        @click="submit()"
-        color="primary"
-      >登録</v-btn>
+      <v-spacer />
+      <v-btn :disabled="!valid || isSending" @click="submit()" color="primary">登録</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -217,7 +191,7 @@ export default class UserRegistrationForm extends Vue {
     form: VForm,
   }
 
-  @Prop({required: true}) public registration!: (params: IRegistrationParamsParams) => Promise<void>
+  @Prop({ required: true }) public registration!: (params: IRegistrationParamsParams) => Promise<void>
 
   public valid = true
   public isSending = false

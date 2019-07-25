@@ -1,13 +1,11 @@
 <template>
   <v-card class="elevation-12" dark>
-    <v-toolbar dark grey darken-3>
+    <v-app-bar dark grey darken-3>
       <v-btn icon dark @click="cancel()">
         <v-icon>close</v-icon>
       </v-btn>
-      <v-toolbar-title>
-        プロフィール
-      </v-toolbar-title>
-    </v-toolbar>
+      <v-toolbar-title>プロフィール</v-toolbar-title>
+    </v-app-bar>
 
     <v-card-text>
       <v-form ref="form" v-model="valid" lazy-validation>
@@ -23,7 +21,8 @@
               label="Email"
               type="text"
               disabled
-              readonly/>
+              readonly
+            />
           </v-flex>
         </v-layout>
 
@@ -34,7 +33,8 @@
               :rules="displayNameRules"
               label="ハンドルネーム"
               type="text"
-              autocomplete="displayName"/>
+              autocomplete="displayName"
+            />
           </v-flex>
         </v-layout>
         <v-layout row wrap>
@@ -44,7 +44,8 @@
               :rules="familyNameRules"
               label="姓"
               type="text"
-              autocomplete="familyName"/>
+              autocomplete="familyName"
+            />
           </v-flex>
           <v-flex xs1></v-flex>
           <v-flex xs6 md3>
@@ -53,7 +54,8 @@
               :rules="firstNameRules"
               label="名"
               type="text"
-              autocomplete="firstName"/>
+              autocomplete="firstName"
+            />
           </v-flex>
         </v-layout>
         <v-layout row wrap>
@@ -63,7 +65,8 @@
               :rules="familyNameKanaRules"
               label="姓(カナ)"
               type="text"
-              autocomplete="familyNameKana"/>
+              autocomplete="familyNameKana"
+            />
           </v-flex>
           <v-flex xs1></v-flex>
           <v-flex xs6 md3>
@@ -72,7 +75,8 @@
               :rules="firstNameKanaRules"
               label="名(カナ)"
               type="text"
-              autocomplete="firstNameKana"/>
+              autocomplete="firstNameKana"
+            />
           </v-flex>
         </v-layout>
         <v-flex :class="$style.group">
@@ -84,7 +88,8 @@
                 v-model.number="birthYear"
                 :items="years"
                 :rules="birthYearRules"
-                solo/>
+                solo
+              />
             </v-flex>
             <v-flex xs4 md1>
               <v-select
@@ -92,15 +97,11 @@
                 v-model.number="birthMonth"
                 :items="months"
                 :rules="birthMonthRules"
-                solo/>
+                solo
+              />
             </v-flex>
             <v-flex xs4 md1>
-              <v-select
-                dark
-                v-model.number="birthDay"
-                :items="days"
-                :rules="birthDayRules"
-                solo/>
+              <v-select dark v-model.number="birthDay" :items="days" :rules="birthDayRules" solo />
             </v-flex>
           </v-layout>
         </v-flex>
@@ -110,12 +111,7 @@
           <p>入社日</p>
           <v-layout row wrap>
             <v-flex xs4 md1>
-              <v-select
-                dark
-                v-model.number="hireYear"
-                :items="years"
-                :rules="hireYearRules"
-                solo/>
+              <v-select dark v-model.number="hireYear" :items="years" :rules="hireYearRules" solo />
             </v-flex>
             <v-flex xs4 md1>
               <v-select
@@ -123,15 +119,11 @@
                 v-model.number="hireMonth"
                 :items="months"
                 :rules="hireMonthRules"
-                solo/>
+                solo
+              />
             </v-flex>
             <v-flex xs4 md1>
-              <v-select
-                dark
-                v-model.number="hireDay"
-                :items="days"
-                :rules="hireDayRules"
-                solo/>
+              <v-select dark v-model.number="hireDay" :items="days" :rules="hireDayRules" solo />
             </v-flex>
           </v-layout>
         </v-flex>
@@ -140,21 +132,19 @@
         <v-layout row wrap>
           <v-radio-group v-model="gender">
             <v-radio
-              v-for="genderValue in genderList" :key="genderValue"
-              :label="genderValue" :value="genderValue"/>
+              v-for="genderValue in genderList"
+              :key="genderValue"
+              :label="genderValue"
+              :value="genderValue"
+            />
           </v-radio-group>
         </v-layout>
-
       </v-form>
     </v-card-text>
 
     <v-card-actions>
-      <v-spacer/>
-      <v-btn
-        :disabled="!valid"
-        @click="submit()"
-        color="secondary"
-      >保存</v-btn>
+      <v-spacer />
+      <v-btn :disabled="!valid" @click="submit()" color="secondary">保存</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -177,8 +167,8 @@ export default class UserProfileForm extends Vue {
     form: VForm,
   }
 
-  @Prop({required: true}) public updateProfile!: (params: IUser) => void
-  @Prop({required: true}) public user!: IUser
+  @Prop({ required: true }) public updateProfile!: (params: IUser) => void
+  @Prop({ required: true }) public user!: IUser
 
   public valid = true
 

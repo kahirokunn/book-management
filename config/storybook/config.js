@@ -22,6 +22,7 @@ import {
   createStore,
   ClassBasedStoreOption
 } from '@/store/root'
+import vuetify from '@/vuetify'
 
 addDecorator(() => {
   const container = new Container()
@@ -31,6 +32,7 @@ addDecorator(() => {
 
   return {
     template: "<v-app><story/></v-app>",
+    vuetify,
     store,
     router: new Router()
   }
