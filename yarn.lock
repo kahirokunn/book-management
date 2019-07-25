@@ -12466,10 +12466,10 @@ vue@2.6.6:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.6.tgz#dde41e483c11c46a7bf523909f4f2f816ab60d25"
   integrity sha512-Y2DdOZD8sxApS+iUlwv1v8U1qN41kq6Kw45lM6nVZKhygeWA49q7VCCXkjXqeDBXgurrKWkYQ9cJeEJwAq0b9Q==
 
-vuetify@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.5.0.tgz#b7334f525b5dd416b01d5e9ddbadad22beeb9d7f"
-  integrity sha512-I2bITwvtkfbUf2hfrKo3Uta4egpv5KzEcKR1czgdyjZdA1nlo96XV2EDu0XetLl6p+AjhOqwlZWbLSezy9ZZmQ==
+vuetify@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.0.tgz#58c72247251412b5e804c8c38a0e12bcb736d949"
+  integrity sha512-AbtHkWdvxF3QrR/xCpu2XL+KJ59Z7/KQQmbV4gPn6Q3VlQ5tXaGR4AJO1uNrvGCTlLlQxWHGcwMGOiHU7aIlqg==
 
 vuex-router-sync@5.0.0:
   version "5.0.0"

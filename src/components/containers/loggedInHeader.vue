@@ -1,35 +1,16 @@
 <template>
-  <v-toolbar
-    color="dark"
-    dark
-    app
-    :clipped-left="$vuetify.breakpoint.mdAndUp"
-    fixed
-  >
+  <v-app-bar color="dark" dark :clipped-left="$vuetify.breakpoint.mdAndUp" fixed>
     <v-toolbar-title style="width: 300px" class="ml-0 pl-3" @click="toHome()">
-      <v-toolbar-side-icon
-        @click.stop="toggleDrawer()"/>
+      <v-app-bar-nav-icon @click.stop="toggleDrawer()" />
       <span>Book Management</span>
     </v-toolbar-title>
 
-    <v-text-field
-      flat
-      solo-inverted
-      prepend-icon="search"
-      label="Search"
-      class="hidden-sm-and-down"
-    ></v-text-field>
-    <v-spacer/>
+    <v-spacer />
 
     <v-avatar size="36px" @click="openDialog()" class="clickable">
-      <img
-        width="36"
-        height="36"
-        :src="user.iconFilepath"
-        class="user-icon-img">
+      <img width="36" height="36" :src="user.iconFilepath" class="user-icon-img" />
     </v-avatar>
-
-  </v-toolbar>
+  </v-app-bar>
 </template>
 
 <script lang="ts">

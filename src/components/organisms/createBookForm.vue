@@ -1,11 +1,11 @@
 <template>
   <v-card class="elevation-12" dark>
-    <v-toolbar card dark>
+    <v-app-bar flat dark>
       <v-btn icon dark @click="cancel()">
         <v-icon>close</v-icon>
       </v-btn>
       <v-toolbar-title>Registration Book</v-toolbar-title>
-    </v-toolbar>
+    </v-app-bar>
 
     <v-card-text>
       <v-form ref="form" v-model="valid" lazy-validation>
@@ -32,7 +32,8 @@
               :rules="titleRules"
               prepend-icon="subject"
               label="タイトル"
-              type="text" />
+              type="text"
+            />
           </v-flex>
         </v-layout>
 
@@ -43,7 +44,8 @@
               :rules="priceRules"
               prepend-icon="attach_money"
               label="価格"
-              type="text" />
+              type="text"
+            />
           </v-flex>
         </v-layout>
 
@@ -53,9 +55,7 @@
               <p>所有者</p>
               <v-btn-toggle color="primary" v-model="owner">
                 <template v-for="owner in ownerList">
-                  <v-btn flat :value="owner" :key="owner">
-                    {{ owner | ownerFilter }}
-                  </v-btn>
+                  <v-btn text :value="owner" :key="owner">{{ owner | ownerFilter }}</v-btn>
                 </template>
               </v-btn-toggle>
             </v-flex>
@@ -70,9 +70,7 @@
               <p>購入場所</p>
               <v-btn-toggle color="primary" v-model="purchasedLocation">
                 <template v-for="location in purchasedLocationList">
-                  <v-btn flat :value="location" :key="location">
-                    {{ location }}
-                  </v-btn>
+                  <v-btn text :value="location" :key="location">{{ location }}</v-btn>
                 </template>
               </v-btn-toggle>
             </v-flex>
@@ -87,9 +85,7 @@
               <p>種類</p>
               <v-btn-toggle color="primary" v-model="type">
                 <template v-for="bookType in bookTypeList">
-                  <v-btn flat :value="bookType" :key="bookType">
-                    {{ bookType | bookTypeFilter }}
-                  </v-btn>
+                  <v-btn text :value="bookType" :key="bookType">{{ bookType | bookTypeFilter }}</v-btn>
                 </template>
               </v-btn-toggle>
             </v-flex>
@@ -102,22 +98,13 @@
           <p>購入日時</p>
           <v-layout row wrap>
             <v-flex xs2 md1>
-              <v-select
-                v-model="purchasedYear"
-                :items="years"
-                solo/>
+              <v-select v-model="purchasedYear" :items="years" solo />
             </v-flex>
             <v-flex xs2 md1>
-              <v-select
-                v-model="purchasedMonth"
-                :items="months"
-                solo/>
+              <v-select v-model="purchasedMonth" :items="months" solo />
             </v-flex>
             <v-flex xs2 md1>
-              <v-select
-                v-model="purchasedDay"
-                :items="days"
-                solo/>
+              <v-select v-model="purchasedDay" :items="days" solo />
             </v-flex>
           </v-layout>
         </v-flex>
@@ -131,7 +118,8 @@
               no-resize
               :rows="rows"
               label="説明文"
-              color="primary" />
+              color="primary"
+            />
           </v-flex>
 
           <SpaceStick width="12" />
@@ -140,19 +128,12 @@
             <Markdown :source="description || 'プレビュー'" />
           </v-flex>
         </v-layout>
-
       </v-form>
-
     </v-card-text>
 
     <v-card-actions>
-      <v-spacer/>
-      <v-btn
-        :disabled="!valid"
-        @click="submit()"
-        color="secondary">
-        登録
-      </v-btn>
+      <v-spacer />
+      <v-btn :disabled="!valid" @click="submit()" color="secondary">登録</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -198,10 +179,10 @@ export default class CreateBookForm extends Vue {
     form: VForm,
   }
 
-  @Prop({required: true})
+  @Prop({ required: true })
   public createBook!: (params: IRegistrationParams) => void
 
-  @Prop({required: true})
+  @Prop({ required: true })
   public user!: IUser
 
   public valid = true

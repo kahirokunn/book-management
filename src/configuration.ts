@@ -20,17 +20,7 @@ Vue.use(Vuex)
 Vue.use(Upload)
 Vue.use(ProxyComponent)
 
-Vue.use(Vuetify, {
-  theme: {
-    primary: '#42b883',
-    secondary: '#cc0000',
-    accent: '#BA68C8',
-    error: '#f44336',
-    warning: '#ffeb3b',
-    info: '#2196f3',
-    success: '#4caf50',
-  },
-})
+Vue.use(Vuetify)
 
 auth().setPersistence(auth.Auth.Persistence.LOCAL)
 

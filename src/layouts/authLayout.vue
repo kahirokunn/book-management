@@ -1,6 +1,5 @@
 <template>
   <v-app key="authLayout">
-
     <UnloggedInHeader />
 
     <v-content>
