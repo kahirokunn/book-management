@@ -1,6 +1,5 @@
 <template>
   <v-app key="loggedInLayout" id="scroll-target" dark>
-
     <template v-if="isLoggedIn">
       <Navigation />
       <LoggedInHeader />
@@ -11,7 +10,6 @@
         <slot />
       </v-content>
     </template>
-
   </v-app>
 </template>
 
