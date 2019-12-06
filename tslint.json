@@ -18,6 +18,7 @@
     "interface-over-type-literal": false,
     "no-shadowed-variable": false,
     "max-classes-per-file": false,
+    "max-line-length": false,
     "whitespace": [
       true,
       "check-branch",
