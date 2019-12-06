@@ -1,0 +1,43 @@
+import { IUser } from '@/boundary/userApplicationService/InOutType';
+import { Vue } from 'vue-property-decorator';
+export default class UserProfileForm extends Vue {
+    $refs: {
+        form: VForm;
+    };
+    updateProfile: (params: IUser) => void;
+    user: IUser;
+    valid: boolean;
+    iconFilepath: string;
+    displayName: string;
+    firstName: string;
+    familyName: string;
+    firstNameKana: string;
+    familyNameKana: string;
+    birthYear: number;
+    birthMonth: number;
+    birthDay: number;
+    hireYear: number;
+    hireMonth: number;
+    hireDay: number;
+    gender: Gender;
+    get years(): number[];
+    get months(): number[];
+    get days(): number[];
+    get genderList(): string[];
+    get firstNameRules(): (((v: string) => true | "First name is required") | ((v: string) => true | "Symbol is included in first name"))[];
+    get familyNameRules(): (((v: string) => true | "Family name is required") | ((v: string) => true | "Symbol is included in family name"))[];
+    get firstNameKanaRules(): (((v: string) => true | "First name kana is required") | ((v: string) => true | "Included not kana characters"))[];
+    get familyNameKanaRules(): (((v: string) => true | "Family name kana is required") | ((v: string) => true | "Included not kana characters"))[];
+    get birthYearRules(): (((v: string) => true | "Birth year is required") | ((v: string) => true | "Birth year is invalid"))[];
+    get birthMonthRules(): (((v: string) => true | "Birth month is required") | ((v: string) => true | "Birth month is invalid"))[];
+    get birthDayRules(): (((v: string) => true | "Birth day is required") | ((v: string) => true | "Birth day is invalid"))[];
+    get hireYearRules(): (((v: string) => true | "Hire year is required") | ((v: string) => true | "Hire year is invalid"))[];
+    get hireMonthRules(): (((v: string) => true | "Hire month is required") | ((v: string) => true | "Hire month is invalid"))[];
+    get hireDayRules(): (((v: string) => true | "Hire day is required") | ((v: string) => true | "Hire day is invalid"))[];
+    get displayNameRules(): (((v: string) => true | "Display name is required") | ((v: string) => true | "Display name is invalid"))[];
+    get birthday(): Date;
+    get hireDate(): Date;
+    created(): void;
+    submit(): void;
+    cancel(): void;
+}
