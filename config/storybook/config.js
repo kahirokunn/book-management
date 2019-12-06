@@ -28,6 +28,14 @@ import {
 import {
   createVueProvider
 } from '@/provider/createVueProvider'
+import {
+  Upload
+} from 'element-ui'
+import ProxyComponent from 'vue-proxy-component'
+import Vue from 'vue'
+
+Vue.use(ProxyComponent)
+Vue.use(Upload)
 
 addDecorator(() => {
   const container = new Container()

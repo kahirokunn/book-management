@@ -17,7 +17,7 @@ export class ClassBasedStoreOption {
     private readonly containerModule: ContainerModule,
     @inject(MiddlewareModule)
     private readonly middlewareModule: MiddlewareModule,
-  ) {}
+  ) { }
 
   get modules() {
     return {
