@@ -1,7 +1,7 @@
-import { IUser } from '@/boundary/userApplicationService/InOutType';
-import { Vue } from 'vue-property-decorator';
+import { IUser } from '@/boundary/userApplicationService/InOutType'
+import { Vue } from 'vue-property-decorator'
 export default class ChangeUserProfileFormContainer extends Vue {
-    updateProfile(params: IUser): Promise<any>;
-    toStandby(): Promise<any>;
-    closeDialog(): Promise<any>;
+    public updateProfile(params: IUser): Promise<any>
+    public toStandby(): Promise<any>
+    public closeDialog(): Promise<any>
 }

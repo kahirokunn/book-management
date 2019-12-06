@@ -1,6 +1,6 @@
-import { Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-property-decorator'
 export default class BookListContainer extends Vue {
-    mounted(): void;
-    seeMore(): void;
-    destroyed(): void;
+    public mounted(): void
+    public seeMore(): void
+    public destroyed(): void
 }

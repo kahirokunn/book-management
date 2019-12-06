@@ -1,5 +1,5 @@
-import { Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-property-decorator'
 export default class UnloggedInHeader extends Vue {
-    toLoginPage(): void;
-    toRegistrationPage(): void;
+    public toLoginPage(): void
+    public toRegistrationPage(): void
 }

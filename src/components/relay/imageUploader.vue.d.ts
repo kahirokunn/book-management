@@ -1,28 +1,28 @@
-import { Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-property-decorator'
 declare type RequestType = {
     file: File;
-};
+}
 declare enum UploadState {
     STANDBY = 0,
     SENDING = 1,
     SUCCESS = 2,
-    ERROR = 3
+    ERROR = 3,
 }
 export default class ImageUploader extends Vue {
     get isSending(): boolean;
     get isSuccess(): boolean;
     get isError(): boolean;
-    url: string;
-    hideStatus: boolean;
-    imageUrl: string;
-    isNotAllowFileType: boolean;
-    isOverFileSize: boolean;
-    uploadState: UploadState;
-    private logger;
-    toStandby(): void;
-    setUrl(): void;
-    uploadToFilesbaseStorage(request: RequestType): Promise<void>;
-    beforeAvatarUpload(file: File): boolean;
-    understand(): void;
+    public url: string
+    public hideStatus: boolean
+    public imageUrl: string
+    public isNotAllowFileType: boolean
+    public isOverFileSize: boolean
+    public uploadState: UploadState
+    private logger
+    public toStandby(): void
+    public setUrl(): void
+    public uploadToFilesbaseStorage(request: RequestType): Promise<void>
+    public beforeAvatarUpload(file: File): boolean
+    public understand(): void
 }
-export {};
+export {}

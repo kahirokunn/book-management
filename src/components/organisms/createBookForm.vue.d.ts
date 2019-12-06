@@ -1,32 +1,32 @@
-import { BookType, Evaluation, Owner, PurchasedLocation } from '@/boundary/bookApplicationService/InOutType';
-import { IRegistrationParams } from '@/boundary/bookApplicationService/InOutType';
-import { IUser } from '@/boundary/userApplicationService/InOutType';
-import { Vue } from 'vue-property-decorator';
+import { BookType, Evaluation, Owner, PurchasedLocation } from '@/boundary/bookApplicationService/InOutType'
+import { IRegistrationParams } from '@/boundary/bookApplicationService/InOutType'
+import { IUser } from '@/boundary/userApplicationService/InOutType'
+import { Vue } from 'vue-property-decorator'
 export default class CreateBookForm extends Vue {
-    $refs: {
+    public $refs: {
         form: VForm;
-    };
-    createBook: (params: IRegistrationParams) => void;
-    user: IUser;
-    valid: boolean;
-    title: string;
-    purchasedLocation: PurchasedLocation;
-    description: string;
-    type: BookType;
-    price: number;
-    owner: Owner;
-    purchasedUrl: string;
-    downloadUrl: string;
-    coverImageFilePath: string | null;
-    evaluation: Evaluation | null;
-    receiptImageFilePath: string | null;
-    purchasedYear: number;
-    purchasedMonth: number;
-    purchasedDay: number;
+    }
+    public createBook: (params: IRegistrationParams) => void
+    public user: IUser
+    public valid: boolean
+    public title: string
+    public purchasedLocation: PurchasedLocation
+    public description: string
+    public type: BookType
+    public price: number
+    public owner: Owner
+    public purchasedUrl: string
+    public downloadUrl: string
+    public coverImageFilePath: string | null
+    public evaluation: Evaluation | null
+    public receiptImageFilePath: string | null
+    public purchasedYear: number
+    public purchasedMonth: number
+    public purchasedDay: number
     get rows(): number;
-    get titleRules(): ((v: string) => string | true)[];
-    get priceRules(): ((v: string) => string | true)[];
-    get urlRules(): ((v: string) => true | "Url is invalid")[];
+    get titleRules(): Array<(v: string) => string | true>;
+    get priceRules(): Array<(v: string) => string | true>;
+    get urlRules(): Array<(v: string) => true | 'Url is invalid'>;
     get years(): number[];
     get months(): number[];
     get days(): number[];
@@ -34,6 +34,6 @@ export default class CreateBookForm extends Vue {
     get bookTypeList(): BookType[];
     get ownerList(): Owner[];
     get purchasedDatetime(): Date;
-    submit(): void;
-    cancel(): void;
+    public submit(): void
+    public cancel(): void
 }

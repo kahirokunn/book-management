@@ -1,7 +1,7 @@
-import { IRegistrationParams } from '@/boundary/bookApplicationService/InOutType';
-import { Vue } from 'vue-property-decorator';
+import { IRegistrationParams } from '@/boundary/bookApplicationService/InOutType'
+import { Vue } from 'vue-property-decorator'
 export default class CreateBookFormContainer extends Vue {
-    createBook(params: IRegistrationParams): Promise<any>;
-    toStandby(): Promise<any>;
-    closeDialog(): Promise<any>;
+    public createBook(params: IRegistrationParams): Promise<any>
+    public toStandby(): Promise<any>
+    public closeDialog(): Promise<any>
 }

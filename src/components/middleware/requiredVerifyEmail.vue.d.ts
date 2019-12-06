@@ -1,8 +1,8 @@
-import { CreateElement, VNode } from 'vue';
-import { Vue } from 'vue-property-decorator';
+import { CreateElement, VNode } from 'vue'
+import { Vue } from 'vue-property-decorator'
 export default class RequiredVerifyEmail extends Vue {
-    private route;
+    private route
     get isReady(): boolean;
-    redirect(): void;
-    render(h: CreateElement): VNode;
+    public redirect(): void
+    public render(h: CreateElement): VNode
 }

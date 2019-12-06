@@ -1,9 +1,9 @@
-import { Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-property-decorator'
 export default class Navigation extends Vue {
-    get items(): {
+    get items(): Array<{
         icon: string;
         text: string;
         action: () => Promise<any>;
-    }[];
-    fire(action: () => void): void;
+    }>;
+    public fire(action: () => void): void
 }
