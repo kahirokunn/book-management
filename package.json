@@ -15,9 +15,11 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit",
     "dependencygraph:generate": "depcruise --webpack-config ./node_modules/@vue/cli-service/webpack.config --exclude \"^node_modules\" --output-type dot src | dot -T svg > dependencygraph.svg && open ./dependencygraph.svg",
-    "dependencygraph:show": "yarn dependencygraph:generate && open ./dependencygraph.svg"
+    "dependencygraph:show": "yarn dependencygraph:generate && open ./dependencygraph.svg",
+    "vuedts:generate": "vuedts ./src"
   },
   "dependencies": {
+    "@kahirokunn/vuedts": "^1.0.0",
     "element-ui": "2.6.1",
     "firebase": "5.8.5",
     "github-markdown-css": "3.0.1",
@@ -70,7 +72,7 @@
     "reg-suit": "0.7.17",
     "sass-loader": "7.1.0",
     "ts-jest": "23.10.5",
-    "typescript": "^3.5.2",
+    "typescript": "^3.7.3",
     "vue-auto-routing": "0.3.0",
     "vue-cli-plugin-auto-routing": "0.2.1",
     "vue-cli-plugin-storybook": "^0.5.2",

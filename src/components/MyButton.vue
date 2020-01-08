@@ -5,7 +5,8 @@
 </template>
 
 <script>
-export default {
+import Vue from 'vue'
+export default Vue.extend({
   name: 'my-button',
 
   methods: {
@@ -13,7 +14,7 @@ export default {
       this.$emit('click')
     },
   },
-}
+})
 </script>
 
 <style>
