@@ -65,7 +65,7 @@
     "lint-staged": "7.3.0",
     "node-sass": "4.11.0",
     "reg-keygen-git-hash-plugin": "0.7.16",
-    "reg-notify-github-plugin": "0.7.21",
+    "reg-notify-github-plugin": "0.8.5",
     "reg-publish-gcs-plugin": "0.7.16",
     "reg-suit": "0.7.17",
     "sass-loader": "7.1.0",

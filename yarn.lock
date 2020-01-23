@@ -10476,6 +10476,11 @@ reg-cli@^0.13.0:
     mustache "^2.3.0"
     x-img-diff-js "0.3.5"
 
+reg-gh-app-interface@^1.0.1:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/reg-gh-app-interface/-/reg-gh-app-interface-1.0.6.tgz#6e4f78f2e5c60585dac87b21d1cbc586dbb7f71c"
+  integrity sha512-aLI9CpVlSyw3pdJkPS4E7P8pMjJG3DQrEN5bO5ANySxhHndXA7/uTGEe6kcK6V+/+xcYOsvoE6UrRphhkCZy3w==
+
 reg-keygen-git-hash-plugin@0.7.16:
   version "0.7.16"
   resolved "https://registry.yarnpkg.com/reg-keygen-git-hash-plugin/-/reg-keygen-git-hash-plugin-0.7.16.tgz#46f82a079c06aca286f29931038a0355df6a3694"
@@ -10483,13 +10488,14 @@ reg-keygen-git-hash-plugin@0.7.16:
   dependencies:
     reg-suit-util "^0.7.16"
 
-reg-notify-github-plugin@0.7.21:
-  version "0.7.21"
-  resolved "https://registry.yarnpkg.com/reg-notify-github-plugin/-/reg-notify-github-plugin-0.7.21.tgz#ee398c782299f23a2cc9d908be9724b15fdacd00"
-  integrity sha512-p+e1dXbFc3yzXc006AfG1TQGwGSc3K5h3S46DMCwiaSb/gCHQ5a4y8uHjXK5vqpvh9gxPa+4XT/VbCRWIPbDaA==
+reg-notify-github-plugin@0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/reg-notify-github-plugin/-/reg-notify-github-plugin-0.8.5.tgz#18f6beb8280468ee65d4f95f3249b7bcb5d206e1"
+  integrity sha512-4JSJDXuJGHC8NO+uhpibMDptw3Lz0nHduOj/GuxLEUBbio3w9102VvR5fHcgW9hPPKjjwM0B/6WamLNbWWN50A==
   dependencies:
     opn "^5.4.0"
-    reg-suit-util "^0.7.16"
+    reg-gh-app-interface "^1.0.1"
+    reg-suit-util "^0.8.5"
     request "^2.81.0"
     request-promise "^4.2.1"
     tiny-commit-walker "^1.1.2"
@@ -10518,6 +10524,19 @@ reg-suit-util@^0.7.16:
   version "0.7.16"
   resolved "https://registry.yarnpkg.com/reg-suit-util/-/reg-suit-util-0.7.16.tgz#b16b03970dde074b093c385aaa0d1a2c4ec3157f"
   integrity sha512-d/w3h5lp6JguGjwCTQCOzHOGSYdJVtv9zOqlfiOTpbj+nR2hPoV9DyFR6VuDfxdpm3oGw2+M27s+Pv12UXfQcA==
+  dependencies:
+    chalk "^2.0.1"
+    cli-progress "^1.4.1"
+    cli-spinner "^0.2.6"
+    glob "^7.1.2"
+    lodash "^4.17.4"
+    mime-types "^2.1.15"
+    mkdirp "^0.5.1"
+
+reg-suit-util@^0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/reg-suit-util/-/reg-suit-util-0.8.5.tgz#a86eeacb032b5550fb98a0c696822e8a0ef072ef"
+  integrity sha512-9SdOTaXpTMAVurch5fP6u5kd9pADktUZgKYEbCIh4ud4tAObl6sKGPtD+bnsjkN4cymj7PBZSNXijgrW7lCV2w==
   dependencies:
     chalk "^2.0.1"
     cli-progress "^1.4.1"
