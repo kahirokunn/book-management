@@ -47,7 +47,7 @@
     "@storybook/addon-links": "4.1.13",
     "@types/firebase": "3.2.1",
     "@types/highlight.js": "9.12.3",
-    "@types/jest": "23.3.14",
+    "@types/jest": "24.9.1",
     "@types/marked": "0.6.2",
     "@types/node": "10.12.30",
     "@types/uuid": "^3.4.4",
