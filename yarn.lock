@@ -1989,7 +1989,7 @@
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/strip-json-comments/-/strip-json-comments-0.0.30.tgz#9aa30c04db212a9a0649d6ae6fd50accc40748a1"
 
-"@types/uuid@^3.4.4":
+"@types/uuid@3.4.4":
   version "3.4.4"
   resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-3.4.4.tgz#7af69360fa65ef0decb41fd150bf4ca5c0cefdf5"
   integrity sha512-tPIgT0GUmdJQNSHxp0X2jnpQfBSTfGxUMc/2CXBU2mnyTFVYVa2ojpoQ74w0U2yn2vw3jnC640+77lkFFpdVDw==
@@ -4927,7 +4927,7 @@ depd@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
 
-dependency-cruiser@^4.27.0:
+dependency-cruiser@4.27.0:
   version "4.27.0"
   resolved "https://registry.yarnpkg.com/dependency-cruiser/-/dependency-cruiser-4.27.0.tgz#2e2e66b647a02e0a60af63d60704034dc0082eff"
   integrity sha512-liLJSCGRvFZfRmzftOUVpXRDKpoUryOTnvzC6MrOIn4ygBY2+EV1jvnH6YDq4ZZbTY1MY8l4iN8XkmHhcnCZsA==
@@ -12120,7 +12120,7 @@ typescript-fsa-vuex@3.0.2:
   resolved "https://registry.yarnpkg.com/typescript-fsa-vuex/-/typescript-fsa-vuex-3.0.2.tgz#0ffe93fc061df23f57e5813163e427328330d7a6"
   integrity sha512-kNta4kJgGxlG1MaPI/r7llTyeAmXnPkVySyKq2fgqEeGXjlcrGOBW30S/9082T6voAEa4GBBq34wH9Jmtly31Q==
 
-typescript@^3.5.2:
+typescript@3.5.2:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.2.tgz#a09e1dc69bc9551cadf17dba10ee42cf55e5d56c"
   integrity sha512-7KxJovlYhTX5RaRbUdkAXN1KUZ8PwWlTzQdHV6xNqvuFOs7+WBo10TQUqT19Q/Jz2hk5v9TQDIhyLhhJY4p5AA==
@@ -12365,7 +12365,7 @@ vue-auto-routing@0.3.0:
   dependencies:
     vue-route-generator "^0.3.0"
 
-vue-class-component@^7.0.1:
+vue-class-component@7.0.1, vue-class-component@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-7.0.1.tgz#7af2225c600667c7042b60712eefdf41dfc6de63"
   integrity sha512-YIihdl7YmceEOjSwcxLhCXCNA3TKC2FStuMcjtuzhUAgw5x5d1T5gZTmVQHGyOaQsaKffL4GlZzYN3dlMYl53w==
@@ -12375,7 +12375,7 @@ vue-cli-plugin-auto-routing@0.2.1:
   resolved "https://registry.yarnpkg.com/vue-cli-plugin-auto-routing/-/vue-cli-plugin-auto-routing-0.2.1.tgz#528d4ce9a2f0b261438fd6dbfa206a4d74891a86"
   integrity sha512-iV91GY9tmjNKGwy5HbQe5NwGfSFW9ElYED7xtBWq/Dv5Ug6gMsQAzsqFnR5vkKsVAwpcKVYoeapnrA2wOiSBLw==
 
-vue-cli-plugin-storybook@^0.5.2:
+vue-cli-plugin-storybook@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/vue-cli-plugin-storybook/-/vue-cli-plugin-storybook-0.5.2.tgz#ed8fe1ef09613e8bb7bad1b4b028515bc0a0af68"
   integrity sha512-E9joz8norWa6c71fxO22UAAotluS7dKzhRQTyl9wyPXbEMSjqlZ5jjgd9B6MxW1t58RzEEMSaZ9bMDV063wDtg==
@@ -12449,7 +12449,7 @@ vue-style-loader@^4.1.0:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@^2.6.10:
+vue-template-compiler@2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.6.10.tgz#323b4f3495f04faa3503337a82f5d6507799c9cc"
   integrity sha512-jVZkw4/I/HT5ZMvRnhv78okGusqe0+qH2A0Em0Cp8aq78+NK9TII263CDVz2QXZsIT+yyV/gZc/j/vlwa+Epyg==
@@ -12461,7 +12461,7 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue@^2.6.10:
+vue@2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
