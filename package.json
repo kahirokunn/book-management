@@ -23,7 +23,7 @@
     "github-markdown-css": "3.0.1",
     "highlight.js": "9.15.6",
     "inversify": "5.0.1",
-    "marked": "0.6.1",
+    "marked": "4.0.10",
     "moment": "2.24.0",
     "pring": "0.27.1",
     "reflect-metadata": "0.1.13",
