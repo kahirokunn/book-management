@@ -32,7 +32,7 @@
     "typescript-fsa-vuex": "3.0.2",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.1",
-    "vue-property-decorator": "8.0.0",
+    "vue-property-decorator": "8.5.1",
     "vue-proxy-component": "0.0.8",
     "vue-router": "3.0.2",
     "vue-router-layout": "0.1.3",
