@@ -28,7 +28,7 @@
     "pring": "0.27.1",
     "reflect-metadata": "0.1.13",
     "rxfire": "3.3.6",
-    "rxjs": "6.4.0",
+    "rxjs": "6.6.7",
     "typescript-fsa-vuex": "3.0.2",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.1",
