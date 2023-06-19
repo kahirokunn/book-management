@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "element-ui": "2.6.1",
-    "firebase": "5.8.5",
+    "firebase": "5.11.1",
     "github-markdown-css": "3.0.1",
     "highlight.js": "9.15.6",
     "inversify": "5.0.1",
