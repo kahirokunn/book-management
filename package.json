@@ -18,7 +18,7 @@
     "dependencygraph:show": "yarn dependencygraph:generate && open ./dependencygraph.svg"
   },
   "dependencies": {
-    "element-ui": "2.6.1",
+    "element-ui": "2.15.14",
     "firebase": "5.8.5",
     "github-markdown-css": "3.0.1",
     "highlight.js": "9.15.6",
